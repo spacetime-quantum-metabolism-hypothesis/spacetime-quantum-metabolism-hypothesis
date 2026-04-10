@@ -21,3 +21,26 @@
 - n₀μ = rho_Planck/(4pi) ≈ 4.1e95 kg/m³. 이전값 6.6e-44는 sigma=4piG 오류에서 파생, 사용 금지.
 - v(r) = g(r)*t_P (유입속도 = 중력가속도 x 플랑크시간). v(r) = GM/r² 표기는 속도/가속도 혼동.
 - 문서 작성 시 유니코드 깨짐 주의: 파일 저장 후 반드시 인코딩 확인.
+- `quintessence.py`의 `Om_m`은 fractional Omega_m(a) 아니고 **dimensionless omega_m = rho/(3H0²)**. 성장방정식 입력 시 **반드시 E²로 나눠** 분수로 변환.
+- Backward ODE with V_mass (thawing): N_ini < -3 (z > 20) 이면 anti-damping 폭주. 성장 계산은 N_ini = -3 한계.
+- Hu-Sugiyama z_* fit formula 정확도 ~0.3% (Planck 측정 σ=3e-6 보다 100배 큼). Compressed CMB θ* 에 theory floor 0.3% 반드시 더하기.
+- Phase 2 CMB 적분은 z~1100 까지 필요. desi_fitting.py 의 `solve_sqmh_Ez`는 z_max=3 이므로 **고z 구간은 LCDM 스케일링 bridge 사용**. cubic extrapolation 금지.
+- 공개 실측 데이터는 CobayaSampler 공식 저장소 우선 (bao_data, sn_data). DES-SN5YR 경로: `sn_data/DESY5/`.
+- scipy.optimize 다중 start loop 에서 `best=(1e8, None)` 초기화 시 **모든 start 실패 대비 `if best[1] is None` 방어 필수**. NoneType unpack 금지.
+- Coupled-quintessence 성장방정식에 drag term `-β·φ_N·δ_N` (Di Porto-Amendola 2008 eq 3) 포함 필수. `G_eff/G = 1+2β²` 만으로는 불완전. RSD 결합 전 반드시 수정.
+- LCDM BAO-only 최솟값은 Om~0.326 에서 χ²≈21.4 (DESI DR2 13pt). 고정 Om=0.315 에서는 ~30.7. Regression 비교 시 fixed-Om 값과 best-fit 값 혼동 금지.
+- Fluid IDE fit 결과가 phantom branch (ξ_q<0) 로 갈 경우 **SQMH-consistent branch (ξ_q≥0)로도 별도 피팅** 해서 같이 보고. ξ_q≥0 branch 가 경계 0 에 붙으면 "LCDM 로 수렴" 해석.
+- numpy in-place 함정: `D = sol.y[0]; D /= D[-1]` 는 `sol.y[0]` 원본까지 수정함. 정규화 전에 `.copy()` 필수. f = dlnD/dlnN 는 **정규화 전 raw 값**에서 계산.
+- Coupled-quintessence 성장방정식 배경은 반드시 **LCDM 아날리틱** 으로 대체. `quintessence.py` backward ODE 는 phi_N → √6 (phantom 경계) 로 폭주해 E(N), Omega_m_frac 모두 왜곡. 성장용으로 직접 쓰면 f(z=0)≈0.65 처럼 틀린 값 나옴 (정답 0.527).
+- 성장 ODE 의 phi_N 은 slow-roll 근사 `phi_N ≈ √(2/3)·β·Ω_m(a)` 사용. 작은 |β|<0.4 에 대해 factor ~2 정확. backward ODE φ_N 직접 사용 금지.
+- V_family/extra_params 가 성장 ODE 에 들어가는 경로는 오직 `beta` 와 `G_eff/G = 1+2β²` 뿐 (Phase 2 근사). 전체 V(φ) 트래커 반영은 Phase 3 CLASS 레벨.
+- DESY5 SN 거리 적분은 **반드시 `zHD`** (peculiar-velocity corrected CMB frame) 사용. `zCMB` 는 ~0.001 저z bias 유발. `(1+zHEL)` 인자는 헬리오센트릭. CobayaSampler DESY5 규약.
+- Coupled-quintessence β (V_RP, V_exp) bounds 는 **[0, ...] 양수 강제**. β<0 은 matter→φ 에너지 이동 (SQMH 부호규약 위반). `fit_quintessence` bounds lower 0.0 필수. 멀티스타트 시드도 음수 제거 (`b0 >= 0.01`). **V_mass** 도 동일 (세 family 모두 적용).
+- MCMC log-likelihood 에서 chi2 실패 시 **sentinel 값 (1e6 등) 합산 금지**. `tot = _safe(c_bao)+... ; -0.5*tot` 는 walker 를 logp≈−5e5 의 유한 basin 에 가둠. 반드시 None/nan 발견 즉시 `return -np.inf` 로 reject.
+- 하드코드 index 로 공분산 블록을 덮어쓰는 패턴 (e.g. phase3 `_BOSS_IDX=(2,3,4)`) 은 Z 배열 재정렬 시 silent 오배치. 반드시 `assert np.all(np.diff(Z)>0)` + index→z 매핑 assertion.
+- `np.fromfile(f, count=N*N)` 후에는 반드시 `vals.size == N*N` 검사. count 는 상한이지 최소값 아님, 파일 truncation 시 silent 부족 채움.
+- `matplotlib.use('Agg')` 는 **`import corner` / `import ...matplotlib*` 이전에** 호출. corner 등은 내부에서 pyplot 를 초기화해 backend 를 고정하므로 나중에 use() 호출 시 silent 무시, headless 환경에서 figure 저장 실패.
+- emcee 재현성은 walker 초기값 seed 만으로 부족. `emcee.EnsembleSampler` 의 stretch move 는 `np.random` 전역을 사용하므로 `run_mcmc` 내부에 `np.random.seed(...)` 추가 필수.
+- Compressed CMB 용 `_HighZBridge` 는 **pure LCDM tail** (z>Z_CUT) 사용, 절대 low-z 와 high-z 를 `e_low/e_high` 로 rescale 금지. backward ODE 가 phi_N→√6 근방으로 가면 rescale factor 가 theta* 적분에 spurious 곱수로 들어가 sound horizon 오염.
+- Growth ODE 결과 검증 시 `D_today>0` 만 검사 금지. `D_raw>0 전체`, `D_N_raw finite`, `D_today finite` 모두 확인해야 f=D_N/D, D/D_today 에서 nan 전파 방지.
+- Phase 별 중복 상수 (RSD 데이터, index) 는 **import 시 assertion 으로 drift guard** 걸어 둔다. `assert np.allclose(phase3.X, phase2.X)`.
