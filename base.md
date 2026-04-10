@@ -605,7 +605,7 @@ DESI DR2 BAO 13포인트(arXiv:2503.14738) + 전체 13x13 공분산행렬, coupl
 3. 포스트-뉴턴 보정 계수 $\alpha = 1$의 유일한 도출
 4. $\lambda$의 재규격화 군(RG) 흐름 (베타 함수 계산)
 5. 이완 시간 $\tau$의 계산
-6. 섭동 이론의 명시적 전개 및 CLASS/CAMB 구현 — 선도차수 2체 결합은 $w_a > 0$ 확정(§10.2). $w_a < 0$은 $V(\phi)$ 감쇠 역학 구현으로만 가능
+6. **섭동 이론의 명시적 전개 및 CLASS/CAMB 구현** — 현재 $V(\phi)$ = mass term(§4.3)은 **thawing 형태** → $w_a > 0$ **필연**(우연 아님, base.fix.class.md §1 진단). DESI DR2 $w_a < 0$ (4.2σ)와 부호 불일치. **Phase 1 background 시뮬레이션** (2026-04-10): Ratra-Peebles tracker $V(\phi) = A\phi^{-n}$ 시도, DESI DR2 BAO-only 피팅에서 $\Delta\mathrm{AIC} = -1.10$ (개선 없음). BAO-only의 $w_a$ 제약력 부족에 기인 ($w_a<0$ 4.2σ는 DESI+CMB+SN **결합** 결과). **Phase 2 (CLASS 섭동 + Planck CMB)** 및 **Phase 3 (full joint MCMC, DR3 전 필수)** 로 진행. Phase 2 Delta_AIC > -6 미달성 시 경로 A 기각, 모든 경로 실패 시 단순 SQMH IDE 형태 반증 인정(§XVII). 상세: `base.fix.class.md`, 스캐폴딩: `simulations/class_patch/`, `simulations/mcmc/`
 7. 5개 프로그램의 단일 수학적 프레임워크 통합
 8. **$n_0, \mu$ 개별값의 독립 결정 방법** — 현재 곱 $n_0\mu = \rho_P/(4\pi)$만 결정, 개별값 미결정 (§3.4)
 9. **대사적 BEC 배경의 결어긋남률 상한 도출** — $\mathcal{Q} \propto m^2$ 매개변수(§8.1)가 미시 입자의 양자 코히런스를 보호한다는 주장은 현상론적 논증. 라그랑지안(§4.1)으로부터 Lindblad 형식의 결어긋남률을 엄밀히 도출하고, 배경 대사 노이즈가 이중 슬릿 간섭 등 관측된 양자 현상과 양립함을 정량적으로 증명 필요.
