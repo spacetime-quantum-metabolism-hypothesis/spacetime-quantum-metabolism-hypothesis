@@ -198,7 +198,7 @@ def plot_three_regimes():
 
 if __name__ == "__main__":
     print("=" * 60)
-    print("SQMH Metabolism Continuity Equation — Simulations")
+    print("SQMH Metabolism Continuity Equation -- Simulations")
     print("=" * 60)
 
     print("\n--- Part A: Steady-state analytic verification ---")

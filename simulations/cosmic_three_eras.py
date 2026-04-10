@@ -141,6 +141,6 @@ def plot_three_eras():
 
 if __name__ == "__main__":
     print("=" * 60)
-    print("SQMH Cosmic Three Eras — Simulation")
+    print("SQMH Cosmic Three Eras -- Simulation")
     print("=" * 60)
     plot_three_eras()

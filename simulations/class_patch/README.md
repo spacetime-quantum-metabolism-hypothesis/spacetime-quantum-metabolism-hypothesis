@@ -1,4 +1,15 @@
-# Phase 2 — CLASS/CAMB Patch (Coupled Quintessence + SQMH IDE)
+# Phase 2 Option A — CLASS C Patch (DEFERRED)
+
+> **상태: 보류 (2026-04-10)**. Phase 2 는 Python 확장 경로 (Option B) 로 진행.
+> 이 디렉토리는 full Planck TTTEEE Cl 이 필요한 Phase 3 단계에서만 재활성화.
+> Option B 구현은 `simulations/phase2/` 참조.
+>
+> 보류 이유: (1) 1-2 개월 C 패치 비용 과대, (2) BAO+SN+RSD+compressed CMB 만으로
+> Phase 2 판별력의 ~90% 확보 가능, (3) Windows 빌드 리스크 회피.
+
+---
+
+# Phase 2 Option A — CLASS/CAMB Patch (Coupled Quintessence + SQMH IDE)
 
 ## 목적
 
@@ -19,21 +30,40 @@ base.fix.class.md Phase 2. Phase 1 (BAO-only background)이 V(phi) 구분 불가
 
 ## 패치 범위
 
-### 수정 파일 (CLASS)
+### 수정 파일 (CLASS v3.x)
+
+주의: CLASS v3.x 에는 별도 `source/quintessence.c`가 없음. Scalar field DE는
+`source/background.c`의 `background_functions()` 내부에 통합되어 있고 (v2에서
+존재하던 `quintessence.c`는 v3에서 제거됨), `fluid` module의 특수 케이스
+(scf: scalar field dark energy)로 처리됨. 섭동 측은 `perturbations_derivs()`
+(v3에서 `perturb_derivs`에서 이름 변경) 내부에 scf 블록이 있음.
+
 | 파일 | 수정 내용 |
 |------|-----------|
-| `include/background.h` | `struct background`에 `xi_q`, `V_family`, `V_params[]` 필드 추가 |
-| `source/background.c` | `background_functions()` 에 coupled KG equation 통합; V(phi) 3종 callable |
-| `source/perturbations.c` | scalar field perturbation delta_phi, theta_phi 방정식 추가 (Amendola 2000 Eq. 8-10 참조) |
-| `include/input.h` | 신규 파라미터 입력 (`SQMH_xi`, `SQMH_V_family`, `SQMH_V_params`) |
+| `include/background.h` | `struct background`에 `SQMH_*` 필드 추가 (`scf` 블록 바로 뒤) |
+| `include/input.h` | `struct precision`에 파서 엔트리 추가 |
+| `source/input.c` | `input_read_parameters()`에 `SQMH_enabled`, `SQMH_V_family`, `SQMH_xi`, `SQMH_V_params` 파싱 |
+| `source/background.c` | `background_functions()` 내부 기존 `scf` 블록 옆에 `SQMH` 분기 추가. coupled KG + matter continuity. |
+| `source/perturbations.c` | `perturbations_derivs()` 내부 scf perturbation 블록 확장: coupled source term 추가 |
 
 ### 섭동 방정식 (Synchronous gauge, Fourier k)
+
+Amendola 2000 (astro-ph/9908023) Eq. 18-20 (perturbation equations)과
+Amendola, Quercellini, Tocchini-Valentini 2003 (astro-ph/0304325) 참조.
+SQMH convention (beta = -Q_A, 부호 quintessence.py 문서 참조):
+
+Scalar field perturbation (synchronous gauge, conformal time tau):
 ```
-delta_phi'' + 2H*delta_phi' + (k² + a²*V''(phi)) * delta_phi
-  = -0.5*phi'*h' - a²*xi_q*delta_rho_m
-delta_rho_m' + ... = + xi_q*phi'*delta_rho_m + xi_q*rho_m*delta_phi'
+delta_phi'' + 2*a*H*delta_phi' + (k^2 + a^2*V''(phi)) * delta_phi
+             + 0.5 * phi'*h' = -a^2 * beta * delta_rho_m
 ```
-(Amendola 2000, Phys. Rev. D 62, 043511, Eq. 15-17)
+Matter density/velocity perturbations:
+```
+delta_m' + theta_m - 0.5*h' = -beta * phi'*delta_m + beta * delta_phi'
+theta_m' + a*H*theta_m = -beta*k^2*delta_phi + beta*phi'*theta_m
+```
+(여기서 prime은 d/d(conformal tau); a*H = H_conformal = a*H_cosmic; beta는
+quintessence.py 신호 규약과 동일)
 
 ## 구현 단계
 
@@ -45,15 +75,20 @@ make clean && make
 ./class explanatory.ini  # baseline sanity check
 ```
 
-### 단계 2: background 패치 (3-5일)
-- `patch_template.py` 의 V(phi) 함수를 C로 포팅
-- `source/quintessence.c` 복제 후 `source/sqmh_background.c` 신규
-- Phase 1 `quintessence.py` 결과와 cross-check: 동일 (phi, phi_N) 해 얻는지 검증
+### 단계 2: background 패치 (1-2주)
+- `patch_template.py`의 V(phi) 함수를 C로 포팅 (static inline helpers in background.c)
+- 기존 `background.c`의 scf 분기를 템플릿으로 삼아 SQMH 분기 추가
+- coupled KG: `phi'' + 2*H_conf*phi' + a^2 * dV/dphi = -a^2 * sqrt(2/3)*beta*rho_m` (conformal)
+- coupled matter: `rho_m' + 3*H_conf*rho_m = +sqrt(2/3)*beta*phi'*rho_m`
+- 초기조건: attractor (Amendola & Tsujikawa 교과서 §9.4) 또는 slow-roll
+- Phase 1 `quintessence.py` 결과와 cross-check: `verify_background.py` 로 E(z), Omega_DE(z) 0.1% 이내 일치 확인
 
-### 단계 3: 섭동 패치 (5-10일)
-- `source/perturbations.c` 에 `perturb_sqmh_derivs()` 추가
-- gauge-invariant check (synchronous vs Newtonian)
-- TT/EE/lensing 출력 vs LCDM 잔차 확인
+### 단계 3: 섭동 패치 (3-4주)
+- `source/perturbations.c`의 `perturbations_derivs()` 내부 scf 블록 확장
+- delta_phi, theta_m, delta_m 연립방정식에 coupled source term 추가
+- gauge-invariant check: synchronous vs Newtonian 두 게이지에서 동일 결과
+- TT/EE/lensing 출력 vs LCDM 잔차 확인 (Delta C_l/C_l < 0.1% at LCDM limit)
+- 주의: 라디에이션 우세기 결합으로 BBN 제약 위반 방지 — phi 초기 frozen 확인
 
 ### 단계 4: Planck likelihood 실행 (2-3일)
 - `clik` 인스톨 (Planck 2018 공식)

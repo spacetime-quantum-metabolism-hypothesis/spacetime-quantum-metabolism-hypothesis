@@ -133,7 +133,7 @@ def plot_Q_steepness_comparison():
 
 if __name__ == "__main__":
     print("=" * 60)
-    print("SQMH Quantum-Classical Transition — Simulation")
+    print("SQMH Quantum-Classical Transition -- Simulation")
     print("=" * 60)
 
     print("\n--- Mass scan ---")

@@ -5,13 +5,14 @@
 #   cobaya-run sqmh_planck_desi.yaml -r 4
 
 theory:
+  # Phase 3: switch to sqmh_theory_wrapper.SQMHClassy once the CLASS-SQMH
+  # Python wrapper (Phase 2 Step 4) exposes SQMH_* via classy.set().
   classy:
-    # Replace with sqmh_theory_wrapper.SQMHClassy after Phase 2
     path: ../class_patch/class_sqmh
     extra_args:
       # SQMH-specific parameters (injected via patched CLASS)
       SQMH_enabled: 1
-      SQMH_V_family: RP    # RP | mass | exp
+      SQMH_V_family: RP    # canonical string: RP | mass | exp
       # SQMH_xi, SQMH_V_params sampled below
       N_ncdm: 1
       N_ur: 2.0328
@@ -19,16 +20,18 @@ theory:
       T_ncdm: 0.71611
 
 likelihood:
-  # Planck 2018 TTTEEE + lensing
+  # Planck 2018 TTTEEE + lensing (requires clik installed separately)
   planck_2018_highl_plik.TTTEEE:
   planck_2018_lowl.TT:
   planck_2018_lowl.EE:
   planck_2018_lensing.clik:
 
-  # DESI DR2 BAO
-  bao.desi_2024_bao_all:   # TODO: DR2 release name in Cobaya once published
+  # DESI DR2 BAO — Cobaya likelihood name is 'bao.desi_dr2' (arXiv:2503.14738).
+  # If the installed Cobaya predates DR2 support, fall back to a custom
+  # likelihood reading simulations/desi_dr2_bao.txt + covariance.
+  bao.desi_dr2:
 
-  # DESY5 SN
+  # DESY5 SN (Pantheon+ also acceptable; DESY5 matches DESI joint papers).
   sn.desy5:
 
 params:
@@ -46,7 +49,7 @@ params:
     latex: \Omega_\mathrm{b} h^2
 
   omega_cdm:
-    prior: {min: 0.10, max: 0.14}
+    prior: {min: 0.08, max: 0.16}
     ref: {dist: norm, loc: 0.120, scale: 0.001}
     proposal: 0.0005
     latex: \Omega_\mathrm{c} h^2
@@ -64,14 +67,18 @@ params:
     latex: n_\mathrm{s}
 
   tau_reio:
-    prior: {min: 0.02, max: 0.12}
+    # Planck 2018 Gaussian prior; keep min bound away from 0 to avoid pathologies.
+    prior: {dist: norm, loc: 0.0544, scale: 0.0073}
     ref: {dist: norm, loc: 0.054, scale: 0.008}
     proposal: 0.003
     latex: \tau_\mathrm{reio}
 
   # --- SQMH ---
+  # SQMH_xi >= 0 by construction: xi<0 maps to phantom w<-1, which violates
+  # the SQMH metabolism sign (matter gains energy from phi). Phantom exclusion
+  # is required for physical interpretation — see CLAUDE.md re-발방지 rules.
   SQMH_xi:
-    prior: {min: -1.0, max: 1.0}
+    prior: {min: 0.0, max: 1.0}
     ref: {dist: norm, loc: 0.35, scale: 0.1}
     proposal: 0.05
     latex: \xi_\mathrm{SQMH}

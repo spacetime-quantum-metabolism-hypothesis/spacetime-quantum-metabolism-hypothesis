@@ -231,37 +231,51 @@ def fit_quintessence(V_family, rd=147.09):
     """
     N_data = 13  # DESI DR2 points
 
+    # SQMH sign convention (CLAUDE.md rule): matter gains energy from phi
+    # => beta >= 0. Negative beta is unphysical for all V(phi) families.
     if V_family == "mass":
         def cost(p):
             (beta,) = p
-            if abs(beta) > 2.0:
+            if beta < 0.0 or beta > 2.0:
                 return 1e6
             return chi2_quintessence("mass", beta, (), rd)
 
-        # Coarse scan over beta
-        betas = np.linspace(-0.5, 0.5, 21)
-        chi2s = [cost([b]) for b in betas]
-        b0 = betas[int(np.argmin(chi2s))]
-        res = minimize(cost, [b0], method='Nelder-Mead',
-                       options={'xatol': 1e-4, 'fatol': 1e-3, 'maxiter': 200})
+        # Multi-start over positive beta (mass has no shape param)
+        best = (1e6, None)
+        for b0 in [0.01, 0.1, 0.2, 0.3, 0.4]:
+            res = minimize(cost, [b0], method='Nelder-Mead',
+                           options={'xatol': 1e-4, 'fatol': 1e-3,
+                                    'maxiter': 200})
+            if res.fun < best[0]:
+                best = (res.fun, res.x)
+        if best[1] is None:
+            return {'family': V_family, 'params': {}, 'chi2': np.nan,
+                    'k': 1, 'AIC': np.nan, 'BIC': np.nan,
+                    'error': 'all_starts_failed'}
+        res_fun, res_x = best
         k = 1
-        params = {'beta': float(res.x[0])}
+        params = {'beta': float(res_x[0])}
+        res = type('R', (), {'fun': res_fun, 'x': res_x})()
 
     elif V_family == "RP":
         def cost(p):
             beta, n = p
-            if abs(beta) > 2.0 or n < 0.01 or n > 5.0:
+            if beta < 0.0 or beta > 2.0 or n < 0.01 or n > 5.0:
                 return 1e6
             return chi2_quintessence("RP", beta, (n,), rd)
 
         best = (1e6, None)
         for n0 in [0.1, 0.5, 1.0, 2.0]:
-            for b0 in [-0.2, 0.0, 0.2]:
+            for b0 in [0.01, 0.1, 0.2]:
                 res = minimize(cost, [b0, n0], method='Nelder-Mead',
                                options={'xatol': 1e-4, 'fatol': 1e-3,
                                         'maxiter': 300})
                 if res.fun < best[0]:
                     best = (res.fun, res.x)
+        if best[1] is None:
+            return {'family': V_family, 'params': {}, 'chi2': np.nan,
+                    'k': 2, 'AIC': np.nan, 'BIC': np.nan,
+                    'error': 'all_starts_failed'}
         res_fun, res_x = best
         k = 2
         params = {'beta': float(res_x[0]), 'n': float(res_x[1])}
@@ -270,18 +284,22 @@ def fit_quintessence(V_family, rd=147.09):
     elif V_family == "exp":
         def cost(p):
             beta, lam = p
-            if abs(beta) > 2.0 or lam < -3.0 or lam > 3.0:
+            if beta < 0.0 or beta > 2.0 or lam < -3.0 or lam > 3.0:
                 return 1e6
             return chi2_quintessence("exp", beta, (lam,), rd)
 
         best = (1e6, None)
         for lam0 in [-0.5, 0.0, 0.5, 1.0]:
-            for b0 in [-0.2, 0.0, 0.2]:
+            for b0 in [0.01, 0.1, 0.2]:
                 res = minimize(cost, [b0, lam0], method='Nelder-Mead',
                                options={'xatol': 1e-4, 'fatol': 1e-3,
                                         'maxiter': 300})
                 if res.fun < best[0]:
                     best = (res.fun, res.x)
+        if best[1] is None:
+            return {'family': V_family, 'params': {}, 'chi2': np.nan,
+                    'k': 2, 'AIC': np.nan, 'BIC': np.nan,
+                    'error': 'all_starts_failed'}
         res_fun, res_x = best
         k = 2
         params = {'beta': float(res_x[0]), 'lambda': float(res_x[1])}
@@ -470,7 +488,7 @@ def plot_desi_fit():
     lcdm_BIC = chi2_lcdm + np.log(13)
 
     lines = [
-        "DESI DR2 BAO Fit — Phase 1",
+        "DESI DR2 BAO Fit -- Phase 1",
         "=" * 46,
         "Data: 13 pts (arXiv:2503.14738)",
         "Solver: coupled ODE, rtol=1e-8",
@@ -482,10 +500,16 @@ def plot_desi_fit():
         f"{chi2_best+2:6.2f} {chi2_best+np.log(13):6.2f}",
     ]
     for r in q_results:
-        if np.isnan(r['chi2']) or r['chi2'] > 1000:
-            # Mark catastrophic chi2 as numerical instability
-            # (V_mass backward integration is anti-damped for thawing)
-            lines.append(f"V_{r['family']:<10s}UNSTABLE (backward anti-damping)")
+        chi2_bad = (np.isnan(r['chi2']) or not np.isfinite(r['chi2'])
+                    or r['chi2'] > 1000)
+        if chi2_bad:
+            # Unstable: could be backward anti-damping (V_mass) or NaN
+            # propagation (e.g., phi<=0 for V_RP). Reason left generic.
+            if r['family'] == 'mass':
+                reason = "backward anti-damping"
+            else:
+                reason = "ODE invalid"
+            lines.append(f"V_{r['family']:<10s}UNSTABLE ({reason})")
             r['_unstable'] = True
         else:
             lines.append(
@@ -545,6 +569,6 @@ def plot_desi_fit():
 
 if __name__ == "__main__":
     print("=" * 60)
-    print("SQMH DESI DR2 Fitting (Coupled ODE — Fixed Convention)")
+    print("SQMH DESI DR2 Fitting (Coupled ODE -- Fixed Convention)")
     print("=" * 60)
     plot_desi_fit()

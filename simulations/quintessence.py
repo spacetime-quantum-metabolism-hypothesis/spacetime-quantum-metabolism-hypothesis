@@ -15,9 +15,27 @@ Key equations (M_P=1, H_0 as time unit):
   Matter:    Omega_m_N = -3*Omega_m + sqrt(2/3)*beta*phi_N*Omega_m
   Raychaudhuri: E_N/E = -0.5*(3*Omega_m + 4*Omega_r)/E^2 - 0.5*phi_N^2
 
-beta is dimensionless coupling (Amendola convention). For SQMH:
-  L_int = xi*phi*T^a_a  ->  beta = xi*M_P*(sqrt(3/2)) ~ O(1) mapping
-Here beta is treated as fit parameter (same role as xi_q in fluid code).
+beta is dimensionless coupling. SIGN CONVENTION (important):
+  In Amendola 2000 (astro-ph/9908023), the continuity equation is
+    rho_m_dot + 3*H*rho_m = -sqrt(2/3)*Q_A*phi_dot*rho_m
+  with + sign on KG source. Here we define beta = -Q_A so that positive
+  beta corresponds to matter gaining energy from phi (phi_dot > 0), matching
+  SQMH intuition (matter "annihilates" DE background).
+
+  Hence our equations:
+    dOmega_m/dN  = -3*Omega_m + sqrt(2/3)*beta*phi_N*Omega_m   (+sign)
+    phi_NN + ... = -sqrt(6)*beta*Omega_m/E^2                   (-sign)
+
+  (sqrt(6) = 3*sqrt(2/3) comes from rho_m/H^2 = 3*Omega_m/E^2
+   when substituting rho_m in Amendola's eq.9 RHS.)
+
+  Internal consistency verified against Friedmann constraint:
+    E^2*(1 - phi_N^2/6) = Omega_m + Omega_r + V_tilde
+  and Raychaudhuri:
+    E_N/E = -0.5*(3*Omega_m + 4*Omega_r)/E^2 - 0.5*phi_N^2
+
+For SQMH xi coupling (L_int = xi*phi*T^a_a): exact mapping to beta requires
+GFT-level derivation (open problem, §15.1 #1). Here beta is fit parameter.
 
 V(phi) families (all in reduced Planck units, phi dimensionless):
   mass:    V_tilde(phi) = (A/2) * phi^2                   (thawing)
@@ -96,12 +114,14 @@ def V_call(V_family, phi, A, extra_params):
 
 def integrate_quintessence(V_family, beta, extra_params,
                            N_min=-1.5, n_steps=600,
-                           phi_0=1.0, phi_N_0=0.0):
+                           phi_0=1.0, phi_N_0=0.0,
+                           return_phi_N=False):
     """
     Backward integrate from today (N=0) to N=N_min.
 
     Returns:
-      z_arr, E_arr, Omega_m_arr (sorted ascending by z)
+      if return_phi_N is False: (z_arr, E_arr, Omega_m_arr) sorted ascending z
+      if return_phi_N is True : (z_arr, E_arr, Omega_m_arr, phi_N_arr)
       or None if integration failed.
     """
     Omega_m_0 = config.Omega_m
@@ -112,25 +132,34 @@ def integrate_quintessence(V_family, beta, extra_params,
 
     state0 = [Omega_m_0, phi_0, phi_N_0]
 
+    # Track catastrophic failure (raised via NaN propagation so solve_ivp stops)
+    def _fail():
+        return [np.nan, np.nan, np.nan]
+
     def rhs(N, y):
         Om_m, phi, phi_N = y
-        if not np.isfinite(phi) or phi <= 0:
-            return [0.0, 0.0, 0.0]
+        # phi<=0 is unphysical for V_RP (V = A*phi^-n diverges); for V_mass/V_exp
+        # it is allowed but optimizer should not prefer these points.
+        if not np.isfinite(phi):
+            return _fail()
+        if V_family == "RP" and phi <= 1e-8:
+            return _fail()
         try:
             V, Vp = V_call(V_family, phi, A, extra_params)
-        except (OverflowError, ValueError):
-            return [0.0, 0.0, 0.0]
+        except (OverflowError, ValueError, ZeroDivisionError):
+            return _fail()
         if not (np.isfinite(V) and np.isfinite(Vp)):
-            return [0.0, 0.0, 0.0]
+            return _fail()
 
         Om_r = Omega_r_0 * np.exp(-4 * N)
 
         denom = 1.0 - phi_N**2 / 6.0
-        if denom <= 1e-6:
-            denom = 1e-6
+        if denom <= 1e-4:
+            # Ghost / phantom crossing region: kill trajectory.
+            return _fail()
         E2 = (Om_m + Om_r + V) / denom
         if E2 <= 1e-10 or not np.isfinite(E2):
-            return [0.0, 0.0, 0.0]
+            return _fail()
 
         EN_over_E = -0.5 * (3.0 * Om_m + 4.0 * Om_r) / E2 - 0.5 * phi_N**2
 
@@ -151,9 +180,14 @@ def integrate_quintessence(V_family, beta, extra_params,
     except Exception:
         return None
 
-    Om_m_arr = sol.y[0]
-    phi_arr = sol.y[1]
-    phi_N_arr = sol.y[2]
+    Om_m_arr = sol.y[0].copy()
+    phi_arr = sol.y[1].copy()
+    phi_N_arr = sol.y[2].copy()
+
+    # NaN guard: any NaN from _fail propagation marks the trajectory invalid.
+    if (np.any(~np.isfinite(Om_m_arr)) or np.any(~np.isfinite(phi_arr))
+            or np.any(~np.isfinite(phi_N_arr))):
+        return None
 
     # Reconstruct E(z)
     V_arr = np.zeros_like(phi_arr)
@@ -177,7 +211,10 @@ def integrate_quintessence(V_family, beta, extra_params,
     z_sorted = z_arr[idx]
     E_sorted = E_arr[idx]
     Om_m_sorted = Om_m_arr[idx]
+    phi_N_sorted = phi_N_arr[idx]
 
+    if return_phi_N:
+        return z_sorted, E_sorted, Om_m_sorted, phi_N_sorted
     return z_sorted, E_sorted, Om_m_sorted
 
 
