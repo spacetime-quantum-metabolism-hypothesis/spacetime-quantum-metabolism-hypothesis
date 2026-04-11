@@ -1,0 +1,13 @@
+{
+  "logz": -835.974596810572,
+  "logz_err": 0.16798722130109126,
+  "niter": 2061,
+  "nlive": 300,
+  "dlogz_tol": 0.2,
+  "sample": "unif",
+  "elapsed_sec": 306.47285413742065,
+  "ndim": 2,
+  "id": "A15",
+  "name": "Stretched exponential",
+  "note": "closed-form 2D"
+}

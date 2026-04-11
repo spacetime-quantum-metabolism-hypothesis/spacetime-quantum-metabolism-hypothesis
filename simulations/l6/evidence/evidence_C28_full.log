@@ -1,0 +1,7 @@
+[L6-E1 C28] 3D marginalized evidence: nlive=800 seed=42
+[L6-E1 C28] params: (Om, h, gamma0); beta_shape=0.5027 a_tail=2.4941 fixed
+[L6-E1 C28] logZ = -834.905 +/- 0.113
+[L6-E1 C28] Delta_logZ vs LCDM = 8.784
+[L6-E1 C28] niter = 8033  dt = 26.8 min
+[L6-E1 C28] K17 (Delta_logZ >= 2.5): True
+[L6-E1 C28] wrote /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l6/evidence/evidence_C28_full.json

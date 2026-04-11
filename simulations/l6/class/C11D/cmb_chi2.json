@@ -1,0 +1,34 @@
+{
+  "ID": "C11D",
+  "phase": "L6-G3",
+  "method": "compressed_Planck_via_chi2_joint",
+  "WARNING": "hi_class NOT installed. CMB chi2 = compressed Planck likelihood only (theta_*, omega_b, omega_cdm). Full CMB power spectrum (C_l^TT/EE) NOT verified. K19 verdict is PROVISIONAL. Paper sec 8 must disclose.",
+  "params": {
+    "Om": 0.3095,
+    "h": 0.6776,
+    "lam": 0.8872
+  },
+  "cmb_chi2": {
+    "LCDM_same_params": 6.502067223156572,
+    "C11D": 0.17224143676051998,
+    "delta": -6.329825786396052
+  },
+  "K19_threshold": 6.0,
+  "K19_provisional_pass": true,
+  "full_chi2_C11D": {
+    "bao": 9.043805354119892,
+    "sn": 1638.613739127492,
+    "cmb": 0.17224143676051998,
+    "rsd": 6.999746483942226,
+    "total": 1654.8295324023147
+  },
+  "full_chi2_LCDM": {
+    "bao": 42.691354794133076,
+    "sn": 1646.7872131328093,
+    "cmb": 6.502067223156572,
+    "rsd": 6.999746483942226,
+    "total": 1702.9803816340411
+  },
+  "hi_class_status": "not_installed",
+  "hi_class_install": "git clone https://github.com/miguelzuma/hi_class_public && cd hi_class_public && make && pip install -e python/"
+}

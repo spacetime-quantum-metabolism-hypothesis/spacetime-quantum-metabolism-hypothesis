@@ -1,0 +1,28 @@
+{
+  "phase": "L8-N",
+  "method": "L8_integration_comparison",
+  "candidates": {
+    "A12": {
+      "Q31_pass": false,
+      "K31_triggered": false,
+      "chi2_SQMH_vs_A12": 7.6263007714797455,
+      "scale_ratio": 1.8319274399431394e-62
+    },
+    "C11D": {
+      "Q32_pass": false,
+      "K32_triggered": true,
+      "sigma_gap_orders": 61.25997047739849
+    },
+    "C28": {
+      "Q33_pass": false,
+      "K33_triggered": true,
+      "isomorphism_residual": 1.0
+    }
+  },
+  "overall": {
+    "any_Q_pass": false,
+    "PRD_Letter_condition": false,
+    "JCAP_target": true,
+    "key_conclusion": "No surviving candidate can be analytically derived from SQMH fundamental equation. sigma=4*pi*G*t_P is 62 orders too small for background cosmology. All three candidates (A12, C11D, C28) confirmed as phenomenological proxies."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "ID": "C28",
+  "phase": "L6-E1",
+  "description": "C28 RR non-local 3D marginalized (Om, h, gamma0)",
+  "ndim": 3,
+  "nlive": 800,
+  "seed": 42,
+  "params_free": [
+    "Om",
+    "h",
+    "gamma0"
+  ],
+  "params_fixed": {
+    "beta_shape": 0.5027317427945509,
+    "a_tail": 2.4941396699309544
+  },
+  "logz": -834.9045646944134,
+  "logz_err": 0.1125811033253074,
+  "lcdm_logz": -843.689,
+  "delta_logz": 8.784435305586612,
+  "jeffreys": "STRONG",
+  "k17_pass": true,
+  "niter": 8033,
+  "wall_time_sec": 1610.1610989570618,
+  "l5_logz_fixed_theta": -832.432,
+  "l5_delta_logz_fixed_theta": 11.257
+}

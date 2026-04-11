@@ -1,0 +1,12 @@
+[L7-X3] SKAO 21cm BAO forecast vs SQMH E(z)
+[L7-X3] Using SKA SWG Bacon+2020 sensitivity (MID Band 1+2, optimistic)
+[L7-X3] C11D: max|dDA|=1.7649% max|dH|=2.2716% total SNR=12.198
+[L7-X3] A12: max|dDA|=1.7765% max|dH|=2.2850% total SNR=12.410
+[L7-X3] C28: max|dDA|=2.0632% max|dH|=2.6712% total SNR=14.105
+
+[L7-X3] SKAO vs DESI DR3 context:
+[L7-X3]   C11D: SKAO SNR=12.20 (2sigma DIST)
+[L7-X3]   A12: SKAO SNR=12.41 (2sigma DIST)
+[L7-X3]   C28: SKAO SNR=14.10 (2sigma DIST)
+
+[L7-X3] Done. Saved to /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l7/channels/skao_forecast.json

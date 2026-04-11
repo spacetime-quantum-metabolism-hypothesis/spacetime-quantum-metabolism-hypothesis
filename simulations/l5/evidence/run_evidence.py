@@ -209,6 +209,38 @@ def _build_c33_3d():
     return ll, prior, 3
 
 
+def _build_c11d():
+    # C11D: pure disformal quintessence (Sakstein-Jain 2015 / CLW 1998 ODE).
+    # Params (Om, h, lam) where lam is exponential slope of V(phi).
+    # lam in [0, 2.0]: lam->0 is LCDM; lam~0.9 gives best-fit.
+    import sys, os
+    _c11d_dir = os.path.join(os.path.dirname(_THIS), 'C11D_reeval')
+    if _c11d_dir not in sys.path:
+        sys.path.insert(0, _c11d_dir)
+    from background import build_E as _build_E_c11d
+
+    def prior(u):
+        return np.array([
+            0.28 + 0.08 * u[0],   # Om in [0.28, 0.36]
+            0.64 + 0.07 * u[1],   # h  in [0.64, 0.71]
+            0.0  + 2.0  * u[2],   # lam in [0, 2.0]
+        ])
+
+    def ll(theta):
+        Om, h, lam = theta
+        try:
+            E = _build_E_c11d((lam,), Om, h)
+        except Exception:
+            return -1e30
+        if E is None:
+            return -1e30
+        c = _chi2_for_E(E, Om, h)
+        if c is None:
+            return -1e30
+        return -0.5 * c
+    return ll, prior, 3
+
+
 # ---------------------------------------------------------------------------
 # Candidate list
 # ---------------------------------------------------------------------------
@@ -228,6 +260,9 @@ for _aid in ALT_IDS:
     CANDIDATES.append((_aid, _name,
                        (lambda _a=_aid: _build_alt(_a)),
                        300, 'closed-form 2D'))
+
+CANDIDATES.append(('C11D', 'Disformal IDE quintessence (Sakstein-Jain CLW)',
+                   _build_c11d, 350, '3D (Om,h,lam)'))
 
 
 # ---------------------------------------------------------------------------

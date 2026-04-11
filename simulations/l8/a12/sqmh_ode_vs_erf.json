@@ -1,0 +1,26 @@
+{
+  "phase": "L8-A",
+  "method": "SQMH_homogeneous_ODE_vs_A12_CPL",
+  "sigma_SI": 4.52120271492582e-53,
+  "A12_params": {
+    "w0": -0.886,
+    "wa": -0.133
+  },
+  "Om": 0.3095,
+  "scale_analysis": {
+    "sigma_rho_DE_rho_m": 7.186997415327114e-106,
+    "3H_rho_DE": 3.923188909463679e-44,
+    "ratio_SQMH_sink_to_Hubble": 1.8319274399431394e-62,
+    "log10_ratio": -61.73709173211815,
+    "conclusion": "SQMH somatic term 62 orders smaller than Hubble -> bg ODE ~ LCDM"
+  },
+  "chi2_dof": {
+    "SQMH_vs_A12": 7.6263007714797455,
+    "LCDM_vs_A12": 7.6263007714797455,
+    "SQMH_vs_LCDM": 0.0
+  },
+  "q31_pass": false,
+  "k31_triggered": false,
+  "ode_ok": false,
+  "interpretation": "K31 CONFIRMED: SQMH homogeneous ODE (sigma=4*pi*G*t_P) produces LCDM-like E2(z). The somatic term sigma*rho_DE*rho_m is 62 orders of magnitude smaller than Hubble friction at background level. A12 wa=-0.133 cannot emerge from bg ODE. A12 remains a phenomenological proxy without bg-level SQMH derivation."
+}

@@ -1,0 +1,13 @@
+{
+  "logz": -832.998846068426,
+  "logz_err": 0.16754432785782464,
+  "niter": 2044,
+  "nlive": 300,
+  "dlogz_tol": 0.2,
+  "sample": "unif",
+  "elapsed_sec": 206.54200100898743,
+  "ndim": 2,
+  "id": "A01",
+  "name": "SQMH canonical (matter-weighted drift)",
+  "note": "closed-form 2D"
+}

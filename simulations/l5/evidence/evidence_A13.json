@@ -1,0 +1,13 @@
+{
+  "logz": -835.0316020962641,
+  "logz_err": 0.1675580595201762,
+  "niter": 2050,
+  "nlive": 300,
+  "dlogz_tol": 0.2,
+  "sample": "unif",
+  "elapsed_sec": 184.27973198890686,
+  "ndim": 2,
+  "id": "A13",
+  "name": "Arctan plateau",
+  "note": "closed-form 2D"
+}

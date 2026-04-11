@@ -1,0 +1,21 @@
+[L7-X1] GW inspiral B_0 constraint for C11D disformal
+[L7-X1] C11D params: Om=0.3095 h=0.6776 lam=0.8872
+[L7-X1] rho_DE0/rho_crit0 = 0.6905
+[L7-X1] phi_dot^2 (natural, M_P=1, t_P=1): 2.7244e-107
+[L7-X1] X = phi_dot^2/2 (natural): 1.3622e-107
+[L7-X1] GW170817: |c_T/c - 1| < 5.0e-16
+[L7-X1] B_0 upper limit (natural): 3.6706e+91
+
+[L7-X1] Typical disformal B_0 range: 0.1 - 10.0 (M_P^-2 units)
+[L7-X1] GW170817 constraint: B_0 < 3.6706e+91 (M_P^-2)
+[L7-X1] GW constraint kills typical B_0 range? False
+
+[L7-X1] Key: A=1 (A=const), B enters perturbations only (ZKB 2013)
+[L7-X1] Background w(z) independent of B_0 constraint
+[L7-X1] Conclusion: GW170817 constrains B_0 < 3.67e+91 but does NOT kill C11D background
+
+[L7-X1] Einstein Telescope forecast: |c_T/c-1| < 1.0e-18
+[L7-X1] ET B_0 constraint: B_0 < 7.3412e+88 (M_P^-2)
+[L7-X1] ET improvement over GW170817: 500x tighter
+
+[L7-X1] Saved to /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l7/channels/gw_constraint.json

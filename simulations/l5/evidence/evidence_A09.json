@@ -1,0 +1,13 @@
+{
+  "logz": -833.6787110260142,
+  "logz_err": 0.16967283496731517,
+  "niter": 2086,
+  "nlive": 300,
+  "dlogz_tol": 0.2,
+  "sample": "unif",
+  "elapsed_sec": 210.73791790008545,
+  "ndim": 2,
+  "id": "A09",
+  "name": "Causal-diamond 2D",
+  "note": "closed-form 2D"
+}

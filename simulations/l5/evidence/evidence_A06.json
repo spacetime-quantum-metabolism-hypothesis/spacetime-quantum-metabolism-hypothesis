@@ -1,0 +1,13 @@
+{
+  "logz": -833.1151246983062,
+  "logz_err": 0.16987253465604882,
+  "niter": 2079,
+  "nlive": 300,
+  "dlogz_tol": 0.2,
+  "sample": "unif",
+  "elapsed_sec": 305.4065179824829,
+  "ndim": 2,
+  "id": "A06",
+  "name": "Exponential metabolism",
+  "note": "closed-form 2D"
+}

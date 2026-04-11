@@ -1,0 +1,13 @@
+{
+  "logz": -832.908637618564,
+  "logz_err": 0.16711068790258868,
+  "niter": 2038,
+  "nlive": 300,
+  "dlogz_tol": 0.2,
+  "sample": "unif",
+  "elapsed_sec": 301.22343397140503,
+  "ndim": 2,
+  "id": "A17",
+  "name": "Adiabatic pulse",
+  "note": "closed-form 2D"
+}

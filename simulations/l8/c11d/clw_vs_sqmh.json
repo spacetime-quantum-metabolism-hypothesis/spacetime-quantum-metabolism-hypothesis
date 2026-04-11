@@ -1,0 +1,37 @@
+{
+  "phase": "L8-C",
+  "lam": 0.8872,
+  "sigma_SQMH": 4.52120271492582e-53,
+  "trajectory": {
+    "Om_phi_today": 0.6905002307951401,
+    "x_today": 0.2035004587617374,
+    "y_today": 0.8056598501097734,
+    "w_phi_today": -0.8800509112978877,
+    "phi_over_MP_today": 0.2767236131795599,
+    "shooting_ok": true
+  },
+  "scale_analysis": {
+    "sigma_need": 822667720.7743104,
+    "sigma_SQMH": 4.52120271492582e-53,
+    "ratio": 5.495782319829418e-62,
+    "log10_gap": 61.25997047739849
+  },
+  "candidate_1": {
+    "definition": "n_bar ~ exp(-lam*phi/M_P)",
+    "sigma_eff_mean": 0.0,
+    "sigma_eff_cv": Infinity,
+    "ratio_to_SQMH": 0.0,
+    "q32": false
+  },
+  "candidate_2": {
+    "definition": "n_bar ~ exp(+lam*phi/M_P)",
+    "sigma_eff_mean": 0.0,
+    "sigma_eff_cv": Infinity,
+    "ratio_to_SQMH": 0.0,
+    "q32": false
+  },
+  "chi2_CLW_vs_A12": 27.622640766240792,
+  "q32_pass": false,
+  "k32_triggered": true,
+  "interpretation": "K32 CONFIRMED: CLW quintessence (lam=0.8872) cannot realize SQMH isomorphism. Required sigma ~ H0/rho_m ~ 8.5e8 m^3/kg/s, SQMH sigma = 4.5e-53 m^3/kg/s. Gap: 61 orders of magnitude. No variable substitution bridges this scale gap."
+}

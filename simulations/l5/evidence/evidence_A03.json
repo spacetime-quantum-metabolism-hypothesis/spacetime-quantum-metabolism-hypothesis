@@ -1,0 +1,13 @@
+{
+  "logz": -833.5657508829755,
+  "logz_err": 0.17017133905592433,
+  "niter": 2096,
+  "nlive": 300,
+  "dlogz_tol": 0.2,
+  "sample": "unif",
+  "elapsed_sec": 293.24994707107544,
+  "ndim": 2,
+  "id": "A03",
+  "name": "Log horizon entropy",
+  "note": "closed-form 2D"
+}

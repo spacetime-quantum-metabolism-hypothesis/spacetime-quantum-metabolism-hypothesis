@@ -1,0 +1,11 @@
+{
+  "ID": "C28",
+  "phase": "L6-G3",
+  "cmb_chi2": {
+    "LCDM": 9.551762494722228,
+    "C28": 1.3441740855048987,
+    "delta": -8.20758840921733
+  },
+  "K19_provisional_pass": true,
+  "WARNING": "compressed Planck only, hi_class not installed"
+}

@@ -1,0 +1,13 @@
+{
+  "logz": -833.1080414111482,
+  "logz_err": 0.16833488287792733,
+  "niter": 2064,
+  "nlive": 300,
+  "dlogz_tol": 0.2,
+  "sample": "unif",
+  "elapsed_sec": 289.338871717453,
+  "ndim": 2,
+  "id": "A05",
+  "name": "Sqrt relaxation",
+  "note": "closed-form 2D"
+}

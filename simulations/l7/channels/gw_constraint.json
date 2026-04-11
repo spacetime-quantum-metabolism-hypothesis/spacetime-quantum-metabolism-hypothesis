@@ -1,0 +1,21 @@
+{
+  "phase": "L7-X1",
+  "model": "C11D pure disformal A=1",
+  "params": {
+    "Om": 0.3095,
+    "h": 0.6776,
+    "lam": 0.8872
+  },
+  "gw170817_constraint": {
+    "B0_max_natural": 3.670577371129611e+91,
+    "kills_background": false,
+    "kills_typical_B0": false
+  },
+  "einstein_telescope_forecast": {
+    "sensitivity": 1e-18,
+    "B0_max_natural": 7.341154742259222e+88,
+    "improvement_factor": 499.99999999999994
+  },
+  "conclusion": "GW170817 constrains disformal B_0 but A=1 background is independent. C11D background unaffected.",
+  "q22_contribution": "GW channel provides additional perturbation-level constraint on B_0. Does not K25-kill C11D."
+}

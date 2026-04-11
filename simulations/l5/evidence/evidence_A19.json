@@ -1,0 +1,13 @@
+{
+  "logz": -839.2291810707461,
+  "logz_err": 0.16707536895271732,
+  "niter": 2038,
+  "nlive": 300,
+  "dlogz_tol": 0.2,
+  "sample": "unif",
+  "elapsed_sec": 224.55748176574707,
+  "ndim": 2,
+  "id": "A19",
+  "name": "Harmonic fraction",
+  "note": "closed-form 2D"
+}

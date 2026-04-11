@@ -1,0 +1,7 @@
+[L5-E C11D] Production MCMC start: 48x2000 burn=500 thin=10
+[L5-E C11D] X0 = [0.3093, 0.6778, 0.9]
+[L5-E C11D]   done in 194.3 min  rhat_max=1.0114
+[L5-E C11D]   chi2_mean=1654.832  dchi2=-22.063
+[L5-E C11D]   K13_pass=True
+[L5-E C11D]   corner -> /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/paper/figures/l5_C11D_corner.png
+[L5-E C11D]   wrote /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l5/C11D/mcmc_production.json

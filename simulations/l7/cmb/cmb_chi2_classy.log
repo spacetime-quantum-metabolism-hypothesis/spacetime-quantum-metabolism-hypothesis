@@ -1,0 +1,21 @@
+[L7-C] classy formal CMB chi2 (K23)
+[L7-C] Planck 2018 theta_s = 0.010409 +/- 0.000003
+
+[L7-C] --- LCDM (w0=-1.000 wa=0.000) ---
+[L7-C] LCDM: h_best=0.60001 theta_s_best=1.017848 (Planck=0.010409)
+
+[L7-C] --- C11D (w0=-0.877 wa=-0.186) ---
+[L7-C] C11D: h_best=0.60001 theta_s_best=1.023118 (Planck=0.010409)
+
+[L7-C] --- A12 (w0=-0.886 wa=-0.133) ---
+[L7-C] A12: h_best=0.60001 theta_s_best=1.023510 (Planck=0.010409)
+
+[L7-C] --- C28 (w0=-0.849 wa=-0.242) ---
+[L7-C] C28: h_best=0.60001 theta_s_best=1.024106 (Planck=0.010409)
+
+[L7-C] === K23 VERDICT ===
+[L7-C] C11D: chi2=113953137592.9375 delta=1182781140.1572 K23=FAIL
+[L7-C] A12: chi2=114041399008.2483 delta=1271042555.4680 K23=FAIL
+[L7-C] C28: chi2=114175610315.5850 delta=1405253862.8047 K23=FAIL
+
+[L7-C] Done in 2.3s. Saved to /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l7/cmb/cmb_chi2_L7.json

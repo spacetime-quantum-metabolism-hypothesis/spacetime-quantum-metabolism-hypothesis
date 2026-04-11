@@ -85,3 +85,31 @@
 - **sibling background module collision**: 여러 `simulations/*/background.py` 동시 sys.path 시 Python 이름 충돌. 후보 디렉터리 내부 상대 import 또는 파일명 분리.
 - **K10 정의 주의**: K10 (toy↔full 일치) 은 **w_a 부호** 기준. underlying 파라미터 (ν, f_1 등) 부호 역전해도 w_a 동일 부호면 formally PASS 하지만 SQMH 해석은 실패 — 별도 `sqmh_sign_consistent` 플래그 필요.
 - **phantom_crossing numerical guard**: LCDM 근방 (w≡−1) 에서 `np.gradient` 수치 노이즈로 false phantom cross 발생. `common.phantom_crossing` 에 `|w+1|>1e-3` 양측 threshold 필수.
+
+## L5 재발방지 (Phase-5 추가)
+
+- **L4 K3 phantom crossing KILL 은 CPL 템플릿 아티팩트 가능성 필수 재판정**. thawing 저차 전개 `w_0=−1+λ²/3, wa=−(2/3)λ²` 는 구조적으로 phantom 근방 노이즈 생성. 배경 exact ODE (Sakstein-Jain / CLW 1998) 로 재확인 필수.
+- **Pure disformal (A'=0) 은 배경에서 minimally coupled quintessence 와 정확히 동일** (ZKB 2013). hi_class 없어도 CLW autonomous system 이 faithful 구현.
+- **C26 Perez-Sudarsky 확정 KILL**: 모든 `J⁰ = α_Q·f(H, ρ_m)` 형태 ansatz 가 non-zero α_Q 에서 CMB sound horizon 폭발. SQMH unimodular diffusion 은 background-only 로는 dead, 섭동-레벨 새 채널 필수.
+- **C33 f(Q) cosmic shear 실패**: Ω_m=0.340 best-fit 이 S_8 ∝ √(Ω_m/0.3) 를 상승시켜 DES-Y3 3σ 상한 초과. background-only f(Q) 계열은 S_8 tension 악화 위험 상존 — K15 check 필수.
+- **Background-only 수정 + μ=1 구조**: S_8 tension 은 구조적으로 해결 불가. parametric Ω_m 이동으로 인한 숫자상 개선은 artefact. 논문 본문에 정직 기록.
+- **Alt-20 14-cluster canonical drift class**: SVD n_eff=1, participation ratio 1.017. 15 후보를 15 independent theory 로 보고 금지. 단일 대표 (A12 erf diffusion) 로 축약.
+- **DR3 pairwise discrimination 0.19σ (C28↔C33)**: Fisher 예측에서 mainstream 2 이 DR3 으로도 구분 불능. "multiple winning families" 주장 시 Fisher pairwise 확인 필수.
+- **Production MCMC budget**: 100ms/call × 48 × 2000 = 5–6 시간/후보. budget-limited K13 fail 은 posterior 위치 문제 아님. 고성능 환경 재실행 전까지 "formal K13 미통과" 명시 필수.
+- **dynesty 3.0.0**: `rstate` 는 `np.random.default_rng(seed)` 로 전달. `np.random.RandomState` deprecated.
+- **dynesty 병렬 run_one.py 패턴**: `OMP/MKL/OPENBLAS_NUM_THREADS=1` 강제 + 후보별 별도 프로세스. `wait $(pgrep ...)` 는 다른 쉘 자식이 아니면 동작 안 함 — Python subprocess.Popen + poll loop 사용.
+- **Zero-parameter alt vs 1-parameter 이론 Bayesian 우열 없음**: Δ ln Z gap (A12 vs C28) = 0.48, Occam penalty ≈ 0.5. 데이터가 자유도 추가를 정당화하지 않음. 논문에서 "extra parameter preferred by data" 주장 금지.
+- **chi2_joint_with_shear 는 S_8 WL 추가 채널**. 기본 chi2_joint 는 BAO+SN+CMB+RSD 만. 결과 보고 시 어떤 버전 썼는지 항상 명시.
+
+## L6 재발방지 (Phase-6 추가)
+
+- **Occam-corrected evidence vs fixed-θ evidence 혼동 금지**: L5 fixed-θ Δ ln Z 는 extra param 을 MAP 에 고정한 값. L6 fully marginalized Δ ln Z 는 반드시 낮음 (Occam 패널티). 보고 시 어느 쪽인지 명시 필수. "fixed-θ" 없이 L5 숫자 인용 금지.
+- **Compressed CMB chi2 는 chi2_joint 내 'cmb' 키 직접 사용**. Hu-Sugiyama θ* 재계산 시도는 4.6e6 chi2 오류 발생 확인 (L6-G3). hi_class 미설치 시 chi2_joint 'cmb' 만 사용, K19 "provisional" 명시.
+- **Occam 정당화 판정식**: `net_gain = delta_logz_gap + occam_diff; justified = net_gain > 0`. `abs(gap) > abs(occam_diff)` 는 틀린 공식 — C11D 가 잘못 "정당화"되는 버그 발생 확인 (L6-E3).
+- **Amplitude-locking "이론에서 유도됨" 주장 금지**: Δρ_DE ∝ Ω_m 은 SQMH 소멸항 구조에서 부분 도출 (Q17 부분 달성). Exact coefficient=1 은 E(0)=1 정규화 귀결이며 동역학적 유도 아님. K20 미해당.
+- **C28 K13 fail 은 5D 비혼합 문제**: R̂=1.3653, MCMC Δχ²=+5.272 는 신뢰 불가. C28 주요 지표는 Bayesian evidence (fixed-θ +11.257, marginalized +8.784). "C28 Δχ² = +5.272" 를 물리적 결론으로 인용 금지.
+- **C28 은 Maggiore-Mancarella 독립 이론**: "C28 이 SQMH 모델" 주장 금지. 8인 팀 합의 (L6-T3). SQMH 와 phenomenological 일치만 주장 가능.
+- **JCAP 타깃 조건**: 8인 합의 "정직한 falsifiable phenomenology" 포지셔닝. PRD Letter 진입 조건: Q17 완전 달성 OR (Q13 + Q14) 동시 달성. 조건 미달 상태에서 PRD Letter 제출 금지.
+- **DR3 스크립트 실행 금지 (DR3 공개 전)**: simulations/l6/dr3/run_dr3.sh 는 DESI DR3 공개 후에만 실행. 미공개 상태에서 실행 시 bao_data 저장소에 DR3 디렉터리 없어 즉시 exit 1.
+- **mu_eff ≈ 1 은 S8 tension 해결 불가**: 모든 L5 winner 가 μ_eff ≈ 1 (GW170817 + background-only 구조). "SQMH 이 S8 tension 을 해결" 주장 금지. ΔS8 < 0.01% (Q15 전원 FAIL).
+- **L6 8인/4인 규칙**: 이론 클레임 (amplitude-locking, disformal PPN, 포지셔닝) → Rule-A 8인 순차 리뷰 필수. 코드 (evidence 스크립트, 성장 계산, CLASS 근사) → Rule-B 4인 리뷰 필수. 리뷰 완료 전 결과 논문 반영 금지.

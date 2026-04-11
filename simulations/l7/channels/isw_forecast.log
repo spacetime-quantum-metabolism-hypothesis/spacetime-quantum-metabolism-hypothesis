@@ -1,0 +1,12 @@
+[L7-X2] ISW forecast: C11D vs LCDM using classy
+[L7-X2] Computing LCDM...
+[L7-X2] LCDM C_l[2]=1.4296e-10 C_l[10]=6.2107e-12 C_l[50]=4.0565e-13
+[L7-X2] Computing C11D...
+[L7-X2] C11D C_l[2]=1.5050e-10 C_l[10]=6.3324e-12 C_l[50]=4.1125e-13
+[L7-X2] Computing A12...
+[L7-X2] A12 C_l[2]=1.5058e-10 C_l[10]=6.3430e-12 C_l[50]=4.1170e-13
+
+[L7-X2] ISW band (l=2-19) RMS fractional diff C11D vs LCDM: 2.7305%
+[L7-X2] ISW CMB-S4 cosmic-variance SNR (C11D vs LCDM): 0.2867
+[L7-X2] ISW distinguishable at CMB-S4? False (need SNR > 1)
+[L7-X2] Done in 0.3s. Saved to /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l7/channels/isw_forecast.json

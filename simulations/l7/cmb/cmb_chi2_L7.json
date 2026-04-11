@@ -1,0 +1,45 @@
+{
+  "phase": "L7-C",
+  "method": "classy_TT_cosmic_variance_chi2",
+  "lmax": 500,
+  "lcdm_reference": {
+    "h": 0.6736,
+    "omega_b": 0.02237,
+    "omega_cdm": 0.12,
+    "n_s": 0.9649,
+    "A_s": 2.101e-09,
+    "tau_reio": 0.0544
+  },
+  "lcdm_theta_s_100": 1.0403737515023483,
+  "note": "CPL approximation for C11D/A12/C28. chi2_cv = sum_l (2l+1)/2 (Cl^model/Cl^LCDM - 1)^2.",
+  "results": {
+    "C11D": {
+      "h_model": 0.6776,
+      "theta_s_100_model": 1.0483758829938135,
+      "theta_s_100_lcdm": 1.0403737515023483,
+      "delta_theta_s_100": 0.008002131491465114,
+      "chi2_cv_vs_lcdm": 53.20273654325566,
+      "k23_threshold": 6.0,
+      "k23_pass": false
+    },
+    "A12": {
+      "h_model": 0.677,
+      "theta_s_100_model": 1.0487646921868312,
+      "theta_s_100_lcdm": 1.0403737515023483,
+      "delta_theta_s_100": 0.008390940684482873,
+      "chi2_cv_vs_lcdm": 60.808264877114006,
+      "k23_threshold": 6.0,
+      "k23_pass": false
+    },
+    "C28": {
+      "h_model": 0.6789,
+      "theta_s_100_model": 1.0500396515472923,
+      "theta_s_100_lcdm": 1.0403737515023483,
+      "delta_theta_s_100": 0.009665900044943943,
+      "chi2_cv_vs_lcdm": 68.2812556728482,
+      "k23_threshold": 6.0,
+      "k23_pass": false
+    }
+  },
+  "wall_sec": 0.556588888168335
+}

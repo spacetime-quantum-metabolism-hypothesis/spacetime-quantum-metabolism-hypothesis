@@ -1,0 +1,13 @@
+{
+  "logz": -834.0535876150059,
+  "logz_err": 0.16729971026600637,
+  "niter": 2043,
+  "nlive": 300,
+  "dlogz_tol": 0.2,
+  "sample": "unif",
+  "elapsed_sec": 235.8624289035797,
+  "ndim": 2,
+  "id": "A08",
+  "name": "Tanh transition",
+  "note": "closed-form 2D"
+}

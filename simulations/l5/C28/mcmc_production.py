@@ -99,13 +99,11 @@ def main():
 
 
 def _main_inner(t0, L):
-    # Budget-reduced box. C28 log_prob ~0.47s/call on this host; spec's
-    # 32x1500 fallback = ~6 h wall. Reduced to 16x300 burn 75 ~ 38 min.
-    # budget_reduced=True reported per command spec.
-    nwalkers = 16
-    nsteps = 300
-    nburn = 75
-    budget_reduced = True
+    # Full production run: 48x2000 burn 500 thin 10 (K13 target).
+    nwalkers = 48
+    nsteps = 2000
+    nburn = 500
+    budget_reduced = False
 
     np.random.seed(42)
     L(f"[L5-A C28] MCMC start nwalkers={nwalkers} nsteps={nsteps} "

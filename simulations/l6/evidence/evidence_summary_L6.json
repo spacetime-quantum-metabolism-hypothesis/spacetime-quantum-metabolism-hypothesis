@@ -1,0 +1,107 @@
+{
+  "lcdm_logz_hires": -843.5378920993195,
+  "results": {
+    "A01": {
+      "logz": -833.023338540717,
+      "logz_err": 0.08330728552983817,
+      "delta_logz": 10.514553558602529,
+      "k17_pass": true,
+      "jeffreys": "STRONG",
+      "nlive": 800,
+      "l5_fixed_theta": 10.69,
+      "occam_delta": -843.5378920993195
+    },
+    "A05": {
+      "logz": -833.1063149780513,
+      "logz_err": 0.08364445046142623,
+      "delta_logz": 10.43157712126822,
+      "k17_pass": true,
+      "jeffreys": "STRONG",
+      "nlive": 800,
+      "l5_fixed_theta": 10.581,
+      "occam_delta": -843.5378920993195
+    },
+    "A06": {
+      "logz": -833.0107889440959,
+      "logz_err": 0.082956556113467,
+      "delta_logz": 10.527103155223585,
+      "k17_pass": true,
+      "jeffreys": "STRONG",
+      "nlive": 800,
+      "l5_fixed_theta": 10.574,
+      "occam_delta": -843.5378920993195
+    },
+    "A08": {
+      "logz": -834.1012142144975,
+      "logz_err": 0.08352521790257282,
+      "delta_logz": 9.436677884821961,
+      "k17_pass": true,
+      "jeffreys": "STRONG",
+      "nlive": 800,
+      "l5_fixed_theta": 9.635,
+      "occam_delta": -843.5378920993195
+    },
+    "A09": {
+      "logz": -833.5699608312243,
+      "logz_err": 0.08304333828391441,
+      "delta_logz": 9.967931268095185,
+      "k17_pass": true,
+      "jeffreys": "STRONG",
+      "nlive": 800,
+      "l5_fixed_theta": 10.01,
+      "occam_delta": -843.5378920993195
+    },
+    "A12": {
+      "logz": -832.7688962554689,
+      "logz_err": 0.0830998614519949,
+      "delta_logz": 10.768995843850576,
+      "k17_pass": true,
+      "jeffreys": "STRONG",
+      "nlive": 800,
+      "l5_fixed_theta": 10.779,
+      "occam_delta": -843.5378920993195
+    },
+    "A17": {
+      "logz": -833.0137589238416,
+      "logz_err": 0.08366225694419865,
+      "delta_logz": 10.524133175477914,
+      "k17_pass": true,
+      "jeffreys": "STRONG",
+      "nlive": 800,
+      "l5_fixed_theta": 10.78,
+      "occam_delta": -843.5378920993195
+    },
+    "C11D": {
+      "logz": -834.7672434888798,
+      "logz_err": 0.09919496274844462,
+      "delta_logz": 8.770648610439707,
+      "k17_pass": true,
+      "jeffreys": "STRONG",
+      "nlive": 1000,
+      "l5_fixed_theta": 8.951,
+      "occam_delta": -843.5378920993195
+    },
+    "C28": {
+      "logz": -834.9045646944134,
+      "logz_err": 0.1125811033253074,
+      "delta_logz": 8.63332740490614,
+      "k17_pass": true,
+      "jeffreys": "STRONG",
+      "nlive": 800,
+      "l5_fixed_theta": 11.257,
+      "occam_delta": -843.5378920993195
+    },
+    "_occam_C28_vs_A12": {
+      "delta_logz_gap": -2.1356684389444354,
+      "occam_diff": -1.38,
+      "net": -3.5156684389444353,
+      "justified": false
+    },
+    "_occam_C11D_vs_A12": {
+      "delta_logz_gap": -1.9983472334108683,
+      "occam_diff": -0.746,
+      "net": -2.7443472334108683,
+      "justified": false
+    }
+  }
+}

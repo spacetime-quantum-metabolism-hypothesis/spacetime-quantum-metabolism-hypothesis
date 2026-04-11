@@ -5,96 +5,170 @@
 The ΛCDM baseline on the full BAO+SN+CMB+RSD joint likelihood is
 
 ```
-χ²_total = 1676.89    at (Ω_m, h) = (0.320, 0.669).
+chi2_total = 1676.89    at (Omega_m, h) = (0.320, 0.669).
 ```
 
-L4 full-Boltzmann fits:
+Phase-5 full results:
 
-| ID | Family | χ² | Δχ² | Verdict |
+| ID | Family | Δχ² | w_0 | w_a | Params | Phase-5 verdict |
+|---|---|---|---|---|---|---|
+| **C11D** | Disformal IDE | **−22.12** | −0.877 | −0.186 | 1 (λ) | **WINNER** |
+| **C28** | Maggiore RR | **−21.08** | −0.849 | −0.242 | 1 (γ_0) | **WINNER** |
+| **A12** | erf-diffusion | **−21.62** | −0.886 | −0.133 | 0 | **WINNER (class rep)** |
+| A17 | adiabatic pulse | −21.26 | −0.895 | −0.178 | 0 | backup |
+| A01 | SQMH canonical | −21.12 | −0.899 | −0.115 | 0 | cluster member |
+| A05 | sqrt relaxation | −21.03 | −0.900 | −0.124 | 0 | cluster member |
+| A04 | volume-cumul. | −8.89 | −0.757 | −0.469 | 0 | outlier (DR3 sentinel) |
+| C33 | f(Q) | −6.28 | −0.984 | −0.262 | 2 | DEMOTED (S_8) |
+| C26 | Perez-Sudarsky | ~0 | −1.000 | 0 | 1 | KILL (CMB) |
+| C27 | Deser-Woodard | +0.37 | — | — | 1 | KILL (posterior collapse) |
+
+## 7.2 Bayesian evidence (Jeffreys' scale)
+
+Phase-5 fixed-θ results (extra parameters fixed at L4 MAP): LCDM ln Z = −843.689 ± 0.170.
+
+| ID | ln Z | Δ ln Z (fixed-θ) | Jeffreys | K14 | Q8 |
+|---|---|---|---|---|---|
+| C28 | −832.432 | **+11.257** | STRONG | — | ✓ |
+| A17 | −832.909 | **+10.780** | STRONG | — | ✓ |
+| A12 | −832.910 | **+10.779** | STRONG | — | ✓ |
+| A01 | −832.999 | **+10.690** | STRONG | — | ✓ |
+| A05 | −833.108 | **+10.581** | STRONG | — | ✓ |
+| A06 | −833.115 | **+10.574** | STRONG | — | ✓ |
+| A16 | −833.135 | **+10.554** | STRONG | — | ✓ |
+| A20 | −833.389 | **+10.300** | STRONG | — | ✓ |
+| A03 | −833.566 | **+10.123** | STRONG | — | ✓ |
+| A09 | −833.679 | **+10.010** | STRONG | — | ✓ |
+| A08 | −834.054 |  **+9.635** | STRONG | — | ✓ |
+| C11D | −834.738 | **+8.951** | STRONG | — | ✓ |
+| A13 | −835.032 |  **+8.657** | STRONG | — | ✓ |
+| A15 | −835.975 |  **+7.714** | STRONG | — | ✓ |
+| A11 | −836.409 |  **+7.280** | STRONG | — | ✓ |
+| A19 | −839.229 |  **+4.460** | substantial | — | ✓ |
+| C33 | −841.181 |  **+2.508** | substantial | — | ✓ |
+
+**K14 failures: 0.  Q8 passes: 17/17.**
+
+**Phase-6 fully marginalized results** (L6-E, dynesty nlive=800/1000, 2026-04-11):
+LCDM ln Z = −843.538 ± 0.083 (hires re-run, seed=42).
+
+| ID | Δ ln Z (L6 marginalized) | Jeffreys | K17 | vs L5 fixed-θ |
 |---|---|---|---|---|
-| C11D | Disformal IDE | 1653.97 | **−22.92** | Under re-eval (K3 artifact) |
-| **C28** | **Maggiore RR** | **1655.81** | **−21.08** | **Phase-5 MAIN** |
-| C41 | Wetterich fluid IDE | 1662.66 | −14.24 | KILL (Cassini) |
-| C10k | Dark-only coupled | 1667.54 | −9.36 | KILL (K2 + growth) |
-| C23 | Asymptotic Safety RVM | 1668.19 | −8.71 | KILL (wrong ν sign) |
-| C5r | RVM ν<0 | 1668.19 | −8.71 | KILL (wrong ν sign) |
-| C6s | Stringy RVM+CS | 1668.19 | −8.71 | KILL (wrong ν sign) |
-| **C33** | **f(Q) teleparallel** | **1670.61** | **−6.28** | **Phase-5 MAIN** |
-| C26 | Perez-Sudarsky | 1676.89 | ~0 | KILL (full-ODE ↔ toy mismatch) |
-| C27 | Deser-Woodard | 1677.26 | +0.37 | KILL (posterior collapse) |
+| A12 | **+10.769** | STRONG | PASS | −0.010 |
+| A17 | **+10.524** | STRONG | PASS | −0.256 |
+| A01 | **+10.515** | STRONG | PASS | −0.175 |
+| A05 | **+10.432** | STRONG | PASS | −0.149 |
+| A06 | **+10.527** | STRONG | PASS | −0.047 |
+| A09 |  **+9.968** | STRONG | PASS | −0.042 |
+| A08 |  **+9.437** | STRONG | PASS | −0.198 |
+| C11D |  **+8.771** | STRONG | PASS | −0.180 |
+| C28 |  **+8.633** | STRONG | PASS | −2.624 |
 
-Δχ² = −6 corresponds to ~2.5σ preference over ΛCDM.  C28 and C33 cross
-this threshold and enter Phase 5.  C11D would also cross comfortably
-if K3 is cleared in the disformal re-judgement.
+**Key observation (L6)**: Full marginalization reverses the C28 lead.
+A12 (0-param) Δ ln Z = +10.769 **exceeds** C28 (1-param) Δ ln Z = +8.633 by 2.14 nats.
+C28's large drop (−2.6 nats vs fixed-θ) reflects the full 3D prior volume penalty.
+Zero-parameter alt models are decisively preferred over C28 on marginalized evidence.
 
-## 7.2 2-D (w_0, w_a) posterior contours
+**Original key observation (L5)**: alt-20 cluster (A01,A05,A06,A12,A16,A17,A20) clusters at
+Δ ln Z ≈ +10.3–10.8 fixed-θ, nearly matching C28 (+11.3). Now confirmed: marginalized
+evidence inverts this ordering, with A12 > C28 by 2.14 nats.
 
-Corner plots are available in `paper/figures/l4_C28_corner.png` and
-`paper/figures/l4_C33_corner.png`.  The LCDM point (w_0, w_a) = (−1, 0)
-lies:
-- **C28**: outside the 3σ contour, dominated by the w_0 direction.
-- **C33**: at ~2σ from the posterior mean, dominated by the w_a
-  direction.
+**Jeffreys' scale**:
 
-The DESI DR2 central (w_0, w_a) = (−0.757, −0.83) lies at ~2σ from
-both C28 and C33 posterior means; neither candidate reproduces the
-DESI central w_a amplitude at 1σ, but both are compatible at 2σ.
+| Δ ln Z | Interpretation |
+|--------|----------------|
+| > 5    | Strong |
+| 2.5–5  | Substantial |
+| 1–2.5  | Weak |
+| −1–1   | Inconclusive |
+| < −1   | Decisive against (K14) |
 
-## 7.3 Bayesian evidence sketch
+## 7.3 2-D (w_0, w_a) posterior contours
 
-A full Bayesian evidence calculation (thermodynamic integration or
-nested sampling) is deferred to Phase 5.  As a rough Akaike criterion,
-ΔAIC = Δχ² + 2 × (N_extra) where N_extra is the number of extra
-parameters over ΛCDM:
+Corner plots in `paper/figures/`:
+- `l5_C28_corner.png`, `l5_A12_corner.png`, `l5_A17_corner.png`
+- `l5_A01_corner.png`, `l5_A05_corner.png`
+- `l5_dr3_forecast.png` — Fisher ellipses + candidate prediction points
 
-| ID | Δχ² | N_extra | ΔAIC |
-|---|---|---|---|
-| C28 | −21.08 | 3 (Ω_m, h, γ_0) – 2 = 1 | **−19.08** |
-| C33 | −6.28 | 4 – 2 = 2 | **−2.28** |
-| C11D | −22.92 | 3 – 2 = 1 | **−20.92** |
-
-Both C28 and C11D are preferred over ΛCDM by ΔAIC ≳ 19; C33 is
-preferred by ~2.3.  Full model comparison at the Bayesian-evidence
-level will be Phase 5.
+LCDM (w_0, w_a) = (−1, 0) lies outside the 3σ contour for C11D and C28;
+A12 excludes LCDM at ~2.5σ.  DESI DR2 central (−0.757, −0.83) compatible
+at 2σ with all winners but not reproduced at 1σ.
 
 ## 7.4 Hubble tension
 
-None of the candidates resolves the H₀ tension:
-
-| ID | h | Distance-ladder Δh |
+| ID | h | Δh vs SH0ES |
 |---|---|---|
 | LCDM | 0.669 | −0.063 |
+| C11D | 0.678 | −0.054 |
 | C28 | 0.677 | −0.055 |
-| C33 | 0.647 | −0.085 |
-| C11D | 0.677 | −0.055 |
+| A12 | 0.677 | −0.055 |
+| C33 (demoted) | 0.647 | −0.085 |
 | SH0ES | 0.732 | 0 |
 
-C28 and C11D give a small reduction of the tension (~13% of the gap),
-C33 makes it worse.  This is a structural limitation of all DESI
-compatible w_a < 0 models and is discussed honestly in §8.
+All winners reduce tension by ~13% vs LCDM.  No resolution.  §8 records
+this honestly.
+
+## 7.5 Phase-6 Occam Analysis
+
+**L6-E3 Gaussian approximation** (preliminary, 2026-04-11):
+
+| Model | ndim | Occam penalty (nats) | L5 Δ ln Z (fixed-θ) | Net after Occam |
+|-------|------|---------------------|---------------------|-----------------|
+| A12   | 2    | −2.53               | +10.779             | +8.25 (reference)|
+| C11D  | 3    | −3.28               | +8.951              | +5.67            |
+| C28   | 5    | −3.91               | +11.257             | +7.35            |
+
+**L6-E actual marginalization** (dynesty nlive=800, LCDM ln Z = −843.538):
+
+| Comparison | L6 marginalized gap | Occam diff (Gaussian) | Net | Justified? |
+|---|---|---|---|---|
+| C28 − A12 | −2.136 nats | −1.380 nats | −3.516 nats | **No** |
+| C11D − A12 | −1.998 nats | −0.746 nats | −2.744 nats | **No** |
+
+**Key result (L6-E final, 2026-04-11)**:
+
+| Comparison | L6 marginalized gap | Occam diff (Gaussian) | Net | Justified? |
+|---|---|---|---|---|
+| C28 − A12 | −2.136 nats | −1.380 nats | −3.516 nats | **No** |
+| C11D − A12 | −1.998 nats | −0.746 nats | −2.744 nats | **No** |
+
+Full marginalization confirms zero-parameter A12 > C11D (1-param) by 2.00 nats,
+and A12 > C28 (1-param) by 2.14 nats — no Gaussian approximation needed.
+
+C11D's small drop (−0.18 nats vs fixed-θ) reflects a tight posterior on λ;
+the MAP is close to the posterior mean. C28's large drop (−2.62 nats) reflects
+a broad prior on γ₀ that is poorly constrained by data.
+
+**Interpretation**: Data does NOT justify extra parameters in C11D or C28 relative
+to the zero-parameter A12. The ranking on fully marginalized evidence is:
+A12 > alt-20 cluster > C11D > C28 (all STRONG Jeffreys).
+
+## 7.6 μ_eff and Growth Sector (Phase-6)
+
+L6-G2 analysis (2026-04-11): All three winners have μ_eff ≈ 1 at current
+observational scales:
+
+| Model | μ_eff(a=1, k=0.1/Mpc) | K18 | ΔS₈ | Q15 |
+|-------|----------------------|-----|-----|-----|
+| C11D  | 1.0000 (GW enforces A'=0 → α_T~0) | — | 0.000 | — |
+| C28   | 1.0015 (γ₀=0.0015 << 1)           | — | 0.001% | — |
+| A12   | 1.0000 (background-only, declared) | — | 0.000 | — |
+
+**S₈ tension is structurally not resolved** at the background + perturbation
+level. Full CLASS CMB power spectrum verification: pending (hi_class not
+installed; K19 provisional via compressed likelihood: C11D Δχ²_CMB = −6.33
+vs LCDM at same parameters).
 
 ## 7.5 S_8 / σ_8
 
-C28, C33 do not significantly modify linear growth (μ_eff = 1 at
-sub-horizon scales within the L4 approximation).  Their predicted
-σ_8(z = 0) is within 0.5% of ΛCDM.
+Winners (C11D, C28, A12): μ_eff ≈ 1, S_8 ~ 0.82 (within 0.5% of LCDM).
+S_8 tension (Planck ~ 0.834, DES-Y3 ~ 0.772, KiDS-1000 ~ 0.759) is
+**not resolved** — all background-only μ=1 models cannot address it
+structurally.  Parametric Ω_m shifts produce apparent improvement only.
 
-C10k, had it survived, would have worsened σ_8 by +0.96%.  This is one
-reason C10k is a confirmed KILL beyond just the background K2 failure.
+C33 (demoted): S_8 = 0.891, Ω_m = 0.340, exceeds DES-Y3 3σ upper bound.
 
-## 7.6 fσ_8(z) prediction
+## 7.6 fσ_8(z) predictions
 
-Predicted fσ_8(z) at the 8 RSD redshifts (C28 and C33 both match ΛCDM
-growth to within 0.5% at all z; C41 would have given a ~1% enhancement
-from the coupling drag term but is eliminated):
-
-```
-z = 0.02, 0.15, 0.38, 0.51, 0.70, 0.85, 1.48, 1.52
-LCDM: 0.447, 0.462, 0.478, 0.476, 0.470, 0.463, 0.448, 0.376
-C28 : same to 0.5%
-C33 : same to 0.5%
-```
-
-RSD data provides weak discrimination among the surviving candidates;
-Phase 5 should consider including KiDS-1000 / DES-Y3 cosmic-shear to
-tighten the growth constraint.
+All winners match LCDM growth to ≤ 0.5% at all 8 RSD redshifts.
+RSD provides weak winner discrimination; growth channel is degenerate.

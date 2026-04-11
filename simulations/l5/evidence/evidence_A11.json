@@ -1,0 +1,13 @@
+{
+  "logz": -836.4085173321339,
+  "logz_err": 0.16917404676675613,
+  "niter": 2079,
+  "nlive": 300,
+  "dlogz_tol": 0.2,
+  "sample": "unif",
+  "elapsed_sec": 306.5674250125885,
+  "ndim": 2,
+  "id": "A11",
+  "name": "Sigmoid (logistic)",
+  "note": "closed-form 2D"
+}

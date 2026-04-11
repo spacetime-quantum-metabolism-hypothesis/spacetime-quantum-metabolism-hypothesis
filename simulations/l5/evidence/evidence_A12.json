@@ -1,0 +1,13 @@
+{
+  "logz": -832.9096593387757,
+  "logz_err": 0.170515883156119,
+  "niter": 2093,
+  "nlive": 300,
+  "dlogz_tol": 0.2,
+  "sample": "unif",
+  "elapsed_sec": 253.70655488967896,
+  "ndim": 2,
+  "id": "A12",
+  "name": "Error-function diffusion",
+  "note": "closed-form 2D"
+}

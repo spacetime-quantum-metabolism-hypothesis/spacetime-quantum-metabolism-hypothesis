@@ -80,13 +80,11 @@ def run_alt(alt_id, out_dir):
     x0 = [0.315, 0.67]
     np.random.seed(42)
     print(f"[L5-B {alt_id}] {name}", flush=True)
-    # Spec calls for 48x2000. log_prob ~0.2 s/call on this host -> 5.5 h.
-    # Reduced to 16x400 burn 100 thin 5 to fit in ~20 min per candidate.
-    # budget_reduced flagged per command spec.
-    nwalkers = 16
-    nsteps = 400
-    nburn = 100
-    thin = 5
+    # Full production run: 48x2000 burn 500 thin 10 (K13 target).
+    nwalkers = 48
+    nsteps = 2000
+    nburn = 500
+    thin = 10
     out = run_mcmc_production(
         log_prob, x0, NAMES,
         nwalkers=nwalkers, nsteps=nsteps, nburn=nburn, thin=thin,
@@ -140,7 +138,7 @@ def run_alt(alt_id, out_dir):
         'steps_final': out['steps_final'],
         'thin': thin,
         'seed': 42,
-        'budget_reduced': True,
+        'budget_reduced': False,
         'wall_time_sec': float(dt),
         'chi2_at_mean': float(chi2_mean),
         'delta_chi2_vs_lcdm': float(chi2_mean - LCDM_CHI2),

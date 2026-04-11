@@ -1,0 +1,85 @@
+{
+  "phase": "L7-G2",
+  "part1_betaD_scan": {
+    "conclusion": "Dark-only coupling INCREASES S8, worsens DES/KiDS tension. Q15 not achievable.",
+    "results": {
+      "0.001": {
+        "G_eff_ratio": 1.000002,
+        "delta_sigma8_frac": 2e-06,
+        "S8_model": 0.832001664,
+        "k15_pass": true,
+        "chi2_WL_penalty": 25.001386685895074
+      },
+      "0.005": {
+        "G_eff_ratio": 1.00005,
+        "delta_sigma8_frac": 5e-05,
+        "S8_model": 0.8320416,
+        "k15_pass": true,
+        "chi2_WL_penalty": 25.03467868444447
+      },
+      "0.01": {
+        "G_eff_ratio": 1.0002,
+        "delta_sigma8_frac": 0.0002,
+        "S8_model": 0.8321664,
+        "k15_pass": true,
+        "chi2_WL_penalty": 25.138858951111068
+      },
+      "0.02": {
+        "G_eff_ratio": 1.0008,
+        "delta_sigma8_frac": 0.0008,
+        "S8_model": 0.8326655999999999,
+        "k15_pass": true,
+        "chi2_WL_penalty": 25.55774321777767
+      },
+      "0.05": {
+        "G_eff_ratio": 1.005,
+        "delta_sigma8_frac": 0.005000000000000001,
+        "S8_model": 0.8361599999999999,
+        "k15_pass": true,
+        "chi2_WL_penalty": 28.58684444444434
+      },
+      "0.1": {
+        "G_eff_ratio": 1.02,
+        "delta_sigma8_frac": 0.020000000000000004,
+        "S8_model": 0.84864,
+        "k15_pass": false,
+        "chi2_WL_penalty": 40.78951111111103
+      },
+      "0.107": {
+        "G_eff_ratio": 1.022898,
+        "delta_sigma8_frac": 0.022897999999999998,
+        "S8_model": 0.851051136,
+        "k15_pass": false,
+        "chi2_WL_penalty": 43.396403492295136
+      },
+      "0.15": {
+        "G_eff_ratio": 1.045,
+        "delta_sigma8_frac": 0.045,
+        "S8_model": 0.8694399999999999,
+        "k15_pass": false,
+        "chi2_WL_penalty": 65.93439999999981
+      },
+      "0.2": {
+        "G_eff_ratio": 1.08,
+        "delta_sigma8_frac": 0.08000000000000002,
+        "S8_model": 0.89856,
+        "k15_pass": false,
+        "chi2_WL_penalty": 111.23217777777778
+      }
+    }
+  },
+  "part2_H0_tension": {
+    "c11d_thawing": true,
+    "lam": 0.8872,
+    "tracker_condition": "lam > sqrt(3) = 1.732 NOT satisfied",
+    "early_de_capable": false,
+    "h_sqmh": 0.6776,
+    "h_shoes": 0.732,
+    "h_gap_sqmh": 0.054400000000000004,
+    "h_gap_lcdm": 0.06299999999999994,
+    "improvement_pct": 13.650793650793569,
+    "conclusion": "H0 tension structurally unresolvable. SQMH improves ~13% vs LCDM but 87% gap remains."
+  },
+  "q15_status": "FAIL (structural: beta_D worsens S8, not improves it)",
+  "h0_tension_status": "FAIL (structural: thawing quintessence cannot provide EDE)"
+}

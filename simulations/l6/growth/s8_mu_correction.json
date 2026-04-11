@@ -1,0 +1,17 @@
+{
+  "phase": "L6-G2",
+  "S8_fiducial": 0.7656,
+  "S8_planck": 0.834,
+  "S8_tension": 0.06840000000000002,
+  "delta_S8_correction": {
+    "C11D": 0.0,
+    "C28": 1.4851485148459354e-05,
+    "A12": 0.0
+  },
+  "Q15_pass": {
+    "C11D": false,
+    "C28": false,
+    "A12": false
+  },
+  "conclusion": "None of the L5 winners resolve S_8 tension via mu_eff correction."
+}

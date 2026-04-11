@@ -1,0 +1,121 @@
+{
+  "phase": "L6-E3",
+  "description": "Occam analysis: C28 vs A12 vs C11D",
+  "l5_evidence": {
+    "C28_fixed_theta": 11.257,
+    "A12": 10.779,
+    "C11D_nlive350": 8.951
+  },
+  "occam_penalties": {
+    "A12_2D": -2.53195127586672,
+    "C11D_3D": -3.278236286100735,
+    "C28_5D": -3.912400384936389
+  },
+  "delta_logz_gaps": {
+    "C28_minus_A12": 0.47799999999999976,
+    "C11D_minus_A12": -1.8279999999999994
+  },
+  "occam_diffs": {
+    "C28_minus_A12": -1.380449109069669,
+    "C11D_minus_A12": -0.7462850102340148
+  },
+  "net_gains_after_occam": {
+    "C28_vs_A12": -0.9024491090696691,
+    "C11D_vs_A12": -2.5742850102340142
+  },
+  "data_justifies_extra_params": {
+    "C28_vs_A12": false,
+    "C11D_vs_A12": false
+  },
+  "posterior_details": {
+    "A12": {
+      "stds": [
+        0.0021498621956612925,
+        0.0026204302282197395
+      ],
+      "details": [
+        {
+          "prior_range": 0.08,
+          "posterior_std": 0.0021498621956612925,
+          "ratio": 14.845315433018964,
+          "contribution": -1.348842178212536
+        },
+        {
+          "prior_range": 0.07,
+          "posterior_std": 0.0026204302282197395,
+          "ratio": 10.6570132367434,
+          "contribution": -1.1831090976541838
+        }
+      ]
+    },
+    "C28": {
+      "stds": [
+        0.0034773648581737674,
+        0.0033217884002157056,
+        0.002382419566794761,
+        0.44443242529783,
+        1.034353931874062
+      ],
+      "details": [
+        {
+          "prior_range": 0.08,
+          "posterior_std": 0.0034773648581737674,
+          "ratio": 9.178036741556033,
+          "contribution": -1.1084066595924709
+        },
+        {
+          "prior_range": 0.07,
+          "posterior_std": 0.0033217884002157056,
+          "ratio": 8.406905035337855,
+          "contribution": -1.0645266980928458
+        },
+        {
+          "prior_range": 0.0799,
+          "posterior_std": 0.002382419566794761,
+          "ratio": 13.37946038067461,
+          "contribution": -1.2968603617967085
+        },
+        {
+          "prior_range": 2.0,
+          "posterior_std": 0.44443242529783,
+          "ratio": 1.7952888119452008,
+          "contribution": -0.2925829535085773
+        },
+        {
+          "prior_range": 3.5,
+          "posterior_std": 1.034353931874062,
+          "ratio": 1.349922824651689,
+          "contribution": -0.15002371194578618
+        }
+      ]
+    },
+    "C11D": {
+      "stds": [
+        0.0033594395424503204,
+        0.0032784606940142575,
+        0.0917427069594901
+      ],
+      "details": [
+        {
+          "prior_range": 0.08,
+          "posterior_std": 0.0033594395424503204,
+          "ratio": 9.50021038593719,
+          "contribution": -1.125656972124702
+        },
+        {
+          "prior_range": 0.07,
+          "posterior_std": 0.0032784606940142575,
+          "ratio": 8.518009588794799,
+          "contribution": -1.071091348605019
+        },
+        {
+          "prior_range": 2.0,
+          "posterior_std": 0.0917427069594901,
+          "ratio": 8.696980798214065,
+          "contribution": -1.0814879653710137
+        }
+      ]
+    }
+  },
+  "interpretation": "Occam analysis quantifies whether extra parameters earn their prior-volume penalty. If delta_logz_gap < occam_diff, the simpler model (A12, 0-param) is preferred after Occam correction."
+}

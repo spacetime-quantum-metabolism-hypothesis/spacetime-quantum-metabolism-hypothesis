@@ -1,0 +1,14 @@
+{
+  "ID": "A01",
+  "phase": "L6-E-hires",
+  "logz": -833.023338540717,
+  "logz_err": 0.08330728552983817,
+  "lcdm_logz": -843.689,
+  "delta_logz": 10.665661459283001,
+  "jeffreys": "STRONG",
+  "k17_pass": true,
+  "nlive": 800,
+  "niter": 6527,
+  "wall_sec": 510.9239752292633,
+  "l5_delta_logz": 10.69
+}

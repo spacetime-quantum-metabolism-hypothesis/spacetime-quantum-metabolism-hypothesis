@@ -1,0 +1,22 @@
+{
+  "ID": "C11D",
+  "phase": "L6-E2",
+  "description": "C11D disformal quintessence 3D marginalized (Om, h, lam)",
+  "ndim": 3,
+  "nlive": 1000,
+  "seed": 42,
+  "params_free": [
+    "Om",
+    "h",
+    "lam"
+  ],
+  "logz": -834.7672434888798,
+  "logz_err": 0.09919496274844462,
+  "lcdm_logz": -843.689,
+  "delta_logz": 8.92175651112018,
+  "jeffreys": "STRONG",
+  "k17_pass": true,
+  "niter": 9709,
+  "wall_time_sec": 5058.016441822052,
+  "l5_delta_logz": 8.951
+}

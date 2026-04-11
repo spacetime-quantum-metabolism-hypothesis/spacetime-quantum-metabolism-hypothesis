@@ -1,0 +1,24 @@
+{
+  "phase": "L8-R",
+  "method": "RR_auxiliary_field_SQMH_isomorphism",
+  "gamma0": 0.0015,
+  "sigma_SQMH": 4.52120271492582e-53,
+  "Om": 0.3095,
+  "ode_success": true,
+  "isomorphism_fit": {
+    "model": "U(a) = Gamma0_eff - sigma_eff * P(a) * rho_m(a)",
+    "P_def": "V_dot = H * dV/dlna",
+    "Gamma0_eff": 2.1959360922967237e-18,
+    "sigma_eff": 4.52120271492582e-53,
+    "sigma_ratio_to_SQMH": 1.0,
+    "mean_residual": 1.0,
+    "max_residual": 1.0,
+    "fit_region": "a > 0.1 (z < 9)"
+  },
+  "e2_comparison": {
+    "chi2_dof_RR_vs_A12": 4.880937949687887e+19
+  },
+  "q33_pass": false,
+  "k33_triggered": true,
+  "interpretation": "Q33 FAIL: U(a) cannot be fit as SQMH source with residual < 20%."
+}

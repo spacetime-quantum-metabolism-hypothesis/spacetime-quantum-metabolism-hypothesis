@@ -1,0 +1,6 @@
+[L6-E2 C11D] 3D marginalized evidence: nlive=1000 seed=42
+[L6-E2 C11D] logZ = -834.767 +/- 0.099
+[L6-E2 C11D] Delta_logZ vs LCDM = 8.922
+[L6-E2 C11D] niter = 9709  dt = 84.3 min
+[L6-E2 C11D] K17 pass: True  Jeffreys: STRONG
+[L6-E2 C11D] wrote /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l6/evidence/evidence_C11D_full.json

@@ -1,0 +1,7 @@
+[L5-A C28] MCMC start nwalkers=48 nsteps=2000 nburn=500 reduced=False
+[L5-A C28]   done in 54.8 min  rhat_max=1.3653
+[L5-A C28]   samples shape (7200, 5)
+[L5-A C28]   chi2_mean=1682.1666198365297
+[L5-A C28]   json saved
+[L5-A C28]   corner -> /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/paper/figures/l5_C28_corner.png
+[L5-A C28]   chi2_mean=1682.167  dchi2=+5.272  K13_pass=False

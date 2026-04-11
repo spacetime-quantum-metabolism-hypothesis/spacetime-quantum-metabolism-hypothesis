@@ -1,0 +1,13 @@
+{
+  "logz": -833.3891901076548,
+  "logz_err": 0.17065732500109235,
+  "niter": 2101,
+  "nlive": 300,
+  "dlogz_tol": 0.2,
+  "sample": "unif",
+  "elapsed_sec": 236.4871120452881,
+  "ndim": 2,
+  "id": "A20",
+  "name": "Two-term geometric",
+  "note": "closed-form 2D"
+}

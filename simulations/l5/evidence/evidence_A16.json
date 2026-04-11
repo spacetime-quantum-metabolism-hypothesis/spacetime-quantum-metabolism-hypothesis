@@ -1,0 +1,13 @@
+{
+  "logz": -833.1345771761098,
+  "logz_err": 0.1699586128936216,
+  "niter": 2086,
+  "nlive": 300,
+  "dlogz_tol": 0.2,
+  "sample": "unif",
+  "elapsed_sec": 186.13938164710999,
+  "ndim": 2,
+  "id": "A16",
+  "name": "Second-order Taylor",
+  "note": "closed-form 2D"
+}

@@ -1,0 +1,13 @@
+{
+  "logz": -834.7379590806079,
+  "logz_err": 0.18527996658807952,
+  "niter": 3157,
+  "nlive": 350,
+  "dlogz_tol": 0.2,
+  "sample": "unif",
+  "elapsed_sec": 1662.6042246818542,
+  "ndim": 3,
+  "id": "C11D",
+  "name": "Disformal IDE quintessence (Sakstein-Jain CLW)",
+  "note": "3D (Om,h,lam)"
+}
