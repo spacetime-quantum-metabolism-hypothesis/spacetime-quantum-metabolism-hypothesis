@@ -1,0 +1,15 @@
+{
+  "Om": 0.3102,
+  "OL0": 0.689709,
+  "G0_A01": 0.9305999999999999,
+  "G0_for_exact_A01_match": 7.3600088065764036,
+  "A_amp_from_G0_A01": -2.581458093195826,
+  "A_amp_A01_value": 0.3102,
+  "amplitude_is_normalization_artifact": false,
+  "amplitude_structurally_motivated": true,
+  "amplitude_exact_coefficient_derived": false,
+  "verdict": "K82 PARTIAL: structural motivation exists but exact Om coefficient is phenomenological",
+  "k82_triggered": true,
+  "q82_triggered": false,
+  "q82_partial": true
+}

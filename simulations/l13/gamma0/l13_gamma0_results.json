@@ -1,0 +1,42 @@
+{
+  "angle1_hawking": {
+    "T_dS": 2.2153036072259895e-30,
+    "Gamma_hawking": 2.899842920928049e-19,
+    "ratio": 8.039439036223479e+62,
+    "log10_ratio": 62.905225746264364
+  },
+  "angle2_stochastic": {
+    "sigma_SQMH": 4.521321587759367e-53,
+    "unique_combination": "G*t_P",
+    "geometric_factor": "4*pi (solid angle)",
+    "strength": "dimensional uniqueness (medium)"
+  },
+  "angle3_penrose": {
+    "Gamma0_penrose": 2.3309906537486872e+44,
+    "Gamma0_fiducial": 2.3313110377425274e+44,
+    "ratio": 0.9998625734667518,
+    "is_circular": false,
+    "is_interpretation": true,
+    "is_derivation": false,
+    "strength": "physical interpretation (medium)"
+  },
+  "angle4_holographic": {
+    "Pi_SQMH": 1.773998865845755e-61,
+    "Gamma0_eff_from_sigma": 5.502944481853532e-62,
+    "Gamma0_eff_A01": 0.9305999999999999,
+    "ratio": 5.913329552819184e-62,
+    "conclusion": "A01 Gamma0 disconnected from sigma by 62 orders"
+  },
+  "angle5_range": {
+    "Gamma0_lower": 2.1937783538561244e-18,
+    "Gamma0_upper": 2.3309906537486872e+44,
+    "log10_range": 62.026347785235444,
+    "k84_triggered": true
+  },
+  "sigma_SQMH": 4.521321587759367e-53,
+  "Gamma0_fiducial": 2.3313110377425274e+44,
+  "verdict": "K84 TRIGGERED (range 62.0 orders > 20). Q84 PARTIAL: Penrose interpretation gives sigma=4*pi*G*t_P physical meaning as Penrose collapse rate coupling. 4*pi geometric, t_P sets timescale.",
+  "k84_triggered": true,
+  "q84_triggered": false,
+  "q84_partial": true
+}

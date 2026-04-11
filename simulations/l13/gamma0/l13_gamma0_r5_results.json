@@ -1,0 +1,14 @@
+{
+  "nf34_verification": {
+    "Gamma0_computed": 2.3313110377425274e+44,
+    "Gamma0_penrose": 2.3309906537486872e+44,
+    "ratio": 1.000137445421896,
+    "proof": "sigma*rho_P = 4*pi*(m_P*c^2/hbar) = 4*pi/t_P exact"
+  },
+  "sigma_geometric_basis": "4*pi = isotropic solid angle (Penrose collapse)",
+  "sigma_range_orders": 0.3010299956639812,
+  "Gamma0_range_orders": 62.0,
+  "q84_partial": true,
+  "q84_triggered": false,
+  "conclusion": "sigma uniquely determined; Gamma0_eff disconnected by 62 orders"
+}
