@@ -1,0 +1,23 @@
+{
+  "model": "B4 feedback creation rate",
+  "equation": "dn_bar/dt + 3H*n_bar = Gamma_0*(n_bar_eq/n_bar) - sigma*n_bar*rho_m",
+  "chi2_lcdm": 13.1981,
+  "chi2_b1": 11.7517,
+  "chi2_b4": 12.3782,
+  "dchi2_b1_vs_lcdm": -1.4465,
+  "dchi2_b4_vs_lcdm": -0.8199,
+  "dchi2_b4_vs_b1": 0.6266,
+  "Om_lcdm": 0.32656,
+  "Om_b1": 0.29981,
+  "Om_b4": 0.31024,
+  "w0_b1": -0.9028,
+  "wa_b1": -0.1074,
+  "w0_b4": -0.9435,
+  "wa_b4": -0.0044,
+  "b4_better_than_b1": false,
+  "verdict": "B4 WORSE than B1 by Dchi2=0.627",
+  "desi_target_w0": -0.757,
+  "desi_target_wa": -0.83,
+  "data": "7-bin diagonal chi2 (DESI DR2). Not full 13-pt covariance.",
+  "notes": "B4 ODE: d(omega_de)/dz = 3/(1+z)*(u_eq^2/u - u). Equilibrium u_eq = A01 form. IC: omega_de(z=0)=OL0. h fixed at 0.677. Om fitted in [0.25, 0.40]."
+}
