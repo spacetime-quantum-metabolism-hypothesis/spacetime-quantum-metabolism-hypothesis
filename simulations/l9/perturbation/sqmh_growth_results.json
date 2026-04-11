@@ -1,0 +1,19 @@
+{
+  "Pi_SQMH": 1.8549278160691024e-62,
+  "sigma_SQMH": 4.522060058768726e-53,
+  "G_correction_z0_pct": -4.033731917483605e-60,
+  "max_G_correction_pct": 0.0,
+  "Q41_pass": false,
+  "Q41_threshold_pct": 1.0,
+  "f_lcdm_z0": 0.5269583529533423,
+  "f_sqmh_z0": 0.5269583529533423,
+  "sigma8_ratio_sqmh_lcdm": 1.0,
+  "sigma8_ratio_cpl_lcdm": 1.092315583314331,
+  "S8_lcdm": 0.834,
+  "S8_sqmh_proxy": 0.834,
+  "S8_cpl_proxy": 0.910991196484152,
+  "Delta_S8_sqmh": 0.0,
+  "Delta_S8_cpl": 0.07699119648415209,
+  "verdict": "K41_met",
+  "note": "Pi_SQMH suppression persists at perturbation level. G_eff/G - 1 ~ 1e-62. K41 condition met."
+}

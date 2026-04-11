@@ -1,0 +1,19 @@
+{
+  "Pi_SQMH": 1.8549278160691024e-62,
+  "sigma_dimless": 1.766597920065812e-61,
+  "infall_velocity_amp": 1.8549278160691024e-62,
+  "max_delta_n_over_n_bar": 1.6694141666546855e-61,
+  "correlation_n_with_erf": NaN,
+  "rho_DE_spatial_correction": -7.011441503050411e-57,
+  "Q43_pass": false,
+  "K43_triggered": true,
+  "structural_reasons": [
+    "SQMH is first-order in space (advection only, no diffusion)",
+    "Infall velocity Pi_SQMH ~ 1e-62 (62-order suppressed, same as background)",
+    "Response to overdensity: Gaussian profile, not erf",
+    "Stochastic SQMH gives erf in n-space (fluctuation amplitude), not position space",
+    "No mechanism within SQMH generates spatial erf profile"
+  ],
+  "verdict": "K43_triggered",
+  "note": "Non-uniform SQMH gradient term is 62-order suppressed. No erf-like spatial structure can emerge from SQMH advection. K43 condition met: all SQMH levels background-level useless."
+}

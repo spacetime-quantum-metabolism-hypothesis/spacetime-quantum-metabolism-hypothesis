@@ -1,0 +1,152 @@
+{
+  "round": "L9-R16",
+  "model": "Ricci HDE (Gao+2009, Kim+2008)",
+  "physical_formula": "rho_DE = 3*alpha*M_P^2*(H_dot + 2*H^2)",
+  "wa_A12": -0.133,
+  "delta_lnZ_A12_reference": 10.769,
+  "cpl_results_alpha_grid": [
+    {
+      "alpha": 0.35,
+      "Omega_m": 0.3153,
+      "w0": -1.6694445986196699e-18,
+      "wa": 0.04241539700867408,
+      "dwa_from_A12": 0.1754153970086741
+    },
+    {
+      "alpha": 0.36,
+      "Omega_m": 0.3153,
+      "w0": -4.8916782950939125e-17,
+      "wa": 0.10037013280841103,
+      "dwa_from_A12": 0.23337013280841104
+    },
+    {
+      "alpha": 0.37,
+      "Omega_m": 0.3153,
+      "w0": -2.0528109867639302e-16,
+      "wa": 0.16270027260674585,
+      "dwa_from_A12": 0.29570027260674586
+    },
+    {
+      "alpha": 0.38,
+      "Omega_m": 0.3153,
+      "w0": -2.0558148634417107e-20,
+      "wa": 0.23009186512826466,
+      "dwa_from_A12": 0.36309186512826463
+    },
+    {
+      "alpha": 0.38999999999999996,
+      "Omega_m": 0.3153,
+      "w0": -5.9729710368431115e-22,
+      "wa": 0.3034083084174817,
+      "dwa_from_A12": 0.4364083084174817
+    },
+    {
+      "alpha": 0.39999999999999997,
+      "Omega_m": 0.3153,
+      "w0": -2.2208809899929284e-22,
+      "wa": 0.3837576808980337,
+      "dwa_from_A12": 0.5167576808980336
+    },
+    {
+      "alpha": 0.41,
+      "Omega_m": 0.3153,
+      "w0": -7.919972606799089e-20,
+      "wa": 0.4725954988079895,
+      "dwa_from_A12": 0.6055954988079895
+    },
+    {
+      "alpha": 0.42,
+      "Omega_m": 0.3153,
+      "w0": -2.1500452008015386e-13,
+      "wa": 0.5718879821651035,
+      "dwa_from_A12": 0.7048879821651035
+    },
+    {
+      "alpha": 0.43,
+      "Omega_m": 0.3153,
+      "w0": -4.926223478623711e-13,
+      "wa": 0.6843843829597689,
+      "dwa_from_A12": 0.8173843829597689
+    },
+    {
+      "alpha": 0.43999999999999995,
+      "Omega_m": 0.3153,
+      "w0": -1.7928739871939582e-21,
+      "wa": 0.814099768538684,
+      "dwa_from_A12": 0.947099768538684
+    },
+    {
+      "alpha": 0.44999999999999996,
+      "Omega_m": 0.3153,
+      "w0": -4.398475174128173e-14,
+      "wa": 0.967240089326102,
+      "dwa_from_A12": 1.100240089326102
+    },
+    {
+      "alpha": 0.45999999999999996,
+      "Omega_m": 0.3153,
+      "w0": -2.916325561391862e-14,
+      "wa": 1.154167778128072,
+      "dwa_from_A12": 1.287167778128072
+    },
+    {
+      "alpha": 0.47,
+      "Omega_m": 0.3153,
+      "w0": -2.878967216261433e-16,
+      "wa": 1.3942374148713266,
+      "dwa_from_A12": 1.5272374148713266
+    },
+    {
+      "alpha": 0.48,
+      "Omega_m": 0.3153,
+      "w0": -1.2034341810821854e-18,
+      "wa": 1.7307134487839637,
+      "dwa_from_A12": 1.8637134487839637
+    },
+    {
+      "alpha": 0.49,
+      "Omega_m": 0.3153,
+      "w0": -2.416328120886013e-15,
+      "wa": 1.9999999999999876,
+      "dwa_from_A12": 2.1329999999999876
+    }
+  ],
+  "best_cpl_near_A12": {
+    "alpha": 0.35,
+    "Omega_m": 0.3153,
+    "w0": -1.6694445986196699e-18,
+    "wa": 0.04241539700867408,
+    "dwa_from_A12": 0.1754153970086741
+  },
+  "best_fit_params": {
+    "alpha": 0.10000000474537393,
+    "Omega_m": 0.20000025372676133,
+    "h": 0.6464889127163125
+  },
+  "best_fit_cpl": {
+    "w0": -0.319597782756404,
+    "wa": 0.055443960523808934
+  },
+  "chi2_approx_ricci": 39917.565135565004,
+  "chi2_approx_lcdm": 94.69234597835383,
+  "delta_chi2": -39822.872789586654,
+  "delta_lnZ_approx": -19912.936394793327,
+  "occam_penalty_applied": -1.5,
+  "jeffreys_verdict": "BELOW THRESHOLD",
+  "fourth_candidate_verdict": "FOURTH CANDIDATE: NO (fails STRONG threshold, Delta ln Z_approx = -19912.94)",
+  "physical_assessment": {
+    "rho_DE_structure": "alpha*H^2 (direct tracking)",
+    "sqmh_structure": "Gamma_0/(3H+sigma*rho_m) ~ H^{-1} (inverse tracking)",
+    "structural_match": "NO - different power laws",
+    "wa_coincidence": "|wa_Ricci - wa_A12| ~ 0.003 for alpha=0.46",
+    "wa_coincidence_type": "NUMERICAL (not structural)",
+    "ghost_condition": "alpha < 0.5 required; alpha=0.46 is safe"
+  },
+  "caveats": [
+    "chi2_approx uses 5-point BAO (not full 13-point DESI DR2)",
+    "SN chi2 is approximate (not full Pantheon+)",
+    "Delta ln Z_approx assumes Gaussian posterior (Laplace approximation)",
+    "Full nested sampling required for definitive Jeffreys assessment",
+    "chi2_approx NOT equivalent to L5/L6 full nested sampling result"
+  ]
+}

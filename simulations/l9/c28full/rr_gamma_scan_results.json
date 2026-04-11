@@ -1,0 +1,266 @@
+{
+  "scan_parameters": {
+    "gamma0_min": 0.0005,
+    "gamma0_max": 0.005,
+    "n_points": 30,
+    "L6_posterior_lo": 0.0011,
+    "L6_posterior_hi": 0.0019,
+    "A12_wa_target": -0.133,
+    "Q45_threshold": 0.03
+  },
+  "scan_results": {
+    "0.00050": {
+      "w0": -0.9971247679265549,
+      "wa": 0.5585108345961494,
+      "diff_from_A12_wa": 0.6915108345961494,
+      "E2_today_unnormalized": 0.9117551860243489,
+      "in_L6_posterior": false,
+      "Q45_pass": false
+    },
+    "0.00058": {
+      "w0": -0.9310614706215327,
+      "wa": -0.10838637287251109,
+      "diff_from_A12_wa": 0.02461362712748892,
+      "E2_today_unnormalized": 0.99412618081645,
+      "in_L6_posterior": false,
+      "Q45_pass": false
+    },
+    "0.00066": {
+      "w0": -0.7754603855884924,
+      "wa": -1.2329025214979925,
+      "diff_from_A12_wa": 1.0999025214979925,
+      "E2_today_unnormalized": 1.075183594145245,
+      "in_L6_posterior": false,
+      "Q45_pass": false
+    },
+    "0.00074": {
+      "w0": -0.576811372377871,
+      "wa": -2.740461412703027,
+      "diff_from_A12_wa": 2.607461412703027,
+      "E2_today_unnormalized": 1.1551395274011231,
+      "in_L6_posterior": false,
+      "Q45_pass": false
+    },
+    "0.00082": {
+      "w0": -0.6842905904282973,
+      "wa": -2.9999999999999925,
+      "diff_from_A12_wa": 2.8669999999999924,
+      "E2_today_unnormalized": 1.2341546187956367,
+      "in_L6_posterior": false,
+      "Q45_pass": false
+    },
+    "0.00089": {
+      "w0": -0.831805166261899,
+      "wa": -2.9999999999999996,
+      "diff_from_A12_wa": 2.8669999999999995,
+      "E2_today_unnormalized": 1.312353944589908,
+      "in_L6_posterior": false,
+      "Q45_pass": false
+    },
+    "0.00097": {
+      "w0": -0.9591217863030672,
+      "wa": -2.9999999999999636,
+      "diff_from_A12_wa": 2.8669999999999636,
+      "E2_today_unnormalized": 1.3898371283622497,
+      "in_L6_posterior": false,
+      "Q45_pass": false
+    },
+    "0.00105": {
+      "w0": -1.0689514485309117,
+      "wa": -2.9999999999999996,
+      "diff_from_A12_wa": 2.8669999999999995,
+      "E2_today_unnormalized": 1.4666850393520336,
+      "in_L6_posterior": false,
+      "Q45_pass": false
+    },
+    "0.00113": {
+      "w0": -1.1640439937767673,
+      "wa": -2.9999999999999996,
+      "diff_from_A12_wa": 2.8669999999999995,
+      "E2_today_unnormalized": 1.5429643861521756,
+      "in_L6_posterior": true,
+      "Q45_pass": false
+    },
+    "0.00121": {
+      "w0": -1.2467141419236614,
+      "wa": -2.9999999999999996,
+      "diff_from_A12_wa": 2.8669999999999995,
+      "E2_today_unnormalized": 1.6187309600789064,
+      "in_L6_posterior": true,
+      "Q45_pass": false
+    },
+    "0.00129": {
+      "w0": -1.3199165548513585,
+      "wa": -2.9999999999984572,
+      "diff_from_A12_wa": 2.8669999999984572,
+      "E2_today_unnormalized": 1.6940319829837325,
+      "in_L6_posterior": true,
+      "Q45_pass": false
+    },
+    "0.00137": {
+      "w0": -1.3847421995921392,
+      "wa": -2.9999999999730593,
+      "diff_from_A12_wa": 2.8669999999730593,
+      "E2_today_unnormalized": 1.7689078439268546,
+      "in_L6_posterior": true,
+      "Q45_pass": false
+    },
+    "0.00145": {
+      "w0": -1.4429858272465066,
+      "wa": -2.9999999999999707,
+      "diff_from_A12_wa": 2.8669999999999707,
+      "E2_today_unnormalized": 1.8433934083236783,
+      "in_L6_posterior": true,
+      "Q45_pass": false
+    },
+    "0.00153": {
+      "w0": -1.4954279943884838,
+      "wa": -2.999999999998688,
+      "diff_from_A12_wa": 2.866999999998688,
+      "E2_today_unnormalized": 1.9175190214229056,
+      "in_L6_posterior": true,
+      "Q45_pass": false
+    },
+    "0.00161": {
+      "w0": -1.5429636547709464,
+      "wa": -2.9999999999941873,
+      "diff_from_A12_wa": 2.8669999999941873,
+      "E2_today_unnormalized": 1.991311288985104,
+      "in_L6_posterior": true,
+      "Q45_pass": false
+    },
+    "0.00168": {
+      "w0": -1.5860857834655957,
+      "wa": -2.9999999999889484,
+      "diff_from_A12_wa": 2.8669999999889484,
+      "E2_today_unnormalized": 2.064793692747701,
+      "in_L6_posterior": true,
+      "Q45_pass": false
+    },
+    "0.00176": {
+      "w0": -1.625652626999295,
+      "wa": -2.9999998709854894,
+      "diff_from_A12_wa": 2.8669998709854894,
+      "E2_today_unnormalized": 2.1379870814738333,
+      "in_L6_posterior": true,
+      "Q45_pass": false
+    },
+    "0.00184": {
+      "w0": -1.6619505289815824,
+      "wa": -2.9999988847008257,
+      "diff_from_A12_wa": 2.8669988847008256,
+      "E2_today_unnormalized": 2.210910066994969,
+      "in_L6_posterior": true,
+      "Q45_pass": false
+    },
+    "0.00192": {
+      "w0": -1.6961104790534816,
+      "wa": -2.99999995470852,
+      "diff_from_A12_wa": 2.86699995470852,
+      "E2_today_unnormalized": 2.283579346783905,
+      "in_L6_posterior": false,
+      "Q45_pass": false
+    },
+    "0.00200": {
+      "w0": -1.7272324781554136,
+      "wa": -2.99999970433917,
+      "diff_from_A12_wa": 2.86699970433917,
+      "E2_today_unnormalized": 2.3560099690556875,
+      "in_L6_posterior": false,
+      "Q45_pass": false
+    },
+    "0.00230": {
+      "w0": -1.8287610981866875,
+      "wa": -2.9999986199540327,
+      "diff_from_A12_wa": 2.8669986199540327,
+      "E2_today_unnormalized": 2.6292951908246742,
+      "in_L6_posterior": false,
+      "Q45_pass": false
+    },
+    "0.00260": {
+      "w0": -1.9092207476562986,
+      "wa": -2.999999982174407,
+      "diff_from_A12_wa": 2.866999982174407,
+      "E2_today_unnormalized": 2.8999191157575273,
+      "in_L6_posterior": false,
+      "Q45_pass": false
+    },
+    "0.00290": {
+      "w0": -1.9752603402733324,
+      "wa": -2.999999998420697,
+      "diff_from_A12_wa": 2.866999998420697,
+      "E2_today_unnormalized": 3.1683224322999997,
+      "in_L6_posterior": false,
+      "Q45_pass": false
+    },
+    "0.00320": {
+      "w0": -1.9999999982374876,
+      "wa": -2.9999999999999543,
+      "diff_from_A12_wa": 2.8669999999999543,
+      "E2_today_unnormalized": 3.434836446490764,
+      "in_L6_posterior": false,
+      "Q45_pass": false
+    },
+    "0.00350": {
+      "w0": -1.999999999999871,
+      "wa": -2.9999999999999996,
+      "diff_from_A12_wa": 2.8669999999999995,
+      "E2_today_unnormalized": 3.6997177125748237,
+      "in_L6_posterior": false,
+      "Q45_pass": false
+    },
+    "0.00380": {
+      "w0": -1.9999999999999996,
+      "wa": -2.9999999999999996,
+      "diff_from_A12_wa": 2.8669999999999995,
+      "E2_today_unnormalized": 3.9631697172640648,
+      "in_L6_posterior": false,
+      "Q45_pass": false
+    },
+    "0.00410": {
+      "w0": -1.9999999986912975,
+      "wa": -2.9999999999847935,
+      "diff_from_A12_wa": 2.8669999999847935,
+      "E2_today_unnormalized": 4.225357085569054,
+      "in_L6_posterior": false,
+      "Q45_pass": false
+    },
+    "0.00440": {
+      "w0": -1.9999999997140578,
+      "wa": -2.999999999994893,
+      "diff_from_A12_wa": 2.866999999994893,
+      "E2_today_unnormalized": 4.486415239281447,
+      "in_L6_posterior": false,
+      "Q45_pass": false
+    },
+    "0.00470": {
+      "w0": -1.9999999999147977,
+      "wa": -2.999999999997871,
+      "diff_from_A12_wa": 2.866999999997871,
+      "E2_today_unnormalized": 4.746457170754638,
+      "in_L6_posterior": false,
+      "Q45_pass": false
+    },
+    "0.00500": {
+      "w0": -1.9999999999686535,
+      "wa": -2.999999999998979,
+      "diff_from_A12_wa": 2.866999999998979,
+      "E2_today_unnormalized": 5.005578320419384,
+      "in_L6_posterior": false,
+      "Q45_pass": false
+    }
+  },
+  "Q45_verdict": {
+    "Q45_pass_in_L6_range": false,
+    "best_gamma0_in_L6": 0.0018421052631578947,
+    "best_wa_in_L6": -2.9999988847008257,
+    "best_diff_in_L6": 2.8669988847008256,
+    "optimal_gamma0_full_scan": 0.0005789473684210527,
+    "optimal_in_L6_posterior": false
+  },
+  "Dirian2015_reference": {
+    "wa_C28_literature": -0.19,
+    "gamma0_convention_note": "L6 convention: gamma0~0.0015 is m^2/(6*H0^2)*something. Dirian 2015 uses m ~ 0.5*H0, m^2/H0^2 ~ 0.25. Different parameterization -- not directly comparable."
+  },
+  "note": "Full Dirian 2015 ODE scan. wa_C28 depends on gamma0 convention. Literature wa~-0.19 accepted at gamma0=0.0015. Q45 assesses whether gamma0 in L6 posterior gives |wa_C28 - (-0.133)| < 0.03."
+}

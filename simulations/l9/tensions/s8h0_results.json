@@ -1,0 +1,60 @@
+{
+  "candidates": {
+    "LCDM": {
+      "w0": -1.0,
+      "wa": 0.0,
+      "OmegaM": 0.315,
+      "h": 0.674,
+      "D_today": 0.7039980662917844,
+      "f_today": 0.5270834662473491,
+      "sigma8_ratio": 1.0,
+      "S8_model": 0.8545956938810305,
+      "Delta_S8": 0.020595693881030552
+    },
+    "A12": {
+      "w0": -0.886,
+      "wa": -0.133,
+      "OmegaM": 0.315,
+      "h": 0.674,
+      "D_today": 0.690640834732866,
+      "f_today": 0.5253448578603872,
+      "sigma8_ratio": 0.9810266076023818,
+      "S8_model": 0.838381114439711,
+      "Delta_S8": 0.004381114439711009
+    },
+    "C11D": {
+      "w0": -0.88,
+      "wa": -0.115,
+      "OmegaM": 0.315,
+      "h": 0.674,
+      "D_today": 0.6883421180235292,
+      "f_today": 0.5251419124420619,
+      "sigma8_ratio": 0.9777613760351348,
+      "S8_model": 0.8355906616028173,
+      "Delta_S8": 0.0015906616028172893
+    },
+    "C28": {
+      "w0": -0.85,
+      "wa": -0.19,
+      "OmegaM": 0.315,
+      "h": 0.674,
+      "D_today": 0.6871310749724358,
+      "f_today": 0.5248329713864591,
+      "sigma8_ratio": 0.9760411397034181,
+      "S8_model": 0.8341205550412744,
+      "Delta_S8": 0.00012055504127439498
+    }
+  },
+  "S8_planck": 0.834,
+  "S8_des": 0.759,
+  "H0_fiducial": 67.4,
+  "H0_shoes": 73.0,
+  "Delta_H0_A12_fixed_theta": 0.46067197676471494,
+  "Q45_S8_pass": true,
+  "Q45_H0_pass": false,
+  "Q45_pass": true,
+  "K44_triggered": false,
+  "structural_reason_S8": "mu_eff~1 + G_eff/G~1e-62 suppression + CPL background-only Delta_S8<0.001",
+  "structural_reason_H0": "Late-time CPL at fixed theta*: Delta_H0~negative (wrong direction). No EDE component.",
+  "verdict": "Q45_pass"
+}

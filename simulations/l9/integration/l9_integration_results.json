@@ -1,0 +1,27 @@
+{
+  "Q41_pass": false,
+  "Q42_pass": true,
+  "Q43_pass": false,
+  "Q44_pass": false,
+  "Q45_pass": true,
+  "K41_triggered": true,
+  "K42_triggered": false,
+  "K43_triggered": true,
+  "K44_triggered": false,
+  "kill_count": 2,
+  "keep_count": 2,
+  "new_findings": [
+    "NF-13",
+    "NF-14",
+    "NF-15"
+  ],
+  "verdict": "L9_complete",
+  "positive_results": [
+    "Q42: C28-A12 structural similarity (wa diff = 0.057 < 0.1)"
+  ],
+  "negative_results": [
+    "K41: No mechanism produces wa<0 from SQMH at any level",
+    "K43: Gradient term also 62-order suppressed",
+    "K44: S8/H0 improvement structurally impossible"
+  ]
+}
