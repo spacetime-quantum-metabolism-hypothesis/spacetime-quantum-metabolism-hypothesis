@@ -145,3 +145,78 @@ r_d 자유화 효과: Δχ² ≈ −16 (LCDM). 데이터가 Planck 보다 ~1.5 M
 > 철회, Cassini 자동 통과 철회 (Vainshtein 조건부 복원), H_0 tension 악화,
 > `V_RP` r_d 3.13σ TENSION. Path F 선언, 네거티브 결과 논문으로 마무리.
 > L2 sector-selective/disformal 재설계는 Phase 5 에서 재시도.
+
+---
+
+## 7. Alt-20 현상론 확장 — 참고 기록 (중요도 낮음)
+
+> 이 섹션은 L5 Phase B 에서 탐색한 20개 closed-form ρ_DE(a) 변형 중
+> 상위 4개 후보의 MCMC 결과를 보관한다.
+> **이론적 도출 근거 없음. SQMH 예측으로 인용 금지.**
+> DESI DR3 비교 참고용으로만 보존.
+
+### 7.1 배경: Alt-20 구조
+
+모든 Alt-20 후보의 형태:
+
+```
+ρ_DE(a) = ΩΛ × f(a; Ωm)
+```
+
+진짜 SQMH ODE를 적분하는 것이 아니라, ODE 해의
+1차 근사(A01) 또는 다른 수학 함수 형태(A02~A20)를
+ρ_DE에 직접 대입한 closed-form 근사.
+
+amplitude = Ωm으로 고정 (Amplitude Locking).
+자유 파라미터: (Ωm, h) 만. 모델 고유 파라미터 없음.
+
+### 7.2 상위 4개 MCMC 결과 (DESI DR2 + DESY5 + CMB + RSD, N=1853)
+
+| 모델 | 형태 f(a, m) | chi² | Δchi² vs ΛCDM | SQMH 도출 가능 여부 |
+|---|---|---|---|---|
+| ΛCDM (기준) | 1.0 | 1676.89 | 0 | — |
+| **A01** (순수 SQMH) | 1 + m×(1−a) | 1655.78 | **−21.12** | ✓ ODE 1차 근사 |
+| A17 (단열 펄스) | 1 + m×(1−a)×exp(−(1−a)²) | 1655.64 | −21.26 | ✗ |
+| A12 (erf 확산) | 1 + erf(m×(1−a)) | 1655.28 | −21.62 | ✗ NF-14 위반 |
+| A05 (sqrt 이완) | sqrt(1+2m×(1−a)) | 1655.87 | −21.03 | ✗ |
+
+MCMC 수렴: 48 walkers × 2000 steps, R̂ < 1.02 (K13 PASS).
+
+### 7.3 핵심 관찰
+
+**A01과 A12의 chi² 차이: 0.50**
+
+→ 통계적으로 구분 불가 수준.
+→ A01(순수 SQMH 이론)이 A12(erf 현상론)와 실질적으로 동등한 DESI 설명력 보유.
+
+**모든 후보가 ΛCDM보다 Δchi²≈21 개선.**
+
+→ 개선의 원인: SQMH 구조 (Ωm으로 진폭 고정된 ρ_DE 진화)
+→ 특정 함수 형태(erf vs 선형 vs sqrt)에 크게 의존하지 않음.
+
+### 7.4 NF-14: erf 불가능 정리
+
+A12의 erf 형태는 SQMH ODE에서 이론적으로 도출 불가.
+
+- SQMH = 이류(advection): ∂n/∂t + ∇·(nv) = 소스
+- erf = 확산(diffusion): ∂n/∂t = D∇²n 의 해
+
+구조적으로 다른 방정식. "stochastic SQMH" 동기부여는 있으나
+NF-14에 의해 정식 도출 경로 닫힘.
+
+### 7.5 논문 기재 방침
+
+- **본문**: A01 (순수 SQMH, 이론 직접 도출) 만 주요 결과로 기재
+- **부록**: "20개 closed-form 변형 중 선형~erf 범위에서 Δchi²≈21 일관 달성"
+  → 결과의 robust성 근거로만 인용
+- **A12를 SQMH 예측으로 호칭 금지**
+
+### 7.6 파일 포인터
+
+| 파일 | 내용 |
+|---|---|
+| `simulations/l4_alt/runner.py` | Alt-20 전체 20개 정의 (ALT dict) |
+| `simulations/l5/A01/mcmc_production.json` | A01 MCMC 결과 (R̂=1.008) |
+| `simulations/l5/A12/mcmc_production.json` | A12 MCMC 결과 (R̂=1.010) |
+| `simulations/l5/A05/mcmc_production.json` | A05 MCMC 결과 |
+| `simulations/l5/A17/mcmc_production.json` | A17 MCMC 결과 |
