@@ -1,0 +1,60 @@
+[Phase 3] Loaded 1829 DESY5 SNe
+
+[A2] N=1853  ln N=7.525
+[A2] r_d prior flat [130.0, 165.0] Mpc
+
+[A2] Running LCDM (5D, r_d free) ...
+  [MCMC] burn-in 300 steps x 24 walkers...
+  [MCMC] sampling 800 steps...
+  [MCMC] done in 149.1s, acceptance=0.56, tau=[42.57543628 35.38908674 40.95614194 35.44660439 37.75705328]
+  param           median     -1sig     +1sig
+  Om              0.3152    0.0028    0.0028
+  h               0.6715    0.0026    0.0027
+  omega_b         0.0224    0.0001    0.0001
+  sigma_8_0       0.8109    0.0179    0.0171
+  r_d           148.6932    0.4941    0.5305
+  best chi2 = 1666.78 at theta = [3.15096528e-01 6.71910334e-01 2.23674560e-02 8.13664618e-01
+ 1.48624789e+02]
+
+[A2] Running V_RP (7D, r_d free) ...
+  [MCMC] burn-in 300 steps x 24 walkers...
+  [MCMC] sampling 700 steps...
+  [MCMC] done in 5617.1s, acceptance=0.46, tau=[36.94372773 40.72348327 40.38494809 42.88000439 36.34840518 46.48099034
+ 48.93968692]
+  param           median     -1sig     +1sig
+  Om              0.3157    0.0044    0.0042
+  h               0.6715    0.0036    0.0037
+  omega_b         0.0224    0.0001    0.0001
+  sigma_8_0       0.8052    0.0171    0.0162
+  r_d           148.6201    0.3868    0.3428
+  beta            0.1166    0.0554    0.0728
+  n               0.1117    0.0434    0.0679
+  best chi2 = 1667.00 at theta = [3.15399633e-01 6.71556184e-01 2.23662337e-02 8.12321016e-01
+ 1.48607208e+02 6.73432150e-02 6.71720745e-02]
+
+[A2] Running V_exp (7D, r_d free) ...
+  [MCMC] burn-in 300 steps x 24 walkers...
+  [MCMC] sampling 700 steps...
+  [MCMC] done in 1104.7s, acceptance=0.46, tau=[46.48893156 48.00468899 35.2303251  38.05304094 38.60360757 43.53124535
+ 36.72380021]
+  param           median     -1sig     +1sig
+  Om              0.3159    0.0039    0.0043
+  h               0.6714    0.0037    0.0037
+  omega_b         0.0224    0.0001    0.0001
+  sigma_8_0       0.8081    0.0163    0.0160
+  r_d           148.5564    0.4239    0.4132
+  beta            0.1102    0.0536    0.0659
+  lam             0.0999    0.0356    0.0593
+  best chi2 = 1667.32 at theta = [3.16631814e-01 6.71446877e-01 2.23962797e-02 8.14940932e-01
+ 1.48817541e+02 7.16557788e-02 6.89665087e-02]
+
+[A2] Model comparison (r_d free)
+  model         chi2_min   k         AIC         BIC      dAIC      dBIC
+  LCDM           1666.78   5     1676.78     1704.40     +0.00     +0.00
+  V_RP           1667.00   7     1681.00     1719.67     +4.22    +15.27
+  V_exp          1667.32   7     1681.32     1719.99     +4.54    +15.59
+
+[A3] r_d tension vs Planck (147.09 +/- 0.30 Mpc)
+  LCDM     r_d = 148.69 +0.53/-0.49  delta = +1.60  n_sigma = +2.63  [within 3sigma]
+  V_RP     r_d = 148.62 +0.34/-0.39  delta = +1.53  n_sigma = +3.13  [TENSION > 3sigma]
+  V_exp    r_d = 148.56 +0.41/-0.42  delta = +1.47  n_sigma = +2.82  [within 3sigma]

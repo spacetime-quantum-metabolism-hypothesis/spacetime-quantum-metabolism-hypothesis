@@ -1,0 +1,24 @@
+{
+  "phase": "L5-E",
+  "description": "Re-evaluation of two L4 pending candidates (C11D, C26).",
+  "C11D": {
+    "verdict": "PROMOTE",
+    "delta_chi2": -22.122,
+    "w0": -0.8748,
+    "wa": -0.1855,
+    "w_today_direct": -0.8766,
+    "w_min_direct": -0.9951,
+    "phantom_crossing": false,
+    "method": "Sakstein-Jain 2015 analytic pure-disformal limit (A_prime=0) -> Copeland-Liddle-Wands 1998 minimally coupled quintessence autonomous system with exponential V; hi_class not installed in env, but pure-disformal reduces exactly to minimally coupled quintessence at the background level so the CLW ODE is the faithful implementation.",
+    "rationale": "L4 K3 hit was a leading-order CPL thawing-template artifact exactly as suspected in CLAUDE.md. With the exact quintessence ODE (no CPL), w(z) is bounded below by -1 by construction (positive kinetic term) and the |w+1|>1e-3 guard returns False on both sides. Fit quality matches L4 (delta_chi2 = -22.12 vs L4 -22.92) at best-fit lam=0.9, Om=0.309, h=0.678."
+  },
+  "C26": {
+    "verdict": "KILL",
+    "delta_chi2": -1.2e-06,
+    "w0": -1.0,
+    "wa": 0.0,
+    "k10_consistent": true,
+    "method": "Reformulated ansatz J^0 = alpha_Q * H * rho_m gives closed-form rho_m(a)=Om*a^-(3+alpha_Q), rho_L(a)=OL0+(alpha_Q*Om/(3+alpha_Q))*(1-a^-(3+alpha_Q)).",
+    "rationale": "Closed form eliminates the L4 ODE blow-up (K10 structurally resolved), but compressed CMB rejects every alpha_Q>0: chi2_CMB goes 2.3 -> 38.3 at alpha_Q=0.02, -> 194 at 0.05, -> 727 at 0.10 (at Om=0.32, h=0.67). Joint fit drives alpha_Q exactly to zero; model is indistinguishable from LCDM. The L3 drift toy was a first-order a->1 expansion and masked this CMB penalty. Perez-Sudarsky unimodular diffusion with matter-proportional current is CMB-dead at background level."
+  }
+}

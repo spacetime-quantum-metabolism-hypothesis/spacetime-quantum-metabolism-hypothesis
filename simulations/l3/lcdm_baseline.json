@@ -1,0 +1,14 @@
+{
+  "model": "LCDM",
+  "Omega_m": 0.3203645030316817,
+  "h": 0.6690950792462829,
+  "rd_Mpc": 147.09,
+  "omega_b": 0.02237,
+  "omega_c": 0.12105341573819545,
+  "chi2_bao": 23.56584352826714,
+  "chi2_sn": 1643.726929834671,
+  "chi2_cmb": 2.2964168360593,
+  "chi2_rsd": 7.30576225043482,
+  "chi2_total": 1676.8949524494321,
+  "notes": "rd=147.09 fixed. omega_b fixed to Planck fid; omega_c derived. BAO+SN+CMB+RSD joint minimisation."
+}

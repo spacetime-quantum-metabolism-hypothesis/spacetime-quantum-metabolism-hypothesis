@@ -1,0 +1,87 @@
+{
+  "status": "ok",
+  "candidate": "C6s",
+  "name": "Stringy RVM + Chern-Simons anomaly",
+  "family": "RVM",
+  "theta_names": [
+    "nu_s"
+  ],
+  "Omega_m": 0.3325244157047128,
+  "h": 0.6537262806965658,
+  "theta": [
+    0.00904377197123417
+  ],
+  "chi2_bao": 18.64940132970751,
+  "chi2_sn": 1641.657982337729,
+  "chi2_cmb": 0.1428882376819984,
+  "chi2_rsd": 7.736719616442789,
+  "chi2_total": 1668.1869915215611,
+  "delta_chi2_vs_lcdm": -8.707960927871,
+  "w0": -0.9806470173566149,
+  "wa": -0.14725329411487423,
+  "phantom_cross": false,
+  "gamma_minus_one": 0.0,
+  "c_s_squared": 1.0,
+  "theory_score": 5,
+  "mcmc": {
+    "backend": "emcee",
+    "means": [
+      0.3303578876318607,
+      0.6563648536983616,
+      0.007413885605897773
+    ],
+    "stds": [
+      0.0035657352941833274,
+      0.004168658673958155,
+      0.0019186892236406523
+    ],
+    "rhat": [
+      1.0989075571172462,
+      1.0629173200749715,
+      1.0809979314022566
+    ],
+    "nu_s_median": 0.00778991359427426,
+    "nu_s_1sigma": [
+      0.00559648712045531,
+      0.009298118703220734
+    ],
+    "nu_s_2sigma": [
+      0.002976784298666851,
+      0.009902843364474155
+    ],
+    "lcdm_in_2sigma": false,
+    "prior_bounds": [
+      -0.03,
+      0.01
+    ],
+    "posterior_at_boundary": true
+  },
+  "K_flags": {
+    "K1": false,
+    "K2": false,
+    "K3": false,
+    "K4": false,
+    "K5": false,
+    "K6": false,
+    "K7": false,
+    "K8": false,
+    "K9": true,
+    "K10": false,
+    "K11": false,
+    "K12": false
+  },
+  "Q_flags": {
+    "Q1": false,
+    "Q2": true,
+    "Q3": true,
+    "Q4": true,
+    "Q5": true,
+    "Q6": false
+  },
+  "failed_K": [
+    "K9"
+  ],
+  "keep": false,
+  "verdict": "Posterior pinned to prior boundary (nu_s = +0.01 upper edge); unconstrained data prefers nu_s > 0 which VIOLATES SQMH sign condition. Wall-pinned 2sigma artificially excludes LCDM. SQMH-branch (nu_s<=0) effectively ruled out.",
+  "notes": "Stringy RVM + Chern-Simons anomaly. Background identical to C5r. (CS Pontryagin vanishes on FLRW/Type-D.) gamma-1=0 exact. Theory score 5. Same wall-pinning as C5r on the SQMH prior."
+}

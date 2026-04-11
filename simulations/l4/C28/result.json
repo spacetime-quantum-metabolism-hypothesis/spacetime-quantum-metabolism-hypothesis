@@ -1,0 +1,80 @@
+{
+  "ID": "C28",
+  "name": "Maggiore-Mancarella RR non-local",
+  "family": "Non-local",
+  "Om": 0.309121484259097,
+  "h": 0.6779564500908517,
+  "theta": [
+    0.0015016081651382479,
+    0.5027317427945509,
+    2.4941396699309544
+  ],
+  "theta_names": [
+    "gamma0",
+    "beta_shape",
+    "a_tail"
+  ],
+  "chi2_bao": 10.960112286996829,
+  "chi2_sn": 1637.8027889209868,
+  "chi2_cmb": 0.05957622400019149,
+  "chi2_rsd": 6.990553245863605,
+  "chi2_total": 1655.8130306778473,
+  "delta_chi2": -21.081921771584803,
+  "w0": -0.8477584077118772,
+  "wa": -0.24479563942998434,
+  "phantom_cross": false,
+  "cs2_min": 0.970785431825638,
+  "gamma_minus_one": 0.0,
+  "toy_wa_L3": -0.31169068933112304,
+  "toy_w0_L3": -0.8636200853949116,
+  "toy_full_consistent": true,
+  "mcmc_backend": "emcee",
+  "mcmc_means": [
+    0.309121484259097,
+    0.6779564500908517,
+    0.0015016081651382479,
+    0.5027317427945509,
+    2.4941396699309544
+  ],
+  "mcmc_stds": [
+    0.003262271085654954,
+    0.003323696504686887,
+    0.0008124504115065072,
+    0.28346271622322544,
+    0.9750340147749461
+  ],
+  "mcmc_rhat": [
+    1.1160783161555716,
+    1.1202705045276953,
+    1.1817683320003762,
+    1.2020099702199543,
+    1.2264547081808104
+  ],
+  "mcmc_names": [
+    "Om",
+    "h",
+    "gamma0",
+    "beta_shape",
+    "a_tail"
+  ],
+  "x_map": [
+    0.30831953445425786,
+    0.6790392864811329,
+    0.0016744003082626675,
+    0.2619580347048055,
+    3.81663283728667
+  ],
+  "killed_K": [
+    "K9"
+  ],
+  "keep": false,
+  "Q_flags": {
+    "Q1_all_K_clear": false,
+    "Q2_posterior_excludes_lcdm_or_dchi2_le_-6": true,
+    "Q3_toy_full_sign_mag_consistent": true,
+    "Q4_cs2_positive": true,
+    "Q5_cassini_num_ok": true,
+    "Q6_theory_score_ge_6": true
+  },
+  "notes": "Localised (U, S) ODE with box U = -R, box S = -U. gamma_RR(a) absorbed into modified Friedmann. Cassini gamma-1=0 exact via R=0 auxiliary freeze."
+}

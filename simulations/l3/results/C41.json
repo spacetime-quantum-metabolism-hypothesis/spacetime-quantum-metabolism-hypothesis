@@ -1,0 +1,29 @@
+{
+  "status": "ok",
+  "ID": "C41",
+  "name": "Wetterich/Amendola fluid IDE",
+  "family": "IDE",
+  "Omega_m": 0.348770807101029,
+  "h": 0.64,
+  "theta": [
+    0.05224369780500582
+  ],
+  "theta_names": [
+    "beta"
+  ],
+  "chi2_bao": 13.28634339550146,
+  "chi2_sn": 1640.766743030667,
+  "chi2_cmb": 0.1643991336614136,
+  "chi2_rsd": 8.438433911212394,
+  "chi2_total": 1662.6559194710421,
+  "w0": -0.8953932893502256,
+  "wa": -0.910218150386871,
+  "phantom_cross": false,
+  "gamma_minus_one": 0.0,
+  "theory_score": 6,
+  "sqmh_sign_condition": "beta>0 for w_a<0, bounded |\u03b2|\u22640.05 (toy valid)",
+  "notes": "Coupled continuity. Phase 3 \u03b2=0.107 not inheritable (toy linear regime breaks).",
+  "keep": true,
+  "failed_K": [],
+  "delta_chi2": -14.239032978390014
+}

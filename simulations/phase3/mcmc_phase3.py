@@ -263,6 +263,11 @@ PRIORS_RP = {
     'beta': (0.0, 1.0),          # flat, SQMH positive
     'n':    (0.05, 3.0),         # flat
 }
+PRIORS_EXP = {
+    **PRIORS_LCDM,
+    'beta':  (0.0, 1.0),         # flat, SQMH positive
+    'lam':   (0.05, 3.0),        # flat (Ferreira-Joyce tracker range)
+}
 
 
 def log_prior_lcdm(theta):
@@ -288,6 +293,18 @@ def log_prior_rp(theta):
     if not (0.0 <= beta < 1.0):
         return -np.inf
     if not (0.05 < n < 3.0):
+        return -np.inf
+    return base
+
+
+def log_prior_exp(theta):
+    Om, h, omb, s8, beta, lam = theta
+    base = log_prior_lcdm((Om, h, omb, s8))
+    if not np.isfinite(base):
+        return -np.inf
+    if not (0.0 <= beta < 1.0):
+        return -np.inf
+    if not (0.05 < lam < 3.0):
         return -np.inf
     return base
 
@@ -353,6 +370,22 @@ def log_like_rp(theta):
     return -0.5 * (c_bao + c_sn + c_cmb + c_rsd)
 
 
+def log_like_exp(theta):
+    Om, h, omb, s8, beta, lam = theta
+    omc = Om * h * h - omb
+    itp = _fast_E_quint('exp', beta, (lam,))
+    if itp is None:
+        return -np.inf
+    E = lambda z: float(itp(z))
+    c_bao = df.chi2(_EWrap(E), r_d_EH98(omb, omc, h))
+    c_sn = _fast_sn_chi2(SN, E, H0_km=100.0 * h)
+    c_cmb = ccmb.chi2_compressed_cmb(omb, omc, h, _bridge_highz(E, Om=Om))
+    c_rsd = rsd_chi2_quint('exp', beta, (lam,), s8)
+    if not _finite(c_bao, c_sn, c_cmb, c_rsd):
+        return -np.inf
+    return -0.5 * (c_bao + c_sn + c_cmb + c_rsd)
+
+
 def log_post_lcdm(theta):
     lp = log_prior_lcdm(theta)
     if not np.isfinite(lp):
@@ -368,6 +401,16 @@ def log_post_rp(theta):
     if not np.isfinite(lp):
         return -np.inf
     ll = log_like_rp(theta)
+    if not np.isfinite(ll):
+        return -np.inf
+    return lp + ll
+
+
+def log_post_exp(theta):
+    lp = log_prior_exp(theta)
+    if not np.isfinite(lp):
+        return -np.inf
+    ll = log_like_exp(theta)
     if not np.isfinite(ll):
         return -np.inf
     return lp + ll
@@ -425,53 +468,97 @@ def main():
     out_dir = os.path.join(HERE, 'chains')
     os.makedirs(out_dir, exist_ok=True)
 
-    print("\n[Phase 3] Running LCDM MCMC ...")
     labels_lcdm = ['Om', 'h', 'omega_b', 'sigma_8_0']
-    p0 = np.array([0.320, 0.673, 0.02237, 0.8111])
-    scale = np.array([0.005, 0.005, 0.00005, 0.005])
-    chain_l, logp_l, _ = run_mcmc(log_post_lcdm, p0, scale, labels_lcdm,
-                                   n_walkers=20, n_burn=200, n_sample=700)
+    lcdm_c = os.path.join(out_dir, 'lcdm_chain.npy')
+    lcdm_p = os.path.join(out_dir, 'lcdm_logp.npy')
+    if os.path.exists(lcdm_c) and os.path.exists(lcdm_p):
+        print("\n[Phase 3] Loading cached LCDM chain ...")
+        chain_l = np.load(lcdm_c); logp_l = np.load(lcdm_p)
+    else:
+        print("\n[Phase 3] Running LCDM MCMC ...")
+        p0 = np.array([0.320, 0.673, 0.02237, 0.8111])
+        scale = np.array([0.005, 0.005, 0.00005, 0.005])
+        chain_l, logp_l, _ = run_mcmc(log_post_lcdm, p0, scale, labels_lcdm,
+                                       n_walkers=20, n_burn=200, n_sample=700)
+        np.save(lcdm_c, chain_l); np.save(lcdm_p, logp_l)
     summary_l = summarize(chain_l, logp_l, labels_lcdm)
-    np.save(os.path.join(out_dir, 'lcdm_chain.npy'), chain_l)
-    np.save(os.path.join(out_dir, 'lcdm_logp.npy'), logp_l)
 
-    print("\n[Phase 3] Running V_RP MCMC ...")
     labels_rp = ['Om', 'h', 'omega_b', 'sigma_8_0', 'beta', 'n']
-    p0 = np.array([0.320, 0.673, 0.02237, 0.8111, 0.097, 0.113])
-    scale = np.array([0.005, 0.005, 0.00005, 0.005, 0.01, 0.02])
-    chain_r, logp_r, _ = run_mcmc(log_post_rp, p0, scale, labels_rp,
-                                   n_walkers=20, n_burn=200, n_sample=600)
+    vrp_c = os.path.join(out_dir, 'vrp_chain.npy')
+    vrp_p = os.path.join(out_dir, 'vrp_logp.npy')
+    if os.path.exists(vrp_c) and os.path.exists(vrp_p):
+        print("\n[Phase 3] Loading cached V_RP chain ...")
+        chain_r = np.load(vrp_c); logp_r = np.load(vrp_p)
+    else:
+        print("\n[Phase 3] Running V_RP MCMC ...")
+        p0 = np.array([0.320, 0.673, 0.02237, 0.8111, 0.097, 0.113])
+        scale = np.array([0.005, 0.005, 0.00005, 0.005, 0.01, 0.02])
+        chain_r, logp_r, _ = run_mcmc(log_post_rp, p0, scale, labels_rp,
+                                       n_walkers=20, n_burn=200, n_sample=600)
+        np.save(vrp_c, chain_r); np.save(vrp_p, logp_r)
     summary_r = summarize(chain_r, logp_r, labels_rp)
-    np.save(os.path.join(out_dir, 'vrp_chain.npy'), chain_r)
-    np.save(os.path.join(out_dir, 'vrp_logp.npy'), logp_r)
 
-    # Delta chi2 / AIC
+    print("\n[Phase 3] Running V_exp MCMC ...")
+    labels_exp = ['Om', 'h', 'omega_b', 'sigma_8_0', 'beta', 'lam']
+    p0 = np.array([0.320, 0.673, 0.02237, 0.8111, 0.100, 0.150])
+    scale = np.array([0.005, 0.005, 0.00005, 0.005, 0.01, 0.02])
+    chain_e, logp_e, _ = run_mcmc(log_post_exp, p0, scale, labels_exp,
+                                   n_walkers=20, n_burn=200, n_sample=600)
+    summary_e = summarize(chain_e, logp_e, labels_exp)
+    np.save(os.path.join(out_dir, 'vexp_chain.npy'), chain_e)
+    np.save(os.path.join(out_dir, 'vexp_logp.npy'), logp_e)
+
+    # Delta chi2 / AIC / BIC
     N_tot = 13 + SN.N + 3 + N_RSD
-    dchi2 = summary_r['chi2_min'] - summary_l['chi2_min']
-    daic = dchi2 + 2 * (6 - 4)
-    print(f"\n[Phase 3] Data points: {N_tot}")
-    print(f"[Phase 3] Delta chi2 (V_RP - LCDM) = {dchi2:+.2f}")
-    print(f"[Phase 3] Delta AIC  (V_RP - LCDM) = {daic:+.2f}")
+    ln_N = float(np.log(N_tot))
+    chi2_L = summary_l['chi2_min']; k_L = 4
+    chi2_R = summary_r['chi2_min']; k_R = 6
+    chi2_E = summary_e['chi2_min']; k_E = 6
+    def _aic(c, k): return c + 2 * k
+    def _bic(c, k): return c + k * ln_N
+    print(f"\n[Phase 3] N = {N_tot}  (ln N = {ln_N:.3f})")
+    print(f"  {'model':<8}{'chi2_min':>12}{'k':>4}"
+          f"{'AIC':>12}{'BIC':>12}{'dAIC':>10}{'dBIC':>10}")
+    for name, c, k in (('LCDM', chi2_L, k_L),
+                       ('V_RP', chi2_R, k_R),
+                       ('V_exp', chi2_E, k_E)):
+        print(f"  {name:<8}{c:>12.2f}{k:>4}"
+              f"{_aic(c,k):>12.2f}{_bic(c,k):>12.2f}"
+              f"{_aic(c,k)-_aic(chi2_L,k_L):>+10.2f}"
+              f"{_bic(c,k)-_bic(chi2_L,k_L):>+10.2f}")
 
-    # Corner plot
+    # Corner plots
     try:
         import corner
         import matplotlib.pyplot as plt
+        fig_dir = os.path.abspath(os.path.join(HERE, '..', '..', 'figures'))
+        os.makedirs(fig_dir, exist_ok=True)
+
         fig = corner.corner(chain_r, labels=labels_rp,
                             show_titles=True, title_fmt='.3f',
                             quantiles=[0.16, 0.5, 0.84])
         fig.suptitle('Phase 3 MCMC — V_RP posterior\n'
                      'BAO+SN+compressed CMB+RSD(BOSS DR12 cov)',
                      fontsize=12, y=1.02)
-        out_fig = os.path.abspath(os.path.join(HERE, '..', '..', 'figures',
-                                               '13_phase3_mcmc.png'))
+        out_fig = os.path.join(fig_dir, '13_phase3_mcmc.png')
+        fig.savefig(out_fig, dpi=150, bbox_inches='tight')
+        plt.close(fig)
+        print(f"[Phase 3] Figure saved: {out_fig}")
+
+        fig = corner.corner(chain_e, labels=labels_exp,
+                            show_titles=True, title_fmt='.3f',
+                            quantiles=[0.16, 0.5, 0.84])
+        fig.suptitle('Phase 3 MCMC — V_exp posterior\n'
+                     'BAO+SN+compressed CMB+RSD(BOSS DR12 cov)',
+                     fontsize=12, y=1.02)
+        out_fig = os.path.join(fig_dir, '14_phase3_vexp.png')
         fig.savefig(out_fig, dpi=150, bbox_inches='tight')
         plt.close(fig)
         print(f"[Phase 3] Figure saved: {out_fig}")
     except Exception as e:
         print(f"[Phase 3] Corner plot failed: {e}")
 
-    return summary_l, summary_r
+    return summary_l, summary_r, summary_e
 
 
 if __name__ == "__main__":

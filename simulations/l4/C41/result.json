@@ -1,0 +1,93 @@
+{
+  "ID": "C41",
+  "name": "Wetterich/Amendola fluid IDE (L4)",
+  "family": "IDE",
+  "best_fit": {
+    "Om": 0.348770807101029,
+    "h": 0.64,
+    "beta": 0.05224369780500582,
+    "chi2_bao": 13.28634339550146,
+    "chi2_sn": 1640.7667430306678,
+    "chi2_cmb": 0.1643991336614136,
+    "chi2_rsd": 8.438433911212394,
+    "chi2_total": 1662.655919471043
+  },
+  "delta_chi2_vs_lcdm": -14.239032978389105,
+  "cpl": {
+    "w0": -0.8959417089156497,
+    "wa": -0.9073958706612555,
+    "phantom_cross": false
+  },
+  "growth_fs8": [
+    0.4702555451001759,
+    0.48331608779843444,
+    0.49584959413297675,
+    0.4916902380446975,
+    0.48484861145526903,
+    0.47676648351003054,
+    0.4606139606482463,
+    0.3833635568385669
+  ],
+  "mcmc": {
+    "backend": "emcee",
+    "means": [
+      0.3456727649239554,
+      0.643486747411849,
+      0.04666164429625419
+    ],
+    "stds": [
+      0.00433305518338216,
+      0.0032997136709813695,
+      0.007349587286423737
+    ],
+    "rhat": [
+      1.115084034376215,
+      1.1306824266812339,
+      1.0826341864898212
+    ],
+    "names": [
+      "Om",
+      "h",
+      "beta"
+    ],
+    "nwalkers": 16,
+    "nsteps": 200,
+    "nburn": 50,
+    "seed": 42
+  },
+  "w0_wa_posterior": {
+    "n": 240,
+    "w0_mean": -0.9092240299129545,
+    "w0_std": 0.017384252709594535,
+    "wa_mean": -0.7953694981981304,
+    "wa_std": 0.1467716221505571,
+    "lcdm_in_2sigma": false
+  },
+  "K_flags": {
+    "K1_dchi2": -14.239032978389105,
+    "K1_fail": false,
+    "K2_wa": -0.9073958706612555,
+    "K2_fail": false,
+    "K3_phantom": false,
+    "K3_fail": false,
+    "K4_gamma": 0.0054439491842182405,
+    "K4_fail_universal": true,
+    "K4_fail_dark_only_embed": false,
+    "K9_rhat_max": 1.1306824266812339,
+    "K9_fail": true,
+    "K10_sign_consistent": true,
+    "K11_cs2": 1.0,
+    "K11_fail": false,
+    "K12_lcdm_in_2sigma": false
+  },
+  "Q_flags": {
+    "Q1_all_K_clear": false,
+    "Q2_excludes_LCDM_or_dchi2_le_-6": true,
+    "Q3_toy_L4_sign_match": true,
+    "Q4_cs2_positive": true,
+    "Q5_cassini_ok": false,
+    "Q6_theory_score_ge_6": true
+  },
+  "keep": false,
+  "notes": "Background: analytic closed form (exact toy). mu_of_a = 1 + 2 beta^2. Cassini fails for universal coupling (gamma-1 = 2 beta^2). Dark-only embedding (a la C10k) required for Q5 pass; C41 itself is scored as universal fluid toy."
+}

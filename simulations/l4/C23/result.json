@@ -1,0 +1,84 @@
+{
+  "status": "ok",
+  "candidate": "C23",
+  "name": "Asymptotic Safety effective RVM (Bonanno-Platania 2018)",
+  "family": "Quantum-gravity RG",
+  "theta_names": [
+    "nu_eff"
+  ],
+  "Omega_m": 0.33252507913230694,
+  "h": 0.6537264238082331,
+  "theta": [
+    0.009044025205195639
+  ],
+  "chi2_bao": 18.64951044911186,
+  "chi2_sn": 1641.6578847698902,
+  "chi2_cmb": 0.14285091501031005,
+  "chi2_rsd": 7.736745463678863,
+  "chi2_total": 1668.1869915976913,
+  "delta_chi2_vs_lcdm": -8.707960851740836,
+  "w0": -0.9806464059712394,
+  "wa": -0.14725793556491248,
+  "phantom_cross": false,
+  "gamma_minus_one": 0.0,
+  "c_s_squared": 1.0,
+  "theory_score": 6,
+  "unitarity_bound_abs_nu_eff": 0.03,
+  "mcmc": {
+    "backend": "emcee",
+    "means": [
+      0.3322571810816938,
+      0.654110234435214,
+      0.008987221869192456
+    ],
+    "stds": [
+      0.004677797336851713,
+      0.005614147526398425,
+      0.002921252823805932
+    ],
+    "rhat": [
+      1.0535824776649951,
+      1.058022004680122,
+      1.0615989404846915
+    ],
+    "nu_eff_median": 0.008995448572714677,
+    "nu_eff_1sigma": [
+      0.006157830237875006,
+      0.011973368770474857
+    ],
+    "nu_eff_2sigma": [
+      0.0030240166454063144,
+      0.014503303716338378
+    ],
+    "lcdm_in_2sigma": false,
+    "posterior_at_boundary": false
+  },
+  "K_flags": {
+    "K1": false,
+    "K2": false,
+    "K3": false,
+    "K4": false,
+    "K5": false,
+    "K6": false,
+    "K7": false,
+    "K8": false,
+    "K9": true,
+    "K10": false,
+    "K11": false,
+    "K12": false
+  },
+  "Q_flags": {
+    "Q1": false,
+    "Q2": true,
+    "Q3": true,
+    "Q4": true,
+    "Q5": true,
+    "Q6": true
+  },
+  "failed_K": [
+    "K9"
+  ],
+  "keep": false,
+  "verdict": "LCDM excluded at 2 sigma",
+  "notes": "Asymptotic Safety RG identification k=xi H gives effective RVM. Background closed form identical to C5r. Sola unitarity |nu_eff|<0.03. L3 joint posterior saturated the upper bound - expect the same in L4."
+}

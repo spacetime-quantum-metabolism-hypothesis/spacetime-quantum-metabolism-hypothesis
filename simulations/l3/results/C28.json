@@ -1,0 +1,33 @@
+{
+  "status": "ok",
+  "ID": "C28",
+  "name": "Maggiore-Mancarella RR non-local",
+  "family": "Non-local",
+  "Omega_m": 0.31136609031103046,
+  "h": 0.6759072035927927,
+  "theta": [
+    -0.10865679103310139,
+    0.95,
+    0.154832434677458
+  ],
+  "theta_names": [
+    "c0",
+    "a_shift",
+    "Delta_a"
+  ],
+  "chi2_bao": 8.859455328530673,
+  "chi2_sn": 1637.4227853836717,
+  "chi2_cmb": 0.03092815933905027,
+  "chi2_rsd": 7.04656455583636,
+  "chi2_total": 1653.3597334273777,
+  "w0": -0.8636200853949116,
+  "wa": -0.31169068933112304,
+  "phantom_cross": false,
+  "gamma_minus_one": 0.0,
+  "theory_score": 6,
+  "sqmh_sign_condition": "leading-V sign ambiguity \u2192 full eqs needed",
+  "notes": "Dirian 2015 |w_a|\u22480.19 (full). Leading toy sign flip caveat.",
+  "keep": true,
+  "failed_K": [],
+  "delta_chi2": -23.535219022054434
+}

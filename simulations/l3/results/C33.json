@@ -1,0 +1,31 @@
+{
+  "status": "ok",
+  "ID": "C33",
+  "name": "f(Q) teleparallel (Frusciante 2021)",
+  "family": "Modified gravity",
+  "Omega_m": 0.3092548636696064,
+  "h": 0.6777515908837224,
+  "theta": [
+    -0.18893812854466432,
+    2.9999999140236637
+  ],
+  "theta_names": [
+    "f_1",
+    "n"
+  ],
+  "chi2_bao": 8.928106436008473,
+  "chi2_sn": 1638.0171037225875,
+  "chi2_cmb": 0.2047713753024899,
+  "chi2_rsd": 6.99378094466967,
+  "chi2_total": 1654.143762478568,
+  "w0": -0.8625458588418459,
+  "wa": -0.24375480732916852,
+  "phantom_cross": false,
+  "gamma_minus_one": 0.0,
+  "theory_score": 7,
+  "sqmh_sign_condition": "f_1>0 branch \u2192 w_a<0 (R3 numerical verification)",
+  "notes": "f(Q)=Q+f_1 H0^2 (Q/6H0^2)^n, n>=1. R3 confirms f_1>0 for w_a<0.",
+  "keep": true,
+  "failed_K": [],
+  "delta_chi2": -22.75118997086406
+}

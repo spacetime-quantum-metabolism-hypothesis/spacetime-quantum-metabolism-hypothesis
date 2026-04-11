@@ -1,0 +1,31 @@
+{
+  "status": "ok",
+  "ID": "C10k",
+  "name": "Dark-sector-only coupled quintessence",
+  "family": "IDE",
+  "Omega_m": 0.30716109147977033,
+  "h": 0.679768480588179,
+  "theta": [
+    0.09335623458443999
+  ],
+  "theta_names": [
+    "beta_d"
+  ],
+  "chi2_bao": 10.459761627724175,
+  "chi2_sn": 1639.2564170425474,
+  "chi2_cmb": 0.3922499909543793,
+  "chi2_rsd": 6.944603538566878,
+  "chi2_total": 1657.0530321997928,
+  "w0": -0.9066437654155601,
+  "wa": 6.020011188378735e-16,
+  "phantom_cross": false,
+  "gamma_minus_one": 0.0,
+  "theory_score": 8,
+  "sqmh_sign_condition": "beta_d>0 \u2192 matter\u2192DE flow",
+  "notes": "Dark-only coupling \u2192 Einstein-frame baryons decouple, gamma=1 exact. G_eff/G = 1+2\u03b2_d\u00b2 on DM only.",
+  "keep": false,
+  "failed_K": [
+    "K2 |w_a|=0.0000<0.125"
+  ],
+  "delta_chi2": -19.841920249639315
+}

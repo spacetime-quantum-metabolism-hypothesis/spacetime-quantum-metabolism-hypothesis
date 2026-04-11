@@ -1,0 +1,75 @@
+{
+  "ID": "C11D_reeval",
+  "phase": "L5-E",
+  "background_method": "Copeland-Liddle-Wands 1998 quintessence autonomous system, exponential V(phi), A_prime=0 pure disformal limit",
+  "scan_rows": [
+    {
+      "lam": 0.0,
+      "Om": 0.3203645030316817,
+      "h": 0.6690950792462829,
+      "chi2": 1676.8948849139463
+    },
+    {
+      "lam": 0.2,
+      "Om": 0.31988040847200166,
+      "h": 0.6694273080620159,
+      "chi2": 1675.0564445875175
+    },
+    {
+      "lam": 0.4,
+      "Om": 0.3183387713255422,
+      "h": 0.6706321447238063,
+      "chi2": 1669.9021727465724
+    },
+    {
+      "lam": 0.6,
+      "Om": 0.31570689286812625,
+      "h": 0.67267781443621,
+      "chi2": 1662.6847770423371
+    },
+    {
+      "lam": 0.8,
+      "Om": 0.3117345177138085,
+      "h": 0.6757923828075607,
+      "chi2": 1656.159055011268
+    },
+    {
+      "lam": 1.0,
+      "Om": 0.30632946136687156,
+      "h": 0.6801790785776358,
+      "chi2": 1656.1379276199034
+    },
+    {
+      "lam": 1.2,
+      "Om": 0.2992055933447761,
+      "h": 0.6864467765279751,
+      "chi2": 1675.4967022891924
+    }
+  ],
+  "best_fit": {
+    "Om": 0.30926244255327184,
+    "h": 0.6777604196143553,
+    "lam": 0.9,
+    "chi2_bao": 9.05139317280534,
+    "chi2_sn": 1638.5369901045635,
+    "chi2_cmb": 0.19070075808184173,
+    "chi2_rsd": 6.9939647337559805,
+    "chi2_total": 1654.7730487692068
+  },
+  "lcdm_chi2": 1676.8949524494321,
+  "delta_chi2_vs_lcdm": -22.121903680225387,
+  "w_direct": {
+    "w_today": -0.8766141636379087,
+    "w_min": -0.9950918909168961,
+    "w_max": -0.8766141636379087
+  },
+  "cpl_projection": {
+    "w0": -0.8748359108991021,
+    "wa": -0.1854935344395135
+  },
+  "phantom_crossing": false,
+  "phantom_guard": "|w+1|>1e-3 both sides",
+  "verdict": "PROMOTE",
+  "rationale": "Pure-disformal (A'=0) branch integrated via CLW 1998 quintessence ODE has w(z) >= -1 at all z (exactly, by the positivity of the kinetic term in minimally coupled quintessence). K3 phantom crossing CLEARED. The L4 K3 hit was a leading-order CPL thawing-template artifact exactly as suspected. delta_chi2 vs LCDM = -22.122, w_today = -0.8766, w_a(CPL) = -0.1855.",
+  "runtime_sec": 196.19827842712402
+}

@@ -1,0 +1,33 @@
+{
+  "status": "ok",
+  "ID": "C27",
+  "name": "Deser-Woodard non-local f(X)",
+  "family": "Non-local",
+  "Omega_m": 0.31136626514928134,
+  "h": 0.6759072403493088,
+  "theta": [
+    -0.1086550543784668,
+    0.95,
+    0.15483102085303424
+  ],
+  "theta_names": [
+    "c0",
+    "a_shift",
+    "Delta_a"
+  ],
+  "chi2_bao": 8.859515351488431,
+  "chi2_sn": 1637.4227352713974,
+  "chi2_cmb": 0.030913750649295357,
+  "chi2_rsd": 7.046569057803498,
+  "chi2_total": 1653.3597334313386,
+  "w0": -0.8636216591368636,
+  "wa": -0.31168771253383704,
+  "phantom_cross": false,
+  "gamma_minus_one": 0.0,
+  "theory_score": 7,
+  "sqmh_sign_condition": "auxiliary X frozen in Schwarzschild \u2192 \u03b3=1",
+  "notes": "Koivisto 2008 static gamma=1 from auxiliary frozen. Leading-V amplitude fit; Phase 5 full Dirian 2015 eqs needed.",
+  "keep": true,
+  "failed_K": [],
+  "delta_chi2": -23.535219018093585
+}

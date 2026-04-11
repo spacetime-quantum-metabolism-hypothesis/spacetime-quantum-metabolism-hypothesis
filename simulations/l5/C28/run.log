@@ -1,0 +1,7 @@
+[L5-A C28] MCMC start nwalkers=16 nsteps=300 nburn=75 reduced=True
+[L5-A C28]   done in 11.3 min  rhat_max=1.8171
+[L5-A C28]   samples shape (352, 5)
+[L5-A C28]   chi2_mean=1658.2266458383504
+[L5-A C28]   json saved
+[L5-A C28]   corner -> D:\_dev\paper\sqmh\paper\figures\l5_C28_corner.png
+[L5-A C28]   chi2_mean=1658.227  dchi2=-18.668  K13_pass=False

@@ -1,30 +1,40 @@
 [Phase 3] Loaded 1829 DESY5 SNe
 
-[Phase 3] Running LCDM MCMC ...
-  [MCMC] burn-in 200 steps x 20 walkers...
-  [MCMC] sampling 700 steps...
-  [MCMC] done in 110.3s, acceptance=0.59, tau=[27.55476431 33.35229408 34.22220679 20.71934548]
+[Phase 3] Loading cached LCDM chain ...
   param           median     -1sig     +1sig
-  Om              0.3124    0.0025    0.0026
-  h               0.6777    0.0022    0.0023
+  Om              0.3129    0.0026    0.0026
+  h               0.6781    0.0024    0.0022
   omega_b         0.0224    0.0001    0.0001
-  sigma_8_0       0.8101    0.0163    0.0164
-  best chi2 = 1683.10 at theta = [0.31253371 0.6778476  0.02242198 0.81234711]
+  sigma_8_0       0.8095    0.0159    0.0182
+  best chi2 = 1683.11 at theta = [0.31277996 0.67768751 0.02243563 0.80963748]
 
-[Phase 3] Running V_RP MCMC ...
+[Phase 3] Loading cached V_RP chain ...
+  param           median     -1sig     +1sig
+  Om              0.3222    0.0036    0.0040
+  h               0.6717    0.0037    0.0033
+  omega_b         0.0225    0.0001    0.0001
+  sigma_8_0       0.8052    0.0180    0.0173
+  beta            0.1069    0.0430    0.0602
+  n               0.0959    0.0356    0.0513
+  best chi2 = 1681.73 at theta = [0.32172371 0.67193817 0.02249929 0.81666691 0.05878442 0.05147036]
+
+[Phase 3] Running V_exp MCMC ...
   [MCMC] burn-in 200 steps x 20 walkers...
   [MCMC] sampling 600 steps...
-  [MCMC] done in 980.7s, acceptance=0.49, tau=[32.78263549 33.33670697 32.14037797 41.04297053 33.75840316 39.88801897]
+  [MCMC] done in 840.4s, acceptance=0.48, tau=[38.09200175 40.35907666 33.03987681 35.69472877 37.56982125 37.3986653 ]
   param           median     -1sig     +1sig
-  Om              0.3228    0.0044    0.0039
-  h               0.6712    0.0033    0.0036
+  Om              0.3224    0.0040    0.0044
+  h               0.6712    0.0034    0.0036
   omega_b         0.0225    0.0001    0.0001
-  sigma_8_0       0.8075    0.0169    0.0182
-  beta            0.0977    0.0379    0.0512
-  n               0.0865    0.0254    0.0416
-  best chi2 = 1681.73 at theta = [0.32222174 0.67027694 0.02246947 0.80782204 0.06602581 0.05694863]
+  sigma_8_0       0.8061    0.0157    0.0176
+  beta            0.1023    0.0408    0.0644
+  lam             0.0896    0.0285    0.0551
+  best chi2 = 1681.81 at theta = [0.32095981 0.67277146 0.02246025 0.81286482 0.07711876 0.06254389]
 
-[Phase 3] Data points: 1853
-[Phase 3] Delta chi2 (V_RP - LCDM) = -1.37
-[Phase 3] Delta AIC  (V_RP - LCDM) = +2.63
+[Phase 3] N = 1853  (ln N = 7.525)
+  model       chi2_min   k         AIC         BIC      dAIC      dBIC
+  LCDM         1683.11   4     1691.11     1713.20     +0.00     +0.00
+  V_RP         1681.73   6     1693.73     1726.88     +2.62    +13.67
+  V_exp        1681.81   6     1693.81     1726.96     +2.71    +13.76
 [Phase 3] Figure saved: D:\_dev\paper\sqmh\figures\13_phase3_mcmc.png
+[Phase 3] Figure saved: D:\_dev\paper\sqmh\figures\14_phase3_vexp.png

@@ -1,0 +1,84 @@
+{
+  "ID": "C27",
+  "name": "Deser-Woodard non-local f(box^-1 R)",
+  "family": "Non-local",
+  "Om": 0.3190524191891114,
+  "h": 0.6712215668512056,
+  "theta": [
+    0.0032004906017447043,
+    1.274037663346398,
+    0.42824097094332275
+  ],
+  "theta_names": [
+    "c0",
+    "X_shift",
+    "dX"
+  ],
+  "chi2_bao": 24.09110747325021,
+  "chi2_sn": 1643.9632199941566,
+  "chi2_cmb": 1.9433691769463055,
+  "chi2_rsd": 7.264642469313076,
+  "chi2_total": 1677.2623391136663,
+  "delta_chi2": 0.36738666423411814,
+  "w0": -1.0004878565430229,
+  "wa": 0.014177551643697755,
+  "phantom_cross": true,
+  "cs2_min": 0.9999844804907293,
+  "gamma_minus_one": 0.0,
+  "toy_wa_L3": -0.31168771253383704,
+  "toy_w0_L3": -0.8636216591368636,
+  "toy_full_consistent": false,
+  "mcmc_backend": "emcee",
+  "mcmc_means": [
+    0.3190524191891114,
+    0.6712215668512056,
+    0.0032004906017447043,
+    1.274037663346398,
+    0.42824097094332275
+  ],
+  "mcmc_stds": [
+    0.018162854651066804,
+    0.018767802076944697,
+    0.08210310482897902,
+    0.6547007748928807,
+    0.2735027426120212
+  ],
+  "mcmc_rhat": [
+    1.176284505101507,
+    1.1757724409572845,
+    1.1777068278046485,
+    1.249530967433266,
+    1.1918121580240366
+  ],
+  "mcmc_names": [
+    "Om",
+    "h",
+    "c0",
+    "X_shift",
+    "dX"
+  ],
+  "x_map": [
+    0.29603404974811837,
+    0.6974104077480465,
+    0.10960330679128999,
+    0.4276406967027082,
+    0.12791001746770136
+  ],
+  "killed_K": [
+    "K2",
+    "K3",
+    "K9",
+    "K10",
+    "K12"
+  ],
+  "keep": false,
+  "Q_flags": {
+    "Q1_all_K_clear": false,
+    "Q2_posterior_excludes_lcdm_or_dchi2_le_-6": false,
+    "Q3_toy_full_sign_mag_consistent": false,
+    "Q4_cs2_positive": true,
+    "Q5_cassini_num_ok": true,
+    "Q6_theory_score_ge_6": true
+  },
+  "notes": "Localised 4-ODE (U, V) self-consistently iterated with modified Friedmann. Cassini gamma-1=0 exact via R=0 in Schwarzschild (Koivisto 2008)."
+}

@@ -1,0 +1,29 @@
+{
+  "status": "ok",
+  "ID": "C26",
+  "name": "Perez-Sudarsky unimodular diffusion",
+  "family": "Unimodular",
+  "Omega_m": 0.34974617219936466,
+  "h": 0.64,
+  "theta": [
+    0.0939026752288531
+  ],
+  "theta_names": [
+    "alpha_Q"
+  ],
+  "chi2_bao": 16.41991060029254,
+  "chi2_sn": 1641.4186116616902,
+  "chi2_cmb": 0.8122714884017109,
+  "chi2_rsd": 8.484668913240345,
+  "chi2_total": 1667.1354626636246,
+  "w0": -0.8996303960598568,
+  "wa": -1.0019097189172501,
+  "phantom_cross": false,
+  "gamma_minus_one": 0.0,
+  "theory_score": 9,
+  "sqmh_sign_condition": "alpha_Q>0: matter\u2192\u039b drift (DESI sign)",
+  "notes": "Diffusion J^0=\u03b1_Q \u03c1_c0 (H/H0). Most direct SQMH L0/L1 metabolism interpretation.",
+  "keep": true,
+  "failed_K": [],
+  "delta_chi2": -9.759489785807546
+}

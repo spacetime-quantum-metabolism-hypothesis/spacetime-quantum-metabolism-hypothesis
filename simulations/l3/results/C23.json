@@ -1,0 +1,29 @@
+{
+  "status": "ok",
+  "ID": "C23",
+  "name": "Asymptotic Safety (Bonanno-Platania eff RVM)",
+  "family": "Quantum-gravity RG",
+  "Omega_m": 0.30426886726737185,
+  "h": 0.6866239598222723,
+  "theta": [
+    0.05
+  ],
+  "theta_names": [
+    "nu_eff"
+  ],
+  "chi2_bao": 23.62836738863652,
+  "chi2_sn": 1643.7443928872697,
+  "chi2_cmb": 2.4076038763031367,
+  "chi2_rsd": 6.88200879090392,
+  "chi2_total": 1676.662372943113,
+  "w0": -1.0058135300331363,
+  "wa": 0.28105550632662063,
+  "phantom_cross": false,
+  "gamma_minus_one": 0.0,
+  "theory_score": 6,
+  "sqmh_sign_condition": "nu_eff<0 for w_a<0. |\u03bd|<0.03 unitarity bound",
+  "notes": "k=\u03beH identification (\u03be=O(1)). Background identical to RVM up to sign convention.",
+  "keep": true,
+  "failed_K": [],
+  "delta_chi2": -0.23257950631909807
+}

@@ -1,0 +1,31 @@
+{
+  "status": "ok",
+  "ID": "C32",
+  "name": "Bare Mimetic gravity",
+  "family": "Mimetic",
+  "Omega_m": 0.32030408500044383,
+  "h": 0.6691238563494368,
+  "theta": [
+    -1.0
+  ],
+  "theta_names": [
+    "lambda"
+  ],
+  "chi2_bao": 23.615637942255233,
+  "chi2_sn": 1642.5009946380615,
+  "chi2_cmb": 2.234896198934388,
+  "chi2_rsd": 7.303844695841685,
+  "chi2_total": 1675.6553734750928,
+  "w0": -1.0,
+  "wa": 0.0,
+  "phantom_cross": false,
+  "gamma_minus_one": 0.0,
+  "theory_score": 5,
+  "sqmh_sign_condition": "bare only. HD extensions break \u03b3=1.",
+  "notes": "(dphi)^2=-1 constraint \u2192 scalar non-propagating at leading order.",
+  "keep": false,
+  "failed_K": [
+    "K2 |w_a|=0.0000<0.125"
+  ],
+  "delta_chi2": -1.239578974339338
+}

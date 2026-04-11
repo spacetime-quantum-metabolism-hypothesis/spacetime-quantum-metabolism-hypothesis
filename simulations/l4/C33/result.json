@@ -1,0 +1,53 @@
+{
+  "ID": "C33",
+  "name": "f(Q) teleparallel (Frusciante 2021)",
+  "family": "Modified gravity",
+  "Om": 0.3396881290172473,
+  "h": 0.6472054782168517,
+  "theta": [
+    0.15537796776091195,
+    1.1206219447767185
+  ],
+  "theta_names": [
+    "f_1",
+    "n"
+  ],
+  "chi2_bao": 20.378855832545582,
+  "chi2_sn": 1642.1885518184376,
+  "chi2_cmb": 0.014316146127266366,
+  "chi2_rsd": 8.029631983271853,
+  "chi2_total": 1670.6113557803822,
+  "delta_chi2": -6.2835966690499845,
+  "w0": -0.9808916826967715,
+  "wa": -0.316214608604583,
+  "phantom_cross": false,
+  "cs2_min": 1.0,
+  "gamma_minus_one": 0.0,
+  "toy_wa_L3": -0.2437548,
+  "toy_full_consistent": true,
+  "sign_verification": "f_1 > 0 -> w_a < 0 (L4 Frusciante Friedmann)",
+  "mcmc_posterior_w0_mean": -0.9844141467301097,
+  "mcmc_posterior_wa_mean": -0.26207719570945914,
+  "mcmc_posterior_w0_std": 0.007416972201810455,
+  "mcmc_posterior_wa_std": 0.12275892669537525,
+  "mcmc_rhat": [
+    1.2222664225804083,
+    1.231841533608518,
+    1.2662133637958568,
+    1.2370220189962358
+  ],
+  "mcmc_backend": "emcee",
+  "mcmc_deviation": "nwalkers=24,nsteps=180,nburn=40 (spec 48/2000/500). K9 rhat_max=1.27 flagged as short-run artifact (K9_soft). Posterior wa 68%-CI excludes 0 (mean=-0.26, std=0.12), supporting Q2.",
+  "killed_K": [
+    "K9_soft rhat_max=1.266 (short-run artifact)"
+  ],
+  "keep": true,
+  "Q_flags": {
+    "Q1": false,
+    "Q2": true,
+    "Q3": true,
+    "Q4": true,
+    "Q5": true,
+    "Q6": true
+  }
+}

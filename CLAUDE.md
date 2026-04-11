@@ -44,3 +44,44 @@
 - Compressed CMB 용 `_HighZBridge` 는 **pure LCDM tail** (z>Z_CUT) 사용, 절대 low-z 와 high-z 를 `e_low/e_high` 로 rescale 금지. backward ODE 가 phi_N→√6 근방으로 가면 rescale factor 가 theta* 적분에 spurious 곱수로 들어가 sound horizon 오염.
 - Growth ODE 결과 검증 시 `D_today>0` 만 검사 금지. `D_raw>0 전체`, `D_N_raw finite`, `D_today finite` 모두 확인해야 f=D_N/D, D/D_today 에서 nan 전파 방지.
 - Phase 별 중복 상수 (RSD 데이터, index) 는 **import 시 assertion 으로 drift guard** 걸어 둔다. `assert np.allclose(phase3.X, phase2.X)`.
+- k-essence / quintessence 배경 ODE 는 **forward shooting** (N_ini<0 matter era → N_end=0 today) 강제. Backward (오늘→과거) 는 `phi_N → √6` phantom 경계 폭주로 w(z), Om_phi 왜곡. `phase3.6 B3 kessence.py` 참조.
+- k-essence `K(X,phi) = X + g X^2/M^4` 에서 **분모 `K_X + 2 X K_{XX} = 1 + 6 g X` 부호 검사** 필수. 음수면 ghost 영역이므로 return None 으로 즉시 reject. 소리속도 `c_s^2 = K_X / (K_X + 2 X K_{XX})` 양수 조건과 동치.
+- Unscreened coupled-quintessence `|gamma-1| = 2β²/(1+β²)` 은 Cassini `|γ-1|<2.3e-5` 과 `|β|<3.4e-3` 에서 충돌. Phase3 posterior `β~0.1` 시 Vainshtein 가정 (cubic Galileon `M^4~M_P² H_0²`) 없이는 **죽음**. screening 없이 β 자유화 시도 금지.
+- **L2 재설계**: universal ξφT^α_α coupling 은 Cassini 자동 984× 위반. C10k (sector-selective dark-only) 또는 C11D (disformal `g̃=Ag+B∂φ∂φ`) 구조만 C1-C4 4/4 통과. baryon 을 Einstein frame 에 분리 유지 필수.
+- RVM `Λ(H²)=Λ₀+3νH²` 수정 Friedmann 에서 `w_a` **부호는 ν 부호와 동일**. DESI `w_a<0` 정합성 위해서는 ν<0 branch (Gómez-Valent-Solà ApJ 975 64 2024). ν>0 (Solà 2022 원본) 은 부호 반대.
+- Chern-Simons gravity `bRR̃` 의 정적 구형 PPN 기여는 Pontryagin 소멸로 0 (Schwarzschild 는 Type D, 자기 Weyl = 0). Kerr rotation 있는 경우만 gravitomagnetic 수정.
+- Disformal coupling `g̃=Ag+B∂φ∂φ` 는 `A'=0` pure disformal 한도에서 정적 γ=1 exact (Zumalacárregui-Koivisto-Bellini 2013). A'≠0 conformal 부분이 γ-1 주원인.
+- Python 식별자에 공백 금지. `R_rir j` 같은 변수명은 SyntaxError.
+- `print('ν')` 처럼 non-ASCII 유니코드 print 는 cp949 환경에서 깨짐 (`��` 출력). 변수명은 ASCII, 라벨만 유니코드.
+- **C10k (dark-only) 수락은 PPN 한정**. `G_eff/G = 1+2β_d²` 로 DM linear growth 증폭 → `β_d~0.107` 이면 `sigma_8` 2.3% 상승, S_8 tension `+6.6 chi^2` 악화. "Cassini 통과"와 "S_8 완화"를 동일시 금지.
+- Disformal IDE toy `w(z)` 에 `np.sign(...)` 같은 ad hoc phantom flip 금지. `w_a` 부호 주장은 반드시 full Boltzmann (hi_class disformal branch) 또는 Sakstein-Jain 해석 공식 직접 인용 필요. Leading-order exp template 은 `w_a>0` 방향으로 편향.
+- RVM ν 스캔 BAO-only 는 `|nu|~0.006` 에서 `Delta chi2 ~ -1.6` 개선. Phase 3 joint (BAO+SN+CMB+RSD) 에서는 CMB 제약으로 `|nu|<0.001` 로 축소 가능 — BAO-only 결과를 joint 결론으로 혼동 금지.
+- **L2 R2 C23 Asymptotic Safety**: effective RG parametrisation `nu_eff * (H^2/H0^2 - 1)` 에서 `nu_eff<0` 만 `w_a<0` 생성. Bonanno-Platania 2018 의 `k=ξH` identification 은 effective 수준 선택이며 ξ=O(1) 가정. `|nu_eff|~0.035` 는 Sola unitarity bound `|ν|<0.03` 을 **살짝 초과** — Phase 5 MCMC 에서 bound 재확인 필수.
+- **L2 R2 C26 Perez-Sudarsky diffusion**: `J^0 > 0` (matter → Λ drift) 방향만 `w_a<0`. `J^0<0` 은 DESI 반대 부호. Toy ansatz `J^0 = α_Q ρ_c0 (H/H0)` 에서 `α_Q~0.22` 가 DESI `wa=-0.83` 재현. α_Q 미시 기원 (CSL, 대사공리 L0/L1) 은 Phase 5 이론 정합성.
+- **L2 R2 C27 Deser-Woodard non-local**: `f(X)=c0 tanh(...)` template 의 `w_a` 는 **c0 에 독립** (log 비 미분에서 상수 소거). Amplitude 는 `X_shift` 등 shape 파라미터로만 제어. 정적 `γ=1` 은 Schwarzschild `R=0` → auxiliary X frozen (Koivisto PRD 77 123513 2008), Vainshtein 과 무관.
+- **L2 R2 C28 RR non-local** 의 leading-V 근사 (`ρ_DE ∝ h²V/4`) 는 `w_a` **부호 반전** — `+0.55` vs Dirian 2015 `-0.19`. 정확 계산은 Dirian Eq 2.5~2.8 full 배경 방정식 (U, V, UV cross-term) 필수. leading-V toy 로 "structural wa<0" 주장 금지.
+- **Non-local gravity 모델 (C27, C28)** 의 정적 PPN γ=1 은 auxiliary 필드 frozen 이 원인이지 screening 이 아님. 해석 혼동 금지.
+- numpy 2.x: `trapz → trapezoid` 는 `from numpy import trapz` 구문에서도 에러. 직접 `np.trapezoid` 호출만 안전. (이미 기재된 규칙이나 L2 R2 에서 재발 확인됨 → 강조.)
+- **L2 R3 C33 f(Q)**: `f(Q)=Q+f_1 H_0^2 (Q/6H_0^2)^n` 에서 `(1-1/(2n))` 인자는 `n=0.5` 에서 0 → 전 `f_1` 무효. `n≥1` 에서만 검증 의미. 또한 `w_a<0` 부호는 **`f_1>0` branch** (수치 검증). 수식 유도로 `f_1<0` 예측 시 부호 오해석 — Python toy 필수 재확인.
+- **L2 R3 Chaplygin family 폐기**: vanilla GCG 와 Modified Chaplygin (`p=Bρ-A/ρ^α`) 모두 실제 스캔 `(A,B,α)` 전 범위에서 `w_a>0` 만 생산. L2 C4 구조적 불통과 확정. 신규 토이에서 Chaplygin 변종 재탐색 금지.
+- **L2 R3 Wetterich fluid IDE**: coupled continuity `dρ_m/dN=-3ρ_m+3βρ_DE, dρ_DE/dN=-3βρ_DE` 토이는 **`β≤0.05` 선형 regime** 에서만 유효. `β=0.107` (Phase 3 posterior) 대입 시 CPL fit `w0=+4.3, wa=-25` 로 발산. Phase 3 β 직접 상속 주장은 full Boltzmann (hi_class IDE) 필수.
+- **L2 R3 Mimetic**: `(∂φ)²=-1` 제약은 **bare mimetic 에서만** `γ=1` (scalar 비전파). Chamseddine 2014 HD extension `L ⊃ α(□φ)²` 은 propagating scalar 부활 → Cassini 위반. "Mimetic 계열" 뭉뚱그려 C1 PASS 주장 금지, "bare vs HD" 명시 필수.
+- **L2 수식 예측 ≠ 수치 검증**: R3 에서 C33 부호 예측 오류 + C37 전면 실패 발생. 모든 L2 후보는 해석 유도만으로 등급 부여 금지, 반드시 Python toy 로 `w_a` 부호 실측 후 `A/B/C` 판정.
+- **L3 배경 fit 에서 ODE 폭주는 해석 toy 로 교체**. `solve_ivp` 기반 C26 (Perez-Sudarsky diffusion), C41 (Wetterich coupled continuity), C33 (f(Q) self-consistent Newton) 가 고z 경계에서 blow-up. 해석 drift / closed-form particular+homogeneous / 저z 전개 로 대체하면 수렴.
+- **L3 CPL 추출 시 `rho_de_eff = E²-Om(1+z)³` 음수 artifact 주의**. IDE (C10k, C41) 는 matter ↔ DE 재분배 때문에 이 bookkeeping 차이가 z~1.9 근처에서 음수로 넘어가 `d ln rho_de / d ln a` 발산. `w0, wa` 는 반드시 **E²(z)↔ CPL E²(z) 직접 least_squares fit** (z∈[0.01, 1.2]) 으로.
+- **L3 optimiser boundary 박힘**: Om∈[0.20, 0.40], h∈[0.60, 0.78] 넓은 bounds 는 Nelder-Mead 를 경계로 밀어버림. `Om∈[0.28, 0.36], h∈[0.64, 0.71]` LCDM baseline 근방 tight box + 파라미터 클리핑 + smooth penalty 로 교체.
+- **L3 Fluid-level toy 는 배경 w_a=0 구조적**. C10k `ρ_DE ∝ a^(-3β_d)` 는 w=const. K2 `|w_a|<0.125` 로 구조 탈락. 이런 모델은 **성장 채널 (G_eff/G, RSD Δχ²) 기준**으로 재평가해야 함.
+- **L3 K2 경계값 0.125 에 ±0.01 이내 탈락은 toy 제한일 가능성**. C11D |w_a|=0.1149 로 0.009 미달 kill — hi_class full 에서 재판정 필수. 프레임워크 탈락 ≠ 이론 탈락.
+- **L3 C33 f(Q) 부호 재역전**: L2 R3 에서 수치 검증한 `f_1>0 → w_a<0` 이 L3 저z 전개 toy `rho_de=OL0[1+f_1(a^α-1)]` 에서는 `f_1<0 → w_a<0` 로 역전. **Toy 선택이 부호를 바꿀 수 있음**. Phase 5 는 Frusciante 2021 원본 배경 방정식만 신뢰.
+- **L3 RVM 계열 (C5r, C23, C6s) joint 에서 ν→upper bound 박힘**. BAO-only 의 ν<0 선호가 SN+CMB+RSD 와 joint 에서 희석 → LCDM 등가로 나타남. 정상 현상이며 RVM 가 "죽은 것" 이 아니라 "데이터가 LCDM 와 구분 못함" 을 의미.
+- **L3 에서 C26 분석 toy**: `ρ_m(a)=Om·a^(-3)(1-α_Q(1-a³)), ρ_Λ(a)=OL0+α_Q·Om·(1-a³)` drift form 은 α_Q>0 에서 w_a≈-1.0 을 직접 재현. Phase 5 full diffusion ODE 대체 전 안전한 배경 수준 proxy.
+- **L4 C27 붕괴**: Deser-Woodard `f(□⁻¹R)` tanh 토이의 w_a<0 은 **full localised (U,V) 전개에서 posterior 가 c0→0 으로 붕괴**. 비국소 leading-V 또는 tanh-f 토이 부호는 full-field 없이 인용 금지.
+- **L4 C26 K10 fail**: `J^0=α_Q ρ_c0 (H/H0)` ansatz 는 full ODE 적분에서 exponential depletion → LCDM 복귀. L3 closed-form drift 는 저차 선형 전개. 재공식화 `J^0=α_Q H ρ_m` 시도 필요.
+- **L4 RVM family 전원 wrong-sign**: C5r/C6s/C23 모두 joint posterior ν ≈ +0.009 (SQMH 기대 ν<0 과 반대). RVM 계열 SQMH 후보 사용 전 **사전 joint posterior 부호 확인** 필수.
+- **L4 universal fluid IDE Cassini 구조 위반**: C41 의 `G_eff/G = 1+2β²` 은 `|γ−1| ≈ 5×10⁻³` 로 자동 탈락. 반드시 dark-only embedding 필요.
+- **L4 C11D K3 template artifact**: thawing CPL `w_0=−1+γ²/3, wa=−(2/3)γ²` 저차 전개는 phantom crossing 인공물 생성. K3 hard kill 전 hi_class full 또는 Sakstein-Jain exact 배경 재판정 필수.
+- **L4 MCMC 예산 현실**: joint chi² ≈ 100 ms/call → 48×2000 은 후보당 30–60분. 여러 후보 동시 Windows 실행 timeout. **후보별 분리 세션** 필수.
+- **Python 3.14 + emcee 안정화**: (1) `np.bool_/np.float_` `json.dump` 깨짐 → `_jsonify` 재귀 변환기. (2) Windows OpenMP 멀티스레드 silent death → `OMP/MKL/OPENBLAS_NUM_THREADS=1` + `np.seterr(all='ignore')` + emcee 내부 `np.random.seed(42)`.
+- **sibling background module collision**: 여러 `simulations/*/background.py` 동시 sys.path 시 Python 이름 충돌. 후보 디렉터리 내부 상대 import 또는 파일명 분리.
+- **K10 정의 주의**: K10 (toy↔full 일치) 은 **w_a 부호** 기준. underlying 파라미터 (ν, f_1 등) 부호 역전해도 w_a 동일 부호면 formally PASS 하지만 SQMH 해석은 실패 — 별도 `sqmh_sign_consistent` 플래그 필요.
+- **phantom_crossing numerical guard**: LCDM 근방 (w≡−1) 에서 `np.gradient` 수치 노이즈로 false phantom cross 발생. `common.phantom_crossing` 에 `|w+1|>1e-3` 양측 threshold 필수.

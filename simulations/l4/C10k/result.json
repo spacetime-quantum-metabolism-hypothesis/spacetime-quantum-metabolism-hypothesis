@@ -1,0 +1,102 @@
+{
+  "ID": "C10k",
+  "name": "Dark-only coupled quintessence (L4)",
+  "family": "IDE",
+  "best_fit": {
+    "Om": 0.3167604929694221,
+    "h": 0.6719161024157653,
+    "beta_d": 0.2,
+    "chi2_bao": 17.450323062472084,
+    "chi2_sn": 1642.047758644989,
+    "chi2_cmb": 0.8430286945885312,
+    "chi2_rsd": 7.195482804732997,
+    "chi2_total": 1667.5365932067828
+  },
+  "delta_chi2_vs_lcdm": -9.358359242649385,
+  "cpl": {
+    "w0": -0.973333333333337,
+    "wa": 1.814110196355228e-14,
+    "phantom_cross": false
+  },
+  "growth_channel": {
+    "chi2_lcdm_rsd": 7.3043523993484945,
+    "best_bd": 0.0,
+    "best_rsd_chi2": 7.3043523993484945,
+    "dchi2_rsd_vs_lcdm": 0.0,
+    "sigma8_shift_pct_at_0_107": 0.9598777109204981,
+    "verdict": "CONFIRMED KILL  (RSD channel does not improve; S_8 worsens)"
+  },
+  "growth_fs8": [
+    0.46423829316444165,
+    0.4779675114622743,
+    0.4917245197901849,
+    0.48794619895428626,
+    0.4813070004553181,
+    0.47336624400236177,
+    0.45740558382555624,
+    0.3809478486280349
+  ],
+  "mcmc": {
+    "backend": "emcee",
+    "means": [
+      0.3174723951109545,
+      0.6716414945990612,
+      0.1854615692607524
+    ],
+    "stds": [
+      0.0024715146219811265,
+      0.0025908644104148644,
+      0.019372868093772345
+    ],
+    "rhat": [
+      1.1589750961080916,
+      1.187908282271118,
+      1.1762700719186636
+    ],
+    "names": [
+      "Om",
+      "h",
+      "beta_d"
+    ],
+    "nwalkers": 16,
+    "nsteps": 200,
+    "nburn": 50,
+    "seed": 42
+  },
+  "w0_wa_posterior": {
+    "n": 240,
+    "w0_mean": -0.976819132269664,
+    "w0_std": 0.0041222843912678735,
+    "wa_mean": 2.5425049044026377e-10,
+    "wa_std": 1.0985470683514492e-09,
+    "lcdm_in_2sigma": false
+  },
+  "K_flags": {
+    "K1_dchi2": -9.358359242649385,
+    "K1_fail": false,
+    "K2_wa": 1.814110196355228e-14,
+    "K2_fail": true,
+    "K3_phantom": false,
+    "K3_fail": false,
+    "K4_gamma": 0.0,
+    "K4_fail": false,
+    "K9_rhat_max": 1.187908282271118,
+    "K9_fail": true,
+    "K10_sign_consistent": true,
+    "K11_cs2": 1.0,
+    "K11_fail": false,
+    "K12_lcdm_in_2sigma": false,
+    "growth_dchi2_rsd": 0.0,
+    "sigma8_shift_pct_at_0_107": 0.9598777109204981
+  },
+  "Q_flags": {
+    "Q1_all_K_clear": false,
+    "Q2_excludes_LCDM_or_dchi2_le_-6": true,
+    "Q3_toy_L4_sign_match": true,
+    "Q4_cs2_positive": true,
+    "Q5_cassini_ok": true,
+    "Q6_theory_score_ge_6": true
+  },
+  "keep": false,
+  "notes": "Structural w_a = 0 at background -> fails K2 on background channel. Growth channel re-assessment via G_eff/G = 1+2 beta_d^2. Dark-only coupling preserves Cassini."
+}

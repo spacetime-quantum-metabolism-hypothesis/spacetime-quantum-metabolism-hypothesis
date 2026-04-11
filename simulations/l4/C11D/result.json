@@ -1,0 +1,97 @@
+{
+  "ID": "C11D",
+  "name": "Disformal IDE (L4, thawing CPL template)",
+  "family": "Disformal",
+  "best_fit": {
+    "Om": 0.3102041400965715,
+    "h": 0.6768445076694638,
+    "gamma_D": 0.6583943361015352,
+    "chi2_bao": 8.64426791842732,
+    "chi2_sn": 1638.173314293536,
+    "chi2_cmb": 0.1396089293043778,
+    "chi2_rsd": 7.017121705606521,
+    "chi2_total": 1653.9743128468742
+  },
+  "delta_chi2_vs_lcdm": -22.920639602557912,
+  "cpl": {
+    "w0": -0.8555056327298175,
+    "wa": -0.28898873454034035,
+    "phantom_cross": true
+  },
+  "k2_rejudge": {
+    "max_abs_wa": 6.0,
+    "best_scan_chi2": 1665.4691452997092,
+    "verdict": "KEEP  (K2 passable + K1 not obviously violated at best)"
+  },
+  "growth_fs8": [
+    0.43503766451785947,
+    0.44728397577107665,
+    0.463435784139752,
+    0.46318238675305284,
+    0.4595825195548896,
+    0.4543924280422067,
+    0.4427558596815278,
+    0.37851472518068885
+  ],
+  "mcmc": {
+    "backend": "emcee",
+    "means": [
+      0.310081742875299,
+      0.6769533542454771,
+      0.6504875600892231
+    ],
+    "stds": [
+      0.0030637861870916098,
+      0.0032146410192343176,
+      0.06343477065905281
+    ],
+    "rhat": [
+      1.1004854614352555,
+      1.1679693035668357,
+      1.113733619817841
+    ],
+    "names": [
+      "Om",
+      "h",
+      "gamma_D"
+    ],
+    "nwalkers": 16,
+    "nsteps": 200,
+    "nburn": 50,
+    "seed": 42
+  },
+  "w0_wa_posterior": {
+    "n": 240,
+    "w0_mean": -0.8576139880389875,
+    "w0_std": 0.027364785456587815,
+    "wa_mean": -0.2847720238708,
+    "wa_std": 0.054729570996126575,
+    "lcdm_in_2sigma": false
+  },
+  "K_flags": {
+    "K1_dchi2": -22.920639602557912,
+    "K1_fail": false,
+    "K2_wa": -0.28898873454034035,
+    "K2_fail": false,
+    "K3_phantom": true,
+    "K3_fail": true,
+    "K4_gamma": 0.0,
+    "K4_fail": false,
+    "K9_rhat_max": 1.1679693035668357,
+    "K9_fail": true,
+    "K10_sign_consistent": true,
+    "K11_cs2": 0.8798578890299042,
+    "K11_fail": false,
+    "K12_lcdm_in_2sigma": false
+  },
+  "Q_flags": {
+    "Q1_all_K_clear": false,
+    "Q2_excludes_LCDM_or_dchi2_le_-6": true,
+    "Q3_toy_L4_sign_match": true,
+    "Q4_cs2_positive": true,
+    "Q5_cassini_ok": true,
+    "Q6_theory_score_ge_6": true
+  },
+  "keep": false,
+  "notes": "Pure disformal (A_prime=0) -> gamma-1=0 exact (Z-K-B 2013). Background = thawing template w0=-1+gd^2/3, wa=-(2/3)gd^2. Full hi_class disformal Boltzmann needed for Phase 5."
+}

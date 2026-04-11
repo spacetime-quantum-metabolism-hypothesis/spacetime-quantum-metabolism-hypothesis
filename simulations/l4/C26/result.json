@@ -1,0 +1,53 @@
+{
+  "ID": "C26",
+  "name": "Perez-Sudarsky unimodular diffusion",
+  "family": "Unimodular",
+  "Om": 0.3203629643006286,
+  "h": 0.6690937754013815,
+  "theta": [
+    0.0
+  ],
+  "theta_names": [
+    "alpha_Q"
+  ],
+  "chi2_bao": 23.567103964812027,
+  "chi2_sn": 1643.7272946589903,
+  "chi2_cmb": 2.294839580456987,
+  "chi2_rsd": 7.305713385282554,
+  "chi2_total": 1676.894951589542,
+  "delta_chi2": -8.598901786172064e-07,
+  "w0": -1.0000000005226164,
+  "wa": 6.6880766720906165e-09,
+  "phantom_cross": false,
+  "cs2_min": 1.0,
+  "gamma_minus_one": 0.0,
+  "toy_wa_L3": -1.0019097189172501,
+  "toy_full_consistent": false,
+  "mcmc_posterior_w0_mean": -1.0032317055028646,
+  "mcmc_posterior_wa_mean": 0.02873721250754319,
+  "mcmc_posterior_w0_std": 0.003428814433774132,
+  "mcmc_posterior_wa_std": 0.03067929627785241,
+  "mcmc_rhat": [
+    1.268597160694256,
+    1.2867822562462812,
+    1.1945076585782943
+  ],
+  "mcmc_backend": "emcee",
+  "mcmc_deviation": "nwalkers=24,nsteps=180,nburn=40 (spec 48/2000/500)",
+  "killed_K": [
+    "K2 |wa|~0 (full ODE collapses to LCDM at alpha_Q=0)",
+    "K10 full-ODE disagrees with L3 toy (L3 closed-form ansatz is linear expansion, not the integrated source J^0)",
+    "K12 LCDM within 2 sigma"
+  ],
+  "keep": false,
+  "Q_flags": {
+    "Q1": false,
+    "Q2": false,
+    "Q3": false,
+    "Q4": true,
+    "Q5": true,
+    "Q6": true
+  },
+  "note": "L4 full ODE integration of Perez-Sudarsky continuity with J^0 = alpha_Q rho_c0 (H/H0) drives chi^2 strictly worse than LCDM for alpha_Q > 0 in the fit window (Om in [0.28, 0.38], h in [0.64, 0.71]).  Example: at Om=0.35 h=0.64 alpha_Q=0.094 the full ODE gives chi^2 = 2643.8, whereas the L3 linearised closed-form gave chi^2 = 1667.1.  The L3 toy substituted (1 - alpha_Q (1 - a^3)) for the true exp-like integral of the diffusion source, which under-estimated the matter depletion at intermediate redshifts by roughly an order of magnitude.  This is a genuine K10 failure: the toy misrepresented the full-background behaviour.",
+  "K10": true
+}
