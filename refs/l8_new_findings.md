@@ -1183,3 +1183,160 @@ distinguishes SQMH from vacuum-energy dark energy (b_DE = 0 identically)."
 ---
 
 *L11 Rounds 1-5 findings (NF-28, NF-29) appended: 2026-04-11*
+
+---
+
+## L12 Findings (2026-04-11)
+
+---
+
+### NF-30: SQMH Quanta Decohere on Hubble Timescale (L12 R1, STRUCTURAL)
+
+**Source**: L12 Round 1, Lindblad channel (Member 7).
+
+**Content**: The decoherence rate of SQMH spacetime quanta (adjacent Fock states)
+is given by the Lindblad master equation:
+  Gamma_deco = (Gamma_0 + sigma*rho_m*n_bar)/(2*n_bar) ~ Gamma_0/(2*n_bar) = 3*H/2
+
+Therefore: tau_deco = 1/Gamma_deco = 2/(3*H) ~ 2/(3*H0) = 3.05e17 s at z=0.
+
+This is exactly (2/3) * tau_Hubble. The quantum-to-classical transition of SQMH quanta
+occurs on cosmological timescales, not Planck timescales.
+
+Numerical confirmation: tau_deco = 0.667 * tau_Hubble (from quantum_sqmh.py).
+
+**Physical interpretation**: The decoherence is driven by CREATION events (Gamma_0 process),
+not by annihilation (sigma*rho_m process). Since Gamma_0 ~ 3*H*n_bar (equilibrium),
+the decoherence rate equals (3/2)*H regardless of sigma.
+
+**Assessment**: This is a genuine new structural result. The quantum coherence of
+SQMH spacetime quanta lasts ~ Hubble time. The universe itself sets the decoherence timescale.
+
+**Classification**: STRUCTURAL. Paper mention at footnote level.
+**Paper language**: "The quantum-to-classical transition of SQMH spacetime quanta occurs
+on cosmological timescales: tau_deco = 2/(3*H) ~ (2/3)*tau_Hubble. This places the
+quantum decoherence scale at the same order as the dark energy onset scale."
+
+---
+
+### NF-31: Exact de Sitter SQMH Analytic Solution (L12 R1, NEW RESULT)
+
+**Source**: L12 Round 1, de Sitter channel (Members 1-8).
+
+**Content**: In the pure de Sitter limit (H = H_Lambda = const), the SQMH ODE:
+  dn_bar/dt + 3*H*n_bar = Gamma_0 - sigma*n_bar*rho_m0*exp(-3*H*t)
+
+admits an exact analytic solution. For Pi_SQMH = sigma*rho_m0/(3*H) << 1 (exact case):
+
+  n_bar(t) = n_bar_eq + (n_bar_init - n_bar_eq)*exp(-3*H*t)
+           = n_bar_eq * [1 + delta*exp(-3*H*t)]
+
+where n_bar_eq = Gamma_0/(3*H) and delta = n_bar_init/n_bar_eq - 1.
+
+Converting to redshift coordinates (exp(-3*H*t) = (1+z)^3 in de Sitter):
+  n_bar(z) = n_bar_eq * [1 + delta*(1+z)^3]
+
+Dark energy equation of state:
+  w(z) = -1 + delta*(1+z)^3 / (1 + delta*(1+z)^3)
+
+This is a POWER-LAW SIGMOID, not an erf function.
+
+Physical interpretation:
+- The excess quanta delta*n_bar_eq above equilibrium dilute exactly as non-relativistic matter
+  (proportional to (1+z)^3). They are "matter-like" excess dark energy.
+- Only the equilibrium n_bar_eq is truly cosmological-constant-like.
+- At z=0: w(0) = -1 + delta/(1+delta)
+- At z>>1: w -> 0 (matter-like, guaranteed w > -1)
+
+For DESI wa = -0.133: delta ~ 0.049 in pure dS, delta ~ 0.069 with matter correction.
+(5-7% initial over-production above equilibrium at z=0.)
+
+**Assessment**: First exact analytic derivation of SQMH w(z) in any limit.
+Provides deeper insight than the phenomenological A12 erf proxy.
+
+**Numerical**: Confirmed by sqmh_desitter.py. chi^2/dof vs DESI ~ 13.6 (simplified).
+The full DESI fit (proper 13-point BAO + chi^2 matrix) not done in L12.
+
+**Classification**: NEW RESULT. Section 2 material.
+**Paper language**: "In the pure de Sitter limit, the SQMH equation has the exact analytic
+solution w(z) = -1 + delta*(1+z)^3/(1+delta*(1+z)^3), where delta = n_bar_init/n_bar_eq - 1
+measures the initial fractional excess of spacetime quanta above equilibrium. This power-law
+sigmoid differs from the phenomenological erf proxy A12: the de Sitter solution has algebraic
+(not exponential) tails at high redshift."
+
+---
+
+### NF-32: Quantum Darwinism Foundation for Classical SQMH (L12 R1, STRUCTURAL)
+
+**Source**: L12 Round 1, Quantum Darwinism channel (Members 1-8).
+
+**Content**: The SQMH classical birth-death equation has a quantum mechanical foundation
+in quantum Darwinism:
+
+1. The interaction Hamiltonian H_int = sigma*N_hat*rho_m selects FOCK STATES as pointer states
+   (eigenstates of N_hat = number operator). Matter density rho_m acts as the measuring environment.
+
+2. The decoherence rate equals sigma*rho_m (same as SQMH annihilation rate).
+   This is a mathematical identity: quantum Darwinism = classical SQMH dissipation.
+
+3. Critically: N_copies ~ sigma*rho_m/(m_matter) * tau_H ~ 10^-44 << 1.
+   This means SQMH quanta are NOT classical in the quantum Darwinism sense
+   (require N_copies >> 1 for classicality). They remain quantum throughout cosmic history.
+
+4. The classical equation is valid NOT because the system is classical, but because:
+   (a) Markovian approximation holds (H >> sigma*rho_m is the separation of timescales)
+   (b) Mean-field equation is exact for the birth-death Lindblad form
+
+**Assessment**: Provides the physical justification for using the classical SQMH equation,
+which was previously assumed without derivation. The fact that N_copies << 1 means
+SQMH spacetime quanta are fundamentally quantum -- an unexpected result.
+
+**Classification**: STRUCTURAL. Paper section material.
+**Paper language**: "The SQMH classical equation is justified by quantum Darwinism:
+matter density rho_m acts as a measuring environment for spacetime quanta, selecting
+Fock number eigenstates as pointer states. The coupling sigma = 4*pi*G*t_P sets
+both the classical annihilation rate and the quantum decoherence rate. We note that
+N_copies ~ 10^-44 << 1, meaning spacetime quanta remain quantum throughout cosmic history;
+the classical description emerges from the Markovian approximation (H >> sigma*rho_m),
+not from quantum Darwinism in the usual sense."
+
+---
+
+### NF-33: Bousso Entropy Tension with SQMH Fiducial Gamma_0 (L12 R5, WARNING)
+
+**Source**: L12 Round 5, Bekenstein channel extended.
+
+**Content**: The fiducial SQMH normalization Gamma_0 = sigma*rho_Planck = 2.33e44 (SI units)
+may violate the Bousso covariant entropy bound:
+
+If each SQMH creation event produces S_q = 2*pi k_B of entropy (Bekenstein bound for Planck quantum):
+  Total entropy rate = Gamma_0 * V_H * 2*pi = 2.33e44 * 1.08e79 * 6.28 = 1.58e124 k_B/s
+  Over Hubble time: 1.58e124 / H0 = 7.2e141 k_B
+
+Compare S_H = 2.27e122 k_B. The total exceeds Bousso by ~7.2e141/2.27e122 = 3.2e19 orders.
+
+Using SQMH's own entropy per event (S_q = 142.7 k_B from L11):
+  Total = 2.33e44 * 1.08e79 * 142.7 / H0 = 1.65e143 k_B >> S_H.
+  Violation by ~7.3e20 orders.
+
+Holographic approaches consistently give Gamma_0_holo = H*S_H/(2*pi*V_H) ~ 7.3e24,
+which is 3.2e19 times smaller than the fiducial value.
+
+Possible resolutions:
+(a) Gamma_0 = 7.3e24 is correct (holographic normalization), not sigma*rho_Planck
+(b) SQMH creation events are highly correlated (entropy per event ~ 10^-20 bits)
+(c) Bousso bound does not apply to quantum metabolism events
+
+If (a): all SQMH cosmological observables (w(z), wa, Pi_SQMH) unchanged.
+         Only the microscopic interpretation (rho_Planck connection) changes.
+
+**Assessment**: This is a genuine tension in the SQMH framework that was not
+previously noted. It does NOT affect phenomenological predictions but questions
+the microscopic interpretation. Requires future investigation.
+
+**Classification**: WARNING. Not paper-ready. Flag for L13 investigation.
+**Paper language**: [Not included in current paper. To be investigated in L13.]
+
+---
+
+*L12 Rounds 1-10 findings (NF-30 through NF-33) appended: 2026-04-11*
