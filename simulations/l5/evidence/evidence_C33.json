@@ -1,0 +1,14 @@
+{
+  "id": "C33",
+  "name": "f(Q) teleparallel (n fixed, f_1 free)",
+  "note": "3D (Om,h,f_1)",
+  "logz": -841.181,
+  "logz_err": 0.165,
+  "niter": 2646,
+  "nlive": 350,
+  "ndim": 3,
+  "sample": "unif",
+  "dlogz_tol": 0.2,
+  "elapsed_sec": 1049.8,
+  "source": "sequential run, pre-parallel"
+}

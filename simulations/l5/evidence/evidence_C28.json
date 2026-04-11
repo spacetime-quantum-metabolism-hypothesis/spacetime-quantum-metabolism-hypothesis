@@ -1,0 +1,14 @@
+{
+  "id": "C28",
+  "name": "Maggiore RR non-local (theta fixed at L4 MAP)",
+  "note": "fixed-theta-fallback",
+  "logz": -832.432,
+  "logz_err": 0.179,
+  "niter": 1663,
+  "nlive": 250,
+  "ndim": 2,
+  "sample": "unif",
+  "dlogz_tol": 0.2,
+  "elapsed_sec": 4337.7,
+  "source": "sequential run, pre-parallel"
+}

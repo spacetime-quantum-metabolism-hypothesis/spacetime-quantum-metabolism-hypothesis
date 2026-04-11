@@ -1,0 +1,14 @@
+{
+  "id": "LCDM",
+  "name": "LCDM baseline",
+  "note": "analytic",
+  "logz": -843.689,
+  "logz_err": 0.170,
+  "niter": 2083,
+  "nlive": 300,
+  "ndim": 2,
+  "sample": "unif",
+  "dlogz_tol": 0.2,
+  "elapsed_sec": 209.1,
+  "source": "sequential run, pre-parallel"
+}
