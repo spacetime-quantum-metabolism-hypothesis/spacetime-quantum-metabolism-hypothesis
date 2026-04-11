@@ -1041,3 +1041,145 @@ within 2 orders of magnitude; closest is Landauer information rate (16 orders of
 ---
 
 *L10 Rounds 1-10 findings (NF-23, NF-24) appended: 2026-04-11*
+
+---
+
+### NF-25: SQMH Physical Validity Domain and Delta_c_max (L10 Round 11, STRUCTURAL)
+
+**Source**: L10 Round 11, 8-person team.
+
+**Content**: SQMH is derived as a cosmological model valid for rho_m << rho_Planck.
+The maximum physically meaningful overdensity for SQMH application:
+  delta_c_max (cosmological) ~ 10^3 (galaxy clusters, virialized halos)
+  G_eff/G - 1 ceiling (cosmological) = 10^3 * 1.48e-61 = 1.48e-58.
+
+At nuclear densities (delta_c ~ 10^43): G_eff/G - 1 ~ 1.6e-18 (above Q52 threshold
+of 1e-50) BUT SQMH equations break at nuclear densities -- not a physical result.
+At Planck density (delta_c ~ 10^122): SQMH completely breaks.
+
+DR3 Delta_lnZ refined (Round 12): Median = 11.5 +/- 1.0 (stat+sys).
+90% CI: [10.6, 13.0]. K54 trigger probability < 2%. Q54 PASS confirmed.
+
+**Classification**: STRUCTURAL (physical validity domain established).
+**Paper use**: Section on nonlinear SQMH. "SQMH corrections G_eff/G - 1 scale as
+delta_c * 4 * Pi_SQMH; maximum cosmological value (delta_c ~ 10^3) gives ~ 10^-58,
+remaining unobservable by any planned instrument."
+
+---
+
+### NF-26: Euclid RSD z~1 is Primary C28 Detection Channel (L10 Round 13, OBSERVATIONAL)
+
+**Source**: L10 Round 13, 8-person Fisher matrix analysis.
+
+**Content**: Previous analysis (NF-22) emphasized CMB-S4 kSZ/lensing as C28 G_eff
+detection channel. Refined Fisher analysis shows:
+  - CMB-S4 alone (G_eff integrated over all z): SNR = 0.78 sigma (K53 triggered)
+  - Euclid spectroscopic RSD (0.9 < z < 1.4): SNR = 3.0 sigma (Q53 PASS)
+  - Full 2030+ suite (CMB-S4 + Euclid WL + Euclid GS + LSST): SNR = 4.8-5.2 sigma
+
+Physical reason: C28 G_eff/G - 1 peaks at z ~ 0.9-1.4 (~ 1.5%), where Euclid RSD
+directly measures growth rate f*sigma_8. CMB-S4 sees z-averaged G_eff, which is
+diluted to ~ 0.7% due to G_eff(z) integral weighting.
+
+Key revision: Primary channel is Euclid GS (spectroscopic), not CMB-S4 or Euclid WL.
+
+**Classification**: OBSERVATIONAL (quantitative forecast, actionable for paper).
+**Paper use**: Section on CMB-S4/Euclid forecast. "The primary observational probe of
+C28 G_eff excess is Euclid spectroscopic RSD at 0.9 < z < 1.4, where the G_eff/G - 1
+signal peaks at 1.5%, giving SNR ~ 3 sigma with Euclid alone."
+
+---
+
+### NF-27: SQMH-CC Equivalence -- Gamma_0 Fine-Tuning = Lambda_CC Fine-Tuning (L10 Round 16, STRUCTURAL)
+
+**Source**: L10 Round 16, 8-person team discussion on Gamma_0 = 5.2e-124 Planck units.
+
+**Content**: Gamma_0 in Planck units ~ 5-7 x 10^-124 (depending on Planck unit convention).
+Lambda_CC in Planck units ~ 10^-122 to 10^-123.
+Both require fine-tuning to 10^-122 to 10^-124 precision in Planck units.
+
+The correspondence is structural:
+  rho_Lambda (LCDM) = Lambda_CC * (hbar*c) / (8*pi*G)  [one free parameter]
+  rho_DE (SQMH) = Gamma_0 / (3H) * (normalization)     [one free parameter]
+  Both: rho_DE ~ 10^-122 * rho_Planck.
+
+SQMH does NOT solve the CC problem. It reformulates it as Gamma_0 fine-tuning.
+Possible connections: unimodular gravity (CC as integration constant) + SQMH
+could frame Gamma_0 as a boundary condition rather than a UV fine-tuning.
+No active mechanism exists in current SQMH.
+
+Additional finding (Round 19): All A12/C28/G_eff/Delta_lnZ predictions are
+Gamma_0-INDEPENDENT (by construction, since Gamma_0 normalizes rho_DE which is
+fixed by Omega_DE = 0.685 +/- 0.007 from CMB). This means:
+- Predictions robust to O(1%) Gamma_0 uncertainty
+- Gamma_0 is constrained to < 1% by observed Omega_DE
+
+**Classification**: STRUCTURAL (important for paper positioning).
+**Paper use**: Section on limitations. "SQMH reformulates the cosmological constant problem:
+the fine-tuning of Lambda_CC ~ 10^-122 rho_Planck is replaced by the fine-tuning of
+Gamma_0 ~ 10^-124 t_P^-1 (Planck units). SQMH does not resolve the CC problem but
+provides a dynamical reframing; all observational predictions (w0, wa, G_eff/G, Delta_lnZ)
+are independent of Gamma_0 precision since Omega_DE fixes the normalization."
+
+---
+
+*L10 Rounds 11-20 findings (NF-25, NF-26, NF-27) appended: 2026-04-11*
+
+---
+
+### NF-28: SQMH Poisson Floor -- Irreducible Stochastic Bound (L11 Round 5, STRUCTURAL)
+
+**Source**: L11 Round 5, integration of all 20 attempts.
+
+**Content**: The SQMH birth-death process with N_bar ~ 10^42 quanta in the Hubble
+volume predicts a model-independent stochastic floor:
+  delta_rho_DE / rho_DE < 1/sqrt(N_bar) = 1/sqrt(rho_DE0 * V_H / E_Planck)
+  = 1/sqrt(8.58e42) = 3.4e-22.
+
+This holds for ALL stochastic noise models (white noise, O-U, Levy, CSL, DP, etc.)
+because it is the Poisson shot noise of discrete quanta (model-independent).
+
+**Falsifiability**: "If any cosmological observation detects rho_DE fluctuations
+exceeding 10^-20 (fractional), standard SQMH is falsified at that sensitivity level."
+
+This is consistent with K51 (confirmed in L10 R14: 7 noise models) and extends it
+to a model-independent universal bound.
+
+**Classification**: STRUCTURAL (precise upper bound on SQMH stochasticity).
+**Paper use**: §limitations. "SQMH stochastic dark energy fluctuations are bounded
+by delta_rho_DE/rho_DE < 3e-22 (Poisson floor of N_bar ~ 10^42 quanta)."
+
+---
+
+### NF-29: SQMH Dark Energy Anti-Bias b_DE = -Pi_SQMH (L11 Round 3, QUALITATIVE)
+
+**Source**: L11 Round 3 (Attempt 15 deep dive), 8-person team.
+
+**Content**: From SQMH birth-death isomorphism (NF-3), n_eq = Gamma_0/(sigma*rho_m + 3H).
+The linear dark energy bias parameter:
+  b_DE(z) = partial(ln n_eq)/partial(ln rho_m) = -sigma*rho_m/(sigma*rho_m+3H)
+           = -Pi_SQMH(z)
+
+where Pi_SQMH(z) = sigma*rho_m(z)/(sigma*rho_m(z) + 3H(z)).
+
+At z=0: b_DE = -2.06e-62.
+At z=1: b_DE = -1.12e-61 (slightly larger at higher z where matter fraction is larger).
+
+This bias is SCALE-INDEPENDENT (k-independent), unlike pressure-based DE clustering.
+It predicts: rho_DE higher in cosmic voids (delta_m < 0) and lower in clusters (delta_m > 0).
+Signal amplitude: delta_rho_DE/rho_DE = Pi_SQMH * |delta_m| ~ 10^-62 * |delta_m|.
+
+**Observable**: NO (60 orders below current sensitivity).
+**Direction**: YES (anti-correlation is an unambiguous qualitative prediction).
+
+**Classification**: QUALITATIVE NEW PREDICTION (direction, not amplitude).
+**Paper use**: §discussion "birth-death isomorphism predicts DE anti-bias."
+"SQMH birth-death isomorphism predicts a dark energy anti-bias: the dark energy
+number density n_eq is reduced in overdense regions (clusters) and enhanced in
+underdense regions (voids) by a scale-independent factor b_DE = -Pi_SQMH ~ -2e-62.
+This anti-bias is a structural consequence of the birth-death mechanism and
+distinguishes SQMH from vacuum-energy dark energy (b_DE = 0 identically)."
+
+---
+
+*L11 Rounds 1-5 findings (NF-28, NF-29) appended: 2026-04-11*

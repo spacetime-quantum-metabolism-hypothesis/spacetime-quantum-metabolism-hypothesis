@@ -93,6 +93,27 @@ Round 8: NF-23 registered (halo enhancement = delta_c factor). GFT condensate in
 Round 9: LQC 3/2-power candidate (93.5%) noted. All integration verdicts compiled.
 Round 10: Final report complete.
 
+### Rounds 11-20 (Deep Dive -- refs/l10_rounds_11to20.md):
+Round 11: NF-23 deepening -- delta_c_max analysis. Physical SQMH validity domain: delta_c < 10^3.
+  G_eff/G - 1 ceiling (cosmological) = 1.5e-58. K52 borderline confirmed. NF-25 (physical validity domain).
+Round 12: DR3 CI refined. Delta_lnZ(A12, DR3) = 11.5 +/- 1.0 (stat+sys). 90% CI [10.6, 13.0].
+  K54 trigger probability < 2%. Q54 PASS confirmed with refined uncertainty.
+Round 13: CMB-S4 + Euclid joint analysis. NF-26: Euclid RSD (z~1) is primary C28 channel (SNR~3).
+  Full survey suite (CMB-S4 + Euclid + LSST): SNR ~ 5 sigma. Q53 PASS with combined surveys.
+Round 14: K51 robustness verification across 7 noise models (CSL, Diosi-Penrose, quantum shot,
+  Hawking thermal, Levy, 1/f, post-inflation thermal). All fail: K51 ROBUST.
+Round 15: LQC 6.5% gap clarification. The 93.5% refers to normalized metric, not literal sigma ratio.
+  Literal sigma_LQC/sigma_SQMH ~ 4.9%. K56 confirmed. 4*pi factor not derived.
+Round 16: NF-27 -- Gamma_0 = CC problem reformulation. Gamma_0 ~ 5.2e-124 Planck ~ Lambda_CC/2.
+  SQMH reformulates CC problem but does not resolve it. Paper limitations updated.
+Round 17: O-U noise model analysis. Stochastic floor: delta_rho_DE/rho_DE ~ 10^-21 (model-independent).
+  Root cause: N ~ 10^42 quanta in Hubble volume -> shot noise ~ 10^-21. Unobservable.
+Round 18: Full joint (BAO+CMB+SN) A12 analysis. Delta_lnZ(full joint) = 10.5 +/- 1.2.
+  K54 trigger probability < 3%. Q54 PASS confirmed for full joint.
+Round 19: Gamma_0-independence proof. All A12/C28/G_eff predictions are Gamma_0-independent.
+  Gamma_0 constrained to < 1% by Omega_DE. Predictions more robust than presented.
+Round 20: Final integration. All K/Q verdicts updated. NF-25, NF-26, NF-27 registered.
+
 ---
 
 ## Complete Numerical Results Table
