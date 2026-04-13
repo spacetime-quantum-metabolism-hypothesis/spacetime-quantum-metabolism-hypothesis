@@ -1,0 +1,18 @@
+L17 Phase 1: 통합 수식 검증 (코드리뷰 후 재실행)
+LCDM baseline: chi2_joint=1687.763, AICc=19.83
+EE2 reference: chi2_joint=1657.04,  AICc=14.268
+과적합 판정: UNI AICc 추가 패널티 +4.33 (4파라미터 vs 3파라미터)
+
+완료: 1.3분
+
+Model               chi2_13    AICc  dAICc_LCDM   chi2_jt   delta      w0      wa
+--------------------------------------------------------------------------------
+UNI-unified          5.3471  18.347      -1.483      None    None -0.9669  0.0958
+UNI-AX3               4.996  13.663      -6.167      None    None -0.8224 -0.4569
+UNI-EE2              5.6011  14.268      -5.562      None    None -0.8736 -0.3073
+
+[과적합 판정]
+UNI AICc - EE2 AICc = +4.079
+=> UNI가 AICc 기준 개선 없음. EE2 단독 선택 권장.
+
+저장: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l17/l17_unified_results.json

@@ -1,0 +1,75 @@
+{
+  "UNI-unified": {
+    "stage0T": "PASS",
+    "stage2": "PASS",
+    "stage3": "PASS",
+    "chi2_13pt": 5.3471,
+    "aicc": 18.347,
+    "daicc_lcdm": -1.483,
+    "chi2_joint": 1667.737,
+    "delta_joint": -20.026,
+    "chi2_bao": 8.308,
+    "chi2_sn": 1644.616,
+    "chi2_cmb": 7.926,
+    "chi2_rsd": 6.886,
+    "w0": -0.9669,
+    "wa": 0.0958,
+    "Om": 0.30448,
+    "p": [
+      0.304484,
+      0.101163,
+      0.926097,
+      4.395057
+    ],
+    "ndim": 4,
+    "aicc_extra_vs_3param": 4.079
+  },
+  "UNI-AX3": {
+    "stage0T": "PASS",
+    "stage2": "PASS",
+    "stage3": "PASS",
+    "chi2_13pt": 4.996,
+    "aicc": 13.663,
+    "daicc_lcdm": -6.167,
+    "chi2_joint": 1665.875,
+    "delta_joint": -21.888,
+    "chi2_bao": 8.049,
+    "chi2_sn": 1645.75,
+    "chi2_cmb": 5.159,
+    "chi2_rsd": 6.917,
+    "w0": -0.8224,
+    "wa": -0.4569,
+    "Om": 0.3059,
+    "p": [
+      0.305904,
+      0.104673,
+      2.104005
+    ],
+    "ndim": 3,
+    "aicc_extra_vs_3param": -0.605
+  },
+  "UNI-EE2": {
+    "stage0T": "PASS",
+    "stage2": "PASS",
+    "stage3": "PASS",
+    "chi2_13pt": 5.6011,
+    "aicc": 14.268,
+    "daicc_lcdm": -5.562,
+    "chi2_joint": 1664.881,
+    "delta_joint": -22.882,
+    "chi2_bao": 8.446,
+    "chi2_sn": 1643.568,
+    "chi2_cmb": 5.959,
+    "chi2_rsd": 6.908,
+    "w0": -0.8736,
+    "wa": -0.3073,
+    "Om": 0.30553,
+    "p": [
+      0.305526,
+      0.088031,
+      8.764816
+    ],
+    "ndim": 3,
+    "aicc_extra_vs_3param": -0.0
+  }
+}

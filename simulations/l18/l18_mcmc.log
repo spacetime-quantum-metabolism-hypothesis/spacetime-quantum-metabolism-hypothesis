@@ -1,0 +1,20 @@
+You must install the tqdm library to use progress indicators with emcee
+You must install the tqdm library to use progress indicators with emcee
+MCMC EE2: nwalkers=32, burn=800, prod=1200
+시작점: Om=0.3055, A=0.0880, B=8.760
+
+
+burnin 완료: 0.9분
+수용률: mean=0.557, min=0.351, max=0.611
+
+production 완료: 2.3분
+
+[MCMC 결과]
+Om  = 0.3072 +0.0076 -0.0064
+A   = 0.0888  +0.0411 -0.0335
+B   = 8.394  +7.802 -2.854
+B/A = 94.55
+
+MCMC 결과 저장: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l18/l18_mcmc_results.json
+Corner plot 저장: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l18/l18_mcmc_corner.png
+Chain plot 저장: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l18/l18_mcmc_chain.png
