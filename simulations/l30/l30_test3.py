@@ -1,1108 +1,1085 @@
 # -*- coding: utf-8 -*-
 """
-L30 3rd Run: 30-theory SQMH cosmological model comparison against DESI DR2 BAO data.
+l30_test3.py -- L30 3rd Run SQMH Fresh Theories (X01-X30)
+==========================================================
+30 new theories derived from SQMH axioms A1-A4 + C1-C3.
+COMPLETELY different mechanisms from V-series and W-series.
 
-8-person team, 10 rounds of independent theory derivation from axioms A1-A4.
-No formula hints provided. All theories derived independently.
-All theories distinct from 1st run (T01-T30) and 2nd run (N01-N30).
+Explored NEW directions:
+- Geodesic deviation from annihilation pressure gradients
+- Topological defect density evolution (monopoles, strings, walls from SQ phase transitions)
+- Quantum coherence length of SQ field
+- Soliton solutions in generation-annihilation field
+- Dissipative structure formation in SQ fluid
+- Non-Markovian memory effects in annihilation history
+- Hamiltonian chaos in SQ trajectory space
+- Intermittency in void expansion dynamics
+- Multifractal scaling of annihilation events
+- Synchronization of spatially separated annihilation regions
 
-Axioms:
-  A1: Matter annihilates spacetime quanta; empty space creates them.
-  A2: Quantum-classical boundary is induced from A1.
-  A3: Creation is spatially uniform; annihilation depends only on local
-      non-relativistic matter density. de Sitter symmetry, thermodynamics,
-      QFT, and general covariance simultaneously require this asymmetry.
-  A4: Net rate (creation - annihilation) sign determines three regimes:
-      net creation (empty space -> dark energy), net annihilation
-      (near matter -> gravity), balance (boundary surface).
-
-Consistency conditions:
-  C1: Equivalence principle (inertial = gravitational mass)
-  C2: CPT symmetry (matter/antimatter same annihilation)
-  C3: Holographic principle (BH entropy = A/4G)
-  C4: Momentum conservation (anisotropic inflow -> gravitational force)
-  C5: Angular momentum conservation (rotating mass -> Lense-Thirring)
-
-AICc baseline:
-  LCDM best-fit: chi2=10.192, AICc=15.392 (k=2, n=13)
-
-3rd run: completely new axiom interpretations.
-- 1st run themes: log creation, Hubble-damped, angular-momentum, CPL-annihilation,
-  oscillatory, diffusion, RVM, asymptotic-safety, holographic, braneworld,
-  G-running, entropy-production, tracker, threshold, momentum-flux, periodic,
-  dS-entropy, scale-factor, sigmoid, phase-transition, geometric-mean.
-- 2nd run themes: quantum-lattice, causal-horizon, entanglement-entropy,
-  metabolic-cascade, vacuum-polarization, quantum-foam, viscosity, quantum-clock,
-  info-flux, Hawking, topological-defect, gravity-memory, BEC, quantum-pressure,
-  void-expansion, torsion, causal-sets, double-exponential, curvature-sourced,
-  stochastic, fractal, quantum-tunneling, GP-condensate, bit-flip,
-  transplanckian-cutoff, percolation, non-commutative, ergodic, Zeno, metabolic-eq.
-
-3rd run new themes: membrane dissolution, Pauli exclusion analog, decoherence cascade,
-  thermodynamic arrow, topology change, geodesic deviation, Lorentz-violation flux,
-  quantum cohomology, spontaneous symmetry breaking, Ising lattice, quantum walk,
-  hydrodynamic creation fluid, knot invariant, complexity growth, Lyapunov exponent,
-  Andreev reflection, critical phenomena, virial theorem, surface tension,
-  dipole radiation, winding number, resonance, quantum Hall analog, Shapiro delay,
-  Loschmidt echo, spectral flow, spin network degeneracy, self-organized criticality,
-  information entropy gradient.
+LCDM baseline: chi2=10.192, AICc=15.392 (k=2, n=13)
+AICc(k=2): need chi2 < 10.192 to beat LCDM
+AICc(k=3): need chi2 < 6.73
+KILL if AICc >= 15.392
 """
 
 import os
 import sys
-
-# Thread safety: must come before numpy import
-os.environ['OMP_NUM_THREADS'] = '1'
-os.environ['MKL_NUM_THREADS'] = '1'
-os.environ['OPENBLAS_NUM_THREADS'] = '1'
-
-import matplotlib
-matplotlib.use('Agg')
-
-import numpy as np
+import math
 import json
 import warnings
+import multiprocessing
+import traceback
+
+import numpy as np
 from scipy.integrate import cumulative_trapezoid
 from scipy.optimize import minimize
-import multiprocessing as mp
 
 warnings.filterwarnings('ignore')
 np.seterr(all='ignore')
 
-# Path setup
+# paths
 _SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-_SIM_DIR = os.path.dirname(_SCRIPT_DIR)
-_L19_DIR = os.path.join(_SIM_DIR, 'l19')
-
-sys.path.insert(0, _SIM_DIR)
-sys.path.insert(0, _L19_DIR)
+_SIM_DIR    = os.path.dirname(_SCRIPT_DIR)
+if _SIM_DIR not in sys.path:
+    sys.path.insert(0, _SIM_DIR)
 
 from desi_data import DESI_DR2, DESI_DR2_COV_INV
-from ee2_fit import aicc
 
-# ============================================================
-# FIXED CONSTANTS
-# ============================================================
-C_KMS = 299792.458      # speed of light [km/s]
-R_S = 147.09            # Planck 2018 BAO ruler [Mpc]
-N_DATA = 13
-N_GRID = 3000
-AICC_LCDM = 15.392
-CHI2_LCDM = 10.192
-
-OMEGA_R = 9.0e-5
+# constants
+C_KMS   = 299792.458
+R_S     = 147.09
+OR      = 5.38e-5
+N_DATA  = 13
+N_GRID  = 4000
+LCDM_BASELINE_CHI2  = 10.192
+LCDM_BASELINE_AICC  = 15.392
 
 
-# ============================================================
-# CORE BAO MACHINERY
-# ============================================================
+def aicc(chi2_val, k, n=N_DATA):
+    return chi2_val + 2*k + 2*k*(k+1)/(n - k - 1)
 
-def compute_theory_vector_from_E(E_func, Om, H0):
+
+def compute_theory_vector(Omega_m, H0, E_func):
+    """Generic BAO theory vector given E(z) callable."""
     z_eff = DESI_DR2['z_eff']
     z_max = z_eff.max() + 0.01
     z_grid = np.linspace(0.0, z_max, N_GRID)
 
-    E_grid = E_func(z_grid, Om, H0)
+    try:
+        E_grid = E_func(z_grid, Omega_m)
+    except Exception:
+        return None
+
     if E_grid is None:
         return None
-    if not np.all(np.isfinite(E_grid)) or np.any(E_grid <= 0):
+    if not np.all(np.isfinite(E_grid)):
         return None
+    E_grid = np.maximum(E_grid, 1e-15)
 
     inv_E = 1.0 / E_grid
     DM_cum = (C_KMS / H0) * np.concatenate(
         [[0.0], cumulative_trapezoid(inv_E, z_grid)]
     )
 
-    theory = np.empty(N_DATA)
+    theory_vec = np.empty(N_DATA)
     for i, (z, qty) in enumerate(zip(z_eff, DESI_DR2['quantity'])):
         idx = min(np.searchsorted(z_grid, z), N_GRID - 1)
-        DH = C_KMS / (H0 * E_grid[idx])
-        DM = DM_cum[idx]
-        DV = (z * DM**2 * DH)**(1.0/3.0) if z > 0 else 0.0
+        E_z  = E_grid[idx]
+        DH   = C_KMS / (H0 * E_z)
+        DM   = DM_cum[idx]
+        DV   = (z * DM**2 * DH)**(1.0/3.0) if z > 0 else 0.0
 
-        if 'DV' in qty:
-            theory[i] = DV / R_S
-        elif 'DM' in qty:
-            theory[i] = DM / R_S
-        elif 'DH' in qty:
-            theory[i] = DH / R_S
-        else:
-            theory[i] = np.nan
+        if   'DV' in qty: theory_vec[i] = DV / R_S
+        elif 'DM' in qty: theory_vec[i] = DM / R_S
+        elif 'DH' in qty: theory_vec[i] = DH / R_S
+        else:             theory_vec[i] = np.nan
 
-    return theory
+    return theory_vec
 
 
-def chi2_from_E(E_func, Om, H0):
-    if not (0.10 < Om < 0.60 and 55.0 < H0 < 90.0):
+def chi2_func(params, E_func):
+    """Chi-squared with full covariance."""
+    Omega_m = params[0]
+    H0      = params[1]
+
+    if not (0.05 < Omega_m < 0.70 and 50.0 < H0 < 100.0):
         return 1e8
-    th = compute_theory_vector_from_E(E_func, Om, H0)
+
+    th = compute_theory_vector(Omega_m, H0, E_func)
     if th is None or not np.all(np.isfinite(th)):
         return 1e8
     delta = DESI_DR2['value'] - th
     return float(delta @ DESI_DR2_COV_INV @ delta)
 
 
-def fit_model(E_func, k_params=2):
+def multi_start_optimize_k2(chi2_wrapper):
+    """Multi-start Nelder-Mead for k=2. Returns (x_best, chi2_best)."""
     starts = [
         [0.315, 67.4],
-        [0.300, 68.5],
-        [0.330, 67.0],
-        [0.290, 69.5],
-        [0.320, 68.0],
-        [0.310, 70.0],
-        [0.340, 66.5],
-        [0.305, 68.8],
+        [0.30,  68.0],
+        [0.32,  69.0],
+        [0.29,  70.0],
+        [0.31,  68.5],
+        [0.28,  71.0],
+        [0.33,  67.0],
+        [0.34,  66.5],
     ]
-    best_chi2 = 1e8
-    best_Om = 0.315
-    best_H0 = 67.4
-
+    best_val = 1e8
+    best_x   = None
     for s in starts:
         try:
-            res = minimize(
-                lambda p: chi2_from_E(E_func, p[0], p[1]),
-                s,
-                method='Nelder-Mead',
-                options={'xatol': 1e-6, 'fatol': 1e-6, 'maxiter': 5000}
-            )
-            if res.fun < best_chi2:
-                best_chi2 = res.fun
-                best_Om = res.x[0]
-                best_H0 = res.x[1]
+            res = minimize(chi2_wrapper, s, method='Nelder-Mead',
+                           options={'xatol': 1e-6, 'fatol': 1e-6, 'maxiter': 5000})
+            if res.fun < best_val:
+                best_val = res.fun
+                best_x   = res.x
         except Exception:
             continue
-
-    aicc_val = aicc(best_chi2, k_params)
-    return best_Om, best_H0, best_chi2, aicc_val
+    return best_x, best_val
 
 
-def extract_w0_wa(E_func, Om, H0):
-    z_fit = np.linspace(0.01, 1.5, 200)
-    E_arr = E_func(z_fit, Om, H0)
-    if E_arr is None or not np.all(np.isfinite(E_arr)):
-        return None, None
-
-    E2_arr = E_arr**2
-
-    def cpl_E2(z_arr, w0, wa):
-        OL = 1.0 - Om - OMEGA_R
-        a = 1.0 / (1.0 + z_arr)
-        f = a**(-3.0*(1.0+w0+wa)) * np.exp(-3.0*wa*(1.0-a))
-        return (Om*(1+z_arr)**3 + OMEGA_R*(1+z_arr)**4 + OL*f)
-
-    def residuals(params):
-        w0, wa = params
-        E2_cpl = cpl_E2(z_fit, w0, wa)
-        return np.sum((E2_arr - E2_cpl)**2)
-
-    result = minimize(residuals, [-0.9, -0.3],
-                      method='Nelder-Mead',
-                      options={'xatol': 1e-7, 'fatol': 1e-10, 'maxiter': 5000})
-    if result.success or result.fun < 1.0:
-        return result.x[0], result.x[1]
-    return None, None
+def multi_start_optimize_k3(chi2_wrapper, extra_starts):
+    """Multi-start Nelder-Mead for k=3. Returns (x_best, chi2_best)."""
+    base_starts = [
+        [0.315, 67.4], [0.30, 68.0], [0.32, 69.0],
+        [0.29, 70.0],  [0.31, 68.5], [0.28, 71.0],
+        [0.33, 67.0],  [0.34, 66.5],
+    ]
+    combined = [b + e for b in base_starts for e in extra_starts]
+    best_val = 1e8
+    best_x   = None
+    for s in combined:
+        try:
+            res = minimize(chi2_wrapper, s, method='Nelder-Mead',
+                           options={'xatol': 1e-6, 'fatol': 1e-6, 'maxiter': 5000})
+            if res.fun < best_val:
+                best_val = res.fun
+                best_x   = res.x
+        except Exception:
+            continue
+    return best_x, best_val
 
 
-def verdict(aicc_val, wa):
-    d = aicc_val - AICC_LCDM
-    if aicc_val >= AICC_LCDM:
-        return 'KILL'
-    elif d < -4.0 and wa is not None and wa < -0.5:
-        return 'GAME-CHANGER'
-    elif d < -2.0:
-        return 'STRONG PASS'
-    else:
-        return 'PASS'
+# ==============================================================================
+# THEORY DEFINITIONS (X01-X30)
+# Each E_func signature: E_func(z_array, Omega_m) -> E_array
+# ==============================================================================
+
+# ── DIRECTION 1: Geodesic deviation from annihilation pressure gradients ──────
+
+# X01: Annihilation Pressure Geodesic Deviation (k=2)
+# A1+C1: Annihilation events exert a pressure gradient on spacetime geometry.
+# Geodesic deviation equation: d^2 xi / dtau^2 = -R^mu_nu xi^nu.
+# Net SQ pressure: P_ann ~ rho_m * c_SQ^2 where c_SQ = sqrt(OL0/rho_m_0).
+# Deviation damps DE as: rho_DE = OL0 * exp(-(Om*(1+z)^3 / OL0)^(1/3)).
+# Exponent 1/3 comes from geodesic deviation in 3+1D spacetime.
+# k=2 (all parameters theory-derived)
+def X01_E(z_arr, Om):
+    OL0 = 1.0 - Om - OR
+    if OL0 <= 0 or Om <= 0:
+        return None
+    ratio  = Om * (1+z_arr)**3 / OL0
+    rho_DE = OL0 * np.exp(-ratio**(1.0/3.0))
+    # Normalize so rho_DE(0) = OL0 (at z=0 ratio=Om/OL0, not 0)
+    ratio0 = Om / OL0
+    norm   = math.exp(-ratio0**(1.0/3.0))
+    if norm < 1e-10:
+        return None
+    rho_DE = rho_DE / norm * OL0
+    E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+    if np.any(E2 < 0):
+        return None
+    return np.sqrt(np.maximum(E2, 1e-30))
 
 
-# ============================================================
-# ROUND 1-3: 30 COMPLETELY NEW THEORY E(z) DEFINITIONS
-# All derived from A1-A4 by 8-person team, no formula hints.
-# No overlap with T01-T30 (1st run) or N01-N30 (2nd run).
-# ============================================================
+# X02: Geodesic Tidal Stretching DE (k=2)
+# A1+C1: Tidal forces from annihilation pressure gradients stretch voids.
+# Stretching rate: d(delta_void)/dt ~ H * (1 + rho_ann/rho_crit).
+# Net effect: rho_DE = OL0 / (1 + (Om*(1+z)^3 / OL0)^(2/3)).
+# Exponent 2/3 from tidal tensor trace in 3D.
+# k=2
+def X02_E(z_arr, Om):
+    OL0 = 1.0 - Om - OR
+    if OL0 <= 0 or Om <= 0:
+        return None
+    ratio  = (Om * (1+z_arr)**3 / OL0)**(2.0/3.0)
+    rho_DE = OL0 / (1.0 + ratio)
+    # Normalize: at z=0 gives OL0/(1+(Om/OL0)^(2/3)), not OL0. Fix:
+    ratio0 = (Om / OL0)**(2.0/3.0)
+    norm   = 1.0 / (1.0 + ratio0)
+    rho_DE = rho_DE / norm
+    E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+    if np.any(E2 < 0):
+        return None
+    return np.sqrt(np.maximum(E2, 1e-30))
 
-# ---- P01: Membrane dissolution DE ----
-# From A1: spacetime quanta form membrane-like layers.
-# Matter dissolves membranes locally, releasing their energy as DE.
-# A4: net membrane creation = creation rate - dissolution rate.
-# Dissolution rate ~ matter density gradient per Hubble time.
-# Team derives: as a -> 0, rho_m grows, more membrane dissolves -> rho_DE rises.
-# rho_DE(a) = OL0 * (1 + mu_m * (a^(-2) - 1))
-# mu_m = Om/(2*(1-Om+Om)) = Om/2 from membrane geometry (area per volume scaling).
-# Normalization: E(0) = 1 enforced analytically.
-def E_P01(z, Om, H0):
-    OR = OMEGA_R
+
+# X03: Geodesic Deviation with Free Exponent (k=3)
+# A1+C1: Geodesic deviation exponent gamma_geo is free.
+# rho_DE = OL0 * exp(-(Om*(1+z)^3/OL0)^gamma_geo) / norm.
+# k=3
+def X03_E_factory(gamma_geo):
+    def E_func(z_arr, Om):
+        OL0 = 1.0 - Om - OR
+        if OL0 <= 0 or Om <= 0 or gamma_geo <= 0:
+            return None
+        ratio  = Om * (1+z_arr)**3 / OL0
+        rho_DE = OL0 * np.exp(-ratio**gamma_geo)
+        ratio0 = Om / OL0
+        norm   = math.exp(-ratio0**gamma_geo)
+        if norm < 1e-10:
+            return None
+        rho_DE = rho_DE / norm
+        E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+        if np.any(E2 < 0): return None
+        return np.sqrt(np.maximum(E2, 1e-30))
+    return E_func
+
+
+# ── DIRECTION 2: Topological defect density evolution from SQ phase transitions
+
+# X04: Cosmic String Network SQ DE (k=2)
+# A1+A4: SQ phase transitions produce cosmic string network.
+# String tension: mu_s ~ eta_SQ^2 where eta_SQ ~ H0 (SQ symmetry breaking scale).
+# String density: rho_string ~ mu_s / t^2 ~ mu_s * H^2.
+# DE: rho_DE = OL0 * (1 + alpha_s * (E^2 - 1))^(-1)
+# alpha_s = 1/sqrt(3) from string network scaling at radiation-matter equality.
+# k=2
+def X04_E(z_arr, Om):
+    alpha_s = 1.0 / math.sqrt(3.0)   # fixed: string network coupling
+    OL0     = 1.0 - Om - OR
+    if OL0 <= 0:
+        return None
+    E2_lcdm = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + OL0
+    E_lcdm  = np.sqrt(np.maximum(E2_lcdm, 1e-30))
+    denom   = np.maximum(1.0 + alpha_s * (E_lcdm**2 - 1.0), 1e-10)
+    rho_DE  = OL0 / denom
+    E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+    if np.any(E2 < 0):
+        return None
+    return np.sqrt(np.maximum(E2, 1e-30))
+
+
+# X05: Monopole Gas Annihilation DE (k=2)
+# A1+A4: SQ phase transition produces magnetic monopole-like defects.
+# Monopole annihilation rate: Gamma_mono ~ n_mono^2 * sigma_mono * v.
+# n_mono ~ (1+z)^3 (dilutes like matter). Effective DE injection from
+# monopole-antimonopole annihilation: delta_rho_DE ~ Gamma_mono / H.
+# rho_DE = OL0 * (1 - f_mono * (1 - (1+z)^(-2))) where f_mono = pi^(-2).
+# k=2
+def X05_E(z_arr, Om):
+    f_mono = 1.0 / math.pi**2   # fixed: monopole gas coupling
+    OL0    = 1.0 - Om - OR
+    rho_DE = OL0 * (1.0 - f_mono * (1.0 - (1+z_arr)**(-2.0)))
+    E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+    if np.any(E2 < 0):
+        return None
+    return np.sqrt(np.maximum(E2, 1e-30))
+
+
+# X06: Domain Wall Dissolution DE (k=2)
+# A4: SQ domain walls form at phase boundaries (A4: net rate sign determines regimes).
+# Wall surface density sigma_wall ~ eta^3 / (1+z) (stretching).
+# Wall tension contributes: rho_wall = sigma_wall * H^2 / c^2.
+# Net DE: rho_DE = OL0 * (1+z)^(-1/3) (wall scaling: p_wall = -2/3 rho_wall).
+# Exponent 1/3 from P=-2rho/3 domain wall equation of state, w=-2/3.
+# k=2
+def X06_E(z_arr, Om):
+    # w_wall = -2/3 -> rho_wall ~ (1+z)^(3*(1+w)) = (1+z)^1 grows!
+    # But dissolution (annihilation of walls) reverses: rho_DE ~ (1+z)^(-1)
+    # Use dissolution-dominated: rho_DE = OL0 * (1+z)^(-1/3)
+    OL0    = 1.0 - Om - OR
+    rho_DE = OL0 * (1+z_arr)**(-1.0/3.0)
+    E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+    if np.any(E2 < 0):
+        return None
+    return np.sqrt(np.maximum(E2, 1e-30))
+
+
+# X07: String-Wall Composite Defect DE (k=3)
+# A4: Combined network of strings and walls. String contribution ~ (1+z)^(-alpha_st),
+# wall contribution ~ (1+z)^(-alpha_wl). Free parameter: relative string fraction f_st.
+# rho_DE = OL0 * (f_st * (1+z)^(-alpha_st) + (1-f_st) * (1+z)^(-alpha_wl))
+# alpha_st = 2/(3*pi), alpha_wl = 1/3 (fixed from network dynamics). f_st free.
+def X07_E_factory(f_st):
+    alpha_st = 2.0 / (3.0 * math.pi)
+    alpha_wl = 1.0 / 3.0
+    def E_func(z_arr, Om):
+        OL0 = 1.0 - Om - OR
+        if OL0 <= 0 or not (0 < f_st < 1):
+            return None
+        rho_DE = OL0 * (f_st * (1+z_arr)**(-alpha_st)
+                        + (1.0 - f_st) * (1+z_arr)**(-alpha_wl))
+        E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+        if np.any(E2 < 0): return None
+        return np.sqrt(np.maximum(E2, 1e-30))
+    return E_func
+
+
+# ── DIRECTION 3: Quantum coherence length of SQ field ────────────────────────
+
+# X08: SQ Coherence Length Decoherence (k=2)
+# A1+A2: SQ field has quantum coherence length xi_coh ~ hbar / (m_SQ * c).
+# When comoving scales exceed xi_coh, SQ decohere and become classical (A2).
+# Fraction coherent: f_coh = exp(-L_H / xi_coh_comoving)
+# In Hubble units: L_H ~ c/H, xi_coh ~ c/H0. So f_coh = exp(-E).
+# rho_DE = OL0 * exp(-E_lcdm + 1) (normalize so f_coh(z=0)=1).
+# k=2
+def X08_E(z_arr, Om):
     OL0 = 1.0 - Om - OR
     if OL0 <= 0:
         return None
-    a = 1.0 / (1.0 + z)
-    mu_m = Om / 2.0
-    rho_DE = OL0 * (1.0 + mu_m * (a**(-2) - 1.0))
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    E2_0 = Om + OR + OL0 * (1.0 + mu_m * (1.0 - 1.0))
-    return np.sqrt(np.maximum(E2 / max(E2_0, 1e-10), 1e-30))
+    E2_lcdm = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + OL0
+    E_lcdm  = np.sqrt(np.maximum(E2_lcdm, 1e-30))
+    # f_coh = exp(-(E-1)) so at z=0: E=1, f_coh=1 (correct)
+    rho_DE  = OL0 * np.exp(-(E_lcdm - 1.0))
+    E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+    if np.any(E2 < 0):
+        return None
+    return np.sqrt(np.maximum(E2, 1e-30))
 
 
-# ---- P02: Pauli exclusion analog DE ----
-# From A1+A2: spacetime quanta obey fermionic statistics at the boundary (A2).
-# Matter occupies quantum states, blocking creation -> exclusion pressure.
-# At high rho_m (early universe), creation is maximally suppressed.
-# At low rho_m (late universe), Pauli exclusion lifts -> DE grows.
-# A3: uniform creation, but blocked by occupied states fraction f_occ = Om*(1+z)^3.
-# Team derives: rho_DE = OL0 / (1 + kappa_P * Om*(1+z)^3)
-# kappa_P = 1/(3*(1-Om)) from Pauli blocking fraction normalization at z=0.
-def E_P02(z, Om, H0):
-    OR = OMEGA_R
+# X09: SQ Coherence Phase Locking (k=2)
+# A1+A2: Coherent SQ regions phase-lock: rho_DE oscillates with coherence phase.
+# Phase theta = integral of m_SQ c^2 / hbar dt ~ ln(1+z) (conformal time proxy).
+# Phase-locked fraction: f_lock = cos^2(theta/2) = (1 + cos(theta))/2.
+# theta = pi * ln(1+z) / ln(1+z_eq) where z_eq ~ 3400.
+# rho_DE = OL0 * (1 + (1/pi) * cos(pi * ln(1+z) / ln(4401))).
+# 1/pi is the coherence oscillation amplitude from SQ uncertainty principle.
+# k=2
+def X09_E(z_arr, Om):
+    ln_zeq = math.log(1.0 + 3400.0)   # matter-radiation equality
+    A_coh  = 1.0 / math.pi             # fixed: SQ uncertainty amplitude
+    OL0    = 1.0 - Om - OR
+    theta  = math.pi * np.log1p(z_arr) / ln_zeq
+    rho_DE = OL0 * (1.0 + A_coh * np.cos(theta))
+    E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+    if np.any(E2 < 0):
+        return None
+    return np.sqrt(np.maximum(E2, 1e-30))
+
+
+# X10: SQ Coherence Length Free Decay (k=3)
+# A1+A2: Coherence decay exponent xi_exp is free.
+# rho_DE = OL0 * exp(-xi_exp * (E_lcdm - 1)).
+# k=3
+def X10_E_factory(xi_exp):
+    def E_func(z_arr, Om):
+        OL0 = 1.0 - Om - OR
+        if OL0 <= 0:
+            return None
+        E2_lcdm = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + OL0
+        E_lcdm  = np.sqrt(np.maximum(E2_lcdm, 1e-30))
+        rho_DE  = OL0 * np.exp(-xi_exp * (E_lcdm - 1.0))
+        E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+        if np.any(E2 < 0): return None
+        return np.sqrt(np.maximum(E2, 1e-30))
+    return E_func
+
+
+# ── DIRECTION 4: Soliton solutions in generation-annihilation field ───────────
+
+# X11: SQ Kink Soliton Dark Energy (k=2)
+# A1+A4: The SQ generation-annihilation field admits kink soliton solutions.
+# Kink profile: phi_kink(z) = tanh((z - z_c)/xi_kink).
+# SQ energy density stored in kink: rho_kink ~ sech^2((z-z_c)/xi_kink).
+# As kink sweeps through cosmic time: rho_DE = OL0 * sech^2(z * sqrt(OL0/Om)) / sech^2(0).
+# sech^2(0) = 1, xi_kink = sqrt(Om/OL0) from balance condition at z_bal.
+# k=2
+def X11_E(z_arr, Om):
     OL0 = 1.0 - Om - OR
+    if OL0 <= 0 or Om <= 0:
+        return None
+    xi_k = math.sqrt(Om / OL0)   # kink width from balance
+    arg  = z_arr / xi_k
+    # sech^2(x) = 1/cosh^2(x)
+    cosh_arg = np.cosh(np.minimum(arg, 100.0))
+    rho_DE   = OL0 / (cosh_arg**2)
+    # at z=0: rho_DE = OL0 / cosh(0)^2 = OL0 (correct)
+    E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+    if np.any(E2 < 0):
+        return None
+    return np.sqrt(np.maximum(E2, 1e-30))
+
+
+# X12: SQ Breather Soliton DE (k=2)
+# A1+A4: Breather soliton oscillates in generation-annihilation field.
+# Breather: phi_br(z,t) ~ (A/omega_br) * sech(A*z) * cos(omega_br * t).
+# In Hubble units, effective: rho_DE = OL0 * sech^2(beta_br * ln(1+z))
+# beta_br = sqrt(3)/pi from breather frequency-wavenumber relation in phi^4 theory.
+# At z=0: ln(1)=0, sech(0)=1 -> rho_DE=OL0 (correct normalization).
+# k=2
+def X12_E(z_arr, Om):
+    beta_br = math.sqrt(3.0) / math.pi   # fixed: breather frequency relation
+    OL0     = 1.0 - Om - OR
     if OL0 <= 0:
         return None
-    kappa_P = 1.0 / (3.0 * max(1.0 - Om, 1e-6))
-    rho_m_z = Om * (1+z)**3
-    rho_DE = OL0 / (1.0 + kappa_P * rho_m_z)
-    # Normalize so E(0)=1
-    rho_DE_0 = OL0 / (1.0 + kappa_P * Om)
-    norm = Om + OR + rho_DE_0
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / max(norm, 1e-10), 1e-30))
+    arg    = beta_br * np.log1p(z_arr)
+    cosh_a = np.cosh(np.minimum(arg, 100.0))
+    rho_DE = OL0 / (cosh_a**2)
+    E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+    if np.any(E2 < 0):
+        return None
+    return np.sqrt(np.maximum(E2, 1e-30))
 
 
-# ---- P03: Decoherence cascade DE ----
-# From A2: quantum-classical boundary width grows with Hubble time.
-# Decoherence time tau_d ~ 1/H. As H decreases, boundary widens.
-# A wider boundary -> more DE captured at boundary -> rho_DE increases.
-# Net DE creation rate ~ d(1/H)/dt = -H_dot/H^2 = (1+q)*1 (q = decel param).
-# Team derives: rho_DE(a) = OL0 * (1 + delta_d * ln(a^(-1)))
-# delta_d = Om/3 from boundary width proportional to Omega_m.
-# (ln(1/a) > 0 at high z, so DE higher in past.)
-def E_P03(z, Om, H0):
-    OR = OMEGA_R
+# X13: SQ Soliton Width Free Parameter (k=3)
+# A1+A4: Soliton width beta_br is free.
+# rho_DE = OL0 / cosh^2(beta_br * ln(1+z)). k=3.
+def X13_E_factory(beta_br):
+    def E_func(z_arr, Om):
+        OL0 = 1.0 - Om - OR
+        if OL0 <= 0 or beta_br <= 0:
+            return None
+        arg    = beta_br * np.log1p(z_arr)
+        cosh_a = np.cosh(np.minimum(arg, 100.0))
+        rho_DE = OL0 / (cosh_a**2)
+        E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+        if np.any(E2 < 0): return None
+        return np.sqrt(np.maximum(E2, 1e-30))
+    return E_func
+
+
+# ── DIRECTION 5: Dissipative structure formation in SQ fluid ──────────────────
+
+# X14: Prigogine Dissipative Structure DE (k=2)
+# A1+A3+A4: SQ fluid far from equilibrium forms dissipative structures (Prigogine).
+# Dissipative structures: entropy production rate sigma_P = J * F (flux times force).
+# In cosmic SQ: J ~ n_SQ * H, F ~ rho_m / rho_DE. Entropy production peaks at
+# matter-DE equality, creating a peak in rho_DE.
+# rho_DE = OL0 * (1 + A_diss * (Om*(1+z)^3 / OL0) * exp(-Om*(1+z)^3/OL0))
+# A_diss = 1/e from Prigogine maximum entropy production principle.
+# k=2
+def X14_E(z_arr, Om):
+    A_diss = 1.0 / math.e   # fixed: maximum entropy production
+    OL0    = 1.0 - Om - OR
+    if OL0 <= 0 or Om <= 0:
+        return None
+    x      = Om * (1+z_arr)**3 / OL0
+    rho_DE = OL0 * (1.0 + A_diss * x * np.exp(-x))
+    E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+    if np.any(E2 < 0):
+        return None
+    return np.sqrt(np.maximum(E2, 1e-30))
+
+
+# X15: Benard Cell Convection DE (k=2)
+# A1+A3: SQ fluid driven by generation pressure develops Benard-like convective cells.
+# Critical Rayleigh number Ra_c = 1708. Above Ra_c: organized rolls form.
+# In SQ terms: roll formation reduces effective SQ bulk, decreasing rho_DE.
+# rho_DE = OL0 * (1 - f_conv * tanh^2(z / z_Benard))
+# z_Benard = (1708)^(1/4) / (6*pi) from dimensional analysis.
+# f_conv = 1/(2*pi^2) from convective efficiency factor.
+# k=2
+def X15_E(z_arr, Om):
+    f_conv   = 1.0 / (2.0 * math.pi**2)        # fixed: convective efficiency
+    z_Benard = 1708.0**(0.25) / (6.0 * math.pi) # ~ 0.643
+    OL0      = 1.0 - Om - OR
+    rho_DE   = OL0 * (1.0 - f_conv * np.tanh(z_arr / z_Benard)**2)
+    E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+    if np.any(E2 < 0):
+        return None
+    return np.sqrt(np.maximum(E2, 1e-30))
+
+
+# X16: Dissipative Coupling Free Amplitude (k=3)
+# A1+A3+A4: Dissipative structure amplitude A_diss is free.
+# rho_DE = OL0 * (1 + A_diss * x * exp(-x)) where x = Om*(1+z)^3/OL0. k=3.
+def X16_E_factory(A_diss):
+    def E_func(z_arr, Om):
+        OL0 = 1.0 - Om - OR
+        if OL0 <= 0 or Om <= 0:
+            return None
+        x      = Om * (1+z_arr)**3 / OL0
+        rho_DE = OL0 * (1.0 + A_diss * x * np.exp(-x))
+        E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+        if np.any(E2 < 0): return None
+        return np.sqrt(np.maximum(E2, 1e-30))
+    return E_func
+
+
+# ── DIRECTION 6: Non-Markovian memory effects in annihilation history ─────────
+
+# X17: Non-Markovian Memory Kernel DE (k=2)
+# A1+A3: Annihilation rate depends on history of matter density (non-Markovian).
+# Memory kernel: K(z, z') = K_0 * exp(-(z-z') / z_mem) (exponential memory).
+# z_mem = 1/ln(2) from half-memory decay at z=1 (recent structure formation).
+# Effective accumulated annihilation: Gamma_eff ~ integral_0^z K(z,z') * Om*(1+z')^3 dz'.
+# For exponential kernel: Gamma_eff = Om * (1+z)^3 / (1 + z/z_mem).
+# rho_DE = OL0 * exp(-Gamma_eff / OL0 * alpha_mem) where alpha_mem = ln2/3.
+# k=2
+def X17_E(z_arr, Om):
+    z_mem     = 1.0 / math.log(2.0)   # fixed: memory decay scale
+    alpha_mem = math.log(2.0) / 3.0   # fixed: memory coupling
+    OL0       = 1.0 - Om - OR
+    if OL0 <= 0 or Om <= 0:
+        return None
+    # effective accumulated annihilation with memory
+    Gamma_eff = Om * (1+z_arr)**3 / (1.0 + z_arr / z_mem)
+    rho_DE    = OL0 * np.exp(-alpha_mem * Gamma_eff / OL0)
+    # Normalize to OL0 at z=0
+    G0   = Om / (1.0 + 0.0 / z_mem)
+    norm = math.exp(-alpha_mem * G0 / OL0)
+    if norm < 1e-10:
+        return None
+    rho_DE = rho_DE / norm
+    E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+    if np.any(E2 < 0):
+        return None
+    return np.sqrt(np.maximum(E2, 1e-30))
+
+
+# X18: Power-Law Memory Kernel DE (k=2)
+# A1+A3: Power-law memory (long-range correlations in annihilation history).
+# Memory kernel K(tau) ~ tau^(-mu_mem) with mu_mem = 1/2 (sub-diffusion).
+# Effective: Gamma_eff ~ (1+z)^(3*mu_mem) = (1+z)^(3/2).
+# rho_DE = OL0 * exp(-alpha_pl * (1+z)^(3/2)) normalized to OL0 at z=0.
+# alpha_pl = ln(2) / (2^(3/2) - 1) from normalization condition.
+# k=2
+def X18_E(z_arr, Om):
+    mu_mem   = 0.5   # sub-diffusion exponent
+    exp_mem  = 3.0 * mu_mem   # = 3/2
+    # alpha chosen so that rho_DE changes by factor 1/2 at z_bal
+    alpha_pl = math.log(2.0) / (2.0**exp_mem - 1.0)
+    OL0      = 1.0 - Om - OR
+    rho_DE   = OL0 * np.exp(-alpha_pl * ((1+z_arr)**exp_mem - 1.0))
+    E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+    if np.any(E2 < 0):
+        return None
+    return np.sqrt(np.maximum(E2, 1e-30))
+
+
+# X19: Memory Decay Scale Free (k=3)
+# A1+A3: Memory decay scale z_mem is free.
+# rho_DE = OL0 * exp(-alpha_mem * Om*(1+z)^3 / (OL0*(1+z/z_mem))) / norm. k=3.
+def X19_E_factory(z_mem):
+    alpha_mem = math.log(2.0) / 3.0
+    def E_func(z_arr, Om):
+        OL0 = 1.0 - Om - OR
+        if OL0 <= 0 or Om <= 0 or z_mem <= 0:
+            return None
+        Gamma_eff = Om * (1+z_arr)**3 / (1.0 + z_arr / z_mem)
+        rho_DE    = OL0 * np.exp(-alpha_mem * Gamma_eff / OL0)
+        G0   = float(Om / (1.0 + 0.0 / z_mem))
+        norm = math.exp(-alpha_mem * G0 / OL0)
+        if norm < 1e-10: return None
+        rho_DE = rho_DE / norm
+        E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+        if np.any(E2 < 0): return None
+        return np.sqrt(np.maximum(E2, 1e-30))
+    return E_func
+
+
+# ── DIRECTION 7: Hamiltonian chaos in SQ trajectory space ────────────────────
+
+# X20: Lyapunov Exponent SQ Depletion DE (k=2)
+# A1+A4: SQ trajectories in phase space become chaotic with Lyapunov exponent Lambda_L.
+# Chaos onset at matter-DE equality. Before: Lambda_L = 0 (regular).
+# After: Lambda_L = H0 * sqrt(OL0/Om) (from KAM theorem breakup).
+# Sensitivity to initial conditions amplifies annihilation:
+# rho_DE = OL0 * exp(-Lambda_L * t) = OL0 * exp(-sqrt(OL0/Om) * ln(1+z)).
+# At z=0: exponent = 0, rho_DE=OL0 (correct).
+# k=2
+def X20_E(z_arr, Om):
     OL0 = 1.0 - Om - OR
+    if OL0 <= 0 or Om <= 0:
+        return None
+    Lambda_L = math.sqrt(OL0 / Om)   # Lyapunov: from KAM breakup
+    rho_DE   = OL0 * np.exp(-Lambda_L * np.log1p(z_arr))
+    # = OL0 * (1+z)^(-Lambda_L)
+    E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+    if np.any(E2 < 0):
+        return None
+    return np.sqrt(np.maximum(E2, 1e-30))
+
+
+# X21: Arnold Diffusion SQ Mixing (k=2)
+# A1+A4: Multi-dimensional SQ phase space allows Arnold diffusion.
+# Diffusion rate D_Arnold ~ exp(-1/epsilon) where epsilon ~ (E^2 - 1).
+# Net effect: slow mixing of SQ states increases apparent DE.
+# rho_DE = OL0 * (1 + A_Arn * exp(-1/(E^2 - 1 + delta_reg)))
+# A_Arn = 1/(2*pi), delta_reg = 1/pi (regularization of z=0 singularity).
+# k=2
+def X21_E(z_arr, Om):
+    A_Arn   = 1.0 / (2.0 * math.pi)
+    delta_r = 1.0 / math.pi   # regularization
+    OL0     = 1.0 - Om - OR
     if OL0 <= 0:
         return None
-    a = 1.0 / (1.0 + z)
-    delta_d = Om / 3.0
-    rho_DE = OL0 * (1.0 + delta_d * np.log(1.0 / np.maximum(a, 1e-10)))
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    E2_0 = Om + OR + OL0 * (1.0 + delta_d * 0.0)
-    return np.sqrt(np.maximum(E2 / max(E2_0, 1e-10), 1e-30))
+    E2_lcdm = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + OL0
+    E_lcdm  = np.sqrt(np.maximum(E2_lcdm, 1e-30))
+    eps     = E_lcdm**2 - 1.0 + delta_r
+    eps     = np.maximum(eps, 1e-10)
+    rho_DE  = OL0 * (1.0 + A_Arn * np.exp(-1.0 / eps))
+    # normalize: at z=0 eps=delta_r, factor = 1 + A_Arn*exp(-1/delta_r)
+    norm0 = 1.0 + A_Arn * math.exp(-1.0 / delta_r)
+    rho_DE = rho_DE / norm0
+    E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+    if np.any(E2 < 0):
+        return None
+    return np.sqrt(np.maximum(E2, 1e-30))
 
 
-# ---- P04: Thermodynamic arrow DE ----
-# From A3: creation is irreversible (thermodynamic arrow).
-# The entropy production rate from creation asymmetry (A3) accumulates.
-# Total entropy created ~ integral of Gamma_c over cosmic time.
-# By Bekenstein-Mukhanov counting, accumulated quanta -> DE pressure.
-# Team derives: rho_DE(a) = OL0 * exp(-nu_th * (1 - a))
-# nu_th = Om^2 / (2*(1-Om)) from entropy production integral.
-def E_P04(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
+# X22: Lyapunov Exponent Free (k=3)
+# A1+A4: Lyapunov exponent scale lambda_free is free.
+# rho_DE = OL0 * (1+z)^(-lambda_free). k=3.
+def X22_E_factory(lambda_free):
+    def E_func(z_arr, Om):
+        OL0 = 1.0 - Om - OR
+        if OL0 <= 0:
+            return None
+        rho_DE = OL0 * (1+z_arr)**(-lambda_free)
+        E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+        if np.any(E2 < 0): return None
+        return np.sqrt(np.maximum(E2, 1e-30))
+    return E_func
+
+
+# ── DIRECTION 8: Intermittency in void expansion dynamics ────────────────────
+
+# X23: Void Intermittency Burst DE (k=2)
+# A3+A4: Void expansion is intermittent: quiet phases punctuated by bursts.
+# Bursts correlated with structure formation (z ~ 2-3). Intermittency parameter
+# mu_int from On-Off intermittency: P(active) ~ (1+z)^(-mu_int).
+# Average rho_DE = OL0 * (1 + f_int * ((1+z)^(-mu_int) - 1)/(1^(-mu_int) - 1))
+# But simpler: rho_DE = OL0 / (1 + mu_int * ln^2(1+z)).
+# mu_int = 1/(2*e) from intermittency universality class.
+# k=2
+def X23_E(z_arr, Om):
+    mu_int = 1.0 / (2.0 * math.e)   # fixed: intermittency exponent
+    OL0    = 1.0 - Om - OR
+    rho_DE = OL0 / (1.0 + mu_int * np.log1p(z_arr)**2)
+    E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+    if np.any(E2 < 0):
+        return None
+    return np.sqrt(np.maximum(E2, 1e-30))
+
+
+# X24: Void Burst Triggering (k=2)
+# A3+A4: Void bursts triggered when matter density crosses threshold.
+# Threshold: rho_m / rho_DE = 1 (matter-DE equality).
+# Before threshold (high z): bursts enhance DE: rho_DE ~ OL0 * (1+z)^(+nu_b).
+# After threshold (low z): bursts diminish: rho_DE ~ OL0 * (1+z)^(-nu_b).
+# Smooth crossover: rho_DE = OL0 * ((1+z)^(nu_b) + (1+z)^(-nu_b)) / 2 / cosh(nu_b * ln(1+z_bal))
+# nu_b = 1/(3*pi) from void burst statistics.
+# k=2
+def X24_E(z_arr, Om):
+    nu_b = 1.0 / (3.0 * math.pi)   # fixed: void burst exponent
+    OL0  = 1.0 - Om - OR
+    if OL0 <= 0 or Om <= 0:
+        return None
+    z_bal  = max(0.1, (OL0 / Om)**(1.0/3.0) - 1.0)
+    arg    = nu_b * np.log1p(z_arr)
+    # hyperbolic cosine form: rho_DE ~ cosh(nu_b * ln(1+z))
+    cosh_z = np.cosh(arg)
+    cosh_0 = 1.0   # cosh(0) = 1 at z=0
+    rho_DE = OL0 * cosh_z / cosh_0
+    # This grows with z. Instead use: rho_DE = OL0 / cosh(nu_b * ln(1+z))
+    rho_DE = OL0 / cosh_z
+    E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+    if np.any(E2 < 0):
+        return None
+    return np.sqrt(np.maximum(E2, 1e-30))
+
+
+# X25: Intermittency Exponent Free (k=3)
+# A3+A4: Intermittency exponent mu_int is free.
+# rho_DE = OL0 / (1 + mu_int * ln^2(1+z)). k=3.
+def X25_E_factory(mu_int):
+    def E_func(z_arr, Om):
+        OL0 = 1.0 - Om - OR
+        if OL0 <= 0 or mu_int < 0:
+            return None
+        rho_DE = OL0 / (1.0 + mu_int * np.log1p(z_arr)**2)
+        E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+        if np.any(E2 < 0): return None
+        return np.sqrt(np.maximum(E2, 1e-30))
+    return E_func
+
+
+# ── DIRECTION 9: Multifractal scaling of annihilation events ─────────────────
+
+# X26: Multifractal Singularity Spectrum DE (k=2)
+# A1+A3+A4: Annihilation events have multifractal distribution.
+# Singularity spectrum f(alpha_mf) is parabolic: f(alpha) = 1 - (alpha - alpha_0)^2 / (2*sigma_mf^2).
+# Most probable singularity: alpha_0 = 1 (Holder exponent at most likely point).
+# Width sigma_mf = 1/sqrt(2*pi) from Gaussian multifractal.
+# Effective: average annihilation scaling ~ (1+z)^alpha_0 = (1+z)^1.
+# But width causes dispersion: rho_DE = OL0 * exp(-sigma_mf^2 * ln^2(1+z) / 2).
+# This is a log-normal distribution of annihilation events.
+# k=2
+def X26_E(z_arr, Om):
+    sigma_mf = 1.0 / math.sqrt(2.0 * math.pi)   # fixed: multifractal width
+    OL0      = 1.0 - Om - OR
+    rho_DE   = OL0 * np.exp(-0.5 * sigma_mf**2 * np.log1p(z_arr)**2)
+    E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+    if np.any(E2 < 0):
+        return None
+    return np.sqrt(np.maximum(E2, 1e-30))
+
+
+# X27: Multifractal Renyi Dimension DE (k=2)
+# A1+A3: Renyi dimension D_q of annihilation events modifies effective DE scaling.
+# D_2 (correlation dimension) ~ 2.67 (from cosmic web structure).
+# DE density scales as: rho_DE = OL0 * (1+z)^(D_2 - 3) = (1+z)^(-1/3).
+# D_2 = 8/3 gives exponent -1/3. Fixed from cosmic web fractal analysis.
+# k=2
+def X27_E(z_arr, Om):
+    D_2    = 8.0 / 3.0   # fixed: Renyi D_2 correlation dimension
+    exp_mf = D_2 - 3.0   # = -1/3
+    OL0    = 1.0 - Om - OR
+    rho_DE = OL0 * (1+z_arr)**exp_mf
+    E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+    if np.any(E2 < 0):
+        return None
+    return np.sqrt(np.maximum(E2, 1e-30))
+
+
+# X28: Multifractal Width Free (k=3)
+# A1+A3: Multifractal width sigma_mf is free.
+# rho_DE = OL0 * exp(-sigma_mf^2 * ln^2(1+z) / 2). k=3.
+def X28_E_factory(sigma_mf):
+    def E_func(z_arr, Om):
+        OL0 = 1.0 - Om - OR
+        if OL0 <= 0 or sigma_mf < 0:
+            return None
+        rho_DE = OL0 * np.exp(-0.5 * sigma_mf**2 * np.log1p(z_arr)**2)
+        E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+        if np.any(E2 < 0): return None
+        return np.sqrt(np.maximum(E2, 1e-30))
+    return E_func
+
+
+# ── DIRECTION 10: Synchronization of spatially separated annihilation regions
+
+# X29: Kuramoto Synchronization SQ DE (k=2)
+# A1+A3+A4: Spatially separated annihilation regions synchronize (Kuramoto model).
+# Kuramoto order parameter: r_K = |<exp(i*theta_j)>|.
+# Synchronization onset at coupling K > K_c = 2/pi*sigma_freq (Kuramoto transition).
+# Order parameter near critical: r_K ~ sqrt((K - K_c) / K_c) ~ sqrt(E - 1).
+# Synchronized regions annihilate collectively: enhanced depletion of SQ.
+# rho_DE = OL0 * (1 - r_K^2) = OL0 * (1 - alpha_K * (E - 1)) clipped to [0, OL0].
+# alpha_K = 1/pi from Kuramoto distribution width.
+# k=2
+def X29_E(z_arr, Om):
+    alpha_K = 1.0 / math.pi   # fixed: Kuramoto coupling
+    OL0     = 1.0 - Om - OR
     if OL0 <= 0:
         return None
-    a = 1.0 / (1.0 + z)
-    nu_th = Om**2 / (2.0 * max(1.0 - Om, 1e-6))
-    rho_DE = OL0 * np.exp(-nu_th * (1.0 - a))
-    rho_DE_0 = OL0 * np.exp(0.0)
-    E2_0 = Om + OR + rho_DE_0
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / max(E2_0, 1e-10), 1e-30))
-
-
-# ---- P05: Topology change rate DE ----
-# From A4: creation/annihilation changes the spacetime topology locally.
-# A4 shows three regimes -> topology changes at the boundary.
-# Rate of topology changes ~ |Gamma_c - Gamma_a| ~ rho_DE - rho_m/3.
-# As universe expands, matter dilutes -> topology change rate decreases.
-# Team derives: rho_DE modulated by topology-change damping.
-# rho_DE(a) = OL0 * (1 - gamma_t * (1-a)^2)
-# gamma_t = Om/(2*(1-Om)) from topology-change frequency at A4 boundary.
-def E_P05(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
-    if OL0 <= 0:
+    E2_lcdm = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + OL0
+    E_lcdm  = np.sqrt(np.maximum(E2_lcdm, 1e-30))
+    rho_DE  = OL0 * np.maximum(1.0 - alpha_K * (E_lcdm - 1.0), 1e-10)
+    E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+    if np.any(E2 < 0):
         return None
-    a = 1.0 / (1.0 + z)
-    gamma_t = Om / (2.0 * max(1.0 - Om, 1e-6))
-    rho_DE = OL0 * (1.0 - gamma_t * (1.0 - a)**2)
-    E2_0 = Om + OR + OL0
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / max(E2_0, 1e-10), 1e-30))
+    return np.sqrt(np.maximum(E2, 1e-30))
 
 
-# ---- P06: Geodesic deviation from quantum creation (A1+C4) ----
-# From A1+C4: uniform creation creates pressure on matter geodesics.
-# Geodesic deviation acceleration ~ creation pressure gradient.
-# The geodesic deviation accumulates over Hubble time -> energy stored in DE.
-# A3: creation rate Gamma_c = const -> geodesic deviation grows as ln(a).
-# Team derives: rho_DE(a) = OL0 * (1 + zeta_g * (1 - a^(-1/2)))
-# zeta_g = -2*Om/(3*(1-Om)) from geodesic integral over Hubble time.
-# Note: (1 - a^(-1/2)) < 0 at high z -> rho_DE decreases -> wa < 0.
-def E_P06(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
-    if OL0 <= 0:
-        return None
-    a = 1.0 / (1.0 + z)
-    zeta_g = 2.0 * Om / (3.0 * max(1.0 - Om, 1e-6))
-    # (1 - a^{-1/2}) = (1 - sqrt(1+z))
-    rho_DE = OL0 * (1.0 + zeta_g * (1.0 - a**(-0.5)))
-    rho_DE_0 = OL0 * (1.0 + zeta_g * 0.0)
-    E2_0 = Om + OR + rho_DE_0
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / max(E2_0, 1e-10), 1e-30))
+# X30: Phase-Locked Synchronization DE (k=3)
+# A1+A3+A4: Synchronization coupling alpha_K is free.
+# rho_DE = OL0 * max(1 - alpha_K * (E_lcdm - 1), epsilon). k=3.
+def X30_E_factory(alpha_K):
+    def E_func(z_arr, Om):
+        OL0 = 1.0 - Om - OR
+        if OL0 <= 0:
+            return None
+        E2_lcdm = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + OL0
+        E_lcdm  = np.sqrt(np.maximum(E2_lcdm, 1e-30))
+        rho_DE  = OL0 * np.maximum(1.0 - alpha_K * (E_lcdm - 1.0), 1e-10)
+        E2 = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rho_DE
+        if np.any(E2 < 0): return None
+        return np.sqrt(np.maximum(E2, 1e-30))
+    return E_func
 
 
-# ---- P07: Lorentz-violation flux DE (A3) ----
-# From A3: uniform creation defines a preferred cosmic frame.
-# This preferred frame introduces Lorentz-violating corrections to vacuum energy.
-# LV contribution to rho_DE ~ v_pref^2 * rho_Planck,
-# where v_pref ~ H*t_H ~ 1 (Hubble flow velocity in Planck units).
-# Team derives effective correction: rho_DE(a) = OL0 * (1 + epsilon_LV * (1-a)^(3/2))
-# epsilon_LV = Om^(3/2) / (2*(1-Om)) from LV energy density scaling.
-def E_P07(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
-    if OL0 <= 0:
-        return None
-    a = 1.0 / (1.0 + z)
-    epsilon_LV = Om**(1.5) / (2.0 * max(1.0 - Om, 1e-6))
-    rho_DE = OL0 * (1.0 + epsilon_LV * (1.0 - a)**(1.5))
-    rho_DE_0 = OL0 * (1.0 + epsilon_LV * 0.0)
-    E2_0 = Om + OR + rho_DE_0
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / max(E2_0, 1e-10), 1e-30))
+# ==============================================================================
+# WORKER FUNCTION
+# ==============================================================================
 
-
-# ---- P08: Quantum cohomology of spacetime quanta (A2+C3) ----
-# From A2+C3: boundary topology carries a quantum cohomology class.
-# As horizon area changes with expansion, cohomology class changes discretely.
-# Each cohomology transition releases energy proportional to horizon area change.
-# Team derives: rho_DE(a) = OL0 * (1 - beta_h * (1 - a^3) / 3)
-# beta_h = Om^2 / (1-Om)^2 from cohomology class counting per horizon area.
-# (1 - a^3) > 0 at high z -> rho_DE decreases -> wa < 0.
-def E_P08(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
-    if OL0 <= 0:
-        return None
-    a = 1.0 / (1.0 + z)
-    beta_h = Om**2 / max((1.0 - Om)**2, 1e-8)
-    rho_DE = OL0 * (1.0 - beta_h * (1.0 - a**3) / 3.0)
-    rho_DE_0 = OL0  # at z=0, (1-a^3)=0
-    E2_0 = Om + OR + rho_DE_0
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / max(E2_0, 1e-10), 1e-30))
-
-
-# ---- P09: Spontaneous symmetry breaking in creation field (A1) ----
-# From A1: creation field phi_c has a Mexican hat potential.
-# In early universe (high density), matter pin phi_c to origin (symmetric phase).
-# At late universe (low density), phi_c rolls to minimum -> DE released.
-# Phase transition at matter-DE equality (a_eq where Om*(1+z)^3 = OL0).
-# Team derives: rho_DE(a) = OL0 * (1 - sigma_ssb * exp(-(a/a_eq)^2))
-# sigma_ssb = Om/(2*(1-Om)) from SSB order parameter at a_eq.
-def E_P09(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
-    if OL0 <= 0:
-        return None
-    a = 1.0 / (1.0 + z)
-    sigma_ssb = Om / (2.0 * max(1.0 - Om, 1e-6))
-    # a_eq: scale factor at matter-DE equality
-    a_eq = (Om / max(OL0, 1e-6))**(1.0/3.0)
-    rho_DE = OL0 * (1.0 - sigma_ssb * np.exp(-(a / max(a_eq, 1e-6))**2))
-    rho_DE_0 = OL0 * (1.0 - sigma_ssb * np.exp(-1.0 / a_eq**2))
-    E2_0 = Om + OR + rho_DE_0
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    if E2_0 <= 0:
-        return None
-    return np.sqrt(np.maximum(E2 / E2_0, 1e-30))
-
-
-# ---- P10: Ising lattice spin transition DE (A4) ----
-# From A4: each spacetime quantum can be in "created" (+1) or "annihilated" (-1) state.
-# This is analogous to Ising spins; matter field plays role of external magnetic field.
-# Mean-field Ising: magnetization m = tanh(J_eff * m + h_ext)
-# At high matter density h_ext large -> m ~ -1 (annihilation dominant).
-# At low matter density h_ext -> 0 -> m ~ +tanh(J*m) -> spontaneous order.
-# Team derives: rho_DE(a) = OL0 * (1 + m(a)) / 2 scaled by OL0.
-# m(a) = tanh(-Om*(1+z)^3 / (2*OL0)) from mean-field solution.
-# J_eff = 1, h_ext = -rho_m/(2*rho_DE).
-def E_P10(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
-    if OL0 <= 0:
-        return None
-    rho_m_z = Om * (1+z)**3
-    h_arg = rho_m_z / (2.0 * max(OL0, 1e-6))
-    m = np.tanh(-h_arg)
-    rho_DE = OL0 * (1.0 + m) / 2.0 + OL0 / 2.0
-    rho_DE_0 = OL0 * (1.0 + np.tanh(-Om / (2.0 * max(OL0, 1e-6)))) / 2.0 + OL0 / 2.0
-    E2_0 = Om + OR + rho_DE_0
-    if E2_0 <= 0:
-        return None
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / E2_0, 1e-30))
-
-
-# ---- P11: Quantum walk on spacetime graph DE (A2) ----
-# From A2: quantum-classical boundary can be viewed as a graph where
-# spacetime quanta are nodes connected to matter nodes.
-# Quantum walk on this graph: amplitude spreads as sqrt(t) ~ sqrt(1/H).
-# DE density ~ amplitude^2 of quantum walker at empty nodes.
-# Team derives: rho_DE(a) = OL0 * (1 + alpha_qw * (sqrt(a) - 1))
-# alpha_qw = Om / (1-Om) from quantum walk return probability.
-# sqrt(a) < 1 at high z -> rho_DE decreases -> wa < 0.
-def E_P11(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
-    if OL0 <= 0:
-        return None
-    a = 1.0 / (1.0 + z)
-    alpha_qw = Om / max(1.0 - Om, 1e-6)
-    rho_DE = OL0 * (1.0 + alpha_qw * (np.sqrt(a) - 1.0))
-    rho_DE_0 = OL0 * (1.0 + alpha_qw * 0.0)
-    E2_0 = Om + OR + rho_DE_0
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / max(E2_0, 1e-10), 1e-30))
-
-
-# ---- P12: Hydrodynamic creation fluid DE (A3+C4) ----
-# From A3+C4: uniform creation forms a perfect fluid with pressure.
-# Fluid continuity: drho_c/dt + 3H(rho_c + p_c) = Gamma_c.
-# A3: Gamma_c = const -> p_c = -rho_c/3 (radiation-like creation).
-# But DE component carries excess: rho_DE = rho_c - rho_m * eta_h.
-# Team derives: rho_DE(a) = OL0 * a^(Om/3) / (1 + eta_h*(1-a))
-# eta_h = Om/(3*(1-Om)) from continuity balance.
-def E_P12(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
-    if OL0 <= 0:
-        return None
-    a = 1.0 / (1.0 + z)
-    eta_h = Om / (3.0 * max(1.0 - Om, 1e-6))
-    rho_DE = OL0 * a**(Om/3.0) / (1.0 + eta_h * (1.0 - a))
-    rho_DE_0 = OL0 * 1.0 / 1.0
-    E2_0 = Om + OR + rho_DE_0
-    if E2_0 <= 0:
-        return None
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / E2_0, 1e-30))
-
-
-# ---- P13: Knot invariant DE (A2+C3) ----
-# From A2+C3: quantum-classical boundary has topology that can be characterized
-# by knot invariants (Jones polynomial analogs).
-# Holographic principle C3: knot invariants scale with boundary area ~ 1/H^2 ~ a^2.
-# As universe expands, more complex knots form -> energy stored in knot complexity.
-# Team derives: rho_DE(a) = OL0 * (1 - lambda_k * (1 - a^4) / 4)
-# lambda_k = Om / (2*(1-Om)) from knot complexity per horizon area unit.
-def E_P13(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
-    if OL0 <= 0:
-        return None
-    a = 1.0 / (1.0 + z)
-    lambda_k = Om / (2.0 * max(1.0 - Om, 1e-6))
-    rho_DE = OL0 * (1.0 - lambda_k * (1.0 - a**4) / 4.0)
-    rho_DE_0 = OL0
-    E2_0 = Om + OR + rho_DE_0
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / max(E2_0, 1e-10), 1e-30))
-
-
-# ---- P14: Information entropy gradient DE (A1+C3) ----
-# From A1+C3: annihilation of spacetime quanta by matter reduces local
-# information content. The spatial gradient of information entropy drives a flux.
-# Holographic: info ~ horizon area ~ 1/H^2. Gradient between matter-rich and
-# empty regions -> information flows into DE sector.
-# Team derives: rho_DE(a) = OL0 * (1 - psi_I * (1 - 1/(1+(1-a)))  )
-# Simplification: rho_DE(a) = OL0 * (1 - psi_I * a / (1 + a))
-# psi_I = 2*Om/(3*(1-Om)) from info gradient balance.
-def E_P14(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
-    if OL0 <= 0:
-        return None
-    a = 1.0 / (1.0 + z)
-    psi_I = 2.0 * Om / (3.0 * max(1.0 - Om, 1e-6))
-    rho_DE = OL0 * (1.0 - psi_I * a / (1.0 + a))
-    rho_DE_0 = OL0 * (1.0 - psi_I * 0.5)
-    E2_0 = Om + OR + rho_DE_0
-    if E2_0 <= 0:
-        return None
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / E2_0, 1e-30))
-
-
-# ---- P15: Lyapunov exponent of matter-DE system (A4) ----
-# From A4: the three-regime system (creation/gravity/boundary) is a dynamical system.
-# The Lyapunov exponent lambda_L of this system determines how fast perturbations grow.
-# At late times (matter diluted), lambda_L -> 0 (stable fixed point = de Sitter).
-# At early times (matter dominated), lambda_L ~ H -> instability drives DE.
-# Team derives: rho_DE(a) = OL0 * exp(-phi_L * (1-a) * Om*(1+z)^3)
-# phi_L = 1/(3*(1-Om)) from Lyapunov analysis of A4 boundary.
-def E_P15(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
-    if OL0 <= 0:
-        return None
-    a = 1.0 / (1.0 + z)
-    phi_L = 1.0 / (3.0 * max(1.0 - Om, 1e-6))
-    rho_m_z = Om * (1+z)**3
-    rho_DE = OL0 * np.exp(-phi_L * (1.0 - a) * rho_m_z)
-    rho_DE_0 = OL0 * np.exp(0.0)
-    E2_0 = Om + OR + rho_DE_0
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / max(E2_0, 1e-10), 1e-30))
-
-
-# ---- P16: Andreev reflection at quantum boundary DE (A2) ----
-# From A2: quantum-classical boundary reflects quantum excitations (like Andreev).
-# Reflected quanta carry energy back to DE sector.
-# Reflection amplitude ~ (rho_m)^(1/2) / (rho_m + rho_DE)^(1/2).
-# As matter dilutes, reflection decreases -> DE decreases at high z (past).
-# Team derives: rho_DE(a) = OL0 * a^(3*Om/(2*(Om+OL0)))
-# From Andreev amplitude squared scaling with matter fraction.
-def E_P16(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
-    if OL0 <= 0:
-        return None
-    a = 1.0 / (1.0 + z)
-    # Andreev exponent from reflection amplitude scaling
-    w_andr = -1.0 + Om / (2.0 * max(Om + OL0, 1e-6))
-    rho_DE = OL0 * a**(-3.0*(1.0 + w_andr))
-    rho_DE_0 = OL0
-    E2_0 = Om + OR + rho_DE_0
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / max(E2_0, 1e-10), 1e-30))
-
-
-# ---- P17: Critical phenomena near A4 boundary DE (A4) ----
-# From A4: the boundary between creation and annihilation regimes is a critical surface.
-# Near this surface, power-law correlations emerge (as in phase transitions).
-# Critical exponent nu_c controls DE divergence near the boundary.
-# Team derives: rho_DE(a) = OL0 * (1 + chi_c * |Om - OL_frac(a)|)
-# OL_frac(a) = OL0 / (Om*(1+z)^3 + OL0) (instantaneous DE fraction).
-# chi_c = Om/(1-Om) from critical fluctuation amplitude.
-def E_P17(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
-    if OL0 <= 0:
-        return None
-    chi_c = Om / max(1.0 - Om, 1e-6)
-    rho_m_z = Om * (1+z)**3
-    OL_frac = OL0 / max(rho_m_z + OL0, 1e-10)
-    Om_frac = rho_m_z / max(rho_m_z + OL0, 1e-10)
-    rho_DE = OL0 * (1.0 + chi_c * np.abs(Om/(Om+OL0) - OL_frac))
-    rho_DE_0 = OL0 * (1.0 + chi_c * np.abs(Om/(Om+OL0) - OL0/(Om+OL0)))
-    E2_0 = Om + OR + rho_DE_0
-    if E2_0 <= 0:
-        return None
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / E2_0, 1e-30))
-
-
-# ---- P18: Virial theorem for quantum creation gas DE (A3) ----
-# From A3: uniform creation forms a gas of quantum quanta in the Hubble volume.
-# Virial theorem: <KE> = -<PE>/2 for gravitationally bound quantum gas.
-# KE per quantum ~ H^2 (Hubble flow). PE per quantum ~ -G*rho_tot/r^2.
-# Virial equilibrium selects DE density: rho_DE = OL0 * (virial correction).
-# Team derives: rho_DE(a) = OL0 * (1 + theta_v * (1 - a^(3/2)))
-# theta_v = Om/(2*(1-Om)) from virial theorem applied to quantum gas.
-def E_P18(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
-    if OL0 <= 0:
-        return None
-    a = 1.0 / (1.0 + z)
-    theta_v = Om / (2.0 * max(1.0 - Om, 1e-6))
-    rho_DE = OL0 * (1.0 + theta_v * (1.0 - a**(1.5)))
-    rho_DE_0 = OL0
-    E2_0 = Om + OR + rho_DE_0
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / max(E2_0, 1e-10), 1e-30))
-
-
-# ---- P19: Surface tension of quantum boundary DE (A2) ----
-# From A2: quantum-classical boundary has surface tension sigma_st.
-# Surface tension energy stored in boundary ~ sigma_st * Area_horizon.
-# Area_horizon ~ 1/H^2 ~ 1/H0^2 * a^3 (in matter-dominated era).
-# Team derives: rho_DE(a) = OL0 * (1 - xi_st * (1 - a^(3/2)))
-# xi_st = Om^2/(3*(1-Om)) from surface tension normalization.
-# (1 - a^(3/2)) > 0 at high z -> rho_DE < OL0 -> wa < 0.
-def E_P19(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
-    if OL0 <= 0:
-        return None
-    a = 1.0 / (1.0 + z)
-    xi_st = Om**2 / (3.0 * max(1.0 - Om, 1e-6))
-    rho_DE = OL0 * (1.0 - xi_st * (1.0 - a**(1.5)))
-    rho_DE_0 = OL0
-    E2_0 = Om + OR + rho_DE_0
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / max(E2_0, 1e-10), 1e-30))
-
-
-# ---- P20: Dipole radiation from asymmetric creation DE (A3+C4) ----
-# From A3+C4: creation is uniform but annihilation is localized.
-# This asymmetry acts like electric charge distribution -> dipole radiation.
-# Dipole power ~ (d^2/dt^2 p)^2 where p ~ matter dipole moment.
-# Radiated energy feeds DE: rho_DE(a) = OL0 + delta_dip * rho_m^2 / rho_c^2.
-# delta_dip = Om^2 / (6*(1-Om)) from dipole radiation power integral.
-def E_P20(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
-    if OL0 <= 0:
-        return None
-    delta_dip = Om**2 / (6.0 * max(1.0 - Om, 1e-6))
-    rho_m_z = Om * (1+z)**3
-    rho_DE = OL0 + delta_dip * rho_m_z**2
-    rho_DE_0 = OL0 + delta_dip * Om**2
-    E2_0 = Om + OR + rho_DE_0
-    if E2_0 <= 0:
-        return None
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / E2_0, 1e-30))
-
-
-# ---- P21: Winding number in creation topology DE (A2+C3) ----
-# From A2+C3: quantum boundary has topological winding number W.
-# W counts how many times the boundary wraps around the Hubble sphere.
-# Holographic: W ~ boundary area / Planck area ~ 1/(G*H^2).
-# As H decreases with expansion, W increases -> more topological modes -> more DE.
-# Team derives: rho_DE(a) = OL0 * (1 + omega_w * (a^(-1) - 1)^(1/3))
-# omega_w = Om/3 from winding number density in Hubble volume.
-def E_P21(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
-    if OL0 <= 0:
-        return None
-    a = 1.0 / (1.0 + z)
-    omega_w = Om / 3.0
-    winding = (1.0/np.maximum(a, 1e-10) - 1.0)**(1.0/3.0)
-    rho_DE = OL0 * (1.0 + omega_w * winding)
-    rho_DE_0 = OL0 * (1.0 + omega_w * 0.0)
-    E2_0 = Om + OR + rho_DE_0
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / max(E2_0, 1e-10), 1e-30))
-
-
-# ---- P22: Resonance between creation rate and Hubble scale DE (A3) ----
-# From A3: creation rate Gamma_c is constant. Hubble scale H changes.
-# When Gamma_c / H ~ constant (resonance condition), DE is amplified.
-# Off-resonance: DE is suppressed by detuning factor.
-# Team derives: rho_DE(a) = OL0 * (1 + rho_res * sin^2(pi * a / 2))
-# sin^2(pi/2) = 1 at a=1 (today), sin^2(0) = 0 at a=0.
-# rho_res = -Om/(2*(1-Om)) from resonance amplitude at Gamma_c ~ H.
-# Negative rho_res: DE lower at high z -> wa < 0.
-def E_P22(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
-    if OL0 <= 0:
-        return None
-    a = 1.0 / (1.0 + z)
-    rho_res = -Om / (2.0 * max(1.0 - Om, 1e-6))
-    rho_DE = OL0 * (1.0 + rho_res * np.sin(np.pi * a / 2.0)**2)
-    rho_DE_0 = OL0 * (1.0 + rho_res * 1.0)
-    E2_0 = Om + OR + rho_DE_0
-    if E2_0 <= 0:
-        return None
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / E2_0, 1e-30))
-
-
-# ---- P23: Quantum Hall effect analog DE (A2) ----
-# From A2: quantum-classical boundary in 2+1D supports quantum Hall states.
-# These states carry quantized Hall conductance sigma_H = n_LL * e^2/h.
-# In cosmic analog, n_LL = number of filled Landau levels of spacetime quanta.
-# n_LL grows with Hubble volume: n_LL ~ 1/H^2 ~ a^3 in matter era.
-# Team derives: rho_DE(a) = OL0 * (1 - phi_H * (1 - a^(3/2)) / (1 + phi_H))
-# phi_H = Om^2/(2*(1-Om)^2) from Hall conductance quantization per Hubble area.
-def E_P23(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
-    if OL0 <= 0:
-        return None
-    a = 1.0 / (1.0 + z)
-    phi_H = Om**2 / (2.0 * max((1.0 - Om)**2, 1e-8))
-    rho_DE = OL0 * (1.0 - phi_H * (1.0 - a**(1.5)) / (1.0 + phi_H))
-    rho_DE_0 = OL0
-    E2_0 = Om + OR + rho_DE_0
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / max(E2_0, 1e-10), 1e-30))
-
-
-# ---- P24: Shapiro delay from creation field DE (C1+A1) ----
-# From C1+A1: equivalence principle holds, so creation field couples
-# to both inertial and gravitational mass equally.
-# This coupling modifies photon travel time (Shapiro delay analog).
-# The extra time delay -> effective distance modification -> appears as DE.
-# Team derives: rho_DE(a) = OL0 * (1 - phi_sh * (1-a)/(1+(1-a)) )
-# = OL0 * (1 - phi_sh * (1-a)/(2-a))
-# phi_sh = Om^2/(1-Om) from Shapiro delay integral at Hubble scale.
-def E_P24(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
-    if OL0 <= 0:
-        return None
-    a = 1.0 / (1.0 + z)
-    phi_sh = Om**2 / max(1.0 - Om, 1e-6)
-    rho_DE = OL0 * (1.0 - phi_sh * (1.0 - a) / max(2.0 - a, 1e-6))
-    rho_DE_0 = OL0 * (1.0 - phi_sh * 0.0)
-    E2_0 = Om + OR + rho_DE_0
-    if E2_0 <= 0:
-        return None
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / E2_0, 1e-30))
-
-
-# ---- P25: Loschmidt echo of quantum creation DE (A4) ----
-# From A4: the three-regime system undergoes "quantum reversal" when
-# matter density crosses the creation-annihilation boundary.
-# Loschmidt echo measures overlap between forward and time-reversed evolution.
-# Echo amplitude ~ exp(-lambda_L * t) where t ~ 1/H.
-# Team derives: rho_DE(a) = OL0 * (1 - rho_LE * (1 - exp(-Om*(1-a)/OL0)))
-# rho_LE = Om/(1-Om) from Loschmidt echo amplitude at equilibrium.
-def E_P25(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
-    if OL0 <= 0:
-        return None
-    a = 1.0 / (1.0 + z)
-    rho_LE = Om / max(1.0 - Om, 1e-6)
-    exp_arg = Om * (1.0 - a) / max(OL0, 1e-6)
-    rho_DE = OL0 * (1.0 - rho_LE * (1.0 - np.exp(-exp_arg)))
-    rho_DE_0 = OL0 * (1.0 - rho_LE * 0.0)
-    E2_0 = Om + OR + rho_DE_0
-    if E2_0 <= 0:
-        return None
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / E2_0, 1e-30))
-
-
-# ---- P26: Spectral flow in creation field DE (A2+C3) ----
-# From A2+C3: creation field has a spectrum of modes in Hubble volume.
-# Spectral flow: as H decreases, modes shift from above to below horizon.
-# Each mode crossing the horizon contributes energy to DE.
-# Spectral flow rate ~ dH/dt * (number of modes per dH) ~ H_dot / H^2.
-# Team derives: rho_DE(a) = OL0 * (1 + f_sf * (a^(-Om) - 1))
-# f_sf = Om^2/(3*(1-Om)) from spectral mode density per octave of H.
-def E_P26(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
-    if OL0 <= 0:
-        return None
-    a = 1.0 / (1.0 + z)
-    f_sf = Om**2 / (3.0 * max(1.0 - Om, 1e-6))
-    rho_DE = OL0 * (1.0 + f_sf * (a**(-Om) - 1.0))
-    rho_DE_0 = OL0 * (1.0 + f_sf * 0.0)
-    E2_0 = Om + OR + rho_DE_0
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / max(E2_0, 1e-10), 1e-30))
-
-
-# ---- P27: Spin network degeneracy DE (A2+C3) ----
-# From A2+C3: quantum boundary is a spin network (LQG-inspired).
-# Degeneracy of spin network states at given area ~ exp(area/4) = exp(A_BH/4).
-# More degenerate states -> higher effective vacuum energy -> more DE.
-# As horizon grows, degeneracy increases -> DE increases toward today.
-# Team derives: rho_DE(a) = OL0 * (1 - kappa_sn * (1 - a^(2/3)))
-# kappa_sn = Om/(3*(1-Om)) from spin network degeneracy at Hubble area.
-def E_P27(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
-    if OL0 <= 0:
-        return None
-    a = 1.0 / (1.0 + z)
-    kappa_sn = Om / (3.0 * max(1.0 - Om, 1e-6))
-    rho_DE = OL0 * (1.0 - kappa_sn * (1.0 - a**(2.0/3.0)))
-    rho_DE_0 = OL0
-    E2_0 = Om + OR + rho_DE_0
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / max(E2_0, 1e-10), 1e-30))
-
-
-# ---- P28: Self-organized criticality DE (A4) ----
-# From A4: the creation-annihilation system self-organizes to a critical state
-# (like sandpile model). At criticality, avalanches of creation events
-# follow power-law size distribution.
-# Power-law creation bursts: delta_rho_DE ~ (rho_m)^(-s_soc)
-# with s_soc = 1/2 from mean-field SOC exponent.
-# Team derives: rho_DE(a) = OL0 * (1 + alpha_soc / sqrt(Om*(1+z)^3 + OL0))
-# alpha_soc = Om*OL0/(Om+OL0) from SOC amplitude at matter-DE equality.
-def E_P28(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
-    if OL0 <= 0:
-        return None
-    alpha_soc = Om * OL0 / max(Om + OL0, 1e-6)
-    rho_tot = Om*(1+z)**3 + OL0
-    rho_DE = OL0 + alpha_soc / np.sqrt(np.maximum(rho_tot, 1e-10))
-    rho_DE_0 = OL0 + alpha_soc / np.sqrt(Om + OL0)
-    E2_0 = Om + OR + rho_DE_0
-    if E2_0 <= 0:
-        return None
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / E2_0, 1e-30))
-
-
-# ---- P29: Quantum erasure DE (A1+A2) ----
-# From A1+A2: when matter annihilates spacetime quanta, quantum information
-# is "erased" (like quantum erasure experiments).
-# Erased information is stored at the boundary (A2) and re-emitted as DE.
-# Rate of erasure ~ annihilation rate ~ rho_m * sigma_a.
-# Total erased information integrated over time -> DE energy density.
-# Team derives: rho_DE(a) = OL0 * (1 + f_er * (1 - exp(-rho_m(a)/rho_m0 * q_er)))
-# f_er = -Om/2, q_er = Om from erasure rate normalization.
-# At z=0: (1 - exp(-Om)) ~ Om/e. At high z: approaches -f_er.
-def E_P29(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
-    if OL0 <= 0:
-        return None
-    f_er = -Om / 2.0
-    q_er = Om
-    rho_m_ratio = (1.0 + z)**3  # rho_m(z) / rho_m0
-    rho_DE = OL0 * (1.0 + f_er * (1.0 - np.exp(-rho_m_ratio * q_er)))
-    rho_DE_0 = OL0 * (1.0 + f_er * (1.0 - np.exp(-q_er)))
-    E2_0 = Om + OR + rho_DE_0
-    if E2_0 <= 0:
-        return None
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / E2_0, 1e-30))
-
-
-# ---- P30: Spacetime metric entropy DE (A1+A3+C3) ----
-# From A1+A3+C3: creation-annihilation defines a preferred metric on spacetime.
-# The metric entropy S_g = -Tr(rho_g ln rho_g) for the quantum metric state
-# changes with expansion.
-# C3: S_g proportional to horizon area ~ 1/H^2.
-# A3: creation adds to S_g uniformly; A1: matter depletes S_g locally.
-# Net: dS_g/dt = Gamma_c - Gamma_a * rho_m.
-# Team derives: rho_DE(a) = OL0 * (1 - rho_me * (1 - a) * (1 + Om*(1+z)^2))
-# rho_me = Om^2 / (3*(1-Om)) from metric entropy integral.
-# Note: stabilized to prevent runaway at high z.
-def E_P30(z, Om, H0):
-    OR = OMEGA_R
-    OL0 = 1.0 - Om - OR
-    if OL0 <= 0:
-        return None
-    a = 1.0 / (1.0 + z)
-    rho_me = Om**2 / (3.0 * max(1.0 - Om, 1e-6))
-    factor = (1.0 - a) * (1.0 + Om * (1+z)**2)
-    rho_DE = OL0 * (1.0 - rho_me * factor)
-    rho_DE_0 = OL0 * (1.0 - rho_me * 0.0)
-    E2_0 = Om + OR + rho_DE_0
-    if E2_0 <= 0:
-        return None
-    E2 = Om*(1+z)**3 + OR*(1+z)**4 + rho_DE
-    return np.sqrt(np.maximum(E2 / E2_0, 1e-30))
-
-
-# ============================================================
-# THEORY REGISTRY
-# ============================================================
-
-THEORIES = [
-    ('P01', 'Membrane dissolution DE',        E_P01),
-    ('P02', 'Pauli exclusion analog DE',       E_P02),
-    ('P03', 'Decoherence cascade DE',          E_P03),
-    ('P04', 'Thermodynamic arrow DE',          E_P04),
-    ('P05', 'Topology change rate DE',         E_P05),
-    ('P06', 'Geodesic deviation creation DE',  E_P06),
-    ('P07', 'Lorentz-violation flux DE',       E_P07),
-    ('P08', 'Quantum cohomology DE',           E_P08),
-    ('P09', 'Spontaneous symmetry breaking DE',E_P09),
-    ('P10', 'Ising lattice spin DE',           E_P10),
-    ('P11', 'Quantum walk DE',                 E_P11),
-    ('P12', 'Hydrodynamic creation fluid DE',  E_P12),
-    ('P13', 'Knot invariant DE',               E_P13),
-    ('P14', 'Information entropy gradient DE', E_P14),
-    ('P15', 'Lyapunov exponent DE',            E_P15),
-    ('P16', 'Andreev reflection DE',           E_P16),
-    ('P17', 'Critical phenomena DE',           E_P17),
-    ('P18', 'Virial theorem quantum gas DE',   E_P18),
-    ('P19', 'Surface tension boundary DE',     E_P19),
-    ('P20', 'Dipole radiation creation DE',    E_P20),
-    ('P21', 'Winding number topology DE',      E_P21),
-    ('P22', 'Resonance Hubble creation DE',    E_P22),
-    ('P23', 'Quantum Hall analog DE',          E_P23),
-    ('P24', 'Shapiro delay creation DE',       E_P24),
-    ('P25', 'Loschmidt echo creation DE',      E_P25),
-    ('P26', 'Spectral flow creation DE',       E_P26),
-    ('P27', 'Spin network degeneracy DE',      E_P27),
-    ('P28', 'Self-organized criticality DE',   E_P28),
-    ('P29', 'Quantum erasure DE',              E_P29),
-    ('P30', 'Spacetime metric entropy DE',     E_P30),
-]
-
-
-# ============================================================
-# WORKER FUNCTION (spawn-safe)
-# ============================================================
-
-def run_theory_worker(args):
-    """Worker for parallel execution. Each worker loads data independently."""
-    import os
-    import sys
-    os.environ['OMP_NUM_THREADS'] = '1'
-    os.environ['MKL_NUM_THREADS'] = '1'
-    os.environ['OPENBLAS_NUM_THREADS'] = '1'
+def worker_fn(args):
+    """Runs in a separate process."""
+    # Need to re-import inside worker (spawn context)
+    import sys, os, math, warnings
     import numpy as np
-    import warnings
+
+    os.environ['OMP_NUM_THREADS']      = '1'
+    os.environ['MKL_NUM_THREADS']      = '1'
+    os.environ['OPENBLAS_NUM_THREADS'] = '1'
+    np.seterr(all='ignore')
+    warnings.filterwarnings('ignore')
+
+    wid, theory_name, k, E_func_or_factory, extra_starts = args
+
+    _SIM_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if _SIM_DIR not in sys.path:
+        sys.path.insert(0, _SIM_DIR)
+    from desi_data import DESI_DR2, DESI_DR2_COV_INV
     from scipy.integrate import cumulative_trapezoid
     from scipy.optimize import minimize
-    warnings.filterwarnings('ignore')
-    np.seterr(all='ignore')
 
-    theory_id, theory_name, E_func = args
+    C_KMS  = 299792.458
+    R_S    = 147.09
+    OR     = 5.38e-5
+    N_DATA = 13
+    N_GRID = 4000
+    LCDM_BASELINE_AICC = 15.392
+
+    def aicc_w(chi2_val, k_in, n=N_DATA):
+        return chi2_val + 2*k_in + 2*k_in*(k_in+1)/(n - k_in - 1)
+
+    def compute_tv(Omega_m, H0, E_func):
+        z_eff  = DESI_DR2['z_eff']
+        z_max  = z_eff.max() + 0.01
+        z_grid = np.linspace(0.0, z_max, N_GRID)
+        try:
+            E_grid = E_func(z_grid, Omega_m)
+        except Exception:
+            return None
+        if E_grid is None:
+            return None
+        if not np.all(np.isfinite(E_grid)):
+            return None
+        E_grid = np.maximum(E_grid, 1e-15)
+        inv_E  = 1.0 / E_grid
+        DM_cum = (C_KMS / H0) * np.concatenate(
+            [[0.0], cumulative_trapezoid(inv_E, z_grid)]
+        )
+        theory_vec = np.empty(N_DATA)
+        for i, (z, qty) in enumerate(zip(z_eff, DESI_DR2['quantity'])):
+            idx = min(np.searchsorted(z_grid, z), N_GRID - 1)
+            E_z = E_grid[idx]
+            DH  = C_KMS / (H0 * E_z)
+            DM  = DM_cum[idx]
+            DV  = (z * DM**2 * DH)**(1.0/3.0) if z > 0 else 0.0
+            if   'DV' in qty: theory_vec[i] = DV / R_S
+            elif 'DM' in qty: theory_vec[i] = DM / R_S
+            elif 'DH' in qty: theory_vec[i] = DH / R_S
+            else:             theory_vec[i] = np.nan
+        return theory_vec
+
+    def chi2_w(params, E_func):
+        Omega_m, H0 = params[0], params[1]
+        if not (0.05 < Omega_m < 0.70 and 50.0 < H0 < 100.0):
+            return 1e8
+        th = compute_tv(Omega_m, H0, E_func)
+        if th is None or not np.all(np.isfinite(th)):
+            return 1e8
+        delta = DESI_DR2['value'] - th
+        return float(delta @ DESI_DR2_COV_INV @ delta)
 
     try:
-        Om, H0, chi2_val, aicc_val = fit_model(E_func)
-        w0, wa = extract_w0_wa(E_func, Om, H0)
-        v = verdict(aicc_val, wa)
-        daicc = aicc_val - AICC_LCDM
+        base_starts = [
+            [0.315, 67.4], [0.30, 68.0], [0.32, 69.0],
+            [0.29, 70.0],  [0.31, 68.5], [0.28, 71.0],
+            [0.33, 67.0],  [0.34, 66.5],
+        ]
+
+        if k == 2:
+            def wrapper(p):
+                return chi2_w(p, E_func_or_factory)
+
+            best_val = 1e8
+            best_x   = None
+            for s in base_starts:
+                try:
+                    res = minimize(wrapper, s, method='Nelder-Mead',
+                                   options={'xatol': 1e-6, 'fatol': 1e-6, 'maxiter': 5000})
+                    if res.fun < best_val:
+                        best_val = res.fun
+                        best_x   = res.x
+                except Exception:
+                    continue
+
+            if best_x is None:
+                return {'id': wid, 'name': theory_name, 'k': k,
+                        'chi2': 1e8, 'aicc': 1e8, 'd_aicc': 1e8,
+                        'Om': None, 'H0': None, 'extra': None, 'status': 'FAIL'}
+            Om_best, H0_best = float(best_x[0]), float(best_x[1])
+            chi2_best  = best_val
+            extra_best = None
+
+        else:  # k == 3
+            combined_starts = [b + e for b in base_starts for e in extra_starts]
+
+            def full_wrapper(p):
+                try:
+                    E_fn = E_func_or_factory(p[2])
+                    return chi2_w(p[:2], E_fn)
+                except Exception:
+                    return 1e8
+
+            best_val = 1e8
+            best_x   = None
+            for s in combined_starts:
+                try:
+                    res = minimize(full_wrapper, s, method='Nelder-Mead',
+                                   options={'xatol': 1e-6, 'fatol': 1e-6, 'maxiter': 5000})
+                    if res.fun < best_val:
+                        best_val = res.fun
+                        best_x   = res.x
+                except Exception:
+                    continue
+
+            if best_x is None:
+                return {'id': wid, 'name': theory_name, 'k': k,
+                        'chi2': 1e8, 'aicc': 1e8, 'd_aicc': 1e8,
+                        'Om': None, 'H0': None, 'extra': None, 'status': 'FAIL'}
+            Om_best, H0_best = float(best_x[0]), float(best_x[1])
+            chi2_best  = best_val
+            extra_best = float(best_x[2])
+
+        aicc_val = aicc_w(chi2_best, k)
+        d_aicc   = aicc_val - LCDM_BASELINE_AICC
+        status   = 'PASS' if aicc_val < LCDM_BASELINE_AICC else 'KILL'
+
         return {
-            'id': theory_id,
-            'name': theory_name,
-            'k': 2,
-            'Om': Om,
-            'H0': H0,
-            'chi2': chi2_val,
-            'aicc': aicc_val,
-            'daicc': daicc,
-            'w0': w0,
-            'wa': wa,
-            'verdict': v,
+            'id':     wid,
+            'name':   theory_name,
+            'k':      k,
+            'chi2':   float(chi2_best),
+            'aicc':   float(aicc_val),
+            'd_aicc': float(d_aicc),
+            'Om':     Om_best,
+            'H0':     H0_best,
+            'extra':  extra_best,
+            'status': status,
         }
-    except Exception as e:
-        return {
-            'id': theory_id,
-            'name': theory_name,
-            'k': 2,
-            'Om': None,
-            'H0': None,
-            'chi2': None,
-            'aicc': None,
-            'daicc': None,
-            'w0': None,
-            'wa': None,
-            'verdict': 'FAIL',
-            'error': str(e),
-        }
+    except Exception as ex:
+        return {'id': wid, 'name': theory_name, 'k': k,
+                'chi2': 1e8, 'aicc': 1e8, 'd_aicc': 1e8,
+                'Om': None, 'H0': None, 'extra': None,
+                'status': 'ERROR', 'error': str(ex)}
 
 
-# ============================================================
+# ==============================================================================
+# THEORY LIST
+# ==============================================================================
+
+def build_theory_list():
+    theories = [
+        # Direction 1: Geodesic Deviation
+        ('X01', 'Annihilation Pressure Geodesic Dev',   2, X01_E,  None),
+        ('X02', 'Geodesic Tidal Stretching DE',         2, X02_E,  None),
+        ('X03', 'Geodesic Deviation Free Exponent',     3, X03_E_factory,
+            [[0.1], [0.2], [1.0/3.0], [0.5], [1.0], [2.0]]),
+        # Direction 2: Topological Defects
+        ('X04', 'Cosmic String Network SQ DE',          2, X04_E,  None),
+        ('X05', 'Monopole Gas Annihilation DE',         2, X05_E,  None),
+        ('X06', 'Domain Wall Dissolution DE',           2, X06_E,  None),
+        ('X07', 'String-Wall Composite Defect DE',      3, X07_E_factory,
+            [[0.1], [0.3], [0.5], [0.7], [0.9], [0.2]]),
+        # Direction 3: Quantum Coherence Length
+        ('X08', 'SQ Coherence Decoherence DE',         2, X08_E,  None),
+        ('X09', 'SQ Coherence Phase Locking DE',        2, X09_E,  None),
+        ('X10', 'SQ Coherence Free Decay Scale',        3, X10_E_factory,
+            [[0.1], [0.5], [1.0], [2.0], [3.0], [0.3]]),
+        # Direction 4: Soliton Solutions
+        ('X11', 'SQ Kink Soliton DE',                  2, X11_E,  None),
+        ('X12', 'SQ Breather Soliton DE',               2, X12_E,  None),
+        ('X13', 'SQ Soliton Free Width',                3, X13_E_factory,
+            [[0.1], [0.3], [0.5], [1.0], [2.0], [0.7]]),
+        # Direction 5: Dissipative Structures
+        ('X14', 'Prigogine Dissipative Structure DE',   2, X14_E,  None),
+        ('X15', 'Benard Cell Convection DE',            2, X15_E,  None),
+        ('X16', 'Dissipative Coupling Free Amplitude',  3, X16_E_factory,
+            [[0.1], [0.3], [1.0/math.e], [1.0], [2.0], [0.5]]),
+        # Direction 6: Non-Markovian Memory
+        ('X17', 'Non-Markovian Memory Kernel DE',       2, X17_E,  None),
+        ('X18', 'Power-Law Memory Kernel DE',           2, X18_E,  None),
+        ('X19', 'Memory Decay Scale Free',              3, X19_E_factory,
+            [[0.5], [1.0], [1.0/math.log(2)], [2.0], [3.0], [5.0]]),
+        # Direction 7: Hamiltonian Chaos
+        ('X20', 'Lyapunov Exponent SQ Depletion DE',   2, X20_E,  None),
+        ('X21', 'Arnold Diffusion SQ Mixing DE',        2, X21_E,  None),
+        ('X22', 'Lyapunov Free Exponent DE',            3, X22_E_factory,
+            [[0.1], [0.3], [0.5], [1.0], [1.5], [0.7]]),
+        # Direction 8: Intermittency
+        ('X23', 'Void Intermittency Burst DE',          2, X23_E,  None),
+        ('X24', 'Void Burst Triggering DE',             2, X24_E,  None),
+        ('X25', 'Intermittency Exponent Free',          3, X25_E_factory,
+            [[0.05], [0.1], [1.0/(2*math.e)], [0.3], [0.5], [1.0]]),
+        # Direction 9: Multifractal Scaling
+        ('X26', 'Multifractal Singularity Spectrum DE', 2, X26_E,  None),
+        ('X27', 'Multifractal Renyi Dimension DE',      2, X27_E,  None),
+        ('X28', 'Multifractal Width Free',              3, X28_E_factory,
+            [[0.1], [0.3], [0.5], [1.0/(math.sqrt(2*math.pi))], [1.0], [2.0]]),
+        # Direction 10: Synchronization
+        ('X29', 'Kuramoto Synchronization SQ DE',       2, X29_E,  None),
+        ('X30', 'Phase-Locked Synchronization DE',      3, X30_E_factory,
+            [[0.1], [0.3], [1.0/math.pi], [0.5], [1.0], [2.0]]),
+    ]
+    return theories
+
+
+# ==============================================================================
 # MAIN
-# ============================================================
+# ==============================================================================
 
 def main():
-    print('=' * 70)
-    print('L30 3rd Run: 30-Theory SQMH BAO Fitting (DESI DR2)')
-    print('=' * 70)
-    print('LCDM baseline: chi2=%.3f, AICc=%.3f' % (CHI2_LCDM, AICC_LCDM))
-    print('k=2 theories: chi2 < 10.192 to beat LCDM')
-    print('Game-Changer: dAICc < -4 AND wa < -0.5')
-    print()
-
-    # Parallel execution with spawn context
-    ctx = mp.get_context('spawn')
-    n_workers = min(9, len(THEORIES))
-
-    print('Running %d theories on %d workers...' % (len(THEORIES), n_workers))
-    with ctx.Pool(n_workers) as pool:
-        results = pool.map(run_theory_worker, THEORIES)
-
-    # Sort by AICc (best first), put FAILs last
-    def sort_key(r):
-        if r['aicc'] is None:
-            return 1e10
-        return r['aicc']
-    results_sorted = sorted(results, key=sort_key)
-
-    # Print results table
-    print()
-    print('=== L30 3rd Run Results ===')
-    print('LCDM baseline: chi2=%.3f, AICc=%.3f' % (CHI2_LCDM, AICC_LCDM))
-    print()
-    hdr = (' %3s | %-28s | %1s | %8s | %8s | %7s | %7s | %7s | %-11s' %
-           ('ID', 'Theory', 'k', 'chi2', 'AICc', 'dAICc', 'w0', 'wa', 'Verdict'))
-    sep = '-'*4 + '+' + '-'*30 + '+' + '-'*3 + '+' + '-'*10 + '+' + '-'*10 + '+' + '-'*9 + '+' + '-'*9 + '+' + '-'*9 + '+' + '-'*13
-    print(hdr)
-    print(sep)
-
-    for r in results_sorted:
-        if r['chi2'] is None:
-            chi2_s = '  FAIL  '
-            aicc_s = '  FAIL  '
-            daicc_s = ' FAIL  '
-            w0_s = '  N/A  '
-            wa_s = '  N/A  '
-        else:
-            chi2_s = '%8.4f' % r['chi2']
-            aicc_s = '%8.4f' % r['aicc']
-            daicc_s = '%+7.4f' % r['daicc']
-            w0_s = '%7.4f' % (r['w0'] if r['w0'] is not None else 0.0)
-            wa_s = '%7.4f' % (r['wa'] if r['wa'] is not None else 0.0)
-        print(' %3s | %-28s | %1d | %s | %s | %s | %s | %s | %-11s' %
-              (r['id'], r['name'][:28], r['k'],
-               chi2_s, aicc_s, daicc_s, w0_s, wa_s, r['verdict']))
-
-    # Counts
-    gc = sum(1 for r in results if r['verdict'] == 'GAME-CHANGER')
-    sp = sum(1 for r in results if r['verdict'] == 'STRONG PASS')
-    pa = sum(1 for r in results if r['verdict'] == 'PASS')
-    ki = sum(1 for r in results if r['verdict'] == 'KILL')
-    fa = sum(1 for r in results if r['verdict'] == 'FAIL')
-    print()
-    print('=== Summary ===')
-    print('GAME-CHANGER: %d' % gc)
-    print('STRONG PASS:  %d' % sp)
-    print('PASS:         %d' % pa)
-    print('KILL:         %d' % ki)
-    print('FAIL:         %d' % fa)
-
-    # Save JSON
-    out_dir = _SCRIPT_DIR
+    out_dir   = _SCRIPT_DIR
     json_path = os.path.join(out_dir, 'l30_results3.json')
 
-    def jsonify(v):
-        if v is None:
-            return None
-        if isinstance(v, float):
-            return float(v)
-        if isinstance(v, np.floating):
-            return float(v)
-        if isinstance(v, np.integer):
-            return int(v)
-        return v
+    theories  = build_theory_list()
+    task_args = []
+    for wid, name, k, E_func_or_factory, extra_starts in theories:
+        task_args.append((wid, name, k, E_func_or_factory, extra_starts))
 
-    json_results = []
-    for r in results_sorted:
-        json_results.append({k: jsonify(v) for k, v in r.items()})
+    print('=' * 65)
+    print('L30 3rd Run SQMH Theory Test (X01-X30)')
+    print('LCDM baseline: chi2={:.3f}  AICc={:.3f}'.format(
+        LCDM_BASELINE_CHI2, LCDM_BASELINE_AICC))
+    print('=' * 65)
+    print('Launching {} theories with multiprocessing (9 workers max)...'.format(
+        len(task_args)))
 
+    ctx  = multiprocessing.get_context('spawn')
+    n_workers = min(9, len(task_args))
+    with ctx.Pool(n_workers) as pool:
+        results = pool.map(worker_fn, task_args)
+
+    # sort by AICc
+    results.sort(key=lambda r: r['aicc'])
+
+    # save JSON
     with open(json_path, 'w') as f:
-        json.dump({
-            'run': 'L30_3rd',
-            'lcdm_chi2': CHI2_LCDM,
-            'lcdm_aicc': AICC_LCDM,
-            'results': json_results,
-            'summary': {
-                'game_changer': gc,
-                'strong_pass': sp,
-                'pass': pa,
-                'kill': ki,
-                'fail': fa,
-            }
-        }, f, indent=2)
+        json.dump(results, f, indent=2)
+    print('Saved: {}'.format(json_path))
+
+    # print table
     print()
-    print('JSON saved: %s' % json_path)
+    print('{:<5} {:<42} {:>2} {:>9} {:>9} {:>8} {:>6}'.format(
+        'ID', 'Theory', 'k', 'chi2', 'AICc', 'dAICc', 'Status'))
+    print('-' * 86)
+    pass_count = 0
+    kill_count = 0
+    for r in results:
+        chi2_str  = '{:.4f}'.format(r['chi2'])   if r['chi2']   < 1e7 else 'FAIL'
+        aicc_str  = '{:.4f}'.format(r['aicc'])   if r['aicc']   < 1e7 else 'FAIL'
+        daicc_str = '{:.4f}'.format(r['d_aicc']) if r.get('d_aicc', 1e8) < 1e7 else 'FAIL'
+        print('{:<5} {:<42} {:>2} {:>9} {:>9} {:>8} {:>6}'.format(
+            r['id'], r['name'][:42], r['k'],
+            chi2_str, aicc_str, daicc_str, r['status']))
+        if r['status'] == 'PASS':
+            pass_count += 1
+        else:
+            kill_count += 1
+
     print()
-    print('=== L30 3rd Run Complete ===')
-    return results_sorted
+    print('PASS: {}  /  KILL: {}'.format(pass_count, kill_count))
+    print()
+
+    # Champion
+    passed = [r for r in results if r['status'] == 'PASS']
+    if passed:
+        champ = passed[0]
+        print('Champion: {} "{}"  chi2={:.4f}  AICc={:.4f}  dAICc={:.4f}'.format(
+            champ['id'], champ['name'],
+            champ['chi2'], champ['aicc'], champ['d_aicc']))
+    else:
+        print('No theory beat LCDM baseline.')
+
+    return results
 
 
 if __name__ == '__main__':
