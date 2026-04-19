@@ -48,7 +48,9 @@ AMP_SET = [0.5, 1.0/3.0, 1.0/math.pi, 1.0/math.e, 2.0/3.0, 0.25, 0.75, 0.1, 1.0,
 # ─── SQT building blocks (all g(0)=0, g>0 for z>0) ───────────────────────────
 
 BASE_KEYS = ['ratio_m1', 'log_ratio', 'sqrt_m1', 'cbrt_m1', 'sq_m1', 'log2',
-             'psi_dec', 'psi_sq_dec', 'two_comp_dec_cbrt', 'two_comp_dec_log']
+             'psi_dec', 'psi_sq_dec', 'two_comp_dec_cbrt', 'two_comp_dec_log',
+             'log1p_psi_dec', 'prod_dec_cbrt', 'sinh_ratio', 'ratio_frac',
+             'prod_dec_sqrt', 'tanh_ratio_sat']
 TRANSFORMS = ['identity', 'tanh', 'arctan', 'rational', 'log1p', 'one_minus_exp', 'power',
               'sigmoid', 'erf_approx']
 TR_PARAMS  = [0.3, 0.5, 0.7, 1.0, 1.5, 2.0]
@@ -216,6 +218,25 @@ def run_one(args):
             if not np.all(np.isfinite(E2)) or np.any(E2 < 0):
                 return None
             return np.sqrt(np.maximum(E2, 1e-30))
+        elif bk == 'log1p_psi_dec':
+            # log(1 + psi_dec): grows 0→log(2)≈0.69, saturates naturally → wa<0
+            g = np.log1p(1.0 - psi_frac)
+        elif bk == 'prod_dec_cbrt':
+            # psi_dec * cbrt_m1: product saturates due to psi_dec capping → wa<0
+            g = (1.0 - psi_frac) * (ratio**(1.0/3.0) - 1.0)
+        elif bk == 'sinh_ratio':
+            # sinh(log_ratio) = (ratio - 1/ratio)/2: between ratio and ratio^2 growth
+            lr = np.log(np.clip(ratio, 1e-8, 200))
+            g = np.sinh(np.clip(lr, -10, 10))
+        elif bk == 'ratio_frac':
+            # (ratio-1)/(ratio+1): bounded [0,1), grows then saturates → wa<0
+            g = (ratio - 1.0) / (ratio + 1.0)
+        elif bk == 'prod_dec_sqrt':
+            # psi_dec * sqrt_m1: product — saturates due to psi_dec
+            g = (1.0 - psi_frac) * (np.sqrt(ratio) - 1.0)
+        elif bk == 'tanh_ratio_sat':
+            # tanh(log_ratio): direct saturation of log growth → strong wa<0
+            g = np.tanh(np.log(np.clip(ratio, 1e-8, 200)))
         else:
             g = ratio - 1.0
 
