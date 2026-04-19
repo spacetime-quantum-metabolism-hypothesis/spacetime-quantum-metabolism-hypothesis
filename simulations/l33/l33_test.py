@@ -52,7 +52,9 @@ BASE_KEYS = ['ratio_m1', 'log_ratio', 'sqrt_m1', 'cbrt_m1', 'sq_m1', 'log2',
              'log1p_psi_dec', 'prod_dec_cbrt', 'sinh_ratio', 'ratio_frac',
              'prod_dec_sqrt', 'tanh_ratio_sat',
              'twothird_m1', 'fourthird_m1', 'sinh_half',
-             'cubic_div', 'geom_cbrt_sinh']
+             'cubic_div', 'geom_cbrt_sinh',
+             'sq_inv_cube', 'sinh_quart', 'cbrt_inv_sq',
+             'psi_frac_sq_m1_peak', 'ratio_34_m1']
 TRANSFORMS = ['identity', 'tanh', 'arctan', 'rational', 'log1p', 'one_minus_exp', 'power',
               'sigmoid', 'erf_approx']
 TR_PARAMS  = [0.3, 0.5, 0.7, 1.0, 1.5, 2.0]
@@ -257,6 +259,24 @@ def run_one(args):
             cbrt_g = np.clip(ratio**(1.0/3.0) - 1.0, 0, None)
             sinh_g = np.clip(ratio - 1.0/np.clip(ratio, 1e-8, None), 0, None) / 2.0
             g = np.sqrt(cbrt_g * sinh_g + 1e-30)
+        elif bk == 'sq_inv_cube':
+            # (ratio^2-1)/ratio^3 = psi_frac - psi_frac^3: peaks at ratio=sqrt(3), z≈0.5
+            # rho_DE grows then shrinks at high-z → wa<0 + potentially good chi2
+            g = (ratio**2 - 1.0) / np.clip(ratio**3, 1e-6, None)
+        elif bk == 'sinh_quart':
+            # sinh(log_ratio/4) = (ratio^0.25 - ratio^-0.25)/2: very gentle growth
+            lr = np.log(np.clip(ratio, 1e-8, 200))
+            g = np.sinh(np.clip(0.25*lr, -10, 10))
+        elif bk == 'cbrt_inv_sq':
+            # (ratio^(1/3)-1)/ratio^2: peaks even earlier, faster decline
+            g = (ratio**(1.0/3.0) - 1.0) / np.clip(ratio**2, 1e-6, None)
+        elif bk == 'psi_frac_sq_m1_peak':
+            # psi_frac^2 * (ratio^3-1)/ratio = psi_frac^2 * (ratio^2 - 1/ratio)
+            # composite peaked structure
+            g = psi_frac**2 * (ratio**2 - 1.0/np.clip(ratio, 1e-8, None))
+        elif bk == 'ratio_34_m1':
+            # ratio^(3/4)-1: intermediate between sqrt_m1 and cbrt_m1
+            g = ratio**(0.75) - 1.0
         else:
             g = ratio - 1.0
 
