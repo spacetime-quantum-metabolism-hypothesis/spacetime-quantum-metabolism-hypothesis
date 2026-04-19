@@ -47,8 +47,10 @@ AMP_SET = [0.5, 1.0/3.0, 1.0/math.pi, 1.0/math.e, 2.0/3.0, 0.25, 0.75, 0.1, 1.0,
 
 # ─── SQT building blocks (all g(0)=0, g>0 for z>0) ───────────────────────────
 
-BASE_KEYS = ['ratio_m1', 'log_ratio', 'sqrt_m1', 'cbrt_m1', 'sq_m1', 'log2']
-TRANSFORMS = ['identity', 'tanh', 'arctan', 'rational', 'log1p', 'one_minus_exp', 'power']
+BASE_KEYS = ['ratio_m1', 'log_ratio', 'sqrt_m1', 'cbrt_m1', 'sq_m1', 'log2',
+             'psi_dec', 'psi_sq_dec', 'two_comp_dec_cbrt', 'two_comp_dec_log']
+TRANSFORMS = ['identity', 'tanh', 'arctan', 'rational', 'log1p', 'one_minus_exp', 'power',
+              'sigmoid', 'erf_approx']
 TR_PARAMS  = [0.3, 0.5, 0.7, 1.0, 1.5, 2.0]
 
 # ─── E(z) factory (spawn-safe: all logic inline) ──────────────────────────────
@@ -174,6 +176,10 @@ def run_one(args):
         psi0  = 1.0 / (1.0 + alpha)
         ratio = np.clip(psi0 / psi_z, 1.0, 200.0)
 
+        psi_z = 1.0 / (1.0 + alpha * (1.0 + z_arr)**3)
+        psi0  = 1.0 / (1.0 + alpha)
+        psi_frac = psi_z / psi0  # decreases 1→0 with z
+
         if bk == 'ratio_m1':
             g = ratio - 1.0
         elif bk == 'log_ratio':
@@ -186,6 +192,30 @@ def run_one(args):
             g = ratio**2 - 1.0
         elif bk == 'log2':
             g = np.log(ratio)**2
+        elif bk == 'psi_dec':
+            # 1 - psi_z/psi0: grows 0→1, saturates → wa<0 structure
+            g = 1.0 - psi_frac
+        elif bk == 'psi_sq_dec':
+            # 1 - (psi_z/psi0)^2: faster saturation
+            g = 1.0 - psi_frac**2
+        elif bk == 'two_comp_dec_cbrt':
+            # two-component: psi_dec (wa<0) + cbrt_m1 (low chi2)
+            w1 = 0.6
+            rde = OL0 * (1.0 + amp * (w1*(1.0-psi_frac) + (1.0-w1)*(ratio**(1.0/3.0)-1.0)))
+            rde = np.where(rde < 0, 0.0, rde)
+            E2 = OR_W*(1+z_arr)**4 + Om*(1+z_arr)**3 + rde
+            if not np.all(np.isfinite(E2)) or np.any(E2 < 0):
+                return None
+            return np.sqrt(np.maximum(E2, 1e-30))
+        elif bk == 'two_comp_dec_log':
+            # two-component: psi_dec (wa<0) + log_ratio (moderate chi2)
+            w1 = 0.5
+            rde = OL0 * (1.0 + amp * (w1*(1.0-psi_frac) + (1.0-w1)*np.log(ratio)))
+            rde = np.where(rde < 0, 0.0, rde)
+            E2 = OR_W*(1+z_arr)**4 + Om*(1+z_arr)**3 + rde
+            if not np.all(np.isfinite(E2)) or np.any(E2 < 0):
+                return None
+            return np.sqrt(np.maximum(E2, 1e-30))
         else:
             g = ratio - 1.0
 
@@ -197,13 +227,17 @@ def run_one(args):
         elif tr == 'arctan':
             h = (2.0/math.pi) * np.arctan(g / p)
         elif tr == 'rational':
-            h = g / (1.0 + g / p)
+            h = g / (1.0 + np.abs(g) / p)
         elif tr == 'log1p':
             h = np.log1p(np.clip(g, 0, None))
         elif tr == 'one_minus_exp':
             h = 1.0 - np.exp(-np.clip(g, 0, None) / p)
         elif tr == 'power':
             h = np.clip(g, 0, None)**p
+        elif tr == 'sigmoid':
+            h = 1.0 / (1.0 + np.exp(-g/p)) - 0.5
+        elif tr == 'erf_approx':
+            h = np.tanh(g * 1.2533 / p)  # erf approximation
         else:
             h = g
 
