@@ -50,7 +50,9 @@ AMP_SET = [0.5, 1.0/3.0, 1.0/math.pi, 1.0/math.e, 2.0/3.0, 0.25, 0.75, 0.1, 1.0,
 BASE_KEYS = ['ratio_m1', 'log_ratio', 'sqrt_m1', 'cbrt_m1', 'sq_m1', 'log2',
              'psi_dec', 'psi_sq_dec', 'two_comp_dec_cbrt', 'two_comp_dec_log',
              'log1p_psi_dec', 'prod_dec_cbrt', 'sinh_ratio', 'ratio_frac',
-             'prod_dec_sqrt', 'tanh_ratio_sat']
+             'prod_dec_sqrt', 'tanh_ratio_sat',
+             'twothird_m1', 'fourthird_m1', 'sinh_half',
+             'cubic_div', 'geom_cbrt_sinh']
 TRANSFORMS = ['identity', 'tanh', 'arctan', 'rational', 'log1p', 'one_minus_exp', 'power',
               'sigmoid', 'erf_approx']
 TR_PARAMS  = [0.3, 0.5, 0.7, 1.0, 1.5, 2.0]
@@ -237,6 +239,24 @@ def run_one(args):
         elif bk == 'tanh_ratio_sat':
             # tanh(log_ratio): direct saturation of log growth → strong wa<0
             g = np.tanh(np.log(np.clip(ratio, 1e-8, 200)))
+        elif bk == 'twothird_m1':
+            # ratio^(2/3)-1: grows ~(1+z)^2 → intermediate wa<0 with better chi2 than cbrt
+            g = ratio**(2.0/3.0) - 1.0
+        elif bk == 'fourthird_m1':
+            # ratio^(4/3)-1: grows ~(1+z)^4 → between sqrt and sq
+            g = ratio**(4.0/3.0) - 1.0
+        elif bk == 'sinh_half':
+            # sinh(0.5*log_ratio) = (sqrt(ratio)-1/sqrt(ratio))/2 → grows ~(1+z)^(3/2)
+            lr = np.log(np.clip(ratio, 1e-8, 200))
+            g = np.sinh(np.clip(0.5*lr, -10, 10))
+        elif bk == 'cubic_div':
+            # ratio^2 - 1/ratio: grows ~(1+z)^6 but 1/ratio suppresses slightly
+            g = ratio**2 - 1.0/np.clip(ratio, 1e-8, None)
+        elif bk == 'geom_cbrt_sinh':
+            # geometric mean: sqrt(cbrt_m1 * sinh_ratio) — combines wa<0 properties
+            cbrt_g = np.clip(ratio**(1.0/3.0) - 1.0, 0, None)
+            sinh_g = np.clip(ratio - 1.0/np.clip(ratio, 1e-8, None), 0, None) / 2.0
+            g = np.sqrt(cbrt_g * sinh_g + 1e-30)
         else:
             g = ratio - 1.0
 
