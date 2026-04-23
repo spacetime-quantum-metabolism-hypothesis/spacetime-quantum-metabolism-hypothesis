@@ -1,0 +1,125 @@
+============================================================
+L39: SQT V(psi) Prior Model Verification
+8-worker parallel  |  LCDM baseline AICc=1670.1227
+============================================================
+
+Warming up SN cache...
+  SN ready.
+
+============================================================
+Task 0: Baseline Verification (LCDM + Model D)
+============================================================
+  LCDM: Om=0.3094, H0=68.41
+  chi2: BAO=12.3000 CMB=0.0097 SN=1646.8406 RSD=6.9789
+  AICc=1670.1356 (stored=1670.1227) [CONFIRMED]
+  Model D: Om=0.322, H0=66.98, amp=0.8178, beta=3.533
+  chi2: BAO=9.8266 CMB=0.1433 SN=1636.8469 RSD=6.8552
+  AICc=1661.6937  dAICc=-8.43 [CONFIRMED]
+
+============================================================
+Task 1: Model G_free (k=4, A_K + A_V free)
+============================================================
+  G_free scan done in 796.9s (30 starts)
+  Best: Om=0.5000, H0=55.00, A_K=1.0176, A_V=0.4295
+  chi2: BAO=23.7957 CMB=15.4569 SN=1656.5527 RSD=8.0912
+  AICc=1711.9181  dAICc=41.80
+  E(0) norm ok: False  boundary: True
+  CPL: w0=-1.2664, wa=1.1523
+  Verdict: K92 INVALID
+
+============================================================
+Task 2: Model G_ratio (k=3, r free)
+============================================================
+  G_ratio scan done in 1109.0s (30 starts)
+  Best: Om=0.4415, H0=59.48, r=0.9498
+  A_K=0.9693, A_V=0.1437
+  r_theory=0.10, r_fit=0.9498, dev=849.8%
+  chi2: BAO=15.7452 CMB=47.6854 SN=1865.0130 RSD=8.9160
+  AICc=1943.3726  dAICc=273.25
+  E(0) norm ok: True  boundary: False
+  CPL: w0=-1.7927, wa=2.5368
+  Verdict: K90 KILL
+
+============================================================
+Task 3: Model G_theory (k=2, A_K/A_V theory-fixed)  <-- CORE
+============================================================
+  G_theory scan done in 964.2s (50 starts)
+  Best: Om=0.4739, H0=55.00
+  A_K=0.093242 (theory-fixed), A_V=2.109557 (theory-fixed)
+  chi2: BAO=166.6296 CMB=156.7465 SN=2087.0704 RSD=10.1916
+  AICc=2424.6447  dAICc=754.52  vs D_k2: +766.98
+  E(0) norm ok: True  boundary: True
+  CPL: w0=-1.9899, wa=1.5228
+  Verdict: K92 INVALID
+
+============================================================
+Task 4: Bootstrap (G_theory, N=300)
+============================================================
+  Bootstrap done in 5070.0s
+  FAILED: no valid samples
+
+============================================================
+Task 5: CPL Extraction Summary
+============================================================
+  Model              w0       wa dir
+  ----------------------------------------
+  G_free        -1.2664   1.1523 opposite
+  G_ratio       -1.7927   2.5368 opposite
+  G_theory      -1.9899   1.5228 opposite
+  DESI observed:  w0=-0.76, wa=-0.50
+
+============================================================
+Task 6: Residual Analysis (G_theory vs LCDM)
+============================================================
+  ΔBAO = -154.3296  (G: 166.63 vs LCDM: 12.30)
+  ΔCMB = -156.7369  (G: 156.75 vs LCDM: 0.01)
+  ΔSN  = -440.2299  (G: 2087.07 vs LCDM: 1646.84)
+  ΔRSD = -3.2127  (G: 10.19 vs LCDM: 6.98)
+  Δtot = -754.5091
+  Fractional contributions:
+    BAO: +20.5%
+    CMB: +20.8%
+    SN: +58.3%
+    RSD: +0.4%
+  Main source of improvement: RSD
+
+============================================================
+Task 7: w(z) Visualization
+============================================================
+  Plot: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l39/l39_task7_wz.png
+
+============================================================
+L39 RESULTS SUMMARY
+============================================================
+
+[Task 0] Baselines
+  LCDM: AICc=1670.14
+  Model D: AICc=1661.69  dAICc=-8.43
+
+[Task 1] Model G_free
+  Om=0.5000, H0=55.00
+  A_K=1.0176, A_V=0.4295
+  AICc=1711.92  dAICc=41.80  [K92 INVALID]
+
+[Task 2] Model G_ratio
+  Om=0.4415, H0=59.48
+  r_fit=0.9498 (theory=0.10, dev=849.8%)
+  A_K=0.9693, A_V=0.1437
+  AICc=1943.37  dAICc=273.25  [K90 KILL]
+
+[Task 3] Model G_theory
+  Om=0.4739, H0=55.00
+  A_K=0.093242 (fixed), A_V=2.1096 (fixed)
+  AICc=2424.64  dAICc=754.52  [K92 INVALID]
+  vs D_k2: +766.98
+
+[Task 4] Bootstrap (G_theory, N=300)
+  FAILED/SKIPPED
+
+[Task 5] CPL Extraction
+Traceback (most recent call last):
+  File "/Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l39/l39_test.py", line 1035, in <module>
+    main()
+  File "/Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l39/l39_test.py", line 1003, in main
+    print(f"  {nm}: w0={w0:.4f if w0 else 'None'}, wa={wa:.4f if wa else 'None'}  [{r5[nm].get('direction','?')}]")
+ValueError: Invalid format specifier
