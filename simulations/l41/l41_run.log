@@ -1,0 +1,156 @@
+============================================================
+L41: Brans-Dicke SQT Verification
+8-worker parallel  |  LCDM baseline AICc=1670.1227
+============================================================
+
+Warming up SN cache...
+  SN ready.
+
+============================================================
+Task 0: Baseline Verification (LCDM + Model D)
+============================================================
+  LCDM: Om=0.3094, H0=68.41
+  chi2: BAO=12.3000 CMB=0.0097 SN=1646.8406 RSD=6.9789
+  AICc=1670.1356 (stored=1670.1227) [CONFIRMED]
+  Model D: Om=0.322, H0=66.98
+  chi2: BAO=9.8266 CMB=0.1433 SN=1636.8469 RSD=6.8552
+  AICc=1661.6937  dAICc=-8.43 [CONFIRMED]
+
+============================================================
+Tasks 1-4: BD model fits (parallel pool)
+============================================================
+  BD k=4: 33 starts
+  BD_min k=3: 27 starts
+  BD_mo k=3: 28 starts
+  BD_thy k=2: 50 starts
+  All BD scans done in 2653.3s
+
+============================================================
+Task: BD (k=4, full) (k=4)
+============================================================
+  Om=0.3254    H0=66.8638    B/A=0.1418    m2=2.1672  
+  chi2: BAO=9.1702 CMB=0.1232 SN=1637.4986 RSD=6.6319
+  AICc=1661.4455  dAICc=-8.68  vs D: -0.23
+  boundary=False
+  CPL: w0=-1.3815, wa=1.4620
+  Verdict: Q91 STRONG
+
+============================================================
+Task: BD_min (k=3, massless) (k=3)
+============================================================
+  Om=0.5500    H0=55.0000    B/A=-0.0003  
+  chi2: BAO=2435.6813 CMB=485303.6439 SN=2394.8944 RSD=23.9617
+  AICc=490164.1942  dAICc=488494.07  vs D: +488502.51
+  boundary=True
+  CPL: w0=-2.0000, wa=-0.0001
+  Verdict: K92 INVALID
+
+============================================================
+Task: BD_mo (k=3, pot-only) (k=3)
+============================================================
+  Om=0.5500    H0=55.0000    m2=150.0742  
+  chi2: BAO=2435.6796 CMB=485302.9167 SN=2394.8942 RSD=23.9451
+  AICc=490163.4486  dAICc=488493.33  vs D: +488501.77
+  boundary=True
+  CPL: w0=-2.0000, wa=-0.0001
+  Verdict: K92 INVALID
+
+============================================================
+Task: BD_theory (k=2, core) (k=2)
+============================================================
+  Om=0.2732    H0=55.0000  
+  chi2: BAO=48292.8802 CMB=3008.3407 SN=18448.4450 RSD=465.6993
+  AICc=70219.3717  dAICc=68549.25  vs D: +68557.69
+  boundary=True
+  CPL: w0=-5.2974, wa=6.9004
+  Verdict: K92 INVALID
+
+  Winner: bd4  dAICc=-8.68
+
+============================================================
+Task 5: Bootstrap (bd4, N=300)
+============================================================
+  Bootstrap done in 4855.1s
+  Valid: 300/300
+  dAICc median=2.12  68%CI=[-3.77,8.89]
+  dAICc<-4: 13.7%  <0: 37.0%
+  Verdict: FAIL
+
+============================================================
+Task 6: CPL Extraction Summary
+============================================================
+  Model                    w0       wa  direction
+  --------------------------------------------------
+  BD k=4              -1.3815   1.4620  opposite
+  BD_min k=3          -2.0000  -0.0001  same
+  BD_mo k=3           -2.0000  -0.0001  same
+  BD_thy k=2          -5.2974   6.9004  opposite
+  DESI observed        -0.757    -0.83
+
+============================================================
+Task 7: Residual Analysis (bd4 vs LCDM)
+============================================================
+  dBAO = +3.1298  (BD: 9.17 vs LCDM: 12.30)
+  dCMB = -0.1135  (BD: 0.12 vs LCDM: 0.01)
+  dSN  = +9.3420  (BD: 1637.50 vs LCDM: 1646.84)
+  dRSD = +0.3470  (BD: 6.63 vs LCDM: 6.98)
+  dtot = +12.7052
+  BAO: +24.6%  CMB: -0.9%  SN: +73.5%  RSD: +2.7%
+
+============================================================
+Task 8: Model D vs BD Comparison (psi profile)
+============================================================
+  BD best: Om=0.3254, H0=66.8638, B=0.1418, m2=2.17
+      z      (A+Bpsi)/(A+Bpsi0)    Model D factor      diff
+    0.0                1.000000          1.000000    0.0000
+    0.1                1.010593          1.061223   -0.0506
+    0.3                1.025270          1.109222   -0.0840
+    0.5                1.033803          1.106908   -0.0731
+    0.7                1.038454          1.086893   -0.0484
+    1.0                1.041237          1.053859   -0.0126
+    1.5                1.040706          1.019234    0.0215
+    2.0                1.037883          1.005845    0.0320
+  RMS deviation BD vs D-factor: 0.0487
+  Model D is BD approximation: YES
+
+============================================================
+Task 9: w(z) Visualization
+============================================================
+  Plot: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l41/l41_task9_wz.png
+
+============================================================
+L41 RESULTS SUMMARY
+============================================================
+
+[Task 0] Baselines
+  LCDM: AICc=1670.14
+  Model D: AICc=1661.69  dAICc=-8.43
+
+[Task 1] BD k=4
+  Om=0.3254, H0=66.8638, B/A=0.1418, m2=2.17
+  AICc=1661.45  dAICc=-8.68  [Q91 STRONG]
+
+[Task 2] BD_min k=3
+  Om=0.5500, H0=55.0000, B/A=-0.0003
+  AICc=490164.19  dAICc=488494.07  [boundary]  [K92 INVALID]
+
+[Task 3] BD_mo k=3
+  Om=0.5500, H0=55.0000, m2=150.07
+  AICc=490163.45  dAICc=488493.33  [boundary]  [K92 INVALID]
+
+[Task 4] BD_theory k=2
+  Om=0.2732, H0=55.0000 (B/A=1 fixed, m2=400 fixed)
+  AICc=70219.37  dAICc=68549.25  [boundary]  [K92 INVALID]
+
+[Task 5] Bootstrap (bd4, N=300)
+  valid=300
+  median=2.12  68%CI=[-3.77,8.89]
+  dAICc<-4: 13.7%  Verdict: FAIL
+
+[Final Verdict]
+  BD_theory (k=2) dAICc=68549.25: K92 INVALID
+  BD (k=4)        dAICc=-8.68: Q91 STRONG
+  Strategy B: BD k=4 success, BD_theory partial -> partial a priori
+
+Total elapsed: 7510.4s
+Saved: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l41/l41_results.json
