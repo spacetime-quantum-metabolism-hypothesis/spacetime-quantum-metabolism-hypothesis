@@ -1,0 +1,72 @@
+============================================================
+L35: Multi-probe joint fit (BAO+CMB+SN+RSD)
+n_total=1853 (BAO:13 + CMB:3 + SN:1829 + RSD:8)
+============================================================
+
+Loading DESY5 SN data...
+  Loaded 1829 SNe
+
+[VERIFY LCDM Planck] chi2_BAO=31.2716 (ref~10.8)  chi2_CMB=279.5479 (ref~0-3)
+
+[LCDM] Fitting joint (BAO+CMB+SN+RSD)...
+  Om=0.3094, H0=68.4103
+  chi2_BAO=12.2996  chi2_CMB=0.0095  chi2_SN=1646.8409  chi2_RSD=6.9662
+  chi2_joint=1666.1162  AICc=1670.1227
+  w0=-1.0000000000000002  wa=7.073183191462276e-16  H0_tension=4.01sigma
+
+[Model_A] Fitting joint (BAO+CMB+SN+RSD)...
+  Om=0.2762, H0=55.0000
+  chi2_BAO=2114.6959  chi2_CMB=3012.3750  chi2_SN=1686.2890  chi2_RSD=23.3206
+  chi2_joint=6836.6804  AICc=6840.6869
+  w0=-1.2303156482192543  wa=-1.0360475395236335  H0_tension=15.63sigma
+
+[Model_B] Fitting joint (BAO+CMB+SN+RSD)...
+  Om=0.3164, H0=67.2570, amp=0.1339
+  chi2_BAO=11.1654  chi2_CMB=1.3588  chi2_SN=1640.0500  chi2_RSD=6.7049
+  chi2_joint=1659.2792  AICc=1665.2921
+  w0=-1.1078638575075705  wa=0.17771832046282465  H0_tension=5.01sigma
+
+[Model_C] Fitting joint (BAO+CMB+SN+RSD)...
+  Om=0.3151, H0=65.7370, amp=0.1000, c=2.9984
+  chi2_BAO=64.0816  chi2_CMB=37.9200  chi2_SN=1637.5228  chi2_RSD=7.2108
+  chi2_joint=1746.7351  AICc=1754.7567
+  w0=-0.9555369375431997  wa=-0.5201203604587293  H0_tension=6.33sigma
+
+============================================================
+SUMMARY
+============================================================
+
+LCDM (LCDM) k=2:
+  chi2: BAO=12.30  CMB=0.01  SN=1646.84  RSD=6.97  total=1666.12
+  AICc=1670.12  ΔAICc=+0.00
+  {'Om': 0.3093990322847123, 'H0': 68.41031267731097}
+  w0=-1.0000000000000002  wa=7.073183191462276e-16  wa<0: False
+  H0 tension vs SH0ES: 4.01σ
+  VERDICT: baseline
+
+A (Model_A) k=2:
+  chi2: BAO=2114.70  CMB=3012.38  SN=1686.29  RSD=23.32  total=6836.68
+  AICc=6840.69  ΔAICc=+5170.56
+  {'Om': 0.276192266907787, 'H0': 55.00004702613137}
+  w0=-1.2303156482192543  wa=-1.0360475395236335  wa<0: True
+  H0 tension vs SH0ES: 15.63σ
+  VERDICT: K90 KILL
+
+B (Model_B) k=3:
+  chi2: BAO=11.17  CMB=1.36  SN=1640.05  RSD=6.70  total=1659.28
+  AICc=1665.29  ΔAICc=-4.83
+  {'Om': 0.3164340164321772, 'H0': 67.257027049778, 'amp': 0.13392727895241666}
+  w0=-1.1078638575075705  wa=0.17771832046282465  wa<0: False
+  H0 tension vs SH0ES: 5.01σ
+  VERDICT: Q92 GAME
+
+C (Model_C) k=4:
+  chi2: BAO=64.08  CMB=37.92  SN=1637.52  RSD=7.21  total=1746.74
+  AICc=1754.76  ΔAICc=+84.63
+  {'Om': 0.3150769226735064, 'H0': 65.73699329803597, 'amp': 0.10000010813310162, 'c': 2.9983995576441402}
+  w0=-0.9555369375431997  wa=-0.5201203604587293  wa<0: True
+  H0 tension vs SH0ES: 6.33σ
+  VERDICT: K90 KILL
+
+Saved to /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l35/l35_results.json
+Total elapsed: 6056.7s
