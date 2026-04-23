@@ -1,0 +1,95 @@
+============================================================
+L37: SQT Range Verification
+8-worker parallel | LCDM baseline AICc=1670.1227
+============================================================
+
+Warming up SN cache...
+  SN ready.
+
+============================================================
+Task 1: Model D Robustness (amp,beta grid scan)
+============================================================
+  Grid scan done in 8.0s
+  Best: amp=0.8049, beta=3.4772, dAICc=-8.44
+  dAICc<-6 fraction: 19.2%
+  dAICc<-2 fraction: 32.5%
+  Robustness verdict: CONDITIONAL
+  Plot: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l37/l37_task1_heatmap.png
+
+============================================================
+Task 3: DESI BAO-only CPL Reanalysis
+============================================================
+  BAO-only optimization done in 2.8s (145 starts)
+  BAO-only: Om=0.3792, H0=61.51, amp=3.0000, beta=3.1161
+  chi2_BAO=5.9528
+  BAO-only CPL: w0=-1.6248, wa=1.6251
+  Combined CPL (L36): w0=-1.137, wa=+0.367
+  wa sign reversal (BAO<0, combined>0): False
+  Verdict: ANOMALY
+  Plot: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l37/l37_task3_cpl.png
+
+============================================================
+Task 4: H0 Preference by Dataset
+============================================================
+  Dataset fitting done in 1629.0s
+
+  Dataset          H0   H0_err   tension       Om
+  ---------- -------- -------- --------- --------
+  BAO           61.51    0.120     11.01s   0.3792
+  CMB           66.91    0.100      5.87s   0.3238
+  SN            59.75    0.500     11.52s   0.3298
+  RSD           78.30    0.500     -4.56s   0.3075
+  Combined      66.98    (L36)      5.00s   0.3220
+  LCDM          68.41      ---      4.01s   0.3094
+  SH0ES         73.04     1.04       ---
+
+  CMB-driven H0 tension: True
+  Plot: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l37/l37_task4_h0.png
+
+============================================================
+Task 2: fsigma8 Comparison (LCDM vs Model D)
+============================================================
+  chi2_fsig8 LCDM   : 6.9789
+  chi2_fsig8 Model D: 6.8552  (delta=-0.1237)
+  Verdict: TIE
+       z      obs     sig     LCDM        D      D-L
+   0.067    0.423   0.055    0.440    0.441   +0.001
+   0.150    0.490   0.145    0.455    0.452   -0.003
+   0.380    0.497   0.045    0.474    0.469   -0.005
+   0.510    0.458   0.038    0.473    0.469   -0.003
+   0.610    0.436   0.034    0.468    0.466   -0.002
+   0.700    0.473   0.044    0.461    0.461   -0.001
+   0.850    0.315   0.095    0.448    0.448   +0.001
+   1.480    0.462   0.045    0.378    0.379   +0.002
+  Plot: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l37/l37_task2_fsig8.png
+
+============================================================
+L37 RESULTS SUMMARY
+============================================================
+
+[Task 1] Model D Robustness
+  dAICc<-6 region: 19.2% of (amp,beta) space
+  Best in scan: amp=0.8049, beta=3.4772, dAICc=-8.44
+  Verdict: CONDITIONAL
+
+[Task 2] fsigma8 Comparison
+  chi2_fsig8 LCDM   : 6.9789
+  chi2_fsig8 Model D: 6.8552
+  Verdict: TIE
+
+[Task 3] DESI-only CPL
+  BAO-only wa: 1.6251
+  Combined wa (L36): +0.367
+  Reversal confirmed: False
+  Verdict: ANOMALY
+
+[Task 4] H0 by Dataset
+  BAO: H0=61.51 +- 0.12
+  CMB: H0=66.91 +- 0.10
+  SN: H0=59.75 +- 0.50
+  RSD: H0=78.30 +- 0.50
+  Combined: H0=66.98
+  CMB-driven tension: True
+
+Total elapsed: 1641.5s
+Saved: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l37/l37_results.json
