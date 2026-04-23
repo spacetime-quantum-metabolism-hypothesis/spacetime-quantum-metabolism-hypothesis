@@ -1,0 +1,178 @@
+============================================================
+L42: Model HE (A2' modified axiom) Verification
+8-worker parallel  |  LCDM baseline AICc=1670.1227
+============================================================
+
+Warming up SN cache...
+  SN ready.
+
+============================================================
+Task 0: Baseline Verification (LCDM + Model D)
+============================================================
+  LCDM: Om=0.3094, H0=68.41
+  chi2: BAO=12.3000 CMB=0.0097 SN=1646.8406 RSD=6.9789
+  AICc=1670.1356 (stored=1670.1227) [CONFIRMED]
+  Model D: Om=0.322, H0=66.98
+  chi2: BAO=9.8266 CMB=0.1433 SN=1636.8469 RSD=6.8552
+  AICc=1661.6937  dAICc=-8.43 [CONFIRMED]
+
+============================================================
+Tasks 1-4: HE model fits (parallel pool)
+============================================================
+  HE_S   k=2: 20 starts
+  HE_Sf  k=3: 15 starts
+  HE_D   k=4: 20 starts
+  HE_BD  k=4: SKIPPED (p  All HE scans done in 7025.9s
+
+============================================================
+Task: Model HE_S (k=2, CORE) (k=2)
+============================================================
+  Om=0.2878    H0=73.5715  
+  chi2: BAO=34.5768 CMB=44.3304 SN=1778.6300 RSD=10.3700
+  AICc=1871.9137  dAICc=201.79  vs D: +210.23
+  boundary=False
+  CPL: w0=-0.6794, wa=0.1465
+  Verdict: K90 KILL
+
+============================================================
+Task: Model HE_Sf (k=3, alpha_H free) (k=3)
+============================================================
+  Om=0.3087    H0=68.6702    alpha_H=0.0100  
+  alpha_H_theory=Om/OL0=0.4465  dev=-97.8%
+  chi2: BAO=12.0763 CMB=0.1575 SN=1648.7294 RSD=7.0110
+  AICc=1673.9872  dAICc=3.86  vs D: +12.31
+  boundary=True
+  CPL: w0=-0.9967, wa=0.0490
+  Verdict: K92 INVALID
+
+============================================================
+Task: Model HE_D (k=4, D-form) (k=4)
+============================================================
+  Om=0.3219    H0=66.9850    amp=1.0399    beta=3.0417  
+  chi2: BAO=9.7734 CMB=0.1214 SN=1636.9662 RSD=6.8414
+  AICc=1661.7242  dAICc=-8.40  vs D: +0.04
+  boundary=False
+  CPL: w0=-1.1383, wa=0.3713
+  Verdict: Q91 STRONG
+
+============================================================
+Task: Model HE_BD (k=4, BD+A2') (k=4)
+============================================================
+  Om=0.3299    H0=65.8419    B/A=-0.0737    m2=2.5834  
+  chi2: BAO=9.0805 CMB=1.5421 SN=1644.0266 RSD=6.5522
+  AICc=1669.2230  dAICc=-0.90  vs D: +7.54
+  boundary=False
+  CPL: w0=-1.3118, wa=0.8001
+  Verdict: Q90 PASS
+
+  Winner: he_d  dAICc=-8.40
+
+============================================================
+Task 5: Bootstrap (he_d, N=300)
+============================================================
+  Bootstrap done in 10180.7s
+  Valid: 300/300
+  dAICc median=-4.44  68%CI=[-6.96,-1.90]
+  dAICc<-4: 55.7%  <-2: 83.0%  <0: 98.0%
+  Verdict: FAIL
+
+============================================================
+Task 6: CPL Extraction
+============================================================
+  Model                      w0       wa  direction
+  --------------------------------------------------
+  HE_S k=2              -0.6794   0.1465  opposite
+  HE_Sf k=3             -0.9967   0.0490  opposite
+  HE_D k=4              -1.1383   0.3713  opposite
+  HE_BD k=4             -1.3118   0.8001  opposite
+  DESI observed          -0.757    -0.50
+
+============================================================
+Task 7: Residual Analysis (he_d vs LCDM)
+============================================================
+  dBAO = +2.5266  (he_d: 9.77 vs LCDM: 12.30)
+  dCMB = -0.1117  (he_d: 0.12 vs LCDM: 0.01)
+  dSN  = +9.8743  (he_d: 1636.97 vs LCDM: 1646.84)
+  dRSD = +0.1374  (he_d: 6.84 vs LCDM: 6.98)
+  dtot = +12.4266
+  BAO: +20.3%  CMB: -0.9%  SN: +79.5%  RSD: +1.1%
+
+============================================================
+Task 8: w(z) Visualization
+============================================================
+  Plot: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l42/l42_task8_wz.png
+
+============================================================
+Task 9: rho_DE Comparison (HE_S vs Model S vs Model D vs LCDM)
+============================================================
+      z       LCDM    Model S       HE_S    Model D
+  ------------------------------------------------
+    0.0     1.0000     1.0000     1.0000     1.0000
+    0.5     1.0000     0.5940     0.6571     1.1069
+    1.0     1.0000     0.3317     0.4695     1.0539
+    2.0     1.0000     0.1179     0.2888     1.0058
+    3.0     1.0000     0.0523     0.2006     1.0004
+
+  HE_S vs Model S rho_DE difference:
+    z=0.0: +0.0000 (+0.0%)
+    z=0.5: +0.0631 (+10.6%)
+    z=1.0: +0.1378 (+41.5%)
+    z=2.0: +0.1709 (+145.0%)
+    z=3.0: +0.1483 (+283.7%)
+  RMS deviation HE_S vs Model S: 0.1218
+  Plot: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l42/l42_task9_rho.png
+
+============================================================
+L42 RESULTS SUMMARY
+============================================================
+
+[Task 0] Baselines
+  LCDM: AICc=1670.14
+  Model D: AICc=1661.69  dAICc=-8.43
+
+[Task 1] Model HE_S k=2 (CORE)
+  Om=0.2878, H0=73.5715
+  alpha_H = Om/OL0 = 0.4041 (fixed)
+  AICc=1871.91  dAICc=201.79  [K90 KILL]
+  w0=-0.6794, wa=0.1465
+
+[Task 2] HE_Sf k=3
+  Om=0.3087, H0=68.6702, alpha_H=0.0100
+  alpha_H_theory=0.4465  dev=-97.8%
+  AICc=1673.99  dAICc=3.86  [boundary]  [K92 INVALID]
+  w0=-0.9967, wa=0.0490
+
+[Task 3] HE_D k=4
+  Om=0.3219, H0=66.9850, amp=1.0399, beta=3.0417
+  AICc=1661.72  dAICc=-8.40  [Q91 STRONG]
+  w0=-1.1383, wa=0.3713
+
+[Task 4] HE_BD k=4
+  Om=0.3299, H0=65.8419, B/A=-0.0737, m2=2.58
+  AICc=1669.22  dAICc=-0.90  [Q90 PASS]
+  w0=-1.3118, wa=0.8001
+
+[Task 5] Bootstrap (he_d, N=300)
+  valid=300
+  median=-4.44  68%CI=[-6.96,-1.90]
+  dAICc<-4: 55.7%  <-2: 83.0%  Verdict: FAIL
+
+[Task 6] CPL
+  Model HE_S k=2 (CORE): w0=-0.6794, wa=0.1465  [opposite]
+  HE_Sf k=3: w0=-0.9967, wa=0.0490  [opposite]
+  HE_D k=4: w0=-1.1383, wa=0.3713  [opposite]
+  HE_BD k=4: w0=-1.3118, wa=0.8001  [opposite]
+  DESI: w0=-0.757, wa=-0.50
+
+[Final Verdict]
+  HE_S (k=2, CORE)  dAICc=201.79: K90 KILL
+  Winner (he_d)       dAICc=-8.40: Q91 STRONG
+  Strategy B: he_d success -> partial A2' modification
+
+  A2' modification (H-proportional) vs original A2:
+    Model S (A2, L40): dAICc=+284.01 [K90 KILL]
+    HE_S    (A2')    : dAICc=201.79 [K90 KILL]
+    Improvement: +82.22 AICc units
+
+Total elapsed: 17209.2s
+Saved: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l42/l42_results.json
