@@ -1,0 +1,192 @@
+============================================================
+L43: Son et al. 2025 age-bias + SQT psi^n a priori test
+8-worker parallel  |  LCDM baseline AICc=1670.1227 (uncorrected)
+============================================================
+
+============================================================
+Pre-Task: Son et al. 2025 age-bias correction verification
+============================================================
+  z=0.0: delta_age=0.00 Gyr  delta_m=0.0000 mag  sigma_extra=0.0000 mag
+  z=0.5: delta_age=3.78 Gyr  delta_m=0.1134 mag  sigma_extra=0.0151 mag
+  z=1.0: delta_age=4.86 Gyr  delta_m=0.1459 mag  sigma_extra=0.0195 mag
+  z=2.0: delta_age=5.26 Gyr  delta_m=0.1579 mag  sigma_extra=0.0211 mag
+
+  z=1 check: delta_m=0.1459 mag (expected ~0.14 mag)
+  [CONFIRMED]
+
+============================================================
+Task 0: Baselines (corrected SN data)
+============================================================
+  Warming corrected SN cache...
+  SN_corr ready.
+  LCDM: 38 starts
+  CPL:  111 starts
+
+  LCDM (corrected): Om=0.3236, H0=67.5187
+  chi2: BAO=20.0129 CMB=2.5986 SN=1725.9354 RSD=7.3763
+  AICc=1759.9297  (prev uncorrected=1670.1227, change=+89.81)
+
+  CPL (corrected): Om=0.3617, H0=63.4831, w0=-0.4480, wa=-1.4672
+  chi2: BAO=12.7519 CMB=0.5323 SN=1624.9425 RSD=6.6574
+  AICc=1652.9058  dAICc(vs LCDM)=-107.02
+  Son et al. target: w0=-0.34, wa=-1.9
+  Deviation: w0=0.9sigma, wa=0.9sigma
+
+  Old LCDM (Om=0.309, H0=68.4) with corrected data: AICc=1766.78
+  Elapsed: 3143.5s
+
+============================================================
+Tasks 1-6: SQT model fits (parallel pool)
+============================================================
+  Model D:     56 starts
+  D_psi1:      35 starts
+  D_psi2 CORE: 53 starts
+  D_psi_n:     78 starts
+  D_mix:       96 starts
+  G_theory:    72 starts
+  All model scans done in 5775.2s
+
+============================================================
+Task: Model D (k=4, refit) (k=4)
+============================================================
+  Om=0.3639    H0=63.1806    amp=2.0358    beta=2.8621  
+  chi2: BAO=8.9467 CMB=0.1320 SN=1624.7298 RSD=6.7948
+  AICc=1648.6249  dAICc(vs LCDM)=-111.30  vs CPL: -4.28
+  boundary=False
+  CPL: w0=-1.4872, wa=1.2434
+  Son et al. (w0=-0.34): dev=-9.6sigma  wa dev=+6.3sigma
+  q0=-0.9190  (Son et al. target=+0.18)
+  Verdict: Q92 GAME
+
+============================================================
+Task: D_psi1 (k=2, n=1 a priori) (k=2)
+============================================================
+  Om=0.2985    H0=73.5923  
+  chi2: BAO=50.7547 CMB=100.8846 SN=2043.6691 RSD=12.9894
+  AICc=2212.3042  dAICc(vs LCDM)=452.37  vs CPL: +559.40
+  boundary=False
+  CPL: w0=-0.7385, wa=1.0113
+  Son et al. (w0=-0.34): dev=-3.3sigma  wa dev=+5.8sigma
+  q0=-0.2771  (Son et al. target=+0.18)
+  a priori: n=1.00 -> w0_pred=-0.7015  fit dev=-5.3%
+  Verdict: K90 KILL
+
+============================================================
+Task: D_psi2 (k=2, n=2 a priori) CORE (k=2)
+============================================================
+  Om=0.2888    H0=76.8256  
+  chi2: BAO=119.3914 CMB=219.1805 SN=2409.6924 RSD=20.6050
+  AICc=2772.8757  dAICc(vs LCDM)=1012.95  vs CPL: +1119.97
+  boundary=False
+  CPL: w0=-0.5041, wa=2.0449
+  Son et al. (w0=-0.34): dev=-1.4sigma  wa dev=+7.9sigma
+  q0=-0.0378  (Son et al. target=+0.18)
+  a priori: n=2.00 -> w0_pred=-0.4224  fit dev=-19.3%
+  Verdict: K90 KILL
+
+============================================================
+Task: D_psi_n (k=3, n free) (k=3)
+============================================================
+  Om=0.3203    H0=68.3319    n=0.1000  
+  chi2: BAO=17.9943 CMB=8.3461 SN=1750.9155 RSD=7.6602
+  AICc=1790.9291  dAICc(vs LCDM)=31.00  vs CPL: +138.02
+  boundary=True
+  CPL: w0=-0.9709, wa=0.0985
+  Son et al. (w0=-0.34): dev=-5.3sigma  wa dev=+4.0sigma
+  q0=-0.4898  (Son et al. target=+0.18)
+  a priori: n=0.10 -> w0_pred=-0.9680  fit dev=-0.3%
+  Verdict: K92 INVALID
+
+============================================================
+Task: D_mix (k=4, eps+psi^n) (k=4)
+============================================================
+  Om=0.3236    H0=67.5142    eps=1.0000    n=4.2294  
+  chi2: BAO=20.0683 CMB=2.6325 SN=1725.8436 RSD=7.3794
+  AICc=1763.9455  dAICc(vs LCDM)=4.02  vs CPL: +111.04
+  boundary=False
+  CPL: w0=-1.0000, wa=-0.0000
+  Son et al. (w0=-0.34): dev=-5.5sigma  wa dev=+3.8sigma
+  q0=-0.5145  (Son et al. target=+0.18)
+  Verdict: K90 KILL
+
+============================================================
+Task: G_theory_corr (k=3, V(psi)) (k=3)
+============================================================
+  Om=0.5500    H0=55.0042    mu2=0.0000  
+  chi2: BAO=716.1024 CMB=94856.1678 SN=1739.1950 RSD=16.2474
+  AICc=97333.7255  dAICc(vs LCDM)=95573.80  vs CPL: +95680.82
+  boundary=True
+  CPL: w0=-1.4251, wa=-0.7133
+  Son et al. (w0=-0.34): dev=-9.0sigma  wa dev=+2.4sigma
+  q0=-0.4619  (Son et al. target=+0.18)
+  Verdict: K92 INVALID
+
+============================================================
+Task 7: w(z) Visualization
+============================================================
+  Plot: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l43/l43_task7_wz.png
+
+============================================================
+Task 8: Bootstrap (model_d, N=300)
+============================================================
+  Bootstrap done in 3297.8s
+  Valid: 300/300
+  dAICc median=-89.57  68%CI=[-97.12,-82.65]
+  dAICc<-4: 100.0%  Verdict: PASS
+
+============================================================
+Task 9: w0-wa plane
+============================================================
+  Plot: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l43/l43_task9_w0wa.png
+
+============================================================
+Task 10: q0 (deceleration parameter) comparison
+============================================================
+  Son et al. 2025 target: q0 = +0.18 (deceleration)
+  LCDM standard:          q0 = -0.53 (acceleration)
+
+  Model                      w0       wa       q0  Son+25?
+  -------------------------------------------------------
+  CPL fit                -0.448   -1.467    0.071  YES
+  Model D                -1.487    1.243   -0.919  NO
+  D_psi1 (n=1)           -0.739    1.011   -0.277  NO
+  D_psi2 (n=2)           -0.504    2.045   -0.038  NEAR
+  D_psi_n                -0.971    0.098   -0.490  NO
+  D_mix                  -1.000   -0.000   -0.514  NO
+  G_theory               -1.425   -0.713   -0.462  NO
+
+============================================================
+L43 RESULTS SUMMARY
+============================================================
+
+[Pre-Task] Son et al. correction: verified
+
+[Task 0] Baselines (corrected data)
+  LCDM: AICc=1759.93  (prev=1670.12, change=+89.81)
+  CPL:  AICc=1652.91  dAICc=-107.02
+        w0=-0.448, wa=-1.467
+  Son+25 target: w0=-0.34, wa=-1.9, q0=+0.18
+
+[Tasks 1-6] Model fits (corrected data)
+  Model D k=4             dAICc= -111.30  [Q92 GAME]  w0=-1.487 wa=1.243  q0=-0.919
+  D_psi1 k=2              dAICc= +452.37  [K90 KILL]  w0=-0.739 wa=1.011  q0=-0.277
+  D_psi2 k=2 CORE         dAICc=+1012.95  [K90 KILL]  w0=-0.504 wa=2.045  q0=-0.038
+  D_psi_n k=3             dAICc=  +31.00  [K92 INVALID]  w0=-0.971 wa=0.098  q0=-0.490
+  D_mix k=4               dAICc=   +4.02  [K90 KILL]  w0=-1.000 wa=-0.000  q0=-0.514
+  G_theory k=3            dAICc=+95573.80  [K92 INVALID]  w0=-1.425 wa=-0.713  q0=-0.462
+
+[Best SQT model] model_d  dAICc=-111.30
+[Bootstrap]  median=-89.57  frac<-4=100.0%  PASS
+
+[D_psi_n] n_fit=0.100  (theory n=2, deviation=-95.0%)
+
+[Final Verdict]
+  Best SQT: model_d  dAICc=-111.30  [Q92 GAME]
+  Scenario: beta: Q92 GAME -- CPL competitive, JCAP enhancement
+  Son+25 w0 compatibility: 9.6sigma
+
+  L33-L42 re-evaluation:
+  LCDM AICc changed by +89.81 after age correction
+  Age bias had LARGE effect on previous results
+
+Saved: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l43/l43_results.json
