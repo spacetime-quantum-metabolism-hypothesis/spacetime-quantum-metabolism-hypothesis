@@ -1,0 +1,174 @@
+============================================================
+L38: SQT Publication Verification + Alternative Model Discovery
+8-worker parallel  |  LCDM baseline AICc=1670.1227
+============================================================
+
+Warming up SN cache...
+  SN ready.
+
+============================================================
+Task 0: ΛCDM Baseline Verification
+============================================================
+  Om=0.3094, H0=68.41
+  chi2: BAO=12.3000 CMB=0.0097 SN=1646.8406 RSD=6.9789
+  AICc=1670.1356 (stored=1670.1227) delta=0.0129 [CONFIRMED]
+
+============================================================
+Task V: SQT Alternative Model Discovery (Model D + V1a~V4)
+============================================================
+  Task V done in 3551.3s
+
+  Model          k    ΔAICc       w0       wa   H0_t verdict
+  -----------------------------------------------------------------
+  ModelD         4    -8.44   -1.138    0.370   5.25 Q91 STRONG 
+  V1a_k3         3   724.14   -2.030    1.538  15.63 K92 INVALID*
+  V1a_k4         4    -4.08   -1.108    0.161  15.50 Q91 STRONG 
+  V1b            3    -5.41   -1.098    0.137   5.08 Q91 STRONG 
+  V2prime        3   724.14   -2.030    1.538  15.63 K92 INVALID*
+  V3             3   107.39   -1.021    1.266  -7.76 K92 INVALID*
+  V4             3   135.07   -1.529    0.787  15.63 K92 INVALID*
+
+============================================================
+Phase 2: Winner Identification
+============================================================
+  Winner: ModelD  AICc=1661.68  ΔAICc(vs ΛCDM)=-8.44
+  vs Model D this run: +0.00
+
+============================================================
+Task 1: Bootstrap (ModelD, N=500)
+============================================================
+  Bootstrap done in 9257.0s
+  Valid: 449/500
+  ΔAICc median=-7.85  68%CI=[-10.11,-5.77]
+  ΔAICc<-4: 94.0%  <0: 100.0%
+  Verdict: PASS
+  Plot: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l38/l38_task1_bootstrap.png
+
+============================================================
+Task 2: Profile dAICc Robustness (Om/H0 re-optimized, P2 patch)
+============================================================
+  Profile scan done in 7201.5s
+  Best: amp=0.8049, beta=3.4772, dAICc=-8.44
+  profile dAICc<-6: 85.2%  <-2: 97.0%
+  Verdict: PASS
+  Plot: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l38/l38_task2_profile.png
+
+============================================================
+Task 3: Model Simplification (k=2,3,4)
+============================================================
+  Simplification done in 2490.3s
+
+  Model                  k    ΔAICc       wa verdict         boundary
+  -------------------- --- -------- -------- --------------- --------
+  D_k4                   4    -8.44    0.370 Q91 STRONG      False
+  D_k3_betafixed         3   -10.46    0.372 Q91 STRONG      False
+  D_k3_ampfixed          3   -10.46    0.371 Q91 STRONG      False
+  D_k2_bothfixed         2   -12.46    0.367 Q91 STRONG      False
+
+============================================================
+Task 4: w0waCDM (CPL) Comparison
+============================================================
+  CPL optimization done in 4052.6s (109 starts)
+  CPL best: Om=0.3209, H0=67.20, w0=-0.8231, wa=-0.5153
+  chi2: BAO=9.95 CMB=0.08 SN=1637.64 RSD=6.70
+  AICc=1662.40  vs ΛCDM: ΔAICc=-7.73
+  vs winner: ΔAICc(CPL-winner)=0.72  (winner wins)
+  boundary: False
+  Verdict: SQT_WINS
+
+============================================================
+Task 5: BAO-only k=3 (beta=3.533 fixed, P4 patch)
+============================================================
+  BAO-only k=3 done in 0.5s (61 starts)
+  Best: Om=0.4415, H0=57.60, amp=5.5472 (beta=3.533 fixed)
+  chi2_BAO=6.1466  boundary=False
+  CPL: w0=-1.9604, wa=2.5515
+  wa reversal: False  verdict: ANOMALY
+
+============================================================
+Task 6: Residual Analysis (ModelD vs LCDM)
+============================================================
+  ΔBAO = -2.5089  (D: 9.79 vs ΛCDM: 12.30)
+  ΔCMB = +0.1137  (D: 0.12 vs ΛCDM: 0.01)
+  ΔSN  = -9.9365   (D: 1636.90 vs ΛCDM: 1646.84)
+  ΔRSD = -0.1397  (D: 6.84 vs ΛCDM: 6.98)
+  Δtot = -12.4713
+  Fractional contribution to Δchi2:
+    BAO: +20.1%
+    CMB: -0.9%
+    SN: +79.7%
+    RSD: +1.1%
+  Main source of improvement: SN
+
+  RSD residuals:
+       z      obs     sig     LCDM        D    ΔLCDM       ΔD
+   0.067    0.423   0.055    0.440    0.441    0.091    0.108
+   0.150    0.490   0.145    0.455    0.452    0.058    0.069
+   0.380    0.497   0.045    0.474    0.469    0.267    0.400
+   0.510    0.458   0.038    0.473    0.469    0.148    0.085
+   0.610    0.436   0.034    0.468    0.466    0.873    0.763
+   0.700    0.473   0.044    0.461    0.460    0.071    0.081
+   0.850    0.315   0.095    0.448    0.448    1.948    1.965
+   1.480    0.462   0.045    0.378    0.379    3.523    3.368
+
+  BAO residuals (marginal sigma approx):
+       z      qty      obs     LCDM        D    ΔLCDM       ΔD
+   0.295   DV_ove   7.9417   7.9544   7.9242    0.028    0.053
+   0.510   DM_ove  13.5876  13.3265  13.2733    2.408    3.489
+   0.510   DH_ove  21.8629  22.4792  22.3112    2.064    1.092
+   0.706   DM_ove  17.3507  17.4815  17.4067    0.528    0.097
+   0.706   DH_ove  19.4553  19.9601  19.9019    2.295    1.796
+   0.934   DM_ove  21.5756  21.7368  21.6582    0.991    0.260
+   0.934   DH_ove  17.6415  17.4021  17.4172    1.419    1.245
+   1.321   DM_ove  27.6009  27.7665  27.7023    0.261    0.098
+   1.321   DH_ove  14.1760  13.9490  13.9955    1.023    0.647
+   1.484   DM_ove  30.5119  29.9461  29.8893    0.549    0.665
+   1.484   DH_ove  12.8170  12.7765  12.8215    0.006    0.000
+   2.330   DH_ove   8.6315   8.5570   8.5806    0.545    0.255
+   2.330   DM_ove  38.9890  38.7823  38.7542    0.151    0.195
+
+  Plot: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l38/l38_task6_residuals.png
+
+============================================================
+L38 RESULTS SUMMARY
+============================================================
+
+[Task 0] LCDM AICc=1670.14  [CONFIRMED]
+
+[Task V] Model Discovery
+  ModelD       k=4  ΔAICc=-8.44  [Q91 STRONG]
+  V1a_k3       k=3  ΔAICc=724.14  [K92 INVALID]*
+  V1a_k4       k=4  ΔAICc=-4.08  [Q91 STRONG]
+  V1b          k=3  ΔAICc=-5.41  [Q91 STRONG]
+  V2prime      k=3  ΔAICc=724.14  [K92 INVALID]*
+  V3           k=3  ΔAICc=107.39  [K92 INVALID]*
+  V4           k=3  ΔAICc=135.07  [K92 INVALID]*
+
+[Phase 2] Winner: ModelD  AICc=1661.68  ΔAICc(vs LCDM)=-8.44  vs ModelD: +0.00
+
+[Task 1] Bootstrap (ModelD)
+  median=-7.85  68%CI=[-10.11,-5.77]
+  <-4: 94.0%  Verdict: PASS
+
+[Task 2] Profile (Model D reference)
+  dAICc<-6: 85.2%  Verdict: PASS
+
+[Task 3] Simplification (Model D)
+  D_k4 (k=4): ΔAICc=-8.44  [Q91 STRONG]
+  D_k3_betafixed (k=3): ΔAICc=-10.46  [Q91 STRONG]
+  D_k3_ampfixed (k=3): ΔAICc=-10.46  [Q91 STRONG]
+  D_k2_bothfixed (k=2): ΔAICc=-12.46  [Q91 STRONG]
+
+[Task 4] vs CPL
+  CPL AICc=1662.40  winner AICc=1661.68
+  winner vs CPL: -0.72  SQT_WINS
+
+[Task 5] BAO-only k=3
+  boundary=False  verdict=ANOMALY
+
+[Task 6] Residuals (ModelD vs LCDM)
+  ΔBAO=-2.51  ΔCMB=+0.11  ΔSN=-9.94  ΔRSD=-0.14
+  Main source: SN
+
+Total elapsed: 27558.7s
+Saved: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l38/l38_results.json
