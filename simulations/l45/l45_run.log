@@ -1,0 +1,211 @@
+============================================================
+L45: Model UB Variant Exploration (18 Tier 1 + 54 Tier 2)
+8-worker parallel  |  L43 LCDM AICc ref=1759.93
+============================================================
+
+============================================================
+Pre-Task: Profile validation (BAL/FIC/DEC)
+============================================================
+  Profile  mR    f(0)_code    f(0)_theory  err
+  BAL      0.5  0.606531     0.606531     0.0e+00  [OK]
+  FIC      0.5  0.886819     0.886819     0.0e+00  [OK]
+  DEC      0.5  0.606531     0.606531     0.0e+00  [OK]
+  BAL      1.0  0.367879     0.367879     0.0e+00  [OK]
+  FIC      1.0  0.648054     0.648054     0.0e+00  [OK]
+  DEC      1.0  0.367879     0.367879     0.0e+00  [OK]
+  BAL      2.0  0.135335     0.135335     0.0e+00  [OK]
+  FIC      2.0  0.265802     0.265802     0.0e+00  [OK]
+  DEC      2.0  0.135335     0.135335     0.0e+00  [OK]
+  BAL      5.0  0.006738     0.006738     0.0e+00  [OK]
+  FIC      5.0  0.013475     0.013475     0.0e+00  [OK]
+  DEC      5.0  0.006738     0.006738     0.0e+00  [OK]
+
+  E(0)=1 check for all profiles (Om=0.32, mR=1):
+  BAL-PATH-H: E(0)=1.00000000  [OK]
+  BAL-PATH-E: E(0)=1.00000000  [OK]
+  BAL-VOL-H: E(0)=1.00000000  [OK]
+  BAL-VOL-E: E(0)=1.00000000  [OK]
+  FIC-PATH-H: E(0)=1.00000000  [OK]
+  FIC-PATH-E: E(0)=1.00000000  [OK]
+  FIC-VOL-H: E(0)=1.00000000  [OK]
+  FIC-VOL-E: E(0)=1.00000000  [OK]
+  DEC-PATH-H: E(0)=1.00000000  [OK]
+  DEC-PATH-E: E(0)=1.00000000  [OK]
+  DEC-VOL-H: E(0)=1.00000000  [OK]
+  DEC-VOL-E: E(0)=1.00000000  [OK]
+
+  Profile plot: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l45/l45_pretask_profiles.png
+
+============================================================
+Task 0: Baselines (LCDM + CPL -- confirm L43)
+============================================================
+  Warming corrected SN cache...
+  SN_corr ready.
+  LCDM: 38 starts, CPL: 110 starts
+
+  LCDM: Om=0.3236, H0=67.5187
+  chi2: BAO=20.01 CMB=2.60 SN=1725.94 RSD=7.38
+  AICc=1759.9297  L43_ref=1759.93  delta=-0.00  [OK]
+
+  CPL: Om=0.3618, H0=63.4858, w0=-0.4477, wa=-1.4696
+  AICc=1652.9061  dAICc=-107.02  L43_ref=1652.91  delta=-0.00  [OK]
+  Elapsed: 2909.7s
+
+============================================================
+Task 1: Tier 1 (18 models x 40 starts)
+============================================================
+  Total tasks: 810 dispatched across 8 workers
+  All fits done in 16353.0s
+
+============================================================
+Task 2: Tier 1 ranking
+============================================================
+
+  Rank Tag                          k     dAICc  Verdict                w0       wa
+  --------------------------------------------------------------------------------
+  1    H-DEC-PATH-LIN-k3            3    -54.32  Q94 DISCOVERY      -1.289    0.421
+  2    H-DEC-PATH-LIN-k2            2    -44.58  Q95 VICTORY        -1.404    0.592
+  3    H-BAL-PATH-POW-k4            4    -37.07  K92 INVALID        -1.202    0.311
+  4    H-BAL-VOL-LIN-k3             3    -25.15  Q94 DISCOVERY      -1.197    0.266
+  5    H-BAL-PATH-LIN-k3            3    -23.33  Q94 DISCOVERY      -1.171    0.206
+  6    E-DEC-PATH-LIN-k2            2    -21.39  Q95 VICTORY        -1.043   -0.136
+  7    H-FIC-VOL-LIN-k2             2    -16.80  Q94 DISCOVERY      -1.153    0.150
+  8    H-FIC-PATH-LIN-k3            3    -14.24  Q92 GAME           -1.143    0.137
+  9    H-FIC-PATH-LIN-k2            2    -13.39  Q93 TRIUMPH        -1.087    0.081
+  10   E-BAL-PATH-LIN-k2            2      1.33  K90 KILL           -1.004    0.026
+  11   E-FIC-PATH-LIN-k2            2      1.83  K90 KILL           -0.989   -0.072
+  12   E-BAL-PATH-LIN-k3            3      3.24  K90 KILL           -0.995   -0.042
+  13   H-BAL-PATH-MIX-k3            3      3.54  K92 INVALID        -0.999   -0.001
+  14   H-BAL-PATH-POW-k3            3      4.11  K92 INVALID        -0.997   -0.003
+  15   H-BAL-PATH-LIN-k2            2      9.17  K90 KILL           -0.969   -0.024
+  16   H-BAL-VOL-LIN-k2             2     23.48  K90 KILL           -0.942   -0.043
+  17   H-BAL-PATH-HPR-k2            2    142.84  K90 KILL           -1.218   -0.336
+  18   H-BAL-PATH-HPR-k3            3    143.84  K90 KILL           -1.218   -0.335
+
+============================================================
+Task 3: Bootstrap (top-5 by dAICc, N=200)
+============================================================
+
+  Bootstrapping H-DEC-PATH-LIN-k3 (k=3, dAICc=-54.32)...
+  Done in 2743.6s  Valid: 200/200
+  median=-53.59  68%CI=[-66.32,-43.12]  <-4: 100%  [PASS]
+
+  Bootstrapping H-DEC-PATH-LIN-k2 (k=2, dAICc=-44.58)...
+  Done in 2024.3s  Valid: 200/200
+  median=-46.68  68%CI=[-62.12,-32.55]  <-4: 99%  [PASS]
+
+  Bootstrapping H-BAL-PATH-POW-k4 (k=4, dAICc=-37.07)...
+  Done in 3172.1s  Valid: 200/200
+  median=-35.31  68%CI=[-45.19,-27.92]  <-4: 100%  [PASS]
+
+  Bootstrapping H-BAL-VOL-LIN-k3 (k=3, dAICc=-25.15)...
+  Done in 2696.1s  Valid: 200/200
+  median=-26.70  68%CI=[-36.37,-18.02]  <-4: 100%  [PASS]
+
+  Bootstrapping H-BAL-PATH-LIN-k3 (k=3, dAICc=-23.33)...
+  Done in 2893.5s  Valid: 200/200
+  median=-26.68  68%CI=[-35.48,-16.85]  <-4: 100%  [PASS]
+
+============================================================
+Task 4: Tier 2 cross-combinations
+============================================================
+  Best axis choices: bnd=H, prof=DEC, avg=PATH, cpl=LIN
+  Tier 2: 29 new models, 30 starts each
+  Tier 2 fits done in 20997.7s
+
+  Top-10 Tier 2 results:
+   1 H-DEC-VOL-LIN-k3                 dAICc=  -55.49  [Q94 DISCOVERY]
+   2 H-DEC-VOL-POW-k3                 dAICc=  -55.48  [Q94 DISCOVERY]
+   3 H-DEC-PATH-POW-k3                dAICc=  -53.58  [Q94 DISCOVERY]
+   4 H-DEC-PATH-MIX-k3                dAICc=  -50.75  [Q94 DISCOVERY]
+   5 H-DEC-VOL-MIX-k3                 dAICc=  -48.20  [Q94 DISCOVERY]
+   6 E-DEC-VOL-LIN-k3                 dAICc=  -22.33  [Q94 DISCOVERY]
+   7 E-DEC-VOL-POW-k3                 dAICc=  -22.29  [Q94 DISCOVERY]
+   8 E-DEC-VOL-MIX-k3                 dAICc=  -22.02  [K92 INVALID]
+   9 E-DEC-PATH-POW-k3                dAICc=  -20.87  [Q94 DISCOVERY]
+  10 E-DEC-PATH-LIN-k3                dAICc=  -20.41  [Q94 DISCOVERY]
+
+============================================================
+Task 5: muR0 sensitivity (top-3 profile types)
+============================================================
+  Plot: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l45/l45_task5_mur0scan.png
+
+============================================================
+Task 6: w(z) visualization (top-5 models)
+============================================================
+  Plot: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l45/l45_task6_wz.png
+
+============================================================
+Task 7: w0-wa plane
+============================================================
+  Plot: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l45/l45_task7_w0wa.png
+
+============================================================
+Task 8: q0 comparison
+============================================================
+  Son+25 target: q0=+0.18  LCDM: q0=-0.53
+
+  Model                               w0      wa      q0  Son+25?
+  -----------------------------------------------------------------
+  CPL                             -0.448  -1.470   0.071  YES
+  H-DEC-PATH-LIN-k3               -1.289   0.421  -0.776  NO
+  H-DEC-PATH-LIN-k2               -1.404   0.592  -0.871  NO
+  H-BAL-PATH-POW-k4               -1.202   0.311  -0.704  NO
+  H-BAL-VOL-LIN-k3                -1.197   0.266  -0.699  NO
+  H-BAL-PATH-LIN-k3               -1.171   0.206  -0.677  NO
+  E-DEC-PATH-LIN-k2               -1.043  -0.136  -0.551  NO
+  H-FIC-VOL-LIN-k2                -1.153   0.150  -0.660  NO
+  H-FIC-PATH-LIN-k3               -1.143   0.137  -0.650  NO
+  H-FIC-PATH-LIN-k2               -1.087   0.081  -0.598  NO
+  E-BAL-PATH-LIN-k2               -1.004   0.026  -0.519  NO
+
+============================================================
+Task 9: Best axis analysis
+============================================================
+  Best dAICc by axis value:
+  Axis [bnd]:
+    H       : best=-54.32  mean=+7.01  n=14
+    E       : best=-21.39  mean=-3.75  n=4
+  Axis [prof]:
+    DEC     : best=-54.32  mean=-40.09  n=3
+    BAL     : best=-37.07  mean=+22.36  n=11
+    FIC     : best=-16.80  mean=-10.65  n=4
+  Axis [avg]:
+    PATH    : best=-54.32  mean=+6.77  n=15
+    VOL     : best=-25.15  mean=-6.16  n=3
+  Axis [cpl]:
+    LIN     : best=-54.32  mean=-13.39  n=13
+    POW     : best=-37.07  mean=-16.48  n=2
+    MIX     : best=+3.54  mean=+3.54  n=1
+    HPR     : best=+142.84  mean=+143.34  n=2
+
+============================================================
+L45 FINAL VERDICT
+============================================================
+
+  Top-3 Tier 1 by AICc:
+  1. H-DEC-PATH-LIN-k3  dAICc=-54.32  [Q94 DISCOVERY]
+     Bootstrap: median=-53.59  PASS
+  2. H-DEC-PATH-LIN-k2  dAICc=-44.58  [Q95 VICTORY]
+     Bootstrap: median=-46.68  PASS
+  3. H-BAL-PATH-POW-k4  dAICc=-37.07  [K92 INVALID]
+     Bootstrap: median=-35.31  PASS
+
+  Best Tier 2: H-DEC-VOL-LIN-k3  dAICc=-55.49
+
+  [FINAL] Q95 VICTORY -- SQT UB dark energy: multiple variants succeed
+  Resurrection threshold (dAICc < -50 vs LCDM): CROSSED
+
+============================================================
+L45 RESULTS SUMMARY
+============================================================
+[Task 0] LCDM AICc=1759.93  CPL dAICc=-107.02363340231364
+
+[Task 1] Tier 1 top-5:
+  H-DEC-PATH-LIN-k3                 dAICc=-54.32  [Q94 DISCOVERY]
+  H-DEC-PATH-LIN-k2                 dAICc=-44.58  [Q95 VICTORY]
+  H-BAL-PATH-POW-k4                 dAICc=-37.07  [K92 INVALID]
+  H-BAL-VOL-LIN-k3                  dAICc=-25.15  [Q94 DISCOVERY]
+  H-BAL-PATH-LIN-k3                 dAICc=-23.33  [Q94 DISCOVERY]
+
+Saved: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l45/l45_results.json
