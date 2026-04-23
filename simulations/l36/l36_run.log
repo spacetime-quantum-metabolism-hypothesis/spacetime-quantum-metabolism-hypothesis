@@ -1,0 +1,85 @@
+============================================================
+L36: wa<0 탐색 (L35 한계 해결)
+LCDM baseline AICc = 1670.1227
+============================================================
+
+Warming up SN cache...
+
+[Model_Bp] Fitting joint (BAO+CMB+SN+RSD) k=4...
+  Om=0.3193, H0=67.2732, amp=0.1309, gamma=-0.0348
+  chi2_BAO=10.0349  chi2_CMB=0.1213  chi2_SN=1639.2852  chi2_RSD=6.6228
+  chi2_joint=1656.0642  AICc=1664.0858  dAICc=-6.0369
+  w0=-1.2172  wa=0.6305  H0_tension=5.00sigma
+
+[Model_D] Fitting joint (BAO+CMB+SN+RSD) k=4...
+  Om=0.3220, H0=66.9831, amp=0.8178, beta=3.5323
+  chi2_BAO=9.8647  chi2_CMB=0.0971  chi2_SN=1636.8482  chi2_RSD=6.8530
+  chi2_joint=1653.6630  AICc=1661.6846  dAICc=-8.4381
+  w0=-1.1368  wa=0.3671  H0_tension=5.25sigma
+
+[Model_Cp] Fitting joint (BAO+CMB+SN+RSD) k=4...
+  Om=0.3807, H0=56.0208, amp=0.5000, c=2.5000
+  !! BOUNDARY: ['amp', 'c']
+  chi2_BAO=1003.7550  chi2_CMB=396.0154  chi2_SN=1720.2280  chi2_RSD=9.7424
+  chi2_joint=3129.7408  AICc=3137.7625  dAICc=+1467.6398
+  w0=-1.1176  wa=-1.0051  H0_tension=14.75sigma
+
+[Model_Ap_fixed] Fitting joint (BAO+CMB+SN+RSD) k=2...
+  Om=0.3215, H0=64.9812
+  chi2_BAO=43.2887  chi2_CMB=38.8497  chi2_SN=1642.5106  chi2_RSD=7.2403
+  chi2_joint=1731.8893  AICc=1735.8958  dAICc=+65.7731
+  w0=-1.0977  wa=-0.3278  H0_tension=6.98sigma
+
+[Model_Ap_free] Fitting joint (BAO+CMB+SN+RSD) k=3...
+  Om=0.3113, H0=67.9203, n=0.0545
+  chi2_BAO=13.1713  chi2_CMB=0.7814  chi2_SN=1643.6568  chi2_RSD=6.9007
+  chi2_joint=1664.5102  AICc=1670.5232  dAICc=+0.4005
+  w0=-1.0152  wa=-0.0543  H0_tension=4.44sigma
+
+============================================================
+SUMMARY (LCDM AICc baseline = 1670.1227)
+============================================================
+
+Model B' k=4:
+  chi2: BAO=10.03 CMB=0.12 SN=1639.29 RSD=6.62 total=1656.06
+  AICc=1664.09  dAICc=-6.04
+  params={'Om': 0.3192705844646299, 'H0': 67.27320523687312, 'amp': 0.1309387244463885, 'gamma': -0.03478908333812037}
+  w0=-1.2171888570975127  wa=0.6305492998326166  wa<0: False
+  H0 tension=5.00sigma
+  VERDICT: Q91 STRONG
+
+Model D k=4:
+  chi2: BAO=9.86 CMB=0.10 SN=1636.85 RSD=6.85 total=1653.66
+  AICc=1661.68  dAICc=-8.44
+  params={'Om': 0.32202532402507333, 'H0': 66.98314175729169, 'amp': 0.8178377119480489, 'beta': 3.532302318008022}
+  w0=-1.1367541649625474  wa=0.3670541297394485  wa<0: False
+  H0 tension=5.25sigma
+  VERDICT: Q91 STRONG
+
+Model C' k=4:
+  chi2: BAO=1003.76 CMB=396.02 SN=1720.23 RSD=9.74 total=3129.74
+  AICc=3137.76  dAICc=+1467.64
+  params={'Om': 0.38067503002483927, 'H0': 56.0208200315268, 'amp': 0.5000000456347241, 'c': 2.4999716814088124}
+  !! BOUNDARY-PINNED: ['amp', 'c'] -> K92 INVALID
+  w0=-1.1176497237877372  wa=-1.0050619361491617  wa<0: True
+  H0 tension=14.75sigma
+  VERDICT: K92 INVALID
+
+Model A' fixed k=2:
+  chi2: BAO=43.29 CMB=38.85 SN=1642.51 RSD=7.24 total=1731.89
+  AICc=1735.90  dAICc=+65.77
+  params={'Om': 0.321542013949378, 'H0': 64.98124493230489}
+  w0=-1.0977074859958837  wa=-0.32777082768388677  wa<0: True
+  H0 tension=6.98sigma
+  VERDICT: K90 KILL
+
+Model A' free k=3:
+  chi2: BAO=13.17 CMB=0.78 SN=1643.66 RSD=6.90 total=1664.51
+  AICc=1670.52  dAICc=+0.40
+  params={'Om': 0.3112727163061401, 'H0': 67.92032213066663, 'n': 0.054531522783529976}
+  w0=-1.015218863926352  wa=-0.05431691410694446  wa<0: True
+  H0 tension=4.44sigma
+  VERDICT: K90 KILL
+
+Saved to /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l36/l36_results.json
+Total elapsed: 17201.2s
