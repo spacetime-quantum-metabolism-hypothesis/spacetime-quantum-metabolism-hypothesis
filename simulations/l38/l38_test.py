@@ -152,6 +152,99 @@ def _chi2_all(E_fn, Om, H0):
     return cb, cc, cs, cr, cb+cc+cs+cr
 
 
+# ─── V-series: ψ(z) helper and E functions ───────────────────────────────────
+def _psi_parts(z_arr, Om):
+    """OL0, psi(z), psi0 — direct computation (no ratio clipping)."""
+    OL0 = 1.0 - Om - OR
+    if OL0 <= 0 or Om <= 0: return None, None, None
+    alpha = Om / OL0
+    psi_z = 1.0 / (1.0 + alpha * (1.0 + z_arr)**3)
+    psi0  = 1.0 / (1.0 + alpha)
+    return OL0, psi_z, psi0
+
+
+def _E_V1a(z_arr, Om, A, n):
+    """V1a: rho_DE = A*(1-psi(z))^n  (no normalization forcing)."""
+    OL0, psi_z, _ = _psi_parts(z_arr, Om)
+    if OL0 is None: return None
+    rde = A * (1.0 - psi_z)**n
+    E2  = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rde
+    return None if np.any(E2 <= 0) else np.sqrt(E2)
+
+def _make_E_V1a(Om, A, n):
+    def fn(z, _Om): return _E_V1a(z, Om, A, n)
+    return fn
+
+
+def _E_V1b(z_arr, Om, n):
+    """V1b: rho_DE = OL0*[(1-psi(z))/(1-psi0)]^n  (rho_DE(0)=OL0)."""
+    OL0, psi_z, psi0 = _psi_parts(z_arr, Om)
+    if OL0 is None: return None
+    omp0 = 1.0 - psi0   # = Om/(Om+OL0) > 0
+    if omp0 <= 0: return None
+    rde = OL0 * ((1.0 - psi_z) / omp0)**n
+    E2  = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rde
+    return None if np.any(E2 <= 0) else np.sqrt(E2)
+
+def _make_E_V1b(Om, n):
+    def fn(z, _Om): return _E_V1b(z, Om, n)
+    return fn
+
+
+def _E_V2prime(z_arr, Om, C):
+    """V2': rho_DE = C*(1/2)*(1-psi(z))^2  [V(psi)=mu^2/2*(psi-1)^2, C absorbs mu^2]."""
+    OL0, psi_z, _ = _psi_parts(z_arr, Om)
+    if OL0 is None: return None
+    rde = C * 0.5 * (1.0 - psi_z)**2
+    E2  = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rde
+    return None if np.any(E2 <= 0) else np.sqrt(E2)
+
+def _make_E_V2prime(Om, C):
+    def fn(z, _Om): return _E_V2prime(z, Om, C)
+    return fn
+
+
+V3_BETA_FIXED = 1.0
+
+def _E_V3(z_arr, Om, amp, beta=V3_BETA_FIXED):
+    """V3: rho_DE = OL0*(psi(z)/psi0)*(1+amp*exp(-beta*z))."""
+    OL0, psi_z, psi0 = _psi_parts(z_arr, Om)
+    if OL0 is None or psi0 <= 0: return None
+    rde = OL0 * (psi_z / psi0) * (1.0 + amp * np.exp(-abs(beta) * z_arr))
+    E2  = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rde
+    return None if np.any(E2 <= 0) else np.sqrt(E2)
+
+def _make_E_V3(Om, amp, beta=V3_BETA_FIXED):
+    def fn(z, _Om): return _E_V3(z, Om, amp, beta)
+    return fn
+
+
+def _E_V4(z_arr, Om, A):
+    """V4: rho_DE = A*(1+z)^3*psi(z)  [annihilation energy accumulation]."""
+    OL0, psi_z, _ = _psi_parts(z_arr, Om)
+    if OL0 is None: return None
+    rde = A * (1.0 + z_arr)**3 * psi_z
+    E2  = OR*(1+z_arr)**4 + Om*(1+z_arr)**3 + rde
+    return None if np.any(E2 <= 0) else np.sqrt(E2)
+
+def _make_E_V4(Om, A):
+    def fn(z, _Om): return _E_V4(z, Om, A)
+    return fn
+
+
+def _make_E_from_type(model_type, params):
+    """Construct E_fn from model_type string and param array [Om, H0, ...]."""
+    Om = params[0]
+    if model_type == 'ModelD':   return _make_E_D(Om, params[2], params[3])
+    if model_type == 'V1a_k3':  return _make_E_V1a(Om, params[2], 2.0)
+    if model_type == 'V1a_k4':  return _make_E_V1a(Om, params[2], params[3])
+    if model_type == 'V1b':     return _make_E_V1b(Om, params[2])
+    if model_type == 'V2prime': return _make_E_V2prime(Om, params[2])
+    if model_type == 'V3':      return _make_E_V3(Om, params[2])
+    if model_type == 'V4':      return _make_E_V4(Om, params[2])
+    return None
+
+
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # Worker functions (module-level for spawn)
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -392,6 +485,146 @@ def _bao_k3_worker(start):
         return (float(r.fun), [float(x) for x in r.x])
     except Exception:
         return (1e9, None)
+
+
+def _v_worker(args):
+    """Task V: generic V-series (+ Model D re-fit) worker."""
+    variant_name, model_type, bounds, n_starts = args
+    warnings.filterwarnings('ignore'); np.seterr(all='ignore')
+
+    def obj(p):
+        for pv, (lo, hi) in zip(p, bounds):
+            if pv < lo or pv > hi: return 1e9
+        Om, H0 = p[0], p[1]
+        E_fn = _make_E_from_type(model_type, p)
+        if E_fn is None: return 1e9
+        cb = chi2_bao(E_fn,Om,H0); cc = chi2_cmb(E_fn,Om,H0)
+        cs = chi2_sn(E_fn,Om,H0);  cr = chi2_rsd(E_fn,Om,H0)
+        tot = cb+cc+cs+cr
+        return tot if np.isfinite(tot) and tot < 1e7 else 1e9
+
+    np.random.seed(42)
+    starts = []
+    for Om0 in np.linspace(0.28, 0.34, 4):
+        for H0_0 in [65., 67., 69., 71.]:
+            mid = [(b[0]+b[1])/2 for b in bounds[2:]]
+            starts.append([Om0, H0_0] + mid)
+    while len(starts) < n_starts:
+        starts.append([np.random.uniform(b[0], b[1]) for b in bounds])
+
+    best_val, best_par = 1e9, None
+    for s in starts[:n_starts]:
+        try:
+            r = minimize(obj, s, method='Nelder-Mead',
+                        options={'xatol':1e-4,'fatol':1e-4,'maxiter':500})
+            if r.fun < best_val: best_val, best_par = r.fun, r.x
+        except Exception: pass
+
+    if best_par is not None:
+        try:
+            r = minimize(obj, best_par, method='Nelder-Mead',
+                        options={'xatol':1e-6,'fatol':1e-6,'maxiter':2000})
+            if r.fun < best_val: best_val, best_par = r.fun, r.x
+        except Exception: pass
+
+    if best_par is None:
+        return {'name': variant_name, 'model_type': model_type, 'failed': True}
+
+    k = len(bounds)
+    Om, H0 = best_par[0], best_par[1]
+    E_fn = _make_E_from_type(model_type, best_par)
+    cb, cc, cs, cr, ctot = _chi2_all(E_fn, Om, H0)
+    ac   = _aicc(ctot, k)
+    dac  = ac - LCDM_AICC
+    w0, wa = cpl_wa(E_fn, Om)
+    bnd  = _at_boundary(best_par, bounds)
+    H0_t = _H0_tension(H0)
+    v    = _verdict(dac, wa, H0_t, bnd)
+
+    return {
+        'name': variant_name, 'model_type': model_type, 'k': k, 'failed': False,
+        'params': {f'p{i}': float(x) for i, x in enumerate(best_par)},
+        'bounds': [(float(lo), float(hi)) for lo, hi in bounds],
+        'chi2_bao': float(cb), 'chi2_cmb': float(cc),
+        'chi2_sn':  float(cs), 'chi2_rsd': float(cr),
+        'chi2_joint': float(ctot), 'aicc': float(ac), 'daicc': float(dac),
+        'w0': float(w0) if w0 is not None else None,
+        'wa': float(wa) if wa is not None else None,
+        'H0_tension': float(H0_t), 'boundary': bool(bnd), 'verdict': v,
+    }
+
+
+def _boot_worker_v(args):
+    """Task 1 bootstrap for winner V-series model (or Model D)."""
+    model_type, bounds_v, boot_batch = args
+    warnings.filterwarnings('ignore'); np.seterr(all='ignore')
+    import sys
+    _l35 = sys.modules.get('l35_test') or __import__('l35_test')
+    orig_bao_dict = dict(_l35.DESI_DR2)
+    orig_cmb = _l35.CMB_OBS.copy()
+    orig_rsd = _l35.FS8_OBS.copy()
+
+    bounds_LCDM = [(0.15,0.50),(55.,82.)]
+    k_v = len(bounds_v)
+
+    def obj_V(p):
+        for pv, (lo, hi) in zip(p, bounds_v):
+            if pv < lo or pv > hi: return 1e9
+        Om, H0 = p[0], p[1]
+        E_fn = _make_E_from_type(model_type, p)
+        if E_fn is None: return 1e9
+        tot = (chi2_bao(E_fn,Om,H0)+chi2_cmb(E_fn,Om,H0)+
+               chi2_sn(E_fn,Om,H0) +chi2_rsd(E_fn,Om,H0))
+        return tot if np.isfinite(tot) and tot < 1e7 else 1e9
+
+    def obj_LCDM(p):
+        Om, H0 = p
+        if Om<0.15 or Om>0.50 or H0<55 or H0>82: return 1e9
+        E_fn = lambda z, _: E_lcdm(z, Om)
+        tot = (chi2_bao(E_fn,Om,H0)+chi2_cmb(E_fn,Om,H0)+
+               chi2_sn(E_fn,Om,H0) +chi2_rsd(E_fn,Om,H0))
+        return tot if np.isfinite(tot) and tot < 1e7 else 1e9
+
+    results = []
+    np.random.seed(42)
+    for (s0_v, new_bao, new_cmb, new_rsd) in boot_batch:
+        _l35.DESI_DR2 = {**orig_bao_dict, 'value': new_bao}
+        _l35.CMB_OBS  = new_cmb
+        _l35.FS8_OBS  = new_rsd
+
+        best_lcdm, par_lcdm = 1e9, None
+        for s in [[0.310,68.4],[0.309,68.0],[0.315,67.5]]:
+            try:
+                r = minimize(obj_LCDM, s, method='Nelder-Mead',
+                           options={'xatol':1e-4,'fatol':1e-4,'maxiter':200})
+                if r.fun < best_lcdm: best_lcdm, par_lcdm = r.fun, r.x
+            except Exception: pass
+
+        best_V, par_V = 1e9, None
+        try:
+            r = minimize(obj_V, s0_v, method='Nelder-Mead',
+                       options={'xatol':1e-4,'fatol':1e-4,'maxiter':300})
+            if r.fun < best_V: best_V, par_V = r.fun, r.x
+        except Exception: pass
+
+        if par_lcdm is None or par_V is None:
+            results.append((float('nan'), float('nan')))
+            continue
+
+        aicc_lcdm = _aicc(best_lcdm, k=2)
+        aicc_V    = _aicc(best_V, k=k_v)
+        daicc = aicc_V - aicc_lcdm
+        bnd_V = _at_boundary(par_V,    bounds_v)
+        bnd_L = _at_boundary(par_lcdm, bounds_LCDM)
+        if bnd_V or bnd_L:
+            results.append((float('nan'), float('nan')))
+        else:
+            results.append((float(daicc), float(par_V[2])))
+
+    _l35.DESI_DR2 = orig_bao_dict
+    _l35.CMB_OBS  = orig_cmb
+    _l35.FS8_OBS  = orig_rsd
+    return results
 
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -644,7 +877,7 @@ def task3_simplification(pool):
     return {r['name']: r for r in res}
 
 
-def task4_cpl(pool):
+def task4_cpl(pool, winner_aicc=None):
     print("\n" + "="*60)
     print("Task 4: w0waCDM (CPL) Comparison")
     print("="*60)
@@ -693,13 +926,15 @@ def task4_cpl(pool):
     cb, cc, cs, cr, ctot = _chi2_all(E_fn, Om, H0)
     ac_cpl   = _aicc(ctot, k=4)
     dac_lcdm = ac_cpl - LCDM_AICC
-    dac_sqt  = ac_cpl - 1661.68   # vs Model D L36 AICc
+    ref_aicc  = winner_aicc if winner_aicc is not None else 1661.68
+    dac_sqt   = ac_cpl - ref_aicc   # vs winner (or Model D L36)
     bnd      = _at_boundary(best_par, [(0.15,0.50),(55.,82.),(-2.5,0.5),(-3.,3.)])
 
     print(f"  CPL best: Om={Om:.4f}, H0={H0:.2f}, w0={w0:.4f}, wa={wa:.4f}")
     print(f"  chi2: BAO={cb:.2f} CMB={cc:.2f} SN={cs:.2f} RSD={cr:.2f}")
     print(f"  AICc={ac_cpl:.2f}  vs ΛCDM: ΔAICc={dac_lcdm:.2f}")
-    print(f"  vs SQT Model D: ΔAICc(CPL-SQT)={dac_sqt:.2f}  ({'SQT wins' if dac_sqt > 0 else 'CPL wins'})")
+    winner_label = 'winner' if winner_aicc is not None else 'Model D L36'
+    print(f"  vs {winner_label}: ΔAICc(CPL-winner)={dac_sqt:.2f}  ({'winner wins' if dac_sqt > 0 else 'CPL wins'})")
     print(f"  boundary: {bnd}")
 
     verdict_t4 = 'SQT_WINS' if dac_sqt > 0 else 'CPL_WINS'
@@ -777,16 +1012,172 @@ def task5_bao_k3(pool):
     }
 
 
-def task6_residuals():
+def task_V(pool):
     print("\n" + "="*60)
-    print("Task 6: Residual Analysis")
+    print("Task V: SQT Alternative Model Discovery (Model D + V1a~V4)")
     print("="*60)
 
-    E_D    = _make_E_D(D_BEST['Om'], D_BEST['amp'], D_BEST['beta'])
+    variants = [
+        ('ModelD',  'ModelD',  [(0.15,0.50),(55.,82.),(-3.0,3.0),(0.01,5.)], 25),
+        ('V1a_k3',  'V1a_k3',  [(0.15,0.50),(55.,82.),(0.01,10.0)],           30),
+        ('V1a_k4',  'V1a_k4',  [(0.15,0.50),(55.,82.),(0.01,10.0),(0.1,5.0)], 30),
+        ('V1b',     'V1b',     [(0.15,0.50),(55.,82.),(0.1,5.0)],              30),
+        ('V2prime', 'V2prime', [(0.15,0.50),(55.,82.),(0.01,200.0)],           30),
+        ('V3',      'V3',      [(0.15,0.50),(55.,82.),(-3.0,3.0)],             30),
+        ('V4',      'V4',      [(0.15,0.50),(55.,82.),(0.01,5.0)],             30),
+    ]
+
+    t0 = time.time()
+    res = pool.map(_v_worker, variants)
+    print(f"  Task V done in {time.time()-t0:.1f}s")
+
+    print(f"\n  {'Model':<12} {'k':>3} {'ΔAICc':>8} {'w0':>8} {'wa':>8} {'H0_t':>6} {'verdict'}")
+    print(f"  {'-'*65}")
+    for r in res:
+        if r.get('failed'):
+            print(f"  {r['name']:<12} FAILED"); continue
+        w0_s = f"{r['w0']:.3f}" if r.get('w0') is not None else '  ---'
+        wa_s = f"{r['wa']:.3f}" if r.get('wa') is not None else '  ---'
+        bnd_s = '*' if r['boundary'] else ' '
+        print(f"  {r['name']:<12} {r['k']:>3} {r['daicc']:>8.2f} {w0_s:>8} {wa_s:>8}"
+              f" {r['H0_tension']:>6.2f} {r['verdict']}{bnd_s}")
+
+    return {r['name']: r for r in res}
+
+
+def identify_winner(taskV_results):
+    """Phase 2: select best non-boundary model from Task V."""
+    print("\n" + "="*60)
+    print("Phase 2: Winner Identification")
+    print("="*60)
+
+    best_name, best_aicc = None, float('inf')
+    for name, res in taskV_results.items():
+        if res.get('failed') or res.get('boundary'): continue
+        if res['aicc'] < best_aicc:
+            best_aicc, best_name = res['aicc'], name
+
+    if best_name is None:
+        print("  All models failed/boundary — fallback to Model D L36 hardcoded best")
+        best_name = 'ModelD'
+        best_aicc = 1661.68
+        return {
+            'name': 'ModelD', 'model_type': 'ModelD', 'k': 4,
+            'aicc': 1661.68, 'daicc': -8.44, 'delta_vs_D': 0.0,
+            'best_par': [D_BEST['Om'], D_BEST['H0'], D_BEST['amp'], D_BEST['beta']],
+            'bounds': [(0.15,0.50),(55.,82.),(-3.0,3.0),(0.01,5.)],
+        }
+
+    res_w = taskV_results.get(best_name, {})
+    dac   = res_w.get('daicc', float('nan'))
+    dac_vs_D = best_aicc - taskV_results.get('ModelD', {}).get('aicc', 1661.68)
+    print(f"  Winner: {best_name}  AICc={best_aicc:.2f}  ΔAICc(vs ΛCDM)={dac:.2f}")
+    print(f"  vs Model D this run: {dac_vs_D:+.2f}")
+
+    k = res_w.get('k', 4)
+    par_dict = res_w.get('params', {})
+    best_par = [par_dict.get(f'p{i}', 0.) for i in range(k)]
+    bounds   = res_w.get('bounds', [])
+    model_type = res_w.get('model_type', 'ModelD')
+
+    return {
+        'name': best_name, 'model_type': model_type, 'k': k,
+        'aicc': float(best_aicc), 'daicc': float(dac),
+        'delta_vs_D': float(dac_vs_D),
+        'best_par': best_par, 'bounds': bounds,
+    }
+
+
+def task1_bootstrap_v(pool, winner):
+    """Task 1 bootstrap for Phase 3 winner model."""
+    model_type = winner['model_type']
+    best_par   = winner['best_par']
+    bounds_v   = winner['bounds']
+    name       = winner['name']
+
+    print("\n" + "="*60)
+    print(f"Task 1: Bootstrap ({name}, N={N_BOOT})")
+    print("="*60)
+
+    Om_w, H0_w = best_par[0], best_par[1]
+    E_w = _make_E_from_type(model_type, best_par)
+    tv_w      = _bao_theory_vec(E_w, Om_w, H0_w)
+    theory_rsd = _growth_fs8(E_w, Om_w, Z_RSD)
+    theory_cmb = CMB_OBS.copy()   # chi2_cmb~0 at best-fit → theory≈obs
+
+    if tv_w is None or theory_rsd is None:
+        print("  FAILED: theory computation"); return None
+    try:
+        COV_BAO = np.linalg.inv(DESI_DR2_COV_INV)
+    except Exception:
+        print("  FAILED: BAO covariance"); return None
+
+    rng = np.random.default_rng(42)
+    boot_samples = []
+    for _ in range(N_BOOT):
+        new_bao = rng.multivariate_normal(tv_w, COV_BAO)
+        new_cmb = theory_cmb + rng.normal(0, CMB_SIG)
+        new_rsd = theory_rsd + rng.normal(0, FS8_SIG)
+        boot_samples.append((best_par[:], new_bao.tolist(), new_cmb.tolist(), new_rsd.tolist()))
+
+    batch_size = (N_BOOT + N_WORKERS - 1) // N_WORKERS
+    batches = [(model_type, bounds_v, boot_samples[i:i+batch_size])
+               for i in range(0, N_BOOT, batch_size)]
+
+    t0 = time.time()
+    raw = pool.map(_boot_worker_v, batches)
+    print(f"  Bootstrap done in {time.time()-t0:.1f}s")
+
+    all_da = []; all_p2 = []
+    for batch_res in raw:
+        for (da, p2) in batch_res:
+            if np.isfinite(da) and np.isfinite(p2):
+                all_da.append(da); all_p2.append(p2)
+
+    n_valid = len(all_da)
+    if n_valid == 0: print("  FAILED: no valid samples"); return None
+
+    da_arr = np.array(all_da)
+    med   = float(np.median(da_arr))
+    lo68  = float(np.percentile(da_arr, 16))
+    hi68  = float(np.percentile(da_arr, 84))
+    frac4 = float(np.mean(da_arr < -4) * 100)
+    frac0 = float(np.mean(da_arr < 0)  * 100)
+    print(f"  Valid: {n_valid}/{N_BOOT}")
+    print(f"  ΔAICc median={med:.2f}  68%CI=[{lo68:.2f},{hi68:.2f}]")
+    print(f"  ΔAICc<-4: {frac4:.1f}%  <0: {frac0:.1f}%")
+    verdict_t1 = 'PASS' if frac4 > 90 else ('CONDITIONAL' if frac4 > 70 else 'FAIL')
+    print(f"  Verdict: {verdict_t1}")
+
+    fig, ax = plt.subplots(figsize=(7, 4))
+    ax.hist(da_arr, bins=40, color='steelblue', alpha=0.8)
+    ax.axvline(med, color='r', ls='--', label=f'median={med:.2f}')
+    ax.axvline(-4,  color='k', ls=':', label='ΔAICc=-4')
+    ax.set_xlabel('ΔAICc'); ax.set_title(f'L38 Task 1 Bootstrap ({name}, N={n_valid})')
+    ax.legend(fontsize=8); fig.tight_layout()
+    plot_path = os.path.join(_SCRIPT_DIR, 'l38_task1_bootstrap.png')
+    fig.savefig(plot_path, dpi=130); plt.close(fig)
+    print(f"  Plot: {plot_path}")
+
+    return {
+        'winner': name, 'n_boot': N_BOOT, 'n_valid': n_valid,
+        'daicc_median': med, 'daicc_lo68': lo68, 'daicc_hi68': hi68,
+        'frac_below_minus4': frac4, 'frac_below_0': frac0, 'verdict': verdict_t1,
+    }
+
+
+def task6_residuals(winner_E_fn=None, winner_Om=None, winner_H0=None, winner_name='Model D'):
+    print("\n" + "="*60)
+    print(f"Task 6: Residual Analysis ({winner_name} vs LCDM)")
+    print("="*60)
+
+    E_D    = winner_E_fn if winner_E_fn else _make_E_D(D_BEST['Om'], D_BEST['amp'], D_BEST['beta'])
+    Om_D   = winner_Om   if winner_Om   else D_BEST['Om']
+    H0_D   = winner_H0   if winner_H0   else D_BEST['H0']
     E_LCDM = lambda z, _: E_lcdm(z, LCDM_BEST['Om'])
 
     # Dataset-level chi2 contributions
-    cb_D, cc_D, cs_D, cr_D, _ = _chi2_all(E_D, D_BEST['Om'], D_BEST['H0'])
+    cb_D, cc_D, cs_D, cr_D, _ = _chi2_all(E_D, Om_D, H0_D)
     cb_L, cc_L, cs_L, cr_L, _ = _chi2_all(E_LCDM, LCDM_BEST['Om'], LCDM_BEST['H0'])
 
     delta_bao = cb_D - cb_L
@@ -815,7 +1206,7 @@ def task6_residuals():
     print(f"  Main source of improvement: {main_src}")
 
     # RSD point-by-point
-    fs8_D    = _growth_fs8(E_D,    D_BEST['Om'],    Z_RSD)
+    fs8_D    = _growth_fs8(E_D,    Om_D,            Z_RSD)
     fs8_LCDM = _growth_fs8(E_LCDM, LCDM_BEST['Om'], Z_RSD)
 
     print(f"\n  RSD residuals:")
@@ -829,7 +1220,7 @@ def task6_residuals():
 
     # BAO point residuals (marginal sigma approximation)
     sigma_bao_marg = np.sqrt(np.diag(np.linalg.inv(DESI_DR2_COV_INV)))
-    tv_D    = _bao_theory_vec(E_D,    D_BEST['Om'],    D_BEST['H0'])
+    tv_D    = _bao_theory_vec(E_D,    Om_D,            H0_D)
     tv_LCDM = _bao_theory_vec(E_LCDM, LCDM_BEST['Om'], LCDM_BEST['H0'])
     obs_bao = DESI_DR2['value']
 
@@ -872,7 +1263,7 @@ def task6_residuals():
 def main():
     t0_total = time.time()
     print("="*60)
-    print("L38: Model D Publication Verification")
+    print("L38: SQT Publication Verification + Alternative Model Discovery")
     print(f"8-worker parallel  |  LCDM baseline AICc={LCDM_AICC}")
     print("="*60)
 
@@ -883,73 +1274,92 @@ def main():
     ctx = mp.get_context('spawn')
     results = {}
 
+    # ── Phase 1: Model Discovery ───────────────────────────────────────────────
     results['task0'] = task0_baseline()
 
     with ctx.Pool(N_WORKERS) as pool:
-        results['task1'] = task1_bootstrap(pool)
-        results['task2'] = task2_profile(pool)
-        results['task3'] = task3_simplification(pool)
-        results['task4'] = task4_cpl(pool)
+        results['taskV'] = task_V(pool)
+
+    # ── Phase 2: Winner Selection ──────────────────────────────────────────────
+    winner = identify_winner(results['taskV'])
+    results['winner'] = winner
+
+    # ── Phase 3: Winner Validation ────────────────────────────────────────────
+    winner_E_fn = _make_E_from_type(winner['model_type'], winner['best_par'])
+    winner_Om   = winner['best_par'][0] if winner['best_par'] else D_BEST['Om']
+    winner_H0   = winner['best_par'][1] if len(winner['best_par']) > 1 else D_BEST['H0']
+
+    with ctx.Pool(N_WORKERS) as pool:
+        results['task1'] = task1_bootstrap_v(pool, winner)
+        results['task2'] = task2_profile(pool)               # Model D profile (reference)
+        results['task3'] = task3_simplification(pool)        # Model D simplification
+        results['task4'] = task4_cpl(pool, winner['aicc'])   # CPL vs winner
         results['task5'] = task5_bao_k3(pool)
 
-    results['task6'] = task6_residuals()
+    results['task6'] = task6_residuals(
+        winner_E_fn=winner_E_fn, winner_Om=winner_Om,
+        winner_H0=winner_H0, winner_name=winner['name'])
 
-    # ─── Final summary ────────────────────────────────────────────────────────
+    # ── Final summary ──────────────────────────────────────────────────────────
     print("\n" + "="*60)
     print("L38 RESULTS SUMMARY")
     print("="*60)
 
     t0r = results.get('task0', {})
-    t1r = results.get('task1', {})
-    t2r = results.get('task2', {})
-    t3r = results.get('task3', {})
-    t4r = results.get('task4', {})
-    t5r = results.get('task5', {})
-    t6r = results.get('task6', {})
+    tv_r = results.get('taskV', {})
+    wr   = results.get('winner', {})
+    t1r  = results.get('task1', {})
+    t2r  = results.get('task2', {})
+    t3r  = results.get('task3', {})
+    t4r  = results.get('task4', {})
+    t5r  = results.get('task5', {})
+    t6r  = results.get('task6', {})
 
-    print(f"\n[Task 0] ΛCDM Baseline: AICc={t0r.get('aicc','?'):.2f}  [{t0r.get('status','?')}]")
+    print(f"\n[Task 0] LCDM AICc={t0r.get('aicc',0):.2f}  [{t0r.get('status','?')}]")
 
-    print(f"\n[Task 1] Bootstrap (N={N_BOOT})")
+    print(f"\n[Task V] Model Discovery")
+    for nm, r in tv_r.items():
+        if r.get('failed'): print(f"  {nm}: FAILED"); continue
+        bnd = '*' if r.get('boundary') else ''
+        print(f"  {nm:<12} k={r['k']}  ΔAICc={r['daicc']:.2f}  [{r['verdict']}]{bnd}")
+
+    print(f"\n[Phase 2] Winner: {wr.get('name','?')}"
+          f"  AICc={wr.get('aicc',0):.2f}  ΔAICc(vs LCDM)={wr.get('daicc',0):.2f}"
+          f"  vs ModelD: {wr.get('delta_vs_D',0):+.2f}")
+
+    print(f"\n[Task 1] Bootstrap ({wr.get('name','?')})")
     if t1r:
-        print(f"  ΔAICc median={t1r['daicc_median']:.2f}  68%CI=[{t1r['daicc_lo68']:.2f},{t1r['daicc_hi68']:.2f}]")
-        print(f"  ΔAICc<-4: {t1r['frac_below_minus4']:.1f}%  Verdict: {t1r['verdict']}")
-        print(f"  amp: {t1r['amp_mean']:.4f}±{t1r['amp_std']:.4f}  beta: {t1r['beta_mean']:.4f}±{t1r['beta_std']:.4f}")
+        print(f"  median={t1r['daicc_median']:.2f}  68%CI=[{t1r['daicc_lo68']:.2f},{t1r['daicc_hi68']:.2f}]")
+        print(f"  <-4: {t1r['frac_below_minus4']:.1f}%  Verdict: {t1r['verdict']}")
 
-    print(f"\n[Task 2] Profile Robustness")
+    print(f"\n[Task 2] Profile (Model D reference)")
     if t2r:
-        print(f"  profile dAICc<-6: {t2r['frac_below_minus6']*100:.1f}%  Verdict: {t2r['verdict']}")
-        print(f"  Best: dAICc={t2r['best_daicc']:.2f}")
+        print(f"  dAICc<-6: {t2r['frac_below_minus6']*100:.1f}%  Verdict: {t2r['verdict']}")
 
-    print(f"\n[Task 3] Model Simplification")
-    for name in ['D_k4','D_k3_betafixed','D_k3_ampfixed','D_k2_bothfixed']:
-        r = t3r.get(name, {})
-        if r.get('failed'): print(f"  {name}: FAILED")
-        else: print(f"  {name} (k={r.get('k','?')}): ΔAICc={r.get('daicc','?'):.2f}  [{r.get('verdict','?')}]")
+    print(f"\n[Task 3] Simplification (Model D)")
+    for nm in ['D_k4','D_k3_betafixed','D_k3_ampfixed','D_k2_bothfixed']:
+        r = t3r.get(nm, {})
+        if r.get('failed'): print(f"  {nm}: FAILED")
+        else: print(f"  {nm} (k={r.get('k','?')}): ΔAICc={r.get('daicc',0):.2f}  [{r.get('verdict','?')}]")
 
-    print(f"\n[Task 4] vs w0waCDM")
+    print(f"\n[Task 4] vs CPL")
     if t4r:
-        print(f"  ΛCDM AICc=1670.12")
-        print(f"  CPL  AICc={t4r['aicc']:.2f}  (w0={t4r['w0']:.3f}, wa={t4r['wa']:.3f})")
-        print(f"  SQT Model D AICc=1661.68")
-        print(f"  SQT vs CPL ΔAICc(SQT-CPL)={-t4r['daicc_sqt_vs_cpl']:.2f}")
-        print(f"  Verdict: {t4r['verdict']}")
+        print(f"  CPL AICc={t4r['aicc']:.2f}  winner AICc={wr.get('aicc',0):.2f}")
+        print(f"  winner vs CPL: {-t4r['daicc_sqt_vs_cpl']:.2f}  {t4r['verdict']}")
 
     print(f"\n[Task 5] BAO-only k=3")
     if t5r:
-        wa_s = f"{t5r['wa']:.4f}" if t5r.get('wa') is not None else "N/A"
-        print(f"  Om={t5r['Om']:.4f}, amp={t5r['amp']:.4f}, wa={wa_s}")
         print(f"  boundary={t5r['boundary']}  verdict={t5r['verdict']}")
 
-    print(f"\n[Task 6] Residuals")
+    print(f"\n[Task 6] Residuals ({wr.get('name','?')} vs LCDM)")
     if t6r:
-        print(f"  ΔBAO={t6r['delta_bao']:+.2f}  ΔCMB={t6r['delta_cmb']:+.2f}  "
-              f"ΔSN={t6r['delta_sn']:+.2f}  ΔRSD={t6r['delta_rsd']:+.2f}")
+        print(f"  ΔBAO={t6r['delta_bao']:+.2f}  ΔCMB={t6r['delta_cmb']:+.2f}"
+              f"  ΔSN={t6r['delta_sn']:+.2f}  ΔRSD={t6r['delta_rsd']:+.2f}")
         print(f"  Main source: {t6r['main_source']}")
 
     elapsed = time.time() - t0_total
     print(f"\nTotal elapsed: {elapsed:.1f}s")
 
-    # Save
     out_path = os.path.join(_SCRIPT_DIR, 'l38_results.json')
     with open(out_path, 'w') as f:
         json.dump(_jsonify(results), f, indent=2)

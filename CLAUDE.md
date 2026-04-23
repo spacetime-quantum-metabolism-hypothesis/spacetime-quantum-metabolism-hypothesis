@@ -154,3 +154,16 @@
 - **DR3 스크립트 실행 금지 (DR3 공개 전)**: simulations/l6/dr3/run_dr3.sh 는 DESI DR3 공개 후에만 실행. 미공개 상태에서 실행 시 bao_data 저장소에 DR3 디렉터리 없어 즉시 exit 1.
 - **mu_eff ≈ 1 은 S8 tension 해결 불가**: 모든 L5 winner 가 μ_eff ≈ 1 (GW170817 + background-only 구조). "SQMH 이 S8 tension 을 해결" 주장 금지. ΔS8 < 0.01% (Q15 전원 FAIL).
 - **L6 8인/4인 규칙**: 이론 클레임 (amplitude-locking, disformal PPN, 포지셔닝) → Rule-A 8인 순차 리뷰 필수. 코드 (evidence 스크립트, 성장 계산, CLASS 근사) → Rule-B 4인 리뷰 필수. 리뷰 완료 전 결과 논문 반영 금지.
+
+## L30~L33 재발방지 (BAO SQT 탐색 추가)
+
+- **L33 적분 버그 (최중요)**: standalone 스캔은 반드시 N_GRID=4000, `cumulative_trapezoid`, z_grid up to `z_eff.max()+0.01` 사용. 800포인트 + `np.cumsum((0.5/E[:-1]+0.5/E[1:])*dz)` + z=5 고정 패턴은 chi2를 ~0.75 과소평가해 dAICc를 ~0.75 과대 개선함. 발견일: 2026-04-19.
+- **ratio 클리핑 필수**: `ratio = clip(psi0/psi_z, 1.0, 200.0)`. 클리핑 없으면 z→∞에서 ratio→∞ 폭발, chi2 피팅 불안정. 반드시 클립.
+- **새 스캔 함수 단일 포인트 검증 필수**: 새 standalone 스캔 작성 시, 알려진 파라미터(예: Q93 챔피언)로 직접 chi2 계산 후 l33_test.py 결과와 비교. 수치 일치 확인 후 실행. 확인 생략 금지.
+- **Om 탐색 범위 충분히 넓게**: BAO-only 피팅에서 최적 Om이 0.07~0.12로 낮게 나올 수 있음. 범위를 [0.05, 0.50]으로 설정. [0.15, 0.45] 등 좁은 범위는 챔피언 놓침.
+- **global amp 구조**: rho_DE = OL0*(1 + amp*g) 형태에서 amp는 항상 g 전체에 곱함. `g = mask_lo*tanh(c*rm1) + mask_hi*amp_hi*rm1; rho = OL0*(1+g)` 처럼 mask별 개별 amp 사용 후 global 적용 누락하는 실수 발생 (L33 Heaviside 첫 스캔). 반드시 `rho = OL0*(1+amp*g)` 형태.
+- **python vs python3**: macOS 환경에서 `python` 명령 없을 수 있음. 항상 `python3` 사용.
+- **L30~L32 K93 패턴**: ratio 기반 g함수에서 arctan/sqrt/erf/tanh(Gamma_norm) 등 포화형 함수 단독 사용 시 wa>0 경향 (K93 KILL). wa<0 달성을 위해서는 고z에서 선형 성장항 (ratio-1 직접) 포함 필요. L33에서 sigmoid-weight 혼합으로 해결.
+- **BAO-only low-Om 결과를 joint 결론으로 혼동 금지**: Q93 챔피언 Om=0.068은 BAO-only 최적값. CMB+SN 결합 시 Om≈0.3 쪽으로 이동. "Om=0.068이 우주론적 Om값" 주장 금지 — 반드시 joint 분석 필요.
+- **L34 joint 데이터 SN chi2**: 절대등급 M에 대해 해석적 marginalization 적용 필수 (Conley et al. 2011). H0와 SN chi2 결합 시 H0 편향 방지.
+- **L34 CMB prior + k=2**: omega_b=0.02237 고정, omega_c = Om*h^2 - omega_b로 계산, theta_star chi2 항만 사용. omega_b/omega_c를 피팅 파라미터로 추가하면 k>2 위반.
