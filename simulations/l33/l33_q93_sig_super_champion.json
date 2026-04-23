@@ -1,0 +1,69 @@
+{
+  "description": "L33 Sigmoid-Weight Super-Champion — Corrected (N_GRID=4000, cumulative_trapezoid)",
+  "date": "2026-04-19",
+  "method": "Correct integration matching l33_test.py: N_GRID=4000, cumulative_trapezoid, z_grid up to z_max+0.01",
+  "note": "Previous JSON (chi2=3.510, dAICc=-6.683) had integration bug (800 pts, trapz, z=5). Corrected values below.",
+  "champion": {
+    "base_key": "cpl_sig75_z090_erf100_ratio",
+    "k_sig": 75.0,
+    "z0": 0.90,
+    "c_erf": 1.00,
+    "amp": 4.00,
+    "chi2": 3.5753,
+    "aicc": 8.7753,
+    "d_aicc": -6.6167,
+    "w0": null,
+    "wa": -0.7364,
+    "Om": 0.0676,
+    "H0": 66.610,
+    "status": "Q93"
+  },
+  "champion_amp25": {
+    "note": "Best within AMP_SET upper limit (amp<=2.5)",
+    "k_sig": 50.0,
+    "z0": 0.90,
+    "c_erf": 1.05,
+    "amp": 2.50,
+    "chi2": 3.8057,
+    "aicc": 9.0057,
+    "d_aicc": -6.3863,
+    "wa": -0.7527,
+    "Om": 0.0985,
+    "H0": 66.576
+  },
+  "formula": {
+    "sigmoid_weight": "wt(z) = clip( (sigmoid(-k*(z-z0)) - s0)/(1-s0), 0, 1 ), s0=sigmoid(-k*z0)",
+    "g_function": "g(z) = (1-wt)*tanh(1.2533*c*(ratio-1)) + wt*(ratio-1)",
+    "ratio": "ratio = clip(psi0/psi_z, 1.0, 200.0), psi_z=1/(1+alpha*(1+z)^3), alpha=Om/(1-Om-OR)",
+    "rho_DE": "rho_DE(z) = OL0*(1 + amp*g(z))"
+  },
+  "integration": {
+    "N_GRID": 4000,
+    "method": "cumulative_trapezoid (scipy)",
+    "z_range": "[0, z_eff_max+0.01]",
+    "ratio_clip": "[1.0, 200.0]"
+  },
+  "physics": {
+    "z_transition": 0.90,
+    "interpretation": "Smooth step-function DE phase transition at z~0.90, c=1.00 (standard erf curvature), amp=4.0",
+    "k_saturation": "k=50-200 and Heaviside all within 0.04 dAICc — model effectively at Heaviside limit",
+    "heaviside_result": {"k": "inf", "z0": 0.90, "c": 1.00, "amp": 4.00, "d_aicc": -6.577}
+  },
+  "k_progression": [
+    {"k": 8.0,  "z0": 0.91, "c": 1.12, "amp": 2.20, "d_aicc": -5.711, "wa": -0.724},
+    {"k": 12.0, "z0": 0.87, "c": 1.10, "amp": 2.50, "d_aicc": -5.995, "wa": -0.709},
+    {"k": 15.0, "z0": 0.85, "c": 1.05, "amp": 3.00, "d_aicc": -6.202, "wa": -0.737},
+    {"k": 20.0, "z0": 0.85, "c": 1.05, "amp": 3.00, "d_aicc": -6.369, "wa": -0.733},
+    {"k": 30.0, "z0": 0.87, "c": 1.05, "amp": 3.00, "d_aicc": -6.461, "wa": -0.722},
+    {"k": 50.0, "z0": 0.90, "c": 1.00, "amp": 4.00, "d_aicc": -6.611, "wa": -0.744},
+    {"k": 75.0, "z0": 0.90, "c": 1.00, "amp": 4.00, "d_aicc": -6.617, "wa": -0.736},
+    {"k": 100.0,"z0": 0.91, "c": 1.00, "amp": 4.00, "d_aicc": -6.612, "wa": -0.733},
+    {"k": "inf", "z0": 0.90, "c": 1.00, "amp": 4.00, "d_aicc": -6.577, "wa": -0.736}
+  ],
+  "bug_correction": {
+    "old_champion_claimed": {"k": 20, "z0": 0.90, "c": 1.15, "amp": 1.80, "chi2": 3.5095, "d_aicc": -6.683},
+    "old_champion_actual": {"k": 20, "z0": 0.90, "c": 1.15, "amp": 1.80, "chi2": 4.2955, "d_aicc": -5.897},
+    "bug": "Standalone scan used 800-point grid + manual trapezoid to z=5. l33_test.py uses N_GRID=4000, cumulative_trapezoid, z_max+0.01"
+  },
+  "lcdm_baseline": {"chi2": 10.192, "aicc": 15.392}
+}

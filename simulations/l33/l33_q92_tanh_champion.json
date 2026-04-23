@@ -1,0 +1,31 @@
+{
+  "champion": {
+    "base_key": "cpl_tanh_erf147_ratio",
+    "weight": "wt=tanh(z)",
+    "c_param": 1.47,
+    "amp": 2.25,
+    "chi2": 5.4766,
+    "d_aicc": -4.7154,
+    "w0": -1.3643,
+    "wa": -0.5824,
+    "Om": 0.1148,
+    "H0": 64.954,
+    "note": "wt=tanh(z); g=(1-wt)*erf_c(ratio-1,c)+wt*(ratio-1); identity transform"
+  },
+  "second_best": {
+    "base_key": "cpl_tanh_erf146_ratio",
+    "c_param": 1.46,
+    "amp": 2.25,
+    "chi2": 5.4775,
+    "d_aicc": -4.7145,
+    "wa": -0.5886,
+    "Om": 0.1145
+  },
+  "family_summary": {
+    "weight": "tanh(z)",
+    "Q92_region": "c=1.38-1.56, amp=2.0-2.6",
+    "optimal_c": 1.47,
+    "optimal_amp": 2.25,
+    "chi2_floor": 5.476
+  }
+}
