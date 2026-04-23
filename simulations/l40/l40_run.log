@@ -1,0 +1,148 @@
+============================================================
+L40: Model S Prior Verification (psi direct)
+8-worker parallel  |  LCDM baseline AICc=1670.1227
+============================================================
+
+Warming up SN cache...
+  SN ready.
+
+============================================================
+Task 0: Baseline Verification (LCDM + Model D)
+============================================================
+  LCDM: Om=0.3094, H0=68.41
+  chi2: BAO=12.3000 CMB=0.0097 SN=1646.8406 RSD=6.9789
+  AICc=1670.1356 (stored=1670.1227) [CONFIRMED]
+  Model D: Om=0.322, H0=66.98
+  chi2: BAO=9.8266 CMB=0.1433 SN=1636.8469 RSD=6.8552
+  AICc=1661.6937  dAICc=-8.43 [CONFIRMED]
+
+============================================================
+Task 1: Model S (k=2)  <-- CORE
+============================================================
+  Model S scan done in 728.9s (50 starts)
+  Best: Om=0.2839, H0=74.77
+  A_theory=OL0*(1+alpha)=0.9999  (implicit amplitude, theory-fixed)
+  chi2: BAO=48.7740 CMB=70.0578 SN=1819.3407 RSD=11.9544
+  AICc=1954.1333  dAICc(vs LCDM)=284.01  dAICc(vs D_k4)=292.45
+  boundary: False
+  CPL: w0=-0.7589, wa=1.0278
+  Verdict: K90 KILL
+
+============================================================
+Task 2: Model S_amp (k=3, amplitude A free)
+============================================================
+  S_amp scan done in 702.3s (30 starts)
+  Best: Om=0.2356, H0=82.00, A_fit=0.7356
+  A_theory=0.9999  dev=-26.4%
+  chi2: BAO=41.4246 CMB=67.5221 SN=1766.1798 RSD=11.4681
+  AICc=1892.6075  dAICc=222.48
+  boundary: True
+  CPL: w0=-0.8274, wa=1.0727
+  Verdict: K92 INVALID
+
+============================================================
+Task 3: Model S_index (k=3, index n free)
+============================================================
+  S_index scan done in 799.1s (30 starts)
+  Best: Om=0.3049, H0=69.38, n_fit=0.5000
+  n_theory=3.0  dev=-83.3%
+  chi2: BAO=13.0190 CMB=1.3759 SN=1657.8958 RSD=7.2115
+  AICc=1685.5151  dAICc=15.39
+  boundary: True
+  CPL: w0=-0.9513, wa=0.0310
+  Verdict: K92 INVALID
+
+============================================================
+Task 4: Bootstrap (Model S, N=300)
+============================================================
+  Bootstrap done in 4883.4s
+  Valid: 300/300
+  dAICc median=211.67  68%CI=[192.25,231.93]
+  dAICc<-4: 0.0%  <-2: 0.0%  <0: 0.0%
+  Verdict: FAIL
+  Plot: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l40/l40_task4_bootstrap.png
+
+============================================================
+Task 5: CPL Extraction
+============================================================
+  Model              w0       wa direction
+  --------------------------------------------
+  Model S       -0.7589   1.0278 opposite
+  S_amp         -0.8274   1.0727 opposite
+  S_index       -0.9513   0.0310 opposite
+  DESI observed:  w0=-0.76, wa=-0.50
+
+============================================================
+Task 6: Residuals (Model S vs LCDM)
+============================================================
+  ΔBAO = -36.4740  (S: 48.77 vs LCDM: 12.30)
+  ΔCMB = -70.0481  (S: 70.06 vs LCDM: 0.01)
+  ΔSN  = -172.5001   (S: 1819.34 vs LCDM: 1646.84)
+  ΔRSD = -4.9755  (S: 11.95 vs LCDM: 6.98)
+  Δtot = -283.9977
+    BAO: +12.8%
+    CMB: +24.7%
+    SN: +60.7%
+    RSD: +1.8%
+  Main source: RSD
+
+============================================================
+Task 7: w(z) Visualization
+============================================================
+  Plot: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l40/l40_task7_wz.png
+
+============================================================
+Task 8: Model S vs Model D Direct Comparison
+============================================================
+  Model S  (k=2): dAICc=284.01  w0=-0.759  wa=1.028
+  Model D  (k=4): dAICc=-8.43  w0=~-1.14
+  AICc(S) - AICc(D) = +292.44
+  w0 accuracy vs DESI: S err=0.001, D err=0.378 -> S better
+  Prior status: Model S k=2 (no free params beyond Om/H0)
+  Winner by AICc: D
+
+============================================================
+L40 RESULTS SUMMARY
+============================================================
+
+[Task 0] Baselines
+  LCDM: AICc=1670.14
+  Model D: AICc=1661.69  dAICc=-8.43
+
+[Task 1] Model S (k=2) <- CORE
+  Om=0.2839, H0=74.77
+  AICc=1954.13  dAICc(LCDM)=284.01  dAICc(D)=292.45
+  [K90 KILL]
+
+[Task 2] Model S_amp (k=3)
+  A_fit=0.7356  A_theory=0.9999  dev=-26.4%
+  dAICc=222.48  [K92 INVALID]
+
+[Task 3] Model S_index (k=3)
+  n_fit=0.5000  n_theory=3.0  dev=-83.3%
+  dAICc=15.39  [K92 INVALID]
+
+[Task 4] Bootstrap (Model S, N=300)
+  median=211.67  68%CI=[192.25,231.93]
+  dAICc<-4: 0.0%  <-2: 0.0%
+  Verdict: FAIL
+
+[Task 5] CPL Extraction
+  Model S: w0=-0.7589, wa=1.0278  [opposite]
+  S_amp: w0=-0.8274, wa=1.0727  [opposite]
+  S_index: w0=-0.9513, wa=0.0310  [opposite]
+
+[Task 6] Residuals (Model S vs LCDM)
+  ΔBAO=-36.47  ΔCMB=-70.05  ΔSN=-172.50  ΔRSD=-4.98
+  Main source: RSD
+
+[Task 8] Model S vs Model D
+  AICc(S) - AICc(D) = +292.44
+  w0 better: S
+  Winner: D
+
+[Final Verdict]
+  Strategy C: Model S FAIL (dAICc=284.01) -> Model D phenomenological
+
+Total elapsed: 8023.2s
+Saved: /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/l40/l40_results.json
