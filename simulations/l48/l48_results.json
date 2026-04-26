@@ -1,0 +1,22 @@
+{
+  "lcdm": {
+    "rs_Mpc": 114.96664816988795,
+    "theta": 9.653980595523265,
+    "H0": 73.8
+  },
+  "verdict": {
+    "verdict": "Q1 CANDIDATE -- tension region found AND sigma_sc in grid",
+    "n_match": 80,
+    "sigma_sc": 116888598.19184975
+  },
+  "n_match": 80,
+  "sigma_sc": 116888598.19184975,
+  "params": {
+    "H0_local": 73.8,
+    "H0_CMB_PL": 67.4,
+    "OM": 0.315,
+    "OL": 0.685,
+    "N_SIGMA": 20,
+    "N_GAMMA": 20
+  }
+}
