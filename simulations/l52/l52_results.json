@@ -1,0 +1,26 @@
+{
+  "n_planck": 3,
+  "n_kids": 14,
+  "best_sIR": 53600231.65391796,
+  "best_kt": 0.6812920690579608,
+  "best_seff": 168000272.8724036,
+  "best_s8": 0.7628742978928982,
+  "gap_dex": 0.4771219601177749,
+  "verdict": "Q1 CANDIDATE \u2014 sigma_8 matched AND sigma_eff near L48 T20",
+  "seff_verdict": "NEAR: sigma_eff near L48 T20 (0.477 dex)",
+  "params": {
+    "sigma_UV": 3310000000.0,
+    "k_sigma8": 0.13,
+    "sigma_ref": 117000000.0,
+    "alpha_fr": 0.1,
+    "N_SIG": 25,
+    "N_KT": 25
+  },
+  "refs": {
+    "T17_tension": 234000000.0,
+    "T17_sc": 117000000.0,
+    "T20_s8": 56000000.0,
+    "T22_a0": 3310000000.0,
+    "L50_best": 304000000.0
+  }
+}

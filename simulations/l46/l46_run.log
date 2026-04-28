@@ -1,0 +1,181 @@
+============================================================
+L46: 3-Axiom SQT + A3 4-State Full Exploration
+8-worker parallel  |  L43 LCDM AICc ref=1759.93
+32 Tier1 + 45 Tier2 + 20 Tier3 | ~4260 fits | 18-27h
+============================================================
+
+============================================================
+Pre-Tasks: L46 Model Validation
+============================================================
+
+[PT1] ODE numerical stability
+  M-CI.Dil            : E(0)=1.00000000  [OK]
+  M-A2Only.Dil        : E(0)=1.00000000  [OK]
+  M-TOI.Dil           : E(0)=1.00000000  [OK]
+
+[PT2] Early-universe safety (z_max=1200)
+  M-CI.Dil: rho_DE/rho_tot at z=1200 = -0.0000  [OK]
+  M-A2Only.Dil: rho_DE/rho_tot at z=1200 = -0.0000  [OK]
+
+[PT3] E(0)=1 normalization (all 32 Tier 1 models)
+  Pass: 20/32  Fail: 12/32  [WARN - some models fail at J0=0.5]
+
+[PT4] Son+25 age-bias correction
+  z=0.0: delta_m=0.0000  (expected ~0.0000)  [OK]
+  z=1.0: delta_m=0.1459  (expected ~0.1459)  [OK]
+  z=2.0: delta_m=0.1579  (expected ~0.1579)  [OK]
+
+[PT5] Future behavior (z -> -0.5)
+  M-CI.Dil: E2(a=1.5) ~ 0.7748  [OK]
+  M-TOI.Dil: E2(a=1.5) ~ 0.7748  [OK]
+  M-A2Only.Dil: E2(a=1.5) ~ 0.7748  [OK]
+
+  Pre-task complete  [OK]
+
+============================================================
+Task 0: Baselines (LCDM + CPL -- confirm L43/L45)
+============================================================
+  Warming corrected SN cache...
+  SN_corr ready.
+  LCDM: 38 starts, CPL: 110 starts
+
+  LCDM: Om=0.3236, H0=67.5187
+  chi2: BAO=20.01 CMB=2.60 SN=1725.94 RSD=7.38
+  AICc=1759.9297  L43_ref=1759.93  delta=-0.00  [OK]
+
+  CPL: Om=0.3618, H0=63.4858, w0=-0.4477, wa=-1.4696
+  AICc=1652.9061  dAICc=-107.02  L43_ref=1652.91  delta=-0.00  [OK]
+  Elapsed: 2953.1s
+
+[Task 1 (Const)] Fitting 8 models...
+  Total tasks: 280 dispatched across 8 workers
+  Done in 5909.8s
+
+[Task 2 (Decay)] Fitting 8 models...
+  Total tasks: 280 dispatched across 8 workers
+  Done in 7274.2s
+
+[Task 3 (HProp)] Fitting 6 models...
+  Total tasks: 210 dispatched across 8 workers
+  Done in 3844.3s
+
+[Task 4 (Tanh+Null)] Fitting 10 models...
+  Total tasks: 340 dispatched across 8 workers
+  Done in 8775.6s
+
+============================================================
+Task 5: Tier 1 ranking + Top-5 selection
+============================================================
+
+  Rank Tag                    k    dAICc  Verdict                  w0       wa       q0
+  -------------------------------------------------------------------------------------
+  1    M-TOI.NoDil            5  -110.30  K91 WRONG            -1.547    1.484   -0.973
+  2    M-DB.NoDil             5  -109.13  K91 WRONG            -1.518    1.304   -0.952
+  3    M-HI.NoDil             3    35.91  K92 INVALID          -0.951    0.010   -0.469
+  4    M-HB.NoDil             4    37.94  K92 INVALID          -0.951    0.010   -0.469
+  5    M-DI.NoDil             4    80.82  K92 INVALID          -0.941    0.245   -0.462
+  6    M-A2Only.NoDil         2   374.34  K90 FAIL             -0.653    0.240   -0.175
+  7    M-CI.NoDil             3   376.35  K90 FAIL             -0.653    0.240   -0.176
+  8    M-CO.NoDil             3   376.35  K90 FAIL             -0.653    0.240   -0.175
+  9    M-CBp.NoDil            4   378.36  K90 FAIL             -0.653    0.240   -0.175
+  10   M-CBm.NoDil            4   378.36  K90 FAIL             -0.653    0.240   -0.175
+  11   M-DO.NoDil             4   378.38  K92 INVALID          -0.653    0.240   -0.175
+  12   M-TIO.NoDil            5   380.37  K92 INVALID          -0.653    0.240   -0.175
+  13   M-TIF.NoDil            5   380.37  K92 INVALID          -0.653    0.240   -0.175
+  14   M-TOF.NoDil            5   380.38  K92 INVALID          -0.653    0.240   -0.175
+  15   M-DS.NoDil             5   380.38  K92 INVALID          -0.653    0.240   -0.175
+  16   M-A2Only.Dil           2  1179.97  K90 FAIL             -0.000    0.000    0.500
+  17   M-HI.Dil               3  1181.97  K90 FAIL             -0.000   -0.000    0.500
+  18   M-CI.Dil               3  1181.99  K90 FAIL             -0.000    0.000    0.500
+  19   M-CO.Dil               3  1181.99  K90 FAIL             -0.000    0.000    0.500
+  20   M-HB.Dil               4  1183.98  K90 FAIL             -0.000   -0.000    0.500
+  21   M-DI.Dil               4  1183.99  K90 FAIL             -0.000    0.000    0.500
+  22   M-CBp.Dil              4  1183.99  K90 FAIL             -0.000    0.000    0.500
+  23   M-CBm.Dil              4  1184.00  K90 FAIL             -0.000    0.000    0.500
+  24   M-DO.Dil               4  1184.00  K90 FAIL             -0.000    0.000    0.500
+  25   M-TOI.Dil              5  1185.99  K90 FAIL             -0.000    0.000    0.500
+  26   M-TIF.Dil              5  1186.00  K90 FAIL             -0.000    0.000    0.500
+  27   M-DB.Dil               5  1186.00  K90 FAIL             -0.000   -0.000    0.500
+  28   M-TIO.Dil              5  1186.01  K90 FAIL              0.000    0.000    0.500
+  29   M-TOF.Dil              5  1186.01  K90 FAIL             -0.000    0.000    0.500
+  30   M-DS.Dil               5  1186.01  K90 FAIL              0.000    0.000    0.500
+  31   M-HO.Dil               3  9999.00  FAILED                  ---      ---      ---
+  32   M-HO.NoDil             3  9999.00  FAILED                  ---      ---      ---
+
+  Top-5 4-condition check:
+  M-TOI.NoDil            AIC:Y  w0:N  wa:N  q0:N
+  M-DB.NoDil             AIC:Y  w0:N  wa:N  q0:N
+  M-HI.NoDil             AIC:N  w0:N  wa:N  q0:N
+  M-HB.NoDil             AIC:N  w0:N  wa:N  q0:N
+  M-DI.NoDil             AIC:N  w0:N  wa:N  q0:N
+
+============================================================
+Task 6: Tier 2 (Top-5 x 9 axis variations)
+============================================================
+  Tier 2: 18 models, 20 starts each
+Process SpawnPoolWorker-7:
+Traceback (most recent call last):
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/pool.py", line 131, in worker
+    put((job, i, result))
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/queues.py", line 378, in put
+    self._writer.send_bytes(obj)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/connection.py", line 205, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/connection.py", line 416, in _send_bytes
+    self._send(header + buf)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/connection.py", line 373, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/pool.py", line 136, in worker
+    put((job, i, (False, wrapped)))
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/queues.py", line 378, in put
+    self._writer.send_bytes(obj)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/connection.py", line 205, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/connection.py", line 416, in _send_bytes
+    self._send(header + buf)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/connection.py", line 373, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+Process SpawnPoolWorker-6:
+Traceback (most recent call last):
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/pool.py", line 131, in worker
+    put((job, i, result))
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/queues.py", line 378, in put
+    self._writer.send_bytes(obj)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/connection.py", line 205, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/connection.py", line 416, in _send_bytes
+    self._send(header + buf)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/connection.py", line 373, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/pool.py", line 136, in worker
+    put((job, i, (False, wrapped)))
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/queues.py", line 378, in put
+    self._writer.send_bytes(obj)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/connection.py", line 205, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/connection.py", line 416, in _send_bytes
+    self._send(header + buf)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/connection.py", line 373, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/resource_tracker.py:216: UserWarning: resource_tracker: There appear to be 6 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

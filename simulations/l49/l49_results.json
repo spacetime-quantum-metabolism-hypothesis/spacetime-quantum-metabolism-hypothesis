@@ -1,0 +1,22 @@
+{
+  "n_galaxies": 175,
+  "n_sqt_ok": 175,
+  "log_a0_median": 3.3696955978504888,
+  "log_a0_std": 0.7839262007600145,
+  "a0_median_SI": 7.592322176452122e-11,
+  "beta_median": 0.03529547934075641,
+  "sigma_median": 3311715845.0622354,
+  "log_sigma_med": 9.520053065970432,
+  "chi2_sqt_med": 1.1850858975487786,
+  "chi2_mond_med": 3.2046009933095685,
+  "chi2_nfw_med": 0.9895430099017781,
+  "verdict_a1": "A1-FAIL: sigma(log a_0) > 0.25 dex \u2014 environment-dependent",
+  "verdict_sc": "4th-VALUE \u2014 T22 sigma_0=3.31e+09 differs from ALL T17/T20 values (min diff=1.15 dex)",
+  "closest_ref": "T17_tension",
+  "closest_diff": 1.1508372085602883,
+  "refs": {
+    "T17_tension": 234000000.0,
+    "T17_sc": 117000000.0,
+    "T20_s8": 56000000.0
+  }
+}

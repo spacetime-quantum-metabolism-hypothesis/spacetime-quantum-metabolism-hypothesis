@@ -1,0 +1,28 @@
+{
+  "n_pass": 0,
+  "best_chi2": 55.5150860307447,
+  "best_sn": 168761247.57881454,
+  "best_sl": 108571111.94022061,
+  "best_zt": 3.290909090909091,
+  "verdict": "FAIL \u2014 sigma_0(z) Model V cannot satisfy 4 constraints; THEORY DIES",
+  "chi2_breakdown": {
+    "T17": 35.82040157338389,
+    "sc": 19.69393769129905,
+    "T20": 0.0007467660617611419,
+    "T22": 0.0
+  },
+  "obs": {
+    "H0_CMB": 70.3925073756544,
+    "sigma8": 0.8111639621243563,
+    "a0_pred": 1.2e-10,
+    "tau_ratio": 1.4437785223655946
+  },
+  "params": {
+    "N_NOW": 12,
+    "N_LATE": 15,
+    "N_ZT": 12,
+    "DZ_FIXED": 0.5,
+    "GAMMA0_FIX": 1.0,
+    "CHI2_PASS": 16.0
+  }
+}

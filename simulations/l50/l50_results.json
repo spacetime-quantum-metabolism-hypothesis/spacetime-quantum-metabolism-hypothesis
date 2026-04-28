@@ -1,0 +1,22 @@
+{
+  "n_match": 120,
+  "best_sIR": 303919538.2313195,
+  "sigma_sc": 116888598.19184975,
+  "log_diff": 0.41498647038207004,
+  "verdict": "Q2 PARTIAL \u2014 tension resolved but sigma_IR inconsistent with sigma_sc",
+  "sc_verdict": "NEAR: L50 sigma_IR near sigma_sc (0.415 dex)",
+  "params": {
+    "H0_local": 73.8,
+    "H0_CMB_PL": 67.4,
+    "sigma_UV": 3310000000.0,
+    "k_t_Mpc": 0.01,
+    "N_SIG": 30,
+    "N_GAM": 30
+  },
+  "refs": {
+    "T17_tension": 234000000.0,
+    "T17_sc": 117000000.0,
+    "T20_s8": 56000000.0,
+    "T22_a0_L49": 3310000000.0
+  }
+}
