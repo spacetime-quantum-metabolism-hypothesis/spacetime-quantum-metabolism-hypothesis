@@ -1,0 +1,56 @@
+{
+  "PART_A_MSR": {
+    "action": "S_MSR = \u222b \u00f1\u00b7(\u2202_t n + 3Hn - \u0393_0 + \u03c3\u00b7n\u00b7\u03c1) - (D/2)\u00b7\u00f1\u00b2",
+    "status": "PARTIAL \u2014 action principle secured, full QFT = L80+"
+  },
+  "PART_B_P3": {
+    "results": {
+      "Earth interior": {
+        "rho": 5500,
+        "R": 6400000.0,
+        "ratio": 3.5926838798036255e-31,
+        "mass_deficit_kg": 7.693698720449986e-06,
+        "delta_g": 1.2536070620186326e-29
+      },
+      "Sun core": {
+        "rho": 150000.0,
+        "R": 700000000.0,
+        "ratio": 1.3173174225946626e-32,
+        "mass_deficit_kg": 10.066752094704992,
+        "delta_g": 1.3711327240828798e-27
+      },
+      "Lab UHV": {
+        "rho": 1e-15,
+        "R": 0.1,
+        "ratio": 1.9759761338880896e-12,
+        "mass_deficit_kg": 2.934913147138514e-29,
+        "delta_g": 1.9587610344002435e-37
+      },
+      "Galactic ISM": {
+        "rho": 1.7e-21,
+        "R": 1e+19,
+        "ratio": 1.1623375512592548e-06,
+        "mass_deficit_kg": 2.9349097357845517e+31,
+        "delta_g": 1.9587587576626098e-17
+      },
+      "Cosmic void": {
+        "rho": 2.7e-28,
+        "R": 1e+23,
+        "ratio": 0.879785009321482,
+        "mass_deficit_kg": 3.528205566262134e+42,
+        "delta_g": 2.354724394923348e-14
+      },
+      "Cluster gas": {
+        "rho": 2.7e-24,
+        "R": 3e+22,
+        "ratio": 0.0007313078100417862,
+        "mass_deficit_kg": 7.918470420042632e+41,
+        "delta_g": 5.871985731484947e-14
+      }
+    },
+    "Earth_signal": 1.2791908796108495e-30,
+    "MICROSCOPE_2_target": 1e-17,
+    "detectable": false
+  },
+  "grade_impact": "\ubbf8\uc2dc \uc774\ub860 \u2605\u2605\u2605\u2605 \u2192 \u2605\u2605\u2605\u2605\u00bd (MSR \ubd80\ubd84), \uc815\ub7c9 \uc608\uce21 \u2605\u2605\u2605\u2605\u2605 (P3 quantitative complete)"
+}

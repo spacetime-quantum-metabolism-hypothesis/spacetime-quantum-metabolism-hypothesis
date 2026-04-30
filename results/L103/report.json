@@ -1,0 +1,5 @@
+{
+  "LIGO_bound": 1e-22,
+  "SQT_coherent_noise": 0,
+  "verdict": "SQT predicts no coherent QG noise at LIGO scales. Random absorption events incoherent, absorbed in thermal background. Consistent with LIGO null result."
+}

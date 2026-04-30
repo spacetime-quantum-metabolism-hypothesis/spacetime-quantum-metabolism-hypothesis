@@ -1,0 +1,5 @@
+{
+  "attack": "regime continuity",
+  "defense": "tanh smooth w=0.3 dex, dSph intermediate",
+  "verdict": "Continuity preserved via smooth tanh transitions w=0.3 dex. Solar system entirely in galactic regime (saturated). Galaxy edge: smooth ~10 kpc transition. Local Group dSph at intermediate \u03c3_0 \u2014 TESTABLE prediction."
+}

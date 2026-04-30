@@ -1,0 +1,23 @@
+{
+  "P7": {
+    "a0_z2_ratio": 3.031501278244824,
+    "prediction": "a_0(z=2)/a_0(0) = c\u00b7H(z=2)/c\u00b7H(0) \u2248 3.03",
+    "test": "SKA phase 2 ~5% at z=1-2"
+  },
+  "G2": {
+    "predicted_ratio": 1.0471975511965976,
+    "test_samples": [
+      "ATLAS-3D",
+      "SLUGGS",
+      "Local Group dwarfs"
+    ]
+  },
+  "CPT": {
+    "C": "preserved",
+    "P": "preserved",
+    "T": "macroscopic broken (\u0393_0 arrow), microscopic FDT",
+    "CPT_combined": "preserved",
+    "anomalies": "none"
+  },
+  "grade_impact": "\uc815\ub7c9 \uc608\uce21 sharper, \uc790\uae30\uc77c\uad00\uc131 + CPT confirmed"
+}

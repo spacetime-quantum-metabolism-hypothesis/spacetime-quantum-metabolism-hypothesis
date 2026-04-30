@@ -1,0 +1,6 @@
+{
+  "SQT_birefringence": 0,
+  "CMB_bound_deg": 0.3,
+  "X_ray_bound": 1e-07,
+  "verdict": "SQT scalar n field \u2192 zero birefringence by construction. Consistent with all observations (CMB, optical, X-ray). \u0393_0 isotropy A3 within 1e-4 bound from CMB."
+}

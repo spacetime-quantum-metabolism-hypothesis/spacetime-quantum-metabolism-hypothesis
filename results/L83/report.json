@@ -1,0 +1,7 @@
+{
+  "z_BBN": 1000000000.0,
+  "H_BBN": 0.022937936949341767,
+  "rho_DE_over_rho_tot": 7.445652144130435e-33,
+  "delta_Neff_max": 5.956521715304348e-32,
+  "verdict": "BBN PASS in standard SQT (constant \u0393_0): SQT contribution at BBN negligible.\n\u0393_0(t) extension (L78) requires physical model for high-z extrapolation."
+}

@@ -1,0 +1,8 @@
+{
+  "SHoES_H0": 73.0,
+  "Planck_H0": 67.4,
+  "tension_sigma": 5.0,
+  "BranchB_const_resolves": false,
+  "BranchB_Gamma_t_potential": true,
+  "verdict": "Branch B (const \u0393_0) does NOT resolve H_0 tension. L78 \u0393_0(t) extension may help (similar to early DE), but extrapolation to z=1100 requires new ansatz. Promising path but unresolved."
+}

@@ -1,0 +1,7 @@
+{
+  "chi2": 12.59880388555519,
+  "dof": 15,
+  "chi2_per_dof": 0.8399202590370127,
+  "verdict": "PASS \u2014 Branch B compatible with cosmic chronometers",
+  "n_points": 15
+}

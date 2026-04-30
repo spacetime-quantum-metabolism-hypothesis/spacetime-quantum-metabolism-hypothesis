@@ -1,0 +1,6 @@
+{
+  "sigma_GW_max": 2.9190394774701054e-73,
+  "GW170817_D_m": 1.2344e+24,
+  "ratio_to_sigma_galactic": 8.108442992972515e-83,
+  "verdict": "GW dispersion: \u03c3_GW < 2.92e-73 (GW170817), \u03c3_GW/\u03c3_0(galactic) < 8.11e-83. Future ET/CE/LISA can tighten by 100x."
+}

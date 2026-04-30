@@ -1,0 +1,6 @@
+{
+  "SQT_inter_quantum_m": 1.0632157897817466e-14,
+  "Planck_m": 1.6164857787771846e-35,
+  "ratio": 6.577328447553881e+20,
+  "verdict": "Cross-check: SQT quanta scale ~10^21 \u00d7 Planck, very different from LQG.\nSQT is COARSE-GRAINED quantum spacetime, not fundamental.\nLQG is the candidate UV completion (L73 F4)."
+}

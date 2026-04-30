@@ -1,0 +1,6 @@
+{
+  "SQT_halo_shape": "follows baryon",
+  "CDM_halo_shape": "triaxial independent",
+  "distinguishing_test": "stripped baryon galaxies",
+  "verdict": "SQT 'halo' follows baryon shape (depletion zones). CDM halos triaxial regardless. DIFFERENT predictions for stripped systems. Currently NOT distinguishing data \u2014 future test possible."
+}

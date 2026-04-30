@@ -1,0 +1,13 @@
+{
+  "sakharov": {
+    "1. Baryon number violation": "SQT axioms a1-a6 silent on baryon number. Standard model preserves B at perturbative level. SQT \u0393_0 creates 'spacetime quanta', not baryons. \u2192 SQT does NOT provide B violation directly.",
+    "2. C and CP violation": "SQT axioms a1-a6 are CP-symmetric (real-valued, no chiral structure). L80 confirmed C, P preserved. \u2192 SQT does NOT provide CP violation.",
+    "3. Out-of-equilibrium": "SQT \u0393_0 cosmic creation is INHERENTLY non-equilibrium (energy non-conservation, L74 A4). \u2192 SQT NATURALLY satisfies Sakharov 3rd condition."
+  },
+  "verdict": "SQT satisfies Sakharov 3 (out-of-equilibrium via \u0393_0). B-violation and CPV must come from SM extensions. SQT NEUTRAL on baryogenesis \u2014 neither helps nor hurts.",
+  "sqt_satisfies": [
+    false,
+    false,
+    true
+  ]
+}

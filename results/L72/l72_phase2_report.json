@@ -1,0 +1,57 @@
+{
+  "MOND_target": 1.1410697709314732e-10,
+  "A0_MOND": 1.2e-10,
+  "paths": [
+    {
+      "name": "P1: a = c\u00b7H_0",
+      "formula": "c \u00d7 H_0",
+      "value": 7.169552819183409e-10,
+      "ratio": 6.283185307179586,
+      "note": "Hubble horizon natural scale"
+    },
+    {
+      "name": "P2: a = c\u00b7H_0/(2\u03c0)",
+      "formula": "c \u00d7 H_0 / (2\u03c0)",
+      "value": 1.1410697709314732e-10,
+      "ratio": 1.0,
+      "note": "target by definition"
+    },
+    {
+      "name": "P3: \u03c3_0\u00b7\u03c1_c\u00b7c",
+      "formula": "\u03c3_0(sc) \u00d7 \u03c1_crit \u00d7 c",
+      "value": 3.5847764095917053e-10,
+      "ratio": 3.141592653589794,
+      "note": "SQT cosmic dimensional combination"
+    },
+    {
+      "name": "P4: \u03c1_\u039b\u00b7c\u00b2 / (\u03c1_\u039b\u00b7c/H_0)",
+      "formula": "c\u00b7H_0",
+      "value": 7.169552819183409e-10,
+      "ratio": 6.283185307179586,
+      "note": "Same as P1 (\u039b-density argument)"
+    },
+    {
+      "name": "P5: \u03c3\u00b7n_\u221e\u00b7\u03b5/c",
+      "formula": "\u03c3_0 \u00d7 n_\u221e \u00d7 \u03b5 / c",
+      "value": 2.4555718405703183e-10,
+      "ratio": 2.151990967709009,
+      "note": "Quantum recoil per particle"
+    },
+    {
+      "name": "P6: c\u00b2/\u03bb_q",
+      "formula": "c\u00b2 / (c/(3H_0)) = 3\u00b7c\u00b7H_0",
+      "value": 2.1508658457550228e-09,
+      "ratio": 18.84955592153876,
+      "note": "Compton-like quantum scale"
+    },
+    {
+      "name": "P7: G\u00b7\u03c1_\u039b\u00b7R_H",
+      "formula": "3\u00b7\u03a9_\u039b\u00b7c\u00b7H_0/(8\u03c0)",
+      "value": 5.862245948160444e-11,
+      "ratio": 0.5137499999999999,
+      "note": "Lambda-induced screening scale"
+    }
+  ],
+  "verdict": "PARTIAL \u2014 order of magnitude (c\u00b7H_0) emerges naturally; the 1/(2\u03c0) prefactor requires additional postulates",
+  "grade_impact": "\ub3c4\ucd9c \uc0ac\uc2ac: \u2605\u2605\u2605 \u2192 \u2605\u2605\u2605\u00bd (partial credit)"
+}

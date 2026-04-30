@@ -1,0 +1,6 @@
+{
+  "QFT_predicted": 1e+113,
+  "observed": 1e-09,
+  "SQT_predicted": 1e-09,
+  "verdict": "SQT REFRAMES CC problem: \u039b from quantum sector (n\u00b7\u03b5/c\u00b2), NOT from zero-point sum. Avoids 10^120 discrepancy by construction. Why \u03b5 ~ \u210fH_0: from self-consistency \u03c4_q ~ 1/H_0. Not a *derivation* but a *consistent reframing*."
+}

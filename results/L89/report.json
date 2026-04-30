@@ -1,0 +1,7 @@
+{
+  "PPN_gamma_minus_1": 0.0,
+  "Cassini_bound": 2.3e-05,
+  "Mercury_perihelion": "GR-like",
+  "G_dot_over_G": 0.0,
+  "verdict": "Solar system tests: PASS in Branch B galactic regime. \u03b3=1, Mercury perihelion = GR, G_dot/G = 0."
+}

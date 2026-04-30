@@ -1,0 +1,65 @@
+{
+  "anchors": [
+    {
+      "name": "cosmic",
+      "log_rho": -26.568636235841012,
+      "log_sigma": 8.37,
+      "err": 0.06
+    },
+    {
+      "name": "cluster",
+      "log_rho": -23.568636235841012,
+      "log_sigma": 7.75,
+      "err": 0.06
+    },
+    {
+      "name": "galactic",
+      "log_rho": -20.769551078621728,
+      "log_sigma": 9.56,
+      "err": 0.05
+    }
+  ],
+  "fits": {
+    "full_7": {
+      "params": [
+        8.782574566259138,
+        -1.0555644825758557,
+        -26.296580002494157,
+        1.2262751802006122,
+        1.8415069784815092,
+        -22.198869555097783,
+        0.5336664822183604
+      ],
+      "chi2": 7.248510980804723e-14,
+      "k": 7
+    },
+    "constrained_5": {
+      "params": [
+        9.721174586557764,
+        -1.9778398221803553,
+        -26.760715528245786,
+        1.8234670808445135,
+        -22.166442045698417
+      ],
+      "chi2": 0.0,
+      "k": 5
+    },
+    "step_dip_6": {
+      "params": [
+        8.370000117538531,
+        1.1904082509081766,
+        -21.967767663125617,
+        0.6275153995062788,
+        -24.24593205645181,
+        -22.54998391297677
+      ],
+      "chi2": 2.0848766077024634e-15,
+      "k": 6
+    }
+  },
+  "rho_c1": 5.051495814759293e-27,
+  "rho_c2": 6.326018314378979e-23,
+  "physical_match": "rho_c1 \u2248 cluster boundary, rho_c2 \u2248 galactic disk density",
+  "verdict": "PARTIAL \u2014 critical densities physically sensible; mechanism (potential V(n) with 3 minima) requires SK formalism.",
+  "grade_impact": "\ub3c4\ucd9c \uc0ac\uc2ac \u2605\u2605\u2605\u2605\u00bd \u2192 \u2605\u2605\u2605\u2605\u00bd+0.25 (parameter reduction insight)"
+}

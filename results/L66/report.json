@@ -1,0 +1,200 @@
+{
+  "environments": {
+    "cosmic_mean": {
+      "rho": 2.7e-27,
+      "grad_rel": 2.2727272727272725e-27,
+      "virial": 1000000.0,
+      "v_pec": 1.0
+    },
+    "void_center": {
+      "rho": 2.7e-28,
+      "grad_rel": 3.3333333333333334e-24,
+      "virial": 1000.0,
+      "v_pec": 300.0
+    },
+    "filament": {
+      "rho": 1.4e-26,
+      "grad_rel": 3.3333333333333333e-23,
+      "virial": 10.0,
+      "v_pec": 300000.0
+    },
+    "cluster_outer": {
+      "rho": 5.4e-25,
+      "grad_rel": 3.3333333333333333e-23,
+      "virial": 0.8,
+      "v_pec": 500000.0
+    },
+    "cluster_core": {
+      "rho": 2.7e-24,
+      "grad_rel": 3.333333333333333e-22,
+      "virial": 0.4,
+      "v_pec": 1000000.0
+    },
+    "galaxy_outskirt": {
+      "rho": 2.7e-22,
+      "grad_rel": 3.3333333333333333e-21,
+      "virial": 0.5,
+      "v_pec": 150000.0
+    },
+    "galaxy_disk": {
+      "rho": 1.7e-21,
+      "grad_rel": 1e-20,
+      "virial": 0.4,
+      "v_pec": 200000.0
+    },
+    "solar_neighborhood": {
+      "rho": 1.7e-21,
+      "grad_rel": 3.3333333333333334e-19,
+      "virial": 0.35,
+      "v_pec": 220000.0
+    },
+    "planet": {
+      "rho": 5500.0,
+      "grad_rel": 1.5625e-07,
+      "virial": 0.3,
+      "v_pec": 30000.0
+    }
+  },
+  "pass_criteria": {
+    "cosmic_mean": [
+      "OFF",
+      0.05
+    ],
+    "void_center": [
+      "OFF",
+      0.3
+    ],
+    "cluster_core": [
+      "ON",
+      0.3
+    ],
+    "galaxy_disk": [
+      "ON",
+      0.95
+    ],
+    "solar_neighborhood": [
+      "ON",
+      0.95
+    ],
+    "planet": [
+      "ON",
+      0.95
+    ]
+  },
+  "results": {
+    "A_threshold": {
+      "param_name": "rho_thresh",
+      "best": {
+        "threshold": 2.1963853724165513e-24,
+        "pass_count": 6,
+        "fail_envs": [],
+        "margin_min": 0.049934220372322646,
+        "env_activations": {
+          "cosmic_mean": 6.120935791177829e-05,
+          "void_center": 2.1837111221772267e-06,
+          "cluster_core": 0.5741615461932396,
+          "galaxy_disk": 0.9999342203723226,
+          "solar_neighborhood": 0.9999342203723226,
+          "planet": 1.0
+        }
+      },
+      "n_full_pass": 59,
+      "full_pass_range": [
+        2.1461411978584102e-26,
+        4.605922041145094e-24
+      ]
+    },
+    "B_gradient": {
+      "param_name": "grad_thresh",
+      "best": {
+        "threshold": 7.316807143427178e-24,
+        "pass_count": 6,
+        "fail_envs": [],
+        "margin_min": 0.049971117947860466,
+        "env_activations": {
+          "cosmic_mean": 8.355510438836263e-06,
+          "void_center": 0.24266149437154366,
+          "cluster_core": 0.9960438651244341,
+          "galaxy_disk": 0.9999711179478604,
+          "solar_neighborhood": 0.9999998196784105,
+          "planet": 1.0
+        }
+      },
+      "n_full_pass": 40,
+      "full_pass_range": [
+        6.51733960488242e-24,
+        5.9411339849650395e-22
+      ]
+    },
+    "D_bound": {
+      "param_name": "virial_thresh",
+      "best": {
+        "threshold": 439.7603609302721,
+        "pass_count": 6,
+        "fail_envs": [],
+        "margin_min": 0.049960421580199865,
+        "env_activations": {
+          "cosmic_mean": 1.3821384641970664e-05,
+          "void_center": 0.2333877798802047,
+          "cluster_core": 0.9999604215801998,
+          "galaxy_disk": 0.9999604215801998,
+          "solar_neighborhood": 0.999967378079121,
+          "planet": 0.9999739026169949
+        }
+      },
+      "n_full_pass": 75,
+      "full_pass_range": [
+        3.180625692794119,
+        541.5871378079465
+      ]
+    },
+    "H_flow": {
+      "param_name": "v_thresh",
+      "best": {
+        "threshold": 651.733960488242,
+        "pass_count": 6,
+        "fail_envs": [],
+        "margin_min": 0.0461024540637911,
+        "env_activations": {
+          "cosmic_mean": 8.436829507415678e-05,
+          "void_center": 0.24542492934396654,
+          "cluster_core": 0.9999755722291238,
+          "galaxy_disk": 0.9997490147778365,
+          "solar_neighborhood": 0.9997813546978593,
+          "planet": 0.996102454063791
+        }
+      },
+      "n_full_pass": 25,
+      "full_pass_range": [
+        554.2664520663108,
+        3872.038781812553
+      ]
+    }
+  },
+  "sensitivity": {
+    "A_threshold": {
+      "steep_n_pass": 67,
+      "loose_n_pass": 43,
+      "steep_best_pc": 6,
+      "loose_best_pc": 6
+    },
+    "B_gradient": {
+      "steep_n_pass": 40,
+      "loose_n_pass": 24,
+      "steep_best_pc": 6,
+      "loose_best_pc": 6
+    },
+    "D_bound": {
+      "steep_n_pass": 94,
+      "loose_n_pass": 37,
+      "steep_best_pc": 6,
+      "loose_best_pc": 6
+    },
+    "H_flow": {
+      "steep_n_pass": 40,
+      "loose_n_pass": 0,
+      "steep_best_pc": 6,
+      "loose_best_pc": 5
+    }
+  }
+}

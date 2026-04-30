@@ -1,0 +1,133 @@
+{
+  "targets": {
+    "galaxy_disk": 1.0,
+    "cosmic_mean": 0.07069486404833837,
+    "cluster_core": 0.016918429003021148
+  },
+  "sigma0_anchor": 3310000000.0,
+  "f_self_consistency_target": 0.035347432024169186,
+  "results": {
+    "A_threshold": {
+      "best": {
+        "threshold": 1.6237767391887176e-26,
+        "f_pred": {
+          "cosmic_mean": 0.0693182924096328,
+          "void_center": 0.0026500007473024153,
+          "filament": 0.44653989285739176,
+          "cluster_outer": 0.993774716042105,
+          "cluster_core": 0.9993908224917081,
+          "galaxy_outskirt": 0.999999224268155,
+          "galaxy_disk": 0.9999999459348159,
+          "solar_neighbor": 0.9999999459348159,
+          "planet": 1.0
+        },
+        "log_loss": 3.13784346923201,
+        "detail": {
+          "galaxy_disk": {
+            "target": 1.0,
+            "predicted": 0.9999999459348159,
+            "log_residual": -2.348021175567711e-08
+          },
+          "cosmic_mean": {
+            "target": 0.07069486404833837,
+            "predicted": 0.0693182924096328,
+            "log_residual": -0.00854000789329512
+          },
+          "cluster_core": {
+            "target": 0.016918429003021148,
+            "predicted": 0.9993908224917081,
+            "log_residual": 1.7713753237236856
+          }
+        }
+      },
+      "label": "rho [kg/m^3]"
+    },
+    "B_gradient": {
+      "best": {
+        "threshold": 1.373550437360518e-26,
+        "f_pred": {
+          "cosmic_mean": 0.06886063417231005,
+          "void_center": 0.9996475022571717,
+          "filament": 0.9999874207218847,
+          "cluster_outer": 0.9999874207218847,
+          "cluster_core": 0.9999995512414726,
+          "galaxy_outskirt": 0.9999999839909843,
+          "galaxy_disk": 0.9999999967366708,
+          "solar_neighbor": 0.9999999999796263,
+          "planet": 1.0
+        },
+        "log_loss": 3.1388378256569722,
+        "detail": {
+          "galaxy_disk": {
+            "target": 1.0,
+            "predicted": 0.9999999967366708,
+            "log_residual": -1.4172458501987456e-09
+          },
+          "cosmic_mean": {
+            "target": 0.07069486404833837,
+            "predicted": 0.06886063417231005,
+            "log_residual": -0.011416845610431103
+          },
+          "cluster_core": {
+            "target": 0.016918429003021148,
+            "predicted": 0.9999995512414726,
+            "log_residual": 1.7716397718761225
+          }
+        }
+      },
+      "label": "|grad rho|/rho [1/m]"
+    },
+    "D_bound": {
+      "best": {
+        "threshold": 10000.0,
+        "f_pred": {
+          "cosmic_mean": 0.001271016263081358,
+          "void_center": 0.9655548043337889,
+          "filament": 0.9999546021312976,
+          "cluster_outer": 0.9999983804058309,
+          "cluster_core": 0.9999994062261097,
+          "galaxy_outskirt": 0.9999994062261097,
+          "galaxy_disk": 0.9999994062261097,
+          "solar_neighbor": 0.9999994062261097,
+          "planet": 0.9999997165592607
+        },
+        "log_loss": 6.184558592984369,
+        "detail": {
+          "galaxy_disk": {
+            "target": 1.0,
+            "predicted": 0.9999994062261097,
+            "log_residual": -2.5787280060519886e-07
+          },
+          "cosmic_mean": {
+            "target": 0.07069486404833837,
+            "predicted": 0.001271016263081358,
+            "log_residual": -1.7452367561006317
+          },
+          "cluster_core": {
+            "target": 0.016918429003021148,
+            "predicted": 0.9999994062261097,
+            "log_residual": 1.7716397088967177
+          }
+        }
+      },
+      "label": "virial parameter"
+    }
+  },
+  "ranking": [
+    [
+      "A_threshold",
+      3.13784346923201,
+      "FAIL"
+    ],
+    [
+      "B_gradient",
+      3.1388378256569722,
+      "FAIL"
+    ],
+    [
+      "D_bound",
+      6.184558592984369,
+      "FAIL"
+    ]
+  ]
+}

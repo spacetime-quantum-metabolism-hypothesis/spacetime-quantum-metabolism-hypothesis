@@ -1,0 +1,112 @@
+{
+  "F4": {
+    "Lambda_UV_J": 2.974833547806196e-12,
+    "Lambda_UV_eV": 18592709.673788726,
+    "Lambda_UV_GeV": 0.018592709673788725,
+    "inter_quantum_distance_m": 1.0632157897817466e-14,
+    "L_validity_m": 1.0632157897817466e-14,
+    "n_inf_m3": 8.320237952747246e+41,
+    "E_per_quantum_J": 7.56892417368762e-52,
+    "E_per_quantum_eV": 4.7305776085547635e-33,
+    "renormalizable": false,
+    "EFT_status": "non-renormalizable, EFT only (fluid description)",
+    "UV_completion": "requires quantum gravity (LQG, string, asymptotic safety)",
+    "note": "EFT validity: probes at L > inter-quantum spacing. SQT fluid breaks down for individual-quantum-resolution probes."
+  },
+  "G2": {
+    "candidates": {
+      "C1_3D_kinetic": {
+        "value": 0.3333333333333333,
+        "matches": false,
+        "ratio": 1.0471975511965976
+      },
+      "C2_2D_plane": {
+        "value": 0.3183098861837907,
+        "matches": true,
+        "ratio": 1.0
+      },
+      "C3_cycle": {
+        "value": 0.15915494309189535,
+        "matches": false
+      },
+      "C4_coincidence": {
+        "matches": true,
+        "note": "dimensional"
+      }
+    },
+    "best": "C2_2D_plane_projection",
+    "physical_origin": "a_0 emerges in DISC galaxies via orbital plane projection. Quanta interact with rotating matter averaged over circle (1/\u03c0). Spherical systems should follow 1/3 (kinetic theory).",
+    "testable_prediction": "elliptical / spheroidal galaxies a_0 should differ by \u03c0/3 \u2248 1.047",
+    "grade_impact": "\ub3c4\ucd9c \uc0ac\uc2ac: \u2605\u2605\u2605\u2605 \u2192 \u2605\u2605\u2605\u2605\u00bd (prediction-rich but unverified)"
+  },
+  "G1": {
+    "verdict": "PARTIAL \u2014 environmental tests INCONCLUSIVE (no signif.); morphology shows intrinsic structure (consistent with L72 O8 intrinsic scatter)",
+    "results": {
+      "field_vs_cluster_UMa": {
+        "median_diff": 0.18015844707633732,
+        "p_value": 0.38774462073676474,
+        "ci_95": [
+          -0.1098868182990321,
+          0.3289220927017725
+        ],
+        "n_a": 92,
+        "n_b": 26,
+        "significant": false,
+        "within_BranchB": false
+      },
+      "low_lum_vs_high_lum": {
+        "median_diff": 0.19956974061949495,
+        "p_value": 0.5776593607593148,
+        "ci_95": [
+          -0.3392819373955831,
+          0.571750067425878
+        ],
+        "n_a": 11,
+        "n_b": 69,
+        "significant": false,
+        "within_BranchB": false
+      },
+      "dwarf_irregular_vs_early_type": {
+        "median_diff": 0.2975348532425741,
+        "p_value": 0.0005750900428295341,
+        "ci_95": [
+          0.04131568053225238,
+          0.514740953174804
+        ],
+        "n_a": 61,
+        "n_b": 15,
+        "significant": true,
+        "within_BranchB": false
+      },
+      "spiral_normal_vs_cluster_UMa": {
+        "median_diff": 0.12495402361191665,
+        "p_value": 0.8881936280464682,
+        "ci_95": [
+          -0.17670322070997813,
+          0.2527439980855998
+        ],
+        "n_a": 61,
+        "n_b": 26,
+        "significant": false,
+        "within_BranchB": false
+      }
+    },
+    "n_groups": {
+      "field": 92,
+      "cluster_UMa": 26,
+      "local": 40,
+      "dwarf_irregular": 61,
+      "spiral_normal": 61,
+      "early_type": 15,
+      "high_lum": 69,
+      "low_lum": 11
+    }
+  },
+  "grade_impact": [
+    "GRADE IMPACT:",
+    "  \uacf5\ub9ac \uba85\ub8cc\uc131: \u2605\u2605\u2605\u2605\u2605 (F4 EFT \uba85\uc2dc \ucd94\uac00, validity \uba85\ub8cc)",
+    "  \ub3c4\ucd9c \uc0ac\uc2ac:    \u2605\u2605\u2605\u2605 \u2192 \u2605\u2605\u2605\u2605\u00bd (G2 testable prediction)",
+    "  \uad00\uce21 \uc77c\uce58:    \u2605\u2605\u2605 \uc720\uc9c0 (G1 \ud658\uacbd INCONCLUSIVE,",
+    "               morphology \ucc28\uc774 = intrinsic \uad6c\uc870)"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "attack": "\u0393_0 perpetual motion violation?",
+  "defense": "GR non-conservation + de Sitter thermal + FDT",
+  "T_dS": 2.9097383964495757e-30,
+  "S_dS_universe": 2.1022541384087272e+105,
+  "verdict": "\u0393_0 NOT perpetual motion. GR globally non-conservative; SQT consistent with this. FDT via MSR (L79); de Sitter T_dS thermal source. 2nd law satisfied via cosmic entropy growth."
+}

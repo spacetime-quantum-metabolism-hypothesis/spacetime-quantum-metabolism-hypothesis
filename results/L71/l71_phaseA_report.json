@@ -1,0 +1,75 @@
+{
+  "branch_B": {
+    "cosmic": {
+      "log_sigma": 8.37,
+      "sigma": 234422881.53199178,
+      "syst_dex": 0.06,
+      "domain": "rho < 1e-26 kg/m^3 (intergalactic, voids)"
+    },
+    "cluster": {
+      "log_sigma": 7.75,
+      "sigma": 56234132.51903491,
+      "syst_dex": 0.06,
+      "domain": "1e-26 < rho < 1e-22 kg/m^3 (clusters, IGM)"
+    },
+    "galactic": {
+      "log_sigma": 9.56,
+      "sigma": 3630780547.7010174,
+      "syst_dex": 0.05,
+      "domain": "rho > 1e-22 kg/m^3 (galaxies, solar system, planets)"
+    }
+  },
+  "sigma_span_dex": 1.8100000000000005,
+  "T35": {
+    "regime_lab": "galactic",
+    "regime_LEO": "galactic",
+    "regime_crossing": false,
+    "MICROSCOPE_1_bound": 1e-15,
+    "Branch_B_prediction": "eta_EP < 1e-15 (no SQT violation in galactic regime)",
+    "Branch_B_signature": "EP violation if and only if test masses differ in environmental regime \u2014 impossible on Earth or LEO.",
+    "MICROSCOPE_2_target": 1e-17,
+    "discriminator": "Detection of eta > 1e-17 in MICROSCOPE-2 would falsify Branch B (no regime crossing available)."
+  },
+  "T36": {
+    "Branch_B_a0_z": "a_0(z) = a_0(0) (constant)",
+    "Branch_B_basis": "Galactic regime is LOCAL density-defined; high-z galaxies still satisfy rho > 1e-22.",
+    "SKA_target": "Measure a_0 to ~5% at z=1, ~15% at z=2",
+    "discriminator": "a_0(z=2)/a_0(z=0) different from 1.0 at >2sigma would falsify Branch B's regime stability claim.",
+    "allowed_a0_variation_dex": 0.05,
+    "allowed_a0_ratio": 1.1220184543019633
+  },
+  "T26": {
+    "GW170817_bound": 1e-15,
+    "Branch_B_u_0_bound": "|u_0| < 1e-15 at ~100 Hz (LIGO/Virgo)",
+    "ET_target": "kHz, sensitive to ~10x better dispersion bound",
+    "LISA_target": "mHz, sensitive to dispersion at low f",
+    "discriminator": "Frequency-dependent c_gw - c detection by ET or LISA would discover SQT GW coupling. Null result tightens u_0 bound."
+  },
+  "decisive_signatures": [
+    [
+      "MICROSCOPE-2 EP violation",
+      "eta > 1e-17",
+      1e-17
+    ],
+    [
+      "a_0(z) evolution",
+      ">12% deviation",
+      "SKA z=2 RCs"
+    ],
+    [
+      "GW dispersion (any f)",
+      ">1e-15 at any f",
+      "ET/CE/LISA"
+    ],
+    [
+      "Field vs cluster dwarf a_0",
+      ">0.05 dex difference",
+      "Future SPARC + cluster surveys"
+    ],
+    [
+      "Within-galactic-regime EP",
+      "any violation",
+      "Spacecraft EP test in deep space"
+    ]
+  ]
+}

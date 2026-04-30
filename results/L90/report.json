@@ -1,0 +1,7 @@
+{
+  "NS_density_kg_m3": 1e+17,
+  "NS_above_branch_B": "True \u2014 NEW REGIME needed",
+  "BH_outside_horizon": "GR-like \u2713",
+  "BH_inside_horizon": "SQT breakdown \u2014 UV completion",
+  "verdict": "SQT in NS/BH: outside horizon GR-like (\u2713). NS interior FAR above Branch B regime, NEEDS NEW REGIME (\u2605). BH interior beyond SQT framework (UV completion needed)."
+}

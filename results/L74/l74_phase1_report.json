@@ -1,0 +1,86 @@
+{
+  "A1": {
+    "verdict": "PARTIAL \u2014 real Lagrangian incompatible with dissipative absorption; Schwinger-Keldysh formalism needed",
+    "grade_impact": "\ubbf8\uc2dc \uc774\ub860: no change"
+  },
+  "A2": {
+    "verdict": "PASS \u2014 \u03c3_0 \u2192 0 limit reduces to \u039bCDM with \u039b from quantum sector",
+    "sigma_levels": [
+      0,
+      3630.7805477010174,
+      3630780.5477010175,
+      363078054.7701018,
+      3630780547.7010174
+    ],
+    "H_today_match": [
+      2.391445236552171e-18,
+      2.391445236552171e-18,
+      2.391445236552171e-18,
+      2.391445236552171e-18,
+      2.391445236552171e-18
+    ],
+    "grade_impact": "\uc790\uae30\uc77c\uad00\uc131: confirmed \u2605\u2605\u2605\u2605\u2605"
+  },
+  "A3": {
+    "verdict": "STABLE in all 3 regimes (cosmic, cluster, galactic)",
+    "regime_results": {
+      "cosmic": {
+        "sigma": 234422881.53199178,
+        "rho_bg": 3.2220080911910294e-27,
+        "H_bg": 2.391445236552171e-18,
+        "eigs": [
+          [
+            -7.174335709656513e-18,
+            0.0
+          ],
+          [
+            -6.2871433420664636e-18,
+            0.0
+          ]
+        ],
+        "max_re": -6.2871433420664636e-18,
+        "verdict": "STABLE"
+      },
+      "cluster": {
+        "sigma": 56234132.51903491,
+        "rho_bg": 3.2220080911910296e-24,
+        "H_bg": 4.249006675316774e-17,
+        "eigs": [
+          [
+            -3.0826302078127705e-16,
+            0.0
+          ],
+          [
+            -1.274702002595032e-16,
+            0.0
+          ]
+        ],
+        "max_re": -1.274702002595032e-16,
+        "verdict": "STABLE"
+      },
+      "galactic": {
+        "sigma": 3630780547.7010174,
+        "rho_bg": 3.2220080911910294e-21,
+        "H_bg": 1.342196769531916e-15,
+        "eigs": [
+          [
+            -1.170240545295314e-11,
+            0.0
+          ],
+          [
+            -4.026590308595748e-15,
+            0.0
+          ]
+        ],
+        "max_re": -4.026590308595748e-15,
+        "verdict": "STABLE"
+      }
+    },
+    "grade_impact": "\uc790\uae30\uc77c\uad00\uc131: confirmed \u2605\u2605\u2605\u2605\u2605"
+  },
+  "A4": {
+    "verdict": "PARTIAL \u2014 energy conserved without \u0393_0; non-conservative with \u0393_0 (= DE mechanism)",
+    "grade_impact": "self-consistency honest"
+  },
+  "overall": "Foundational completeness: A2 + A3 PASS confirms self-consistency. A1 reveals foundational gap (Lagrangian formalism incomplete) \u2014 honest acknowledgement, no grade lift."
+}

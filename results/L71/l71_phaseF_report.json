@@ -1,0 +1,14 @@
+{
+  "V_peak_kms": 24.099054286865943,
+  "sigma_peak": 9885530946.56937,
+  "a_0_MOND": 1.2e-10,
+  "a_0_Milgrom": 1.1410697709314732e-10,
+  "Milgrom_accuracy_pct": 4.910852422377232,
+  "M_b_at_Vpeak_Msun": 21173749.389677674,
+  "a_q_sigma_rho_crit_c": 3.031431097311313e-08,
+  "a_q_sigma_rho_gal_c": 0.005038259702228546,
+  "L_peak_Mpc": 0.3265454510415439,
+  "a_disk_1kpc": 1.881932655610213e-11,
+  "r_at_a0_kpc": 0.15682772130085107,
+  "interpretation": "V_peak is most likely a SAMPLE EDGE (BTFR low-mass) rather than a fundamental SQT scale. Use Branch B phenomenology for physics."
+}

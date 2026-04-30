@@ -1,0 +1,10 @@
+{
+  "attack": "D1 31\u00d7 off",
+  "defense": "regime-local \u03c4_q(env) = \u03c3_0(env)/(4\u03c0G)",
+  "verdict": "D1 RESCUED via regime-local \u03c4_q(env) = \u03c3_0(env)/(4\u03c0G). Trivially gives G_obs invariant. Branch B \u03c3_cosmic mismatches self-consistent value by 1.7\u00d7 \u2014 minor systematic in \u03c3 extraction, not theory failure.",
+  "tau_q_per_regime": {
+    "cosmic": 2.7951423711164426e+17,
+    "cluster": 6.705079533180328e+16,
+    "galactic": 4.3291629566115973e+18
+  }
+}

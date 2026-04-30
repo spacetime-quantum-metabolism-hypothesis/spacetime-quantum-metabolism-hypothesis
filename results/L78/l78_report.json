@@ -1,0 +1,21 @@
+{
+  "DESI": {
+    "w0": -0.757,
+    "wa": -0.83
+  },
+  "sigma_0_z_path": {
+    "sign_change": true,
+    "log_range": [
+      7.447389440207251,
+      8.748158268415274
+    ]
+  },
+  "Gamma_0_z_solution": {
+    "beta": 0.07712855702043674,
+    "gamma": -0.08463914144874178,
+    "chi2_fit": 0.34513342819787113,
+    "status": "PHYSICAL \u2014 Gamma_0 > 0 throughout"
+  },
+  "verdict": "sigma_0(z) ALONE INSUFFICIENT for DESI w_a<0 \u2014 sign flip. Gamma_0(t) ansatz CAN match DESI with 2 params (beta, gamma). Branch B + Gamma_0(t) is candidate path forward.",
+  "grade_impact": "\uad00\uce21 \uc77c\uce58 \u2605\u2605\u2605 \u2192 \u2605\u2605\u2605\u2605 (\uc870\uac74\ubd80, Gamma_0(t) \ucc44\ud0dd \uc2dc)"
+}

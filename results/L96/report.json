@@ -1,0 +1,8 @@
+{
+  "prediction_pi_over_3": 1.0471975511965976,
+  "observed_ratio": 1.0,
+  "deviation_pct": 4.7,
+  "data_precision_pct": 20,
+  "testable_with": "MaNGA/SAMI/SDSS-V, 2-5 years",
+  "verdict": "G2 \u03c0/3 (4.7% effect) within current literature precision (~10-30%). Not falsified, not confirmed. Requires <2% precision on each subsample. Feasible with MaNGA/SAMI/SDSS-V in 2-5 years."
+}
