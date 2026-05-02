@@ -1,0 +1,6 @@
+{
+  "BB_specific": 6,
+  "axiom_derived": 8,
+  "robust_to_regime_change": 8,
+  "verdict": "Of 14 unique SQT predictions: 8 are strictly axiom-derived (independent of regime structure), 6 are Branch B-specific. Even if smooth alternative replaces Branch B, 8 predictions hold unchanged and 6 admit re-derivation. SQT framework strength is robust to regime structure choice."
+}

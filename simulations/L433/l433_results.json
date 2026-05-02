@@ -1,0 +1,137 @@
+{
+  "metadata": {
+    "task": "L433 PARTIAL #6 CMB \u03b8_* shift forecast",
+    "rule": "background-only forward template, \u03b2 = 1 free param",
+    "z_drag": 1059.94,
+    "z_star": 1089.92,
+    "planck_theta_sig_frac": 2.98e-06,
+    "planck_rd_sig_frac": 0.0020401224073444404
+  },
+  "scan": [
+    {
+      "beta": 0.0,
+      "delta_rd_frac": 0.0,
+      "delta_rs_frac": 0.0,
+      "delta_DA_frac": 0.0,
+      "delta_theta_frac": 0.0,
+      "n_sigma_theta_planck": 0.0,
+      "n_sigma_rd_planck": 0.0,
+      "rd_lcdm_Mpc": 130.25839617955697,
+      "rs_lcdm_Mpc": 127.60216071134344
+    },
+    {
+      "beta": 0.02,
+      "delta_rd_frac": -3.5469241336830744e-05,
+      "delta_rs_frac": -3.468161671301761e-05,
+      "delta_DA_frac": -0.00016670111677633334,
+      "delta_theta_frac": 0.00013201950006331572,
+      "n_sigma_theta_planck": 44.30184565883078,
+      "n_sigma_rd_planck": 0.01738583979526987,
+      "rd_lcdm_Mpc": 130.25839617955697,
+      "rs_lcdm_Mpc": 127.60216071134344
+    },
+    {
+      "beta": 0.05,
+      "delta_rd_frac": -0.0002215977326253198,
+      "delta_rs_frac": -0.00021667881105449336,
+      "delta_DA_frac": -0.0010404474256112245,
+      "delta_theta_frac": 0.0008237686145567311,
+      "n_sigma_theta_planck": 276.4324209921917,
+      "n_sigma_rd_planck": 0.10861982194184427,
+      "rd_lcdm_Mpc": 130.25839617955697,
+      "rs_lcdm_Mpc": 127.60216071134344
+    },
+    {
+      "beta": 0.08,
+      "delta_rd_frac": -0.0005668865189981254,
+      "delta_rs_frac": -0.000554311788143386,
+      "delta_DA_frac": -0.0026567557509337325,
+      "delta_theta_frac": 0.0021024439627903464,
+      "n_sigma_theta_planck": 705.5181083189083,
+      "n_sigma_rd_planck": 0.27786887539558114,
+      "rd_lcdm_Mpc": 130.25839617955697,
+      "rs_lcdm_Mpc": 127.60216071134344
+    },
+    {
+      "beta": 0.1,
+      "delta_rd_frac": -0.0008851789674412718,
+      "delta_rs_frac": -0.0008655564263589989,
+      "delta_DA_frac": -0.0041414428691288665,
+      "delta_theta_frac": 0.0032758864427698676,
+      "n_sigma_theta_planck": 1099.2907526073382,
+      "n_sigma_rd_planck": 0.4338852238741301,
+      "rd_lcdm_Mpc": 130.25839617955697,
+      "rs_lcdm_Mpc": 127.60216071134344
+    },
+    {
+      "beta": 0.107,
+      "delta_rd_frac": -0.0010131738731637043,
+      "delta_rs_frac": -0.0009907197456164032,
+      "delta_DA_frac": -0.00473706733218448,
+      "delta_theta_frac": 0.003746347586568077,
+      "n_sigma_theta_planck": 1257.1636196537172,
+      "n_sigma_rd_planck": 0.4966240601624091,
+      "rd_lcdm_Mpc": 130.25839617955697,
+      "rs_lcdm_Mpc": 127.60216071134344
+    },
+    {
+      "beta": 0.15,
+      "delta_rd_frac": -0.0019871287126607393,
+      "delta_rs_frac": -0.0019431759422173884,
+      "delta_DA_frac": -0.009243072679054368,
+      "delta_theta_frac": 0.00729989673683698,
+      "n_sigma_theta_planck": 2449.629777462074,
+      "n_sigma_rd_planck": 0.9740242573225392,
+      "rd_lcdm_Mpc": 130.25839617955697,
+      "rs_lcdm_Mpc": 127.60216071134344
+    },
+    {
+      "beta": 0.2,
+      "delta_rd_frac": -0.0035214908886158974,
+      "delta_rs_frac": -0.003443840330752712,
+      "delta_DA_frac": -0.016249114196184945,
+      "delta_theta_frac": 0.012805273865432234,
+      "n_sigma_theta_planck": 4297.071766923568,
+      "n_sigma_rd_planck": 1.7261174505698926,
+      "rd_lcdm_Mpc": 130.25839617955697,
+      "rs_lcdm_Mpc": 127.60216071134344
+    },
+    {
+      "beta": 0.3,
+      "delta_rd_frac": -0.007852562739087555,
+      "delta_rs_frac": -0.007680914251120408,
+      "delta_DA_frac": -0.0354395265909941,
+      "delta_theta_frac": 0.027758612339873694,
+      "n_sigma_theta_planck": 9314.970583850234,
+      "n_sigma_rd_planck": 3.8490645026094175,
+      "rd_lcdm_Mpc": 130.25839617955697,
+      "rs_lcdm_Mpc": 127.60216071134344
+    },
+    {
+      "beta": 0.4,
+      "delta_rd_frac": -0.01378859828610968,
+      "delta_rs_frac": -0.01349077874410128,
+      "delta_DA_frac": -0.06043548924053677,
+      "delta_theta_frac": 0.04694471049643549,
+      "n_sigma_theta_planck": 15753.258555850836,
+      "n_sigma_rd_planck": 6.758711259908096,
+      "rd_lcdm_Mpc": 130.25839617955697,
+      "rs_lcdm_Mpc": 127.60216071134344
+    }
+  ],
+  "claim_under_attack": {
+    "claim_label": "\u03b4r_d/r_d \u2248 0.7% (Planck \u03c3 \u00d7 23)",
+    "predicted_or_fit": "fit-induced (\u03b2 tuned to reproduce 0.7%)",
+    "beta_required_for_0p7pct": 0.3,
+    "achieved_delta_rd_frac": -0.007852562739087555,
+    "concurrent_delta_theta_frac": 0.027758612339873694,
+    "n_sigma_theta_at_that_beta": 9314.970583850234,
+    "n_sigma_rd_at_that_beta": 3.8490645026094175,
+    "DA_cancellation_frac": -0.0354395265909941
+  },
+  "decision_gates": {
+    "G1_axiom_plus_1param_forward": true,
+    "G2_n_sigma_theta_above_3": true,
+    "G3_forecast_falsifiable": "PASS \u2014 current Planck \u03c3 already discriminates if |\u03b4\u03b8|/\u03b8 \u2265 3\u03c3; future CMB-S4 / LiteBIRD reach \u03c3(\u03b8_*)/\u03b8_* \u2248 1e-6 will sharpen by factor ~3."
+  }
+}

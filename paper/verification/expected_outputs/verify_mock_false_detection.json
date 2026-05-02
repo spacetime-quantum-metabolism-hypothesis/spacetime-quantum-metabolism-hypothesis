@@ -1,0 +1,16 @@
+{
+  "script": "verify_mock_false_detection.py",
+  "classification": "CAVEAT reproduction (anchor-driven advantage on null data)",
+  "tolerance": "rate within +/- 2% (seed=42 fixed)",
+  "expected": {
+    "n_mock": 200,
+    "n_gal": 175,
+    "false_detection_rate": 1.000,
+    "seed": 42
+  },
+  "stdout_lines": [
+    "three-regime false-detection rate on LCDM mock: 100.0%",
+    "CAVEAT: high rate => anchor-driven advantage on null data."
+  ],
+  "runtime_seconds_typical": 0.07
+}

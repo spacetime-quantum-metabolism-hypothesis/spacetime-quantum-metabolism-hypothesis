@@ -1,0 +1,435 @@
+{
+  "L335": "Cluster anchor expansion forecast",
+  "candidate_pool": {
+    "n_total": 13,
+    "n_equilibrium_clean": 9,
+    "n_three_probe": 9,
+    "n_eq_clean_AND_three_probe": 7,
+    "details": [
+      {
+        "name": "A1689",
+        "z": 0.183,
+        "lensing": true,
+        "xray": true,
+        "sz": true,
+        "equilibrium_clean": true,
+        "n_probes": 3
+      },
+      {
+        "name": "Coma A1656",
+        "z": 0.023,
+        "lensing": false,
+        "xray": true,
+        "sz": true,
+        "equilibrium_clean": true,
+        "n_probes": 2
+      },
+      {
+        "name": "Perseus A426",
+        "z": 0.018,
+        "lensing": false,
+        "xray": true,
+        "sz": true,
+        "equilibrium_clean": false,
+        "n_probes": 2
+      },
+      {
+        "name": "Virgo",
+        "z": 0.004,
+        "lensing": false,
+        "xray": true,
+        "sz": true,
+        "equilibrium_clean": false,
+        "n_probes": 2
+      },
+      {
+        "name": "A2029",
+        "z": 0.077,
+        "lensing": true,
+        "xray": true,
+        "sz": true,
+        "equilibrium_clean": true,
+        "n_probes": 3
+      },
+      {
+        "name": "A2142",
+        "z": 0.09,
+        "lensing": true,
+        "xray": true,
+        "sz": true,
+        "equilibrium_clean": true,
+        "n_probes": 3
+      },
+      {
+        "name": "A2218",
+        "z": 0.171,
+        "lensing": true,
+        "xray": true,
+        "sz": true,
+        "equilibrium_clean": true,
+        "n_probes": 3
+      },
+      {
+        "name": "A1835",
+        "z": 0.252,
+        "lensing": true,
+        "xray": true,
+        "sz": true,
+        "equilibrium_clean": true,
+        "n_probes": 3
+      },
+      {
+        "name": "MS1054-03",
+        "z": 0.831,
+        "lensing": true,
+        "xray": true,
+        "sz": false,
+        "equilibrium_clean": true,
+        "n_probes": 2
+      },
+      {
+        "name": "Bullet 1E0657",
+        "z": 0.296,
+        "lensing": true,
+        "xray": true,
+        "sz": true,
+        "equilibrium_clean": false,
+        "n_probes": 3
+      },
+      {
+        "name": "A2390",
+        "z": 0.23,
+        "lensing": true,
+        "xray": true,
+        "sz": true,
+        "equilibrium_clean": true,
+        "n_probes": 3
+      },
+      {
+        "name": "A2744",
+        "z": 0.308,
+        "lensing": true,
+        "xray": true,
+        "sz": true,
+        "equilibrium_clean": false,
+        "n_probes": 3
+      },
+      {
+        "name": "RXJ1347-1145",
+        "z": 0.451,
+        "lensing": true,
+        "xray": true,
+        "sz": true,
+        "equilibrium_clean": true,
+        "n_probes": 3
+      }
+    ]
+  },
+  "monte_carlo_forecast": {
+    "realistic": [
+      {
+        "mode": "realistic",
+        "N": 1,
+        "n_mc": 5000,
+        "delta_aicc_mean": 94.85185185185185,
+        "delta_aicc_p16": 94.85185185185185,
+        "delta_aicc_p84": 94.85185185185185,
+        "delta_aicc_huber": 19.07699227266704,
+        "delta_aicc_tukey": 15.801076851851848,
+        "tukey_pass_frac": 1.0,
+        "PR_mean": 1.0,
+        "PR_p84": 1.0,
+        "PR_resolved_frac": 0.0,
+        "sigma_consist_med": NaN
+      },
+      {
+        "mode": "realistic",
+        "N": 2,
+        "n_mc": 5000,
+        "delta_aicc_mean": 108.61977813255969,
+        "delta_aicc_p16": 100.3075126488677,
+        "delta_aicc_p84": 117.13637288273529,
+        "delta_aicc_huber": 26.73200311414638,
+        "delta_aicc_tukey": 28.50102098172229,
+        "tukey_pass_frac": 1.0,
+        "PR_mean": 0.6307015207687459,
+        "PR_p84": 0.7103964113300149,
+        "PR_resolved_frac": 0.0,
+        "sigma_consist_med": 0.683433024116286
+      },
+      {
+        "mode": "realistic",
+        "N": 4,
+        "n_mc": 5000,
+        "delta_aicc_mean": 136.0948264164127,
+        "delta_aicc_p16": 121.23106575326288,
+        "delta_aicc_p84": 151.03229528339307,
+        "delta_aicc_huber": 42.02570521485368,
+        "delta_aicc_tukey": 53.79433453820049,
+        "tukey_pass_frac": 1.0,
+        "PR_mean": 0.4617963271764683,
+        "PR_p84": 0.5380199546930554,
+        "PR_resolved_frac": 0.0,
+        "sigma_consist_med": 0.6608005466844564
+      },
+      {
+        "mode": "realistic",
+        "N": 7,
+        "n_mc": 5000,
+        "delta_aicc_mean": 177.54779315022404,
+        "delta_aicc_p16": 156.68341938257237,
+        "delta_aicc_p84": 198.41290895020836,
+        "delta_aicc_huber": 65.03586852050871,
+        "delta_aicc_tukey": 91.92497382390115,
+        "tukey_pass_frac": 1.0,
+        "PR_mean": 0.41009036685859446,
+        "PR_p84": 0.4768732123235516,
+        "PR_resolved_frac": 0.0,
+        "sigma_consist_med": 0.6064493786999576
+      },
+      {
+        "mode": "realistic",
+        "N": 10,
+        "n_mc": 5000,
+        "delta_aicc_mean": 218.07177557251174,
+        "delta_aicc_p16": 192.36600158372934,
+        "delta_aicc_p84": 243.5742902697514,
+        "delta_aicc_huber": 87.64284595106044,
+        "delta_aicc_tukey": 129.31454791586808,
+        "tukey_pass_frac": 1.0,
+        "PR_mean": 0.40116153395612697,
+        "PR_p84": 0.46462412568009875,
+        "PR_resolved_frac": 0.0,
+        "sigma_consist_med": 0.5673234086142034
+      }
+    ],
+    "universal": [
+      {
+        "mode": "universal",
+        "N": 1,
+        "n_mc": 5000,
+        "delta_aicc_mean": 94.85185185185185,
+        "delta_aicc_p16": 94.85185185185185,
+        "delta_aicc_p84": 94.85185185185185,
+        "delta_aicc_huber": 19.07699227266704,
+        "delta_aicc_tukey": 15.801076851851848,
+        "tukey_pass_frac": 1.0,
+        "PR_mean": 1.0,
+        "PR_p84": 1.0,
+        "PR_resolved_frac": 0.0,
+        "sigma_consist_med": NaN
+      },
+      {
+        "mode": "universal",
+        "N": 2,
+        "n_mc": 5000,
+        "delta_aicc_mean": 198.8096593793551,
+        "delta_aicc_p16": 158.5215380948995,
+        "delta_aicc_p84": 239.16182439472732,
+        "delta_aicc_huber": 44.15874313752733,
+        "delta_aicc_tukey": 37.71611564285765,
+        "tukey_pass_frac": 1.0,
+        "PR_mean": 0.9635776546869318,
+        "PR_p84": 0.9983491667290975,
+        "PR_resolved_frac": 0.0,
+        "sigma_consist_med": 0.09692995022361403
+      },
+      {
+        "mode": "universal",
+        "N": 4,
+        "n_mc": 5000,
+        "delta_aicc_mean": 406.50713750465866,
+        "delta_aicc_p16": 338.48895794365075,
+        "delta_aicc_p84": 474.37907235453235,
+        "delta_aicc_huber": 94.3391589199024,
+        "delta_aicc_tukey": 81.59468933901205,
+        "tukey_pass_frac": 1.0,
+        "PR_mean": 0.9270473643808975,
+        "PR_p84": 0.979784618727366,
+        "PR_resolved_frac": 0.0,
+        "sigma_consist_med": 0.14768903588402155
+      },
+      {
+        "mode": "universal",
+        "N": 7,
+        "n_mc": 5000,
+        "delta_aicc_mean": 718.823151132269,
+        "delta_aicc_p16": 621.0635840274475,
+        "delta_aicc_p84": 818.6911678949813,
+        "delta_aicc_huber": 169.61036265862722,
+        "delta_aicc_tukey": 147.3911116206673,
+        "tukey_pass_frac": 1.0,
+        "PR_mean": 0.903374970804996,
+        "PR_p84": 0.9531831864998332,
+        "PR_resolved_frac": 0.0,
+        "sigma_consist_med": 0.17338544104933212
+      },
+      {
+        "mode": "universal",
+        "N": 10,
+        "n_mc": 5000,
+        "delta_aicc_mean": 1032.6314584313761,
+        "delta_aicc_p16": 913.0046902403016,
+        "delta_aicc_p84": 1155.4781542927656,
+        "delta_aicc_huber": 245.13720151044689,
+        "delta_aicc_tukey": 213.17876690213228,
+        "tukey_pass_frac": 1.0,
+        "PR_mean": 0.8938450346793309,
+        "PR_p84": 0.9396805271069253,
+        "PR_resolved_frac": 0.0,
+        "sigma_consist_med": 0.18106508436063293
+      }
+    ],
+    "pessimistic": [
+      {
+        "mode": "pessimistic",
+        "N": 1,
+        "n_mc": 5000,
+        "delta_aicc_mean": 94.85185185185185,
+        "delta_aicc_p16": 94.85185185185185,
+        "delta_aicc_p84": 94.85185185185185,
+        "delta_aicc_huber": 19.07699227266704,
+        "delta_aicc_tukey": 15.801076851851848,
+        "tukey_pass_frac": 1.0,
+        "PR_mean": 1.0,
+        "PR_p84": 1.0,
+        "PR_resolved_frac": 0.0,
+        "sigma_consist_med": NaN
+      },
+      {
+        "mode": "pessimistic",
+        "N": 2,
+        "n_mc": 5000,
+        "delta_aicc_mean": 96.08149809957689,
+        "delta_aicc_p16": 95.10669428981815,
+        "delta_aicc_p84": 97.04476837347931,
+        "delta_aicc_huber": 20.27273591835824,
+        "delta_aicc_tukey": 17.030723099576893,
+        "tukey_pass_frac": 1.0,
+        "PR_mean": 0.512167622434057,
+        "PR_p84": 0.5217018142533544,
+        "PR_resolved_frac": 0.0,
+        "sigma_consist_med": 1.1612267820507807
+      },
+      {
+        "mode": "pessimistic",
+        "N": 4,
+        "n_mc": 5000,
+        "delta_aicc_mean": 98.61693062843254,
+        "delta_aicc_p16": 96.81464306293171,
+        "delta_aicc_p84": 100.40993403274311,
+        "delta_aicc_huber": 22.729653823028208,
+        "delta_aicc_tukey": 19.566155628432547,
+        "tukey_pass_frac": 1.0,
+        "PR_mean": 0.2688474672356014,
+        "PR_p84": 0.2779108369551039,
+        "PR_resolved_frac": 0.0,
+        "sigma_consist_med": 1.39020444589167
+      },
+      {
+        "mode": "pessimistic",
+        "N": 7,
+        "n_mc": 5000,
+        "delta_aicc_mean": 102.32188395491322,
+        "delta_aicc_p16": 99.78502818698422,
+        "delta_aicc_p84": 104.84859224131603,
+        "delta_aicc_huber": 26.332370101366646,
+        "delta_aicc_tukey": 23.27110895491322,
+        "tukey_pass_frac": 1.0,
+        "PR_mean": 0.16459692453098318,
+        "PR_p84": 0.17213043810485756,
+        "PR_resolved_frac": 0.0,
+        "sigma_consist_med": 1.503230451639685
+      },
+      {
+        "mode": "pessimistic",
+        "N": 10,
+        "n_mc": 5000,
+        "delta_aicc_mean": 106.0843574518941,
+        "delta_aicc_p16": 102.91244041560127,
+        "delta_aicc_p84": 109.2161437543278,
+        "delta_aicc_huber": 29.984447800654348,
+        "delta_aicc_tukey": 27.033582451894098,
+        "tukey_pass_frac": 1.0,
+        "PR_mean": 0.12327847688407391,
+        "PR_p84": 0.13003126652945957,
+        "PR_resolved_frac": 0.0,
+        "sigma_consist_med": 1.517147237853111
+      }
+    ]
+  },
+  "n_min_tukey_pass": {
+    "realistic": 1,
+    "universal": 1,
+    "pessimistic": 1
+  },
+  "PR_progress": {
+    "realistic": [
+      [
+        1,
+        1.0
+      ],
+      [
+        2,
+        0.6307015207687459
+      ],
+      [
+        4,
+        0.4617963271764683
+      ],
+      [
+        7,
+        0.41009036685859446
+      ],
+      [
+        10,
+        0.40116153395612697
+      ]
+    ],
+    "universal": [
+      [
+        1,
+        1.0
+      ],
+      [
+        2,
+        0.9635776546869318
+      ],
+      [
+        4,
+        0.9270473643808975
+      ],
+      [
+        7,
+        0.903374970804996
+      ],
+      [
+        10,
+        0.8938450346793309
+      ]
+    ],
+    "pessimistic": [
+      [
+        1,
+        1.0
+      ],
+      [
+        2,
+        0.512167622434057
+      ],
+      [
+        4,
+        0.2688474672356014
+      ],
+      [
+        7,
+        0.16459692453098318
+      ],
+      [
+        10,
+        0.12327847688407391
+      ]
+    ]
+  },
+  "interpretation": "realistic mode (cluster-regime 고유 신호): N=4 부터 Tukey ΔAICc>10. universal mode (보편 cluster anchor): N=2 도 즉시 PASS. pessimistic mode (A1689 만 진짜 outlier): N 증가해도 Tukey 회복 어려움 — single-source dominance 가 *데이터의 진실*인 case. Equilibrium-clean ∩ 3-probe (lensing+X-ray+SZ) 가용 cluster: 7/13 → 실효 N_eff 상한 ~7."
+}

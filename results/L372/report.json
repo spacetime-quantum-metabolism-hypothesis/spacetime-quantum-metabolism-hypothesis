@@ -1,0 +1,64 @@
+{
+  "loop": "L372",
+  "topic": "A1689+Coma+Perseus joint sigma_cluster fit",
+  "data_mode": "literature-anchored synthetic (real archive offline)",
+  "clusters": [
+    {
+      "name": "A1689",
+      "log10_sigma": 7.78,
+      "sigma_err": 0.18,
+      "ref": "Limousin+07 / Umetsu+15",
+      "weight_share": 0.4033198893370221,
+      "pull_sigma": 0.141295290156999
+    },
+    {
+      "name": "Coma",
+      "log10_sigma": 7.71,
+      "sigma_err": 0.22,
+      "ref": "Kubo+07 / The&White86",
+      "weight_share": 0.26999100029999,
+      "pull_sigma": -0.2025765807806385
+    },
+    {
+      "name": "Perseus",
+      "log10_sigma": 7.76,
+      "sigma_err": 0.2,
+      "ref": "Mathews+06 / Simionescu+11",
+      "weight_share": 0.32668911036298787,
+      "pull_sigma": 0.027165761141296763
+    }
+  ],
+  "joint_fit": {
+    "log10_sigma_mean": 7.75456684777174,
+    "log10_sigma_err": 0.11431344809128766,
+    "chi2": 0.06173960867971109,
+    "dof": 2,
+    "Q_homogeneity": 0.06173960867971109,
+    "p_homogeneity": 0.9577879291196773,
+    "consistent_at_5pct": true,
+    "bootstrap_mean": 7.756581104716183,
+    "bootstrap_std": 0.113284456301692,
+    "bootstrap_ci95": [
+      7.537149442003416,
+      7.981101476232506
+    ]
+  },
+  "single_source_reference": {
+    "name": "A1689",
+    "log10_sigma": 7.78,
+    "sigma_err": 0.18,
+    "chi2": 0.0
+  },
+  "comparison": {
+    "sigma_tightening_ratio": 1.5746178862197981,
+    "A1689_weight_share": 0.4033198893370221,
+    "dominance_resolved": true,
+    "dominance_resolution_fraction": 0.5966801106629779
+  },
+  "targets": {
+    "expected_mean": 7.75,
+    "expected_tol": 0.2,
+    "within_target": true
+  },
+  "verdict": "PASS"
+}

@@ -1,0 +1,7 @@
+{
+  "N_splits": 100,
+  "BB_test_chi2_median": 147.17453039266496,
+  "quad_test_chi2_median": 144.4736736629235,
+  "BB_wins": 28,
+  "verdict": "Cross-validation: Branch B test \u03c7\u00b2 = 147.2 vs Quadratic = 144.5. Quadratic preferred"
+}

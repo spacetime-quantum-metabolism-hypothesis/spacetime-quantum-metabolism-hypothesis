@@ -1,0 +1,7 @@
+{
+  "mu_baseline": 1e-08,
+  "delta_mu": 2.289999999999992e-10,
+  "mu_pred": 1.0229e-08,
+  "FIRAS_pass": true,
+  "PIXIE_detectable": true
+}

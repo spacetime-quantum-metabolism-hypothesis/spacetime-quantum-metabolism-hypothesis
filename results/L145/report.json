@@ -1,0 +1,11 @@
+{
+  "arguments": [
+    "self-consistency",
+    "Bunch-Davies",
+    "Heisenberg time"
+  ],
+  "converge": true,
+  "epsilon_J": 2.5229747245625406e-52,
+  "epsilon_eV": 1.576859202851588e-33,
+  "verdict": "\u03b5 ~ \u210fH derivation is NOT circular: independently derived from Bunch-Davies vacuum (cosmic expansion freezes long-wavelength modes). Three different physical arguments converge on same answer. This is the de Sitter/inflation cosmology heritage applied to SQT."
+}

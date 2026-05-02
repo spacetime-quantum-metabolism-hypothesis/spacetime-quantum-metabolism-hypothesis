@@ -1,0 +1,53 @@
+{
+  "n_galaxies": 135,
+  "model_A": {
+    "form": "V^4 = G * Mbar * a0_eff",
+    "a0_eff_ms2": 1.356490374700243e-10,
+    "chi2": 2714.197501337894,
+    "k": 1,
+    "aicc": 2716.227576525864
+  },
+  "model_B": {
+    "form": "ln V = a * ln Mbar + b   (a = m/n)",
+    "slope_a": 0.26894320975942626,
+    "slope_a_std_jk": 0.00801452460794278,
+    "intercept_b": -1.4537712798038882,
+    "chi2": 2565.611115662363,
+    "k": 2,
+    "aicc": 2569.702024753272
+  },
+  "delta_aicc_BminusA": -146.52555177259228,
+  "mond_prior_slope_025": {
+    "distance_to_data_slope_in_sigma": 2.3636099065255385
+  },
+  "Q_subsets": {
+    "Q1": {
+      "n": 87,
+      "a0_eff_ms2": 1.41994415914638e-10,
+      "chi2_A": 1577.476189765566,
+      "slope_a": 0.25682620839335774,
+      "chi2_B": 1565.1276965703257
+    },
+    "Q2": {
+      "n": 42,
+      "a0_eff_ms2": 1.2685818263284847e-10,
+      "chi2_A": 686.7822168892174,
+      "slope_a": 0.2853287414010271,
+      "chi2_B": 547.5740153036423
+    },
+    "Q3": null,
+    "all": {
+      "n": 135,
+      "a0_eff_ms2": 1.356490374700243e-10,
+      "chi2_A": 2714.197501337894,
+      "slope_a": 0.26894320975942626,
+      "slope_a_jk_std": 0.00801452460794278,
+      "chi2_B": 2565.611115662363,
+      "aicc_A": 2716.227576525864,
+      "aicc_B": 2569.702024753272,
+      "delta_aicc_BminusA": -146.52555177259228
+    }
+  },
+  "a0_mond_reference_ms2": 1.2e-10,
+  "notes": "Model A is the deep-MOND / SQT outer-asymptotic limit V^4 = G M a0. Model B is a free Tully-Fisher slope. Negative delta_AICc (B-A) means free slope justified; positive means data does NOT justify the extra parameter and the (n=4, m=1) form is statistically equivalent. Per CLAUDE.md: this single test cannot distinguish SQT from MOND without a sub-leading-correction signature (NEXT_STEP stages 3-4)."
+}

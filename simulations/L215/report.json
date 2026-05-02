@@ -1,0 +1,10 @@
+{
+  "g_dimensionless": 0.9989815178797068,
+  "fixed_point": 1.0,
+  "asymp_safe_compatible": true,
+  "g_at_H_scales": [
+    -0.4029572660052041,
+    -0.33387971321538257,
+    -0.26480216042556104
+  ]
+}

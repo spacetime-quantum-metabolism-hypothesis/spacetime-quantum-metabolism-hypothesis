@@ -1,0 +1,30 @@
+{
+  "anchors": {
+    "log_sigma_cosmic": 8.37,
+    "log_sigma_cluster": 7.75,
+    "log_sigma_galactic": 9.56
+  },
+  "cluster_band": [
+    7.5,
+    8.0
+  ],
+  "scan": {
+    "n_total": 300000,
+    "n_three_real": 213451,
+    "p_three_real": 0.7115033333333334
+  },
+  "free_scan_naturalness": {
+    "P_saddle_in_cluster_band[7.50,8.00]": 0.013637790406229065,
+    "P_saddle_in_between_IR_UV[8.42,9.51]": 0.056097183897006804,
+    "P_saddle_within_pm0.05_of_7.75": 0.00247363563534488,
+    "P_saddle_within_pm0.10_of_7.75": 0.0049941204304500796
+  },
+  "constrained_anchor_null": {
+    "P_uniform_between[8.37,9.56]_in_cluster_band": 0.0,
+    "P_uniform_extended[7.37,10.56]_in_cluster_band": 0.15690333333333334
+  },
+  "structural_finding": {
+    "cluster_below_cosmic_IR": true,
+    "note": "log sigma_cluster=7.75 < log sigma_cosmic=8.37. The standard Wetterich monotone-RG cubic-saddle topology places the saddle BETWEEN the IR and UV fixed points. The empirical cluster anchor lies BELOW the IR root, so a strictly-between-FP saddle topology CANNOT host the cluster anchor. RG saddle naturalness is therefore P=0 under the standard topology, and requires either (a) reordering anchors (cluster as a deeper IR FP, cosmic as saddle), or (b) an off-axis / extra operator extension."
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "Q1_Q_parameter": {
+    "trials": [
+      {
+        "def": "A: sigma_0 n_inf rho dx^2 / (mc^2)",
+        "Q_macro": 4.140714758533228e-31,
+        "Q_micro": 4.545241227808154e-48,
+        "ok": "False"
+      },
+      {
+        "def": "B: (m dx^2/hbar) * (sigma_0 n_inf rho)",
+        "Q_macro": 3.527655053322814e+20,
+        "Q_micro": 3.213693753577084e-57,
+        "ok": "True"
+      },
+      {
+        "def": "C: (sigma_0 n_inf) * (m dx^2 / hbar)  ambient only",
+        "Q_macro": 3.5276550533228134e+17,
+        "Q_micro": 3.213693753577084e-27,
+        "ok": "True"
+      },
+      {
+        "def": "D: sigma_0 n_inf (m/m_P)^2 c^2/hbar  vs  c/dx",
+        "Q_macro": 2.231617992974072e+44,
+        "Q_micro": 1.8520666363470348e-23,
+        "ok": "True"
+      },
+      {
+        "def": "E: tau_q * m c^2 / hbar  (cosmic-time vs Compton)",
+        "Q_macro": 1.2005012159536024e+68,
+        "Q_micro": 1.093656607733732e+38,
+        "ok": false
+      }
+    ],
+    "any_pass": true,
+    "verdict": "PASS",
+    "note": "Multiple structural definitions tested; paper/base.md does NOT specify which is canonical. Even if one passes the macro/micro split, the choice of definition is itself an extra theoretical choice (degree of freedom in formulation), so the \"0 extra parameter\" claim is shaky unless paper/base.md fixes the formula."
+  },
+  "Q2_wavefunction": {
+    "verdict": "PASS_BY_INHERITANCE",
+    "qualifier": "INHERITED (standard QFT around Z_2 SSB vacuum)",
+    "note": "No new quantitative prediction; rephrasing of standard QFT."
+  },
+  "Q3_BEC_nonlocality": {
+    "verdict": "NOT_INHERITED",
+    "reason": "paper/base.md replaces GFT/BEC with Z_2 SSB. Z_2 has no continuous phase, so BEC-coherence Bell narrative has no formal support in paper/base.md framework.",
+    "recommendation": "Either (i) honestly drop Q3 from paper/base.md \u00a714.5, or (ii) re-introduce GFT BEC layer as a 5th foundation and derive its phenomenological consequences."
+  },
+  "summary": {
+    "Q1_Q_parameter": "PASS",
+    "Q2_wavefunction": "PASS_BY_INHERITANCE",
+    "Q3_BEC_nonlocality": "NOT_INHERITED"
+  }
+}

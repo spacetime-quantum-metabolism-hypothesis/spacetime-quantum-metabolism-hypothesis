@@ -1,0 +1,80 @@
+{
+  "input_anchors": {
+    "cosmic": 8.37,
+    "cluster": 7.75,
+    "galactic": 9.56
+  },
+  "ansatz": "beta(sigma) = a*sigma - b*sigma^2 + c*sigma^3",
+  "scenario": "Sc-A: pick 2 of 3 anchors as nontrivial FPs",
+  "pairings": [
+    {
+      "FP_pair": "cosmic+cluster",
+      "sigma_minus": 7.75,
+      "sigma_plus": 8.37,
+      "r_b_over_c": 16.119999999999997,
+      "q_a_over_c": 64.86749999999999,
+      "third_anchor": {
+        "name": "galactic",
+        "value": 9.56
+      }
+    },
+    {
+      "FP_pair": "cosmic+galactic",
+      "sigma_minus": 8.37,
+      "sigma_plus": 9.56,
+      "r_b_over_c": 17.93,
+      "q_a_over_c": 80.0172,
+      "third_anchor": {
+        "name": "cluster",
+        "value": 7.75
+      }
+    },
+    {
+      "FP_pair": "cluster+galactic",
+      "sigma_minus": 7.75,
+      "sigma_plus": 9.56,
+      "r_b_over_c": 17.310000000000002,
+      "q_a_over_c": 74.09,
+      "third_anchor": {
+        "name": "cosmic",
+        "value": 8.37
+      }
+    }
+  ],
+  "summary": {
+    "r_b_over_c_min": 16.119999999999997,
+    "r_b_over_c_max": 17.93,
+    "r_b_over_c_spread": 1.1122828784119108,
+    "q_a_over_c_min": 64.86749999999999,
+    "q_a_over_c_max": 80.0172,
+    "q_a_over_c_spread": 1.2335483870967743,
+    "n_pairings": 3,
+    "verdict": "PASS"
+  },
+  "diagnostics": {
+    "diagnostics": [
+      {
+        "FP_pair": "cosmic+cluster",
+        "third_anchor": "galactic",
+        "third_anchor_value": 9.56,
+        "beta_third_over_c": 20.5912840000002,
+        "residual_normalised": 0.2663351210999591
+      },
+      {
+        "FP_pair": "cosmic+galactic",
+        "third_anchor": "cluster",
+        "third_anchor_value": 7.75,
+        "beta_third_over_c": 8.69704999999999,
+        "residual_normalised": 0.08228795658794047
+      },
+      {
+        "FP_pair": "cluster+galactic",
+        "third_anchor": "cosmic",
+        "third_anchor_value": 8.37,
+        "beta_third_over_c": -6.1753860000002305,
+        "residual_normalised": 0.06590143469321938
+      }
+    ]
+  },
+  "honest_note": "Only b/c and a/c ratios are extracted; absolute b, c remain non-priori (L352 PARTIAL boundary respected). Selecting the 'correct' pairing requires data beyond this script."
+}

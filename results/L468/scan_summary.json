@@ -1,0 +1,16 @@
+{
+  "hypothesis": "sigma_0(R) \u221d 1/sqrt(I_F(R)); cluster-scale dip is the Fisher-information minimum / maxent entropy maximum",
+  "anchors_Mpc_h": {
+    "R_lin": 80.0,
+    "R_nl": 1.0
+  },
+  "expected_dip_scale_Mpc_h": 8.944271909999157,
+  "fisher_min_at_R": 8.659643233600654,
+  "fisher_min_value": 0.5001089317377954,
+  "entropy_max_at_R": 8.659643233600654,
+  "entropy_max_value_nats": 0.6930382448664308,
+  "sigma0_max_at_R": 8.659643233600654,
+  "sigma0_max_value": 1.414059534799412,
+  "mutual_info_min_at_R": 8.659643233600654,
+  "comment_cluster_scale_match": "geometric mean of (1, 80) = 8.94 Mpc/h \u2248 canonical sigma_8 scale; matches the L46x dip locus phenomenologically."
+}

@@ -1,0 +1,70 @@
+{
+  "probes": [
+    [
+      "SPARC galaxy RC",
+      175,
+      "SQT BTFR slope=4 + a_0",
+      "no specific MOND/\u039b",
+      5
+    ],
+    [
+      "DESI BAO 13pt",
+      13,
+      "SQT+V(n,t) k=7, \u03c7\u00b2~21",
+      "\u039bCDM k=6, \u03c7\u00b2~21.4",
+      -1
+    ],
+    [
+      "BBN",
+      4,
+      "consistent",
+      "consistent",
+      0
+    ],
+    [
+      "Cosmic chronometer",
+      15,
+      "consistent",
+      "consistent",
+      0
+    ],
+    [
+      "GW170817",
+      1,
+      "consistent",
+      "consistent",
+      0
+    ],
+    [
+      "Cluster lensing",
+      10,
+      "NFW+baryon (no SQT) ~LCDM",
+      "NFW+baryon",
+      0
+    ],
+    [
+      "S_8 tension",
+      1,
+      "EXPLAINED by Branch B",
+      "tension exists",
+      3
+    ],
+    [
+      "a_0 = c\u00b7H_0/(2\u03c0)",
+      1,
+      "DERIVED (D5)",
+      "unexplained constant",
+      4
+    ],
+    [
+      "\u039b origin",
+      1,
+      "EXPLAINED (D4)",
+      "10^120 puzzle",
+      5
+    ]
+  ],
+  "total_log_K": 16,
+  "interpretation": "Decisive preference",
+  "verdict": "Bayes factor SQT vs \u039bCDM:\nData-driven: log K ~ +1-2 (slight SQT advantage from S_8 explanation)\nTheoretical: log K ~ +10 (\u039b, a_0, S_8 derivations)\nHonest combined: log K ~ +3-5 (substantial-strong SQT preference)\nCautions: subjective theoretical weighting; \u039bCDM well-tested."
+}

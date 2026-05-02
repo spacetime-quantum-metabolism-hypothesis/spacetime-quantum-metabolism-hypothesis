@@ -1,0 +1,43 @@
+{
+  "baseline_delta_aicc_2_to_3": 0.77,
+  "threshold_favor_3regime": -2.0,
+  "forecasts": {
+    "P9_dSph": {
+      "anchor": "P9_dSph",
+      "anchor_dchi2": 8.317797382715451,
+      "delta_aicc_from_anchor": -4.317797382715451,
+      "delta_aicc_total_2_to_3": -3.547797382715451,
+      "favors_3regime": true,
+      "marginal": false
+    },
+    "P11_NS_sat": {
+      "anchor": "P11_NS_sat",
+      "anchor_dchi2": 72.43096423720185,
+      "delta_aicc_from_anchor": -68.43096423720185,
+      "delta_aicc_total_2_to_3": -67.66096423720185,
+      "favors_3regime": true,
+      "marginal": false
+    },
+    "VoidGalaxies": {
+      "anchor": "VoidGalaxies",
+      "anchor_dchi2": 5.517865045861582,
+      "delta_aicc_from_anchor": -1.5178650458615817,
+      "delta_aicc_total_2_to_3": -0.7478650458615816,
+      "favors_3regime": false,
+      "marginal": true
+    },
+    "JOINT": {
+      "anchor": "JOINT_P9+P11+Void",
+      "anchor_dchi2": 86.26662666577889,
+      "delta_aicc_from_anchor": -82.26662666577889,
+      "delta_aicc_total_2_to_3": -81.49662666577889,
+      "favors_3regime": true
+    }
+  },
+  "honest_caveats": [
+    "Forecast uses toy g(rm1) curvature diff between L322 best-fit 2-regime and 3-regime templates; not real anchor data.",
+    "EOS systematic for P11 NS_sat NOT marginalized here. Tightening sigma=0.05 assumes chiral-EFT prior; loose prior would inflate sigma to ~0.15 and reduce anchor_dchi2 by factor ~9.",
+    "Independence assumption for JOINT is optimistic; correlations (esp. with H0) reduce joint info by 20-40%.",
+    "Order-of-magnitude scoping. Decisive forecast requires Phase-2 FIM with full covariance."
+  ]
+}

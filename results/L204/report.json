@@ -1,0 +1,9 @@
+{
+  "N": 163,
+  "within_factor2": 88,
+  "within_factor5": 137,
+  "within_Q1": 56,
+  "median_log_a0": -10.094582272091237,
+  "std_log_a0": 0.6602316088580653,
+  "verdict": "Branch B universal a_0 prediction: 54% within factor 2, 84% within factor 5. Q=1 high-quality: 57% within factor 2. Substantial individual scatter \u2014 Branch B is *aggregate* statement."
+}

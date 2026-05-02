@@ -1,0 +1,64 @@
+{
+  "seed": 20260501,
+  "train_frac": 0.7,
+  "n_galaxies_total": 175,
+  "n_train_galaxies": 122,
+  "n_test_galaxies": 53,
+  "n_train_points": 2236,
+  "n_test_points": 1153,
+  "H0_planck": 67.4,
+  "a0_sqt_planck": 1.0421903092736491e-10,
+  "train_fit": {
+    "a0": 1.0938014014278744e-10,
+    "log10_a0": -9.961061524523272,
+    "sigma_log10_a0": 0.008000000000000895,
+    "chi2": 2901.871244638147,
+    "chi2_per_dof": 1.2983763958112513,
+    "n_params": 1
+  },
+  "train_sqt_locked": {
+    "chi2": 2908.341280208686,
+    "chi2_per_dof": 1.3006893024189115
+  },
+  "train_newton": {
+    "chi2": 28105.582391373988,
+    "chi2_per_dof": 12.569580675927543
+  },
+  "test_sqt_locked": {
+    "chi2": 1478.8272977709116,
+    "chi2_per_dof": 1.282590891388475,
+    "aicc": 1478.8272977709116,
+    "n_params": 0
+  },
+  "test_train_a0": {
+    "chi2": 1484.9252544723845,
+    "chi2_per_dof": 1.2878796656308624,
+    "aicc": 1486.9287297113071,
+    "n_params": 1
+  },
+  "test_newton": {
+    "chi2": 17453.130930179548,
+    "chi2_per_dof": 15.137147380901602,
+    "aicc": 17453.130930179548,
+    "n_params": 0
+  },
+  "test_mcgaugh_locked": {
+    "chi2": 1517.0509987091798,
+    "chi2_per_dof": 1.3157424099819426,
+    "aicc": 1517.0509987091798,
+    "n_params": 0
+  },
+  "deltas": {
+    "dAICc_test_SQT_minus_train": -8.101431940395514,
+    "dAICc_test_SQT_minus_newton": -15974.303632408637,
+    "dAICc_test_SQT_minus_mcgaugh": -38.223700938268166
+  },
+  "K_criteria": {
+    "K_OOS1_chi2dof_test_le_1p5": true,
+    "K_OOS2_test_train_gap_le_0p30": true,
+    "K_OOS3_dAICc_SQT_minus_train_le_2": true,
+    "K_OOS4_dAICc_SQT_minus_newton_le_minus10": true,
+    "K_OOS5_a0_train_within_30pct_of_SQT": true,
+    "n_pass": 5
+  }
+}

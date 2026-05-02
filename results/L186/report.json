@@ -1,0 +1,45 @@
+{
+  "attack": "What falsifies Branch B?",
+  "alternatives": {
+    "Branch B (3-regime, discrete)": "current SQT, 3 \u03c3_0 values",
+    "2-regime (cosmic, structure)": "cosmic + galactic only (cluster=galactic)",
+    "4-regime": "additional regime at NS density",
+    "Smooth power law \u03c3 ~ \u03c1^\u03b1": "monotonic, single power",
+    "Smooth log function": "\u03c3 = a + b\u00b7log(\u03c1)",
+    "Sigmoid (single transition)": "two values smoothly connected",
+    "Random per-galaxy": "no regime structure, just scatter"
+  },
+  "tests": [
+    [
+      "dSph at intermediate \u03c1 ~ 1e-23",
+      "Branch B: \u03c3 ~ \u03c3_cluster \u2248 10^7.75",
+      "Smooth: \u03c3 ~ interpolated value (10^8 to 9)",
+      "Discriminates if measurement \u03c3 within 0.3 dex"
+    ],
+    [
+      "Galaxy disk transitions to halo",
+      "Branch B: sharp \u03c3 change at \u03c1_c2",
+      "Smooth: gradual change",
+      "RC outer parts probe transition"
+    ],
+    [
+      "Cluster + galaxy in same z bin (Tully-Fisher)",
+      "Branch B: distinct \u03c3 in each environment",
+      "Smooth: continuous a_0 evolution",
+      "Future surveys with mass-stratification"
+    ],
+    [
+      "Cosmic acceleration of voids",
+      "Branch B: void \u03c3 = \u03c3_cosmic",
+      "Smooth: void \u03c3 slightly < normal",
+      "Future void galaxy surveys"
+    ],
+    [
+      "\u03c3_0 in very low surface brightness galaxies",
+      "Branch B: \u03c3 = \u03c3_galactic (galactic regime)",
+      "Smooth: \u03c3 depends on local \u03c1",
+      "Existing SPARC LSB data + dwarfs"
+    ]
+  ],
+  "verdict": "Branch B falsifiability is moderate. Currently consistent but not uniquely supported by data. Future tests at intermediate density (dSph, void galaxies) will discriminate Branch B from smooth alternatives. Honest paper text: 'Branch B is one of several consistent regime structures.'"
+}

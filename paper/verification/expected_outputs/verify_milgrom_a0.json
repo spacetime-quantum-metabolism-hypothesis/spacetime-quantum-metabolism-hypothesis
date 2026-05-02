@@ -1,0 +1,19 @@
+{
+  "script": "verify_milgrom_a0.py",
+  "classification": "PASS_STRONG (substantive prediction, MOND a_0)",
+  "tolerance": "+/- 5% on a0_SQT; PASS iff dev < 2 sigma",
+  "expected": {
+    "a0_SQT_m_s2": 1.129e-10,
+    "a0_obs_m_s2": 1.2e-10,
+    "a0_err_m_s2": 1.0e-11,
+    "deviation_sigma": 0.71,
+    "verdict": "PASS"
+  },
+  "stdout_lines": [
+    "a_0 (SQT)   = 1.129e-10 m/s^2",
+    "a_0 (obs)   = 1.200e-10 +/- 1e-11",
+    "deviation   = 0.71 sigma",
+    "PASS"
+  ],
+  "runtime_seconds_typical": 0.05
+}

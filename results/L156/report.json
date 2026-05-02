@@ -1,0 +1,13 @@
+{
+  "predictions": {
+    "z=0.1": 1.199081917924862e-10,
+    "z=0.5": 1.5086845473183943e-10,
+    "z=1.0": 2.0428017309416509e-10,
+    "z=1.5": 2.7019209408262403e-10,
+    "z=2.0": 3.4591544691452897e-10
+  },
+  "SKA_precision_pct": 1.0,
+  "distinguishability_sigma": 100,
+  "timeline": "2029-2030",
+  "verdict": "SKA forecast for P7 a_0(z): SQT predicts factor 3 enhancement at z=2. SKA precision ~1% means 100\u03c3+ distinction from MOND constant. Decisive test by 2030. PASS = SQT major confirmation, FAIL = SQT major problem."
+}

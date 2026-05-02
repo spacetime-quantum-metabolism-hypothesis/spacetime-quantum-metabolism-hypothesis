@@ -1,0 +1,39 @@
+{
+  "Om": 0.315,
+  "OL": 0.685,
+  "RHO_CRIT_0_Msun_per_Mpc3": 126046497433.77591,
+  "asymptotic_sigma_eff_BA1": -0.685,
+  "cluster_core_sigma_eff_BA1_at_001rvir": 157728.29804978377,
+  "dip_radius_BA1_over_rvir": 4.533559928376166,
+  "scan": {
+    "BA_0.5": {
+      "B_over_A": 0.5,
+      "r_dip_over_rvir": 5.7454651184399985,
+      "rho_m_at_dip_over_rho_crit": 0.3425,
+      "rho_L0_over_rho_crit": 0.685,
+      "comment": "sigma_eff=0 means absorption = generation; environment-dependent absorption matched against environment-uniform generation"
+    },
+    "BA_1.0": {
+      "B_over_A": 1.0,
+      "r_dip_over_rvir": 4.533559928376166,
+      "rho_m_at_dip_over_rho_crit": 0.685,
+      "rho_L0_over_rho_crit": 0.685,
+      "comment": "sigma_eff=0 means absorption = generation; environment-dependent absorption matched against environment-uniform generation"
+    },
+    "BA_2.0": {
+      "B_over_A": 2.0,
+      "r_dip_over_rvir": 3.5713068639059005,
+      "rho_m_at_dip_over_rho_crit": 1.37,
+      "rho_L0_over_rho_crit": 0.685,
+      "comment": "sigma_eff=0 means absorption = generation; environment-dependent absorption matched against environment-uniform generation"
+    },
+    "BA_5.0": {
+      "B_over_A": 5.0,
+      "r_dip_over_rvir": 2.5968045535840414,
+      "rho_m_at_dip_over_rho_crit": 3.4250000000000003,
+      "rho_L0_over_rho_crit": 0.685,
+      "comment": "sigma_eff=0 means absorption = generation; environment-dependent absorption matched against environment-uniform generation"
+    }
+  },
+  "interpretation": "For B/A=1 the cancellation radius sits at rho_m(r)/rho_crit_0 ~ OL ~ 0.685. That is exactly the cluster *outskirts* / 1-halo to 2-halo transition (a few r_vir). Inside r_vir the absorption term dominates (positive sigma_eff). Far outside it the Lambda generation dominates (negative sigma_eff). The crossover band is the candidate cluster dip in metabolism rate."
+}

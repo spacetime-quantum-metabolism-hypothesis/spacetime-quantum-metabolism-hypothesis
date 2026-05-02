@@ -1,0 +1,166 @@
+{
+  "sqt_predictions": {
+    "L83_constant_Gamma0": 5.96e-32,
+    "L149_V_n_t": 1.14e-47,
+    "L507_characteristic": 1e-46
+  },
+  "evaluation_at_characteristic": {
+    "sqt_delta_Neff": 1e-46,
+    "constraints": {
+      "Planck18_CMB": {
+        "limit": 0.17,
+        "margin_orders_of_magnitude": 45.0,
+        "margin": 1.7000000000000002e+45,
+        "pass": true,
+        "ref": "Planck 2018 VI, A&A 641 A6"
+      },
+      "He4_Aver2021": {
+        "limit": 0.2,
+        "margin_orders_of_magnitude": 45.0,
+        "margin": 2.0000000000000002e+45,
+        "pass": true,
+        "ref": "Aver+2021 JCAP 03 027"
+      },
+      "DH_Cooke2018": {
+        "limit": 0.15,
+        "margin_orders_of_magnitude": 45.0,
+        "margin": 1.5e+45,
+        "pass": true,
+        "ref": "Cooke+2018 ApJ 855 102"
+      },
+      "BBN_combined_Pitrou": {
+        "limit": 0.16,
+        "margin_orders_of_magnitude": 45.0,
+        "margin": 1.6e+45,
+        "pass": true,
+        "ref": "Pitrou+2018 Phys Rep 754 1"
+      }
+    },
+    "anomalies": {
+      "EMPRESS_He4_2022": {
+        "preferred_dNeff": -0.5,
+        "sigma": 0.5,
+        "sqt_distance_in_sigma": 1.0,
+        "sqt_can_explain": false,
+        "ref": "Matsumoto+2022 ApJ 941 167"
+      },
+      "Li7_problem": {
+        "preferred_dNeff": -0.4,
+        "sigma": 0.5,
+        "sqt_distance_in_sigma": 0.8,
+        "sqt_can_explain": false,
+        "ref": "Fields 2011 Annu Rev Nucl Part Sci 61 47; Pitrou+2018"
+      }
+    },
+    "all_standard_constraints_pass": true,
+    "robust_cross_experiment": true,
+    "explains_empress_anomaly": false,
+    "explains_li7_problem": false
+  },
+  "evaluation_at_L83": {
+    "sqt_delta_Neff": 5.96e-32,
+    "constraints": {
+      "Planck18_CMB": {
+        "limit": 0.17,
+        "margin_orders_of_magnitude": 30.0,
+        "margin": 2.852348993288591e+30,
+        "pass": true,
+        "ref": "Planck 2018 VI, A&A 641 A6"
+      },
+      "He4_Aver2021": {
+        "limit": 0.2,
+        "margin_orders_of_magnitude": 30.0,
+        "margin": 3.3557046979865776e+30,
+        "pass": true,
+        "ref": "Aver+2021 JCAP 03 027"
+      },
+      "DH_Cooke2018": {
+        "limit": 0.15,
+        "margin_orders_of_magnitude": 30.0,
+        "margin": 2.516778523489933e+30,
+        "pass": true,
+        "ref": "Cooke+2018 ApJ 855 102"
+      },
+      "BBN_combined_Pitrou": {
+        "limit": 0.16,
+        "margin_orders_of_magnitude": 30.0,
+        "margin": 2.684563758389262e+30,
+        "pass": true,
+        "ref": "Pitrou+2018 Phys Rep 754 1"
+      }
+    },
+    "anomalies": {
+      "EMPRESS_He4_2022": {
+        "preferred_dNeff": -0.5,
+        "sigma": 0.5,
+        "sqt_distance_in_sigma": 1.0,
+        "sqt_can_explain": false,
+        "ref": "Matsumoto+2022 ApJ 941 167"
+      },
+      "Li7_problem": {
+        "preferred_dNeff": -0.4,
+        "sigma": 0.5,
+        "sqt_distance_in_sigma": 0.8,
+        "sqt_can_explain": false,
+        "ref": "Fields 2011 Annu Rev Nucl Part Sci 61 47; Pitrou+2018"
+      }
+    },
+    "all_standard_constraints_pass": true,
+    "robust_cross_experiment": true,
+    "explains_empress_anomaly": false,
+    "explains_li7_problem": false
+  },
+  "evaluation_at_L149": {
+    "sqt_delta_Neff": 1.14e-47,
+    "constraints": {
+      "Planck18_CMB": {
+        "limit": 0.17,
+        "margin_orders_of_magnitude": 46.0,
+        "margin": 1.4912280701754388e+46,
+        "pass": true,
+        "ref": "Planck 2018 VI, A&A 641 A6"
+      },
+      "He4_Aver2021": {
+        "limit": 0.2,
+        "margin_orders_of_magnitude": 46.0,
+        "margin": 1.754385964912281e+46,
+        "pass": true,
+        "ref": "Aver+2021 JCAP 03 027"
+      },
+      "DH_Cooke2018": {
+        "limit": 0.15,
+        "margin_orders_of_magnitude": 46.0,
+        "margin": 1.3157894736842105e+46,
+        "pass": true,
+        "ref": "Cooke+2018 ApJ 855 102"
+      },
+      "BBN_combined_Pitrou": {
+        "limit": 0.16,
+        "margin_orders_of_magnitude": 46.0,
+        "margin": 1.4035087719298246e+46,
+        "pass": true,
+        "ref": "Pitrou+2018 Phys Rep 754 1"
+      }
+    },
+    "anomalies": {
+      "EMPRESS_He4_2022": {
+        "preferred_dNeff": -0.5,
+        "sigma": 0.5,
+        "sqt_distance_in_sigma": 1.0,
+        "sqt_can_explain": false,
+        "ref": "Matsumoto+2022 ApJ 941 167"
+      },
+      "Li7_problem": {
+        "preferred_dNeff": -0.4,
+        "sigma": 0.5,
+        "sqt_distance_in_sigma": 0.8,
+        "sqt_can_explain": false,
+        "ref": "Fields 2011 Annu Rev Nucl Part Sci 61 47; Pitrou+2018"
+      }
+    },
+    "all_standard_constraints_pass": true,
+    "robust_cross_experiment": true,
+    "explains_empress_anomaly": false,
+    "explains_li7_problem": false
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "prior_estimate": [
+    0.63,
+    0.73
+  ],
+  "baseline_archetype_prob": {
+    "A": 0.16999999999999998,
+    "B": 0.2700000000000001,
+    "C": 0.33000000000000007
+  },
+  "individual_accept_rates": {
+    "A": 0.17014,
+    "B": 0.27436,
+    "C": 0.32846
+  },
+  "majority_acceptance_central": 0.1611,
+  "acceptance_range_baseline_pm5pct": [
+    0.10795,
+    0.22055
+  ],
+  "audit_findings_count": 4,
+  "net_penalty_per_archetype": {
+    "A": -0.51,
+    "B": -0.4100000000000001,
+    "C": -0.35
+  }
+}

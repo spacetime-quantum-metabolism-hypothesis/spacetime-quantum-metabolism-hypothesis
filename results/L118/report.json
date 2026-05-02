@@ -1,0 +1,7 @@
+{
+  "SK_action_defined": true,
+  "reduces_to_MSR": true,
+  "renormalization_pending": true,
+  "grade_impact": "\ubbf8\uc2dc \u2605\u2605\u2605\u2605\u00bd \u2192 \u2605\u2605\u2605\u2605\u00be",
+  "verdict": "Schwinger-Keldysh closed-time-path action defined (L118). Reduces to MSR in semiclassical limit (L79). Action principle restored: \ubbf8\uc2dc \uc774\ub860 \u2605\u2605\u2605\u2605\u00bd \u2192 \u2605\u2605\u2605\u2605\u00be. Renormalization remains future work (L76 F4 EFT cutoff)."
+}

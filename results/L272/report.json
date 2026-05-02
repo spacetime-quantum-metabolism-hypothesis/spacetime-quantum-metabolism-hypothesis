@@ -1,0 +1,7 @@
+{
+  "N_mock": 200,
+  "false_rate": 1.0,
+  "median_dAICc": 132.9496394956521,
+  "max_dAICc": 181.25193860273563,
+  "verdict": "BB false-detection rate on LCDM mock: 100.0%. Threshold 5% \u2014 FAIL."
+}

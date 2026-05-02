@@ -1,0 +1,54 @@
+{
+  "Q1": {
+    "sigma_0_SI": 4.521731522743783e-53,
+    "n0_mu_SI": 4.102098103419881e+95,
+    "tau_q_s": 1.5260633036597427e+17,
+    "eps_q_J": 6.910406760132224e-52,
+    "n_inf_per_m3": 7.598470567825185e+41,
+    "Q_dot_J_per_m3_per_s": 9.739588590144341e+33,
+    "H0_x_rhoLambda": 1.1469275718038935e-27,
+    "ratio_Q_to_H0rhoL": 8.49189506781659e+60,
+    "note": "n_inf uses rho_Lambda_obs as input (sec 5.2 circularity). Q is dimensionally a rate but is *not* a photon-channel rate \u2014 axiom does not specify whether sink couples to em sector."
+  },
+  "Q2": {
+    "z_mu_min": 50000.0,
+    "z_mu_max": 2000000.0,
+    "mu_silk_reference_chluba2016": 2e-08,
+    "window_weight_integral": 3.6888678748051915,
+    "note": "Reference value cited from Chluba 2016; not re-derived here."
+  },
+  "Q3": {
+    "mu_target_announced": 1.02e-08,
+    "pixie_noise_sigma_mu": 1e-09,
+    "snr_pixie_total_interp": 10.2,
+    "snr_pixie_additional_interp": 10.2,
+    "snr_voyage2050": 102.0,
+    "lcdm_baseline_chluba2016": 2e-08,
+    "interpretation_warning": "If 1.02e-8 is the SQT *total*, it is BELOW the LCDM Silk-damping baseline (~2e-8) \u2014 implying a *negative* deviation. Sign of the falsifier is then opposite to what base.md sec 4.3 states. If it is *additional* on top of LCDM, total ~3e-8, still detectable, but base.md sec 4.3 does not specify which interpretation."
+  },
+  "Q4": {
+    "mu_target": 1.02e-08,
+    "foreground_residual_ILC": 5e-09,
+    "foreground_residual_best_case": 1e-09,
+    "snr_after_ILC": 2.04,
+    "snr_after_best_separation": 10.2,
+    "base_md_quoted_2sigma_vs_foreground": true,
+    "note": "base.md sec 4.3 quotes 'foreground 2 sigma' which corresponds to ILC-class separation (mu/5e-9 ~ 2). Best-case multi-component separation gives ~10 sigma but is observatory-dependent."
+  },
+  "Q5": {
+    "y_over_mu_axiom_fixed": false,
+    "y_over_mu_value": NaN,
+    "reason": "Branching depends on epoch of energy injection, which the SQT axioms (1-6) do not specify. Without a *time profile* of Q(z), y/mu is not predicted. Adding such a profile = extra input -> PASS_STRONG forfeit (PASS_IDENTITY at best)."
+  },
+  "verdict": {
+    "A1_derivation_closed_under_sigma0_ninf_eps": false,
+    "A2_pass_identity_risk": true,
+    "A3_lambda_circularity_inherited": true,
+    "A4_sign_ambiguity_total_vs_additional": true,
+    "A5_photon_channel_specified": false,
+    "A6_foreground_separation_marginal_at_ILC": true,
+    "A7_pixie_flight_confirmed": false,
+    "overall_pass_strong_eligible": false,
+    "recommended_status": "PENDING (PASS_IDENTITY risk + Lambda circularity + photon-channel unspecified)"
+  }
+}

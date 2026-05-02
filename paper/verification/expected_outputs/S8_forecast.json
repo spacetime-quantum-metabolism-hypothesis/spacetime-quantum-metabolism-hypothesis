@@ -1,0 +1,41 @@
+{
+  "script": "verify_S8_forecast.py",
+  "classification": "Structural falsifier (S_8 forecast: DES-Y3 / LSST-Y10 / Euclid)",
+  "tolerance": "exact (analytic Fisher-toy)",
+  "source": "L406 (4-person review PASS), paper section 5 / 8 / 6.1 row 1",
+  "expected": {
+    "S8_LCDM": 0.832,
+    "shift_S8_fractional": 0.0114,
+    "shift_S8_pct": 1.14,
+    "sigma_facility": {
+      "DES_Y3":   0.018,
+      "LSST_Y10": 0.004,
+      "Euclid":   0.0026
+    },
+    "n_sigma": {
+      "DES_Y3":   0.63,
+      "LSST_Y10": 2.85,
+      "Euclid":   4.38
+    },
+    "verdict": {
+      "DES_Y3":   "INVISIBLE",
+      "LSST_Y10": "MARGINAL 1-3 sigma",
+      "Euclid":   "DETECT 3-5 sigma"
+    }
+  },
+  "stdout_lines": [
+    "S_8 LCDM        = 0.8320",
+    "shift S_8 SQT   = +0.0114 (+1.14% structural)",
+    "",
+    "Facility     sigma(S_8)    n-sigma  verdict",
+    "--------------------------------------------------------",
+    "DES_Y3           0.0180       0.63  INVISIBLE",
+    "LSST_Y10         0.0040       2.85  MARGINAL 1-3 sigma",
+    "Euclid           0.0026       4.38  DETECT 3-5 sigma",
+    "",
+    "Detection consistent with LCDM at Euclid (>3 sigma) = SQT FALSIFIED.",
+    "Source: L406 (4-person review PASS), paper §5 / §8 / §6.1 row 1."
+  ],
+  "honesty_note": "Toy Gaussian / linear-bias forecast (xi_+ ~ S_8^2). Full hi_class + Euclid mock chain is Phase-7 work. Forecast assumes structural mu_eff=1+2 beta^2 >= 1 prediction (L406 grid: structurally unreachable below 0).",
+  "runtime_seconds_typical": 0.05
+}

@@ -1,0 +1,396 @@
+{
+  "sparc": {
+    "channel": "SPARC",
+    "anchor_bin": "z<=0.005",
+    "anchor_z_median": 0.002311599179723194,
+    "bins": [
+      {
+        "label": "z<=0.005",
+        "N": 127,
+        "z_median": 0.002311599179723194,
+        "signal_frac": 0.0,
+        "noise_frac": 0.02656178031978607,
+        "noise_diff": 0.03756402996901623,
+        "snr": 0.0
+      },
+      {
+        "label": "0.005-0.010",
+        "N": 12,
+        "z_median": 0.007028195485825064,
+        "signal_frac": 0.002244484399114066,
+        "noise_frac": 0.08641087801268858,
+        "noise_diff": 0.09040115050529125,
+        "snr": 0.024828051264487998
+      },
+      {
+        "label": "0.010-0.020",
+        "N": 27,
+        "z_median": 0.014196487891633351,
+        "signal_frac": 0.005686372372168957,
+        "noise_frac": 0.05760725200845905,
+        "noise_diff": 0.06343598078159338,
+        "snr": 0.08963954371174346
+      },
+      {
+        "label": "0.020-0.030",
+        "N": 9,
+        "z_median": 0.022602303090626785,
+        "signal_frac": 0.009769620490615472,
+        "noise_frac": 0.09977868736307532,
+        "noise_diff": 0.10325364219074745,
+        "snr": 0.09461768401900428
+      }
+    ],
+    "snr_max": 0.09461768401900428,
+    "viable": false,
+    "verdict": "SNR<1 -- z baseline too short for SPARC alone"
+  },
+  "euclid": {
+    "channel": "Euclid",
+    "z_bins": [
+      0.5,
+      0.7,
+      0.9,
+      1.1,
+      1.3,
+      1.5,
+      1.8
+    ],
+    "noise_per_bin_frac": 0.01,
+    "pairs": [
+      {
+        "z_lo": 0.5,
+        "z_hi": 0.7,
+        "signal_frac": 0.17202028773033518,
+        "noise_frac": 0.014142135623730952,
+        "snr": 12.163671195578104
+      },
+      {
+        "z_lo": 0.5,
+        "z_hi": 0.9,
+        "signal_frac": 0.36471940244322165,
+        "noise_frac": 0.014142135623730952,
+        "snr": 25.789556269790747
+      },
+      {
+        "z_lo": 0.5,
+        "z_hi": 1.1,
+        "signal_frac": 0.5757834278773559,
+        "noise_frac": 0.014142135623730952,
+        "snr": 40.714036634691375
+      },
+      {
+        "z_lo": 0.5,
+        "z_hi": 1.3,
+        "signal_frac": 0.8032990490766658,
+        "noise_frac": 0.014142135623730952,
+        "snr": 56.80182049228156
+      },
+      {
+        "z_lo": 0.5,
+        "z_hi": 1.5,
+        "signal_frac": 1.0457172943366895,
+        "noise_frac": 0.014142135623730952,
+        "snr": 73.94337900295218
+      },
+      {
+        "z_lo": 0.5,
+        "z_hi": 1.8,
+        "signal_frac": 1.4346212038268935,
+        "noise_frac": 0.014142135623730952,
+        "snr": 101.44303816600045
+      },
+      {
+        "z_lo": 0.7,
+        "z_hi": 0.9,
+        "signal_frac": 0.19269911471288648,
+        "noise_frac": 0.014142135623730952,
+        "snr": 13.625885074212642
+      },
+      {
+        "z_lo": 0.7,
+        "z_hi": 1.1,
+        "signal_frac": 0.40376314014702075,
+        "noise_frac": 0.014142135623730952,
+        "snr": 28.550365439113268
+      },
+      {
+        "z_lo": 0.7,
+        "z_hi": 1.3,
+        "signal_frac": 0.6312787613463307,
+        "noise_frac": 0.014142135623730952,
+        "snr": 44.63814929670345
+      },
+      {
+        "z_lo": 0.7,
+        "z_hi": 1.5,
+        "signal_frac": 0.8736970066063543,
+        "noise_frac": 0.014142135623730952,
+        "snr": 61.77970780737409
+      },
+      {
+        "z_lo": 0.7,
+        "z_hi": 1.8,
+        "signal_frac": 1.2626009160965583,
+        "noise_frac": 0.014142135623730952,
+        "snr": 89.27936697042234
+      },
+      {
+        "z_lo": 0.9,
+        "z_hi": 1.1,
+        "signal_frac": 0.21106402543413427,
+        "noise_frac": 0.014142135623730952,
+        "snr": 14.924480364900626
+      },
+      {
+        "z_lo": 0.9,
+        "z_hi": 1.3,
+        "signal_frac": 0.4385796466334442,
+        "noise_frac": 0.014142135623730952,
+        "snr": 31.01226422249081
+      },
+      {
+        "z_lo": 0.9,
+        "z_hi": 1.5,
+        "signal_frac": 0.6809978918934678,
+        "noise_frac": 0.014142135623730952,
+        "snr": 48.15382273316144
+      },
+      {
+        "z_lo": 0.9,
+        "z_hi": 1.8,
+        "signal_frac": 1.0699018013836719,
+        "noise_frac": 0.014142135623730952,
+        "snr": 75.6534818962097
+      },
+      {
+        "z_lo": 1.1,
+        "z_hi": 1.3,
+        "signal_frac": 0.2275156211993099,
+        "noise_frac": 0.014142135623730952,
+        "snr": 16.087783857590185
+      },
+      {
+        "z_lo": 1.1,
+        "z_hi": 1.5,
+        "signal_frac": 0.46993386645933355,
+        "noise_frac": 0.014142135623730952,
+        "snr": 33.229342368260816
+      },
+      {
+        "z_lo": 1.1,
+        "z_hi": 1.8,
+        "signal_frac": 0.8588377759495376,
+        "noise_frac": 0.014142135623730952,
+        "snr": 60.72900153130907
+      },
+      {
+        "z_lo": 1.3,
+        "z_hi": 1.5,
+        "signal_frac": 0.24241824526002365,
+        "noise_frac": 0.014142135623730952,
+        "snr": 17.141558510670635
+      },
+      {
+        "z_lo": 1.3,
+        "z_hi": 1.8,
+        "signal_frac": 0.6313221547502277,
+        "noise_frac": 0.014142135623730952,
+        "snr": 44.641217673718884
+      },
+      {
+        "z_lo": 1.5,
+        "z_hi": 1.8,
+        "signal_frac": 0.38890390949020404,
+        "noise_frac": 0.014142135623730952,
+        "snr": 27.499659163048253
+      }
+    ],
+    "snr_combined_adjacent": 146.47678652468474,
+    "snr_max_pair": 101.44303816600045,
+    "viable": true,
+    "verdict": "combined SNR 146.5sigma -- detection"
+  },
+  "lsst": {
+    "channel": "LSST",
+    "z_bins": [
+      0.3,
+      0.6,
+      0.9,
+      1.2,
+      1.6,
+      2.0,
+      2.5
+    ],
+    "noise_per_bin_frac": 0.025,
+    "pairs": [
+      {
+        "z_lo": 0.3,
+        "z_hi": 0.6,
+        "signal_frac": 0.23195245008584497,
+        "noise_frac": 0.03535533905932738,
+        "snr": 6.560606014741405
+      },
+      {
+        "z_lo": 0.3,
+        "z_hi": 0.9,
+        "signal_frac": 0.5134063169171597,
+        "noise_frac": 0.03535533905932738,
+        "snr": 14.521323527845329
+      },
+      {
+        "z_lo": 0.3,
+        "z_hi": 1.2,
+        "signal_frac": 0.8362763363764936,
+        "noise_frac": 0.03535533905932738,
+        "snr": 23.65346673590643
+      },
+      {
+        "z_lo": 0.3,
+        "z_hi": 1.6,
+        "signal_frac": 1.320801591915477,
+        "noise_frac": 0.03535533905932738,
+        "snr": 37.357910489816824
+      },
+      {
+        "z_lo": 0.3,
+        "z_hi": 2.0,
+        "signal_frac": 1.8580214105010269,
+        "noise_frac": 0.03535533905932738,
+        "snr": 52.55278155820279
+      },
+      {
+        "z_lo": 0.3,
+        "z_hi": 2.5,
+        "signal_frac": 2.5935647298154088,
+        "noise_frac": 0.03535533905932738,
+        "snr": 73.35708831594924
+      },
+      {
+        "z_lo": 0.6,
+        "z_hi": 0.9,
+        "signal_frac": 0.2814538668313147,
+        "noise_frac": 0.03535533905932738,
+        "snr": 7.960717513103923
+      },
+      {
+        "z_lo": 0.6,
+        "z_hi": 1.2,
+        "signal_frac": 0.6043238862906486,
+        "noise_frac": 0.03535533905932738,
+        "snr": 17.092860721165025
+      },
+      {
+        "z_lo": 0.6,
+        "z_hi": 1.6,
+        "signal_frac": 1.088849141829632,
+        "noise_frac": 0.03535533905932738,
+        "snr": 30.79730447507542
+      },
+      {
+        "z_lo": 0.6,
+        "z_hi": 2.0,
+        "signal_frac": 1.626068960415182,
+        "noise_frac": 0.03535533905932738,
+        "snr": 45.992175543461386
+      },
+      {
+        "z_lo": 0.6,
+        "z_hi": 2.5,
+        "signal_frac": 2.361612279729564,
+        "noise_frac": 0.03535533905932738,
+        "snr": 66.79648230120785
+      },
+      {
+        "z_lo": 0.9,
+        "z_hi": 1.2,
+        "signal_frac": 0.3228700194593339,
+        "noise_frac": 0.03535533905932738,
+        "snr": 9.132143208061102
+      },
+      {
+        "z_lo": 0.9,
+        "z_hi": 1.6,
+        "signal_frac": 0.8073952749983173,
+        "noise_frac": 0.03535533905932738,
+        "snr": 22.8365869619715
+      },
+      {
+        "z_lo": 0.9,
+        "z_hi": 2.0,
+        "signal_frac": 1.3446150935838672,
+        "noise_frac": 0.03535533905932738,
+        "snr": 38.03145803035746
+      },
+      {
+        "z_lo": 0.9,
+        "z_hi": 2.5,
+        "signal_frac": 2.080158412898249,
+        "noise_frac": 0.03535533905932738,
+        "snr": 58.83576478810391
+      },
+      {
+        "z_lo": 1.2,
+        "z_hi": 1.6,
+        "signal_frac": 0.4845252555389834,
+        "noise_frac": 0.03535533905932738,
+        "snr": 13.704443753910397
+      },
+      {
+        "z_lo": 1.2,
+        "z_hi": 2.0,
+        "signal_frac": 1.0217450741245333,
+        "noise_frac": 0.03535533905932738,
+        "snr": 28.89931482229636
+      },
+      {
+        "z_lo": 1.2,
+        "z_hi": 2.5,
+        "signal_frac": 1.7572883934389152,
+        "noise_frac": 0.03535533905932738,
+        "snr": 49.703621580042814
+      },
+      {
+        "z_lo": 1.6,
+        "z_hi": 2.0,
+        "signal_frac": 0.5372198185855499,
+        "noise_frac": 0.03535533905932738,
+        "snr": 15.194871068385964
+      },
+      {
+        "z_lo": 1.6,
+        "z_hi": 2.5,
+        "signal_frac": 1.2727631378999318,
+        "noise_frac": 0.03535533905932738,
+        "snr": 35.99917782613242
+      },
+      {
+        "z_lo": 2.0,
+        "z_hi": 2.5,
+        "signal_frac": 0.7355433193143819,
+        "noise_frac": 0.03535533905932738,
+        "snr": 20.804306757746456
+      }
+    ],
+    "snr_combined_adjacent": 101.74511098215466,
+    "snr_max_pair": 73.35708831594924,
+    "viable": true,
+    "verdict": "combined SNR 101.7sigma -- detection"
+  },
+  "priori_recovery": {
+    "C1_axiomatic_derivation_done": false,
+    "C1_status": "8-person Rule-A team must derive Gamma_0(t) functional form; L532 does not assert it. Per CLAUDE.md topmost-1.",
+    "C2_dof_count_consistent": true,
+    "C2_status": "+1 DOF (amplitude of time-evolution); AICc threshold dchi2>=2.",
+    "C3_falsifiable_horizon_years": 5,
+    "C3_status": "Euclid 2030 + LSST 2028 cover P28 directly.",
+    "verdict": "PARTIAL priori recovery only. SPARC alone is insufficient (z baseline too short); cosmological channels (Euclid, LSST) provide the real test."
+  },
+  "aicc_threshold_dchi2": 2.0,
+  "notes": [
+    "L532 is a CONSUMER of (i) the existing C1 relation a_0 <-> c*H/(2*pi) and (ii) the L527 axiom 3' statement Gamma_0 -> Gamma_0(t).",
+    "No Gamma_0(t) functional form is asserted here. Per CLAUDE.md topmost-1 (no theory map) the 8-person Rule-A team must derive that independently.",
+    "Survey noise floors are conservative published forecasts (Euclid IST 2020; LSST DESC SRD 2018; SPARC Lelli+2017).",
+    "SPARC alone CANNOT confirm a_0(z) -- z baseline too short. The real test is Euclid + LSST cosmological a_0(z)."
+  ]
+}

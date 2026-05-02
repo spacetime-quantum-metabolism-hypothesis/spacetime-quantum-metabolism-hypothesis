@@ -1,0 +1,264 @@
+{
+  "hidden_dof_breakdown": {
+    "functional_form": 1,
+    "anchor_picks": 3,
+    "Upsilon_star": 1,
+    "B1_bilinear": 1,
+    "three_regime": 2,
+    "axiom_scales": 1
+  },
+  "k_hidden_conservative": 9,
+  "k_hidden_expanded": 13,
+  "candidates": [
+    {
+      "claim_id": "rar_a0_l482",
+      "label": "L482 SPARC RAR (a0 = c H0 / 2pi)",
+      "advertised_status": "PASS_STRONG (candidate, 5/5 K)",
+      "n_data": 3389,
+      "k_naive": 0,
+      "k_hidden_applicable": 2,
+      "hidden_dof_subset": {
+        "functional_form": 1,
+        "Upsilon_star": 1,
+        "B1_bilinear": 0,
+        "anchor_picks": 0,
+        "three_regime": 0,
+        "axiom_scales": 0
+      },
+      "chi2_sqt": 4387.168577979597,
+      "chi2_baseline": 4384.4642839662665,
+      "k_baseline": 1,
+      "aicc": {
+        "aicc_sqt_naive": 4387.168577979597,
+        "aicc_baseline_naive": 4386.46546495239,
+        "delta_aicc_naive": 0.7031130272071096,
+        "k_sqt_honest_conservative": 2,
+        "aicc_sqt_honest_conservative": 4391.172121984322,
+        "delta_aicc_honest_conservative": 4.706657031932082,
+        "k_sqt_honest_expanded": 2,
+        "aicc_sqt_honest_expanded": 4391.172121984322,
+        "delta_aicc_honest_expanded": 4.706657031932082,
+        "k_sqt_full_kh9": 9,
+        "aicc_sqt_full_kh9": 4405.221848177881,
+        "delta_aicc_full_kh9": 18.756383225490936
+      },
+      "verdict_after_penalty": "DEMOTED -> MODERATE",
+      "notes": "L482 advertised dAICc(SQT-free) = +0.70; honest penalty inflates this."
+    },
+    {
+      "claim_id": "newton_recovery",
+      "label": "Newton 1/r^2 recovery (derived 1)",
+      "advertised_status": "PASS_STRONG (substantive)",
+      "n_data": 1,
+      "k_naive": 0,
+      "k_hidden_applicable": 2,
+      "hidden_dof_subset": {
+        "B1_bilinear": 1,
+        "axiom_scales": 1
+      },
+      "chi2_sqt": 0.0,
+      "chi2_baseline": 0.0,
+      "k_baseline": 0,
+      "aicc": {
+        "aicc_sqt_naive": 0.0,
+        "aicc_baseline_naive": 0.0,
+        "delta_aicc_naive": 0.0,
+        "k_sqt_honest_conservative": 2,
+        "aicc_sqt_honest_conservative": 4.0,
+        "delta_aicc_honest_conservative": 4.0,
+        "k_sqt_honest_expanded": 6,
+        "aicc_sqt_honest_expanded": 12.0,
+        "delta_aicc_honest_expanded": 12.0,
+        "k_sqt_full_kh9": 9,
+        "aicc_sqt_full_kh9": 18.0,
+        "delta_aicc_full_kh9": 18.0
+      },
+      "verdict_after_penalty": "DEMOTED -> MODERATE",
+      "notes": "N=1 consistency-check; AICc_honest = 2*k_hidden = capacity penalty only."
+    },
+    {
+      "claim_id": "bbn_dN_eff",
+      "label": "BBN Delta N_eff < 0.17",
+      "advertised_status": "PASS_STRONG (substantive)",
+      "n_data": 1,
+      "k_naive": 0,
+      "k_hidden_applicable": 1,
+      "hidden_dof_subset": {
+        "axiom_scales": 1
+      },
+      "chi2_sqt": 0.0,
+      "chi2_baseline": 0.0,
+      "k_baseline": 0,
+      "aicc": {
+        "aicc_sqt_naive": 0.0,
+        "aicc_baseline_naive": 0.0,
+        "delta_aicc_naive": 0.0,
+        "k_sqt_honest_conservative": 1,
+        "aicc_sqt_honest_conservative": 2.0,
+        "delta_aicc_honest_conservative": 2.0,
+        "k_sqt_honest_expanded": 5,
+        "aicc_sqt_honest_expanded": 10.0,
+        "delta_aicc_honest_expanded": 10.0,
+        "k_sqt_full_kh9": 9,
+        "aicc_sqt_full_kh9": 18.0,
+        "delta_aicc_full_kh9": 18.0
+      },
+      "verdict_after_penalty": "RETAINED (k_h ok)",
+      "notes": "Single-bound consistency check. eta_Z2 scale is not derived."
+    },
+    {
+      "claim_id": "cassini_ppn",
+      "label": "Cassini |gamma-1| < 2.3e-5",
+      "advertised_status": "PASS_STRONG (substantive)",
+      "n_data": 1,
+      "k_naive": 0,
+      "k_hidden_applicable": 1,
+      "hidden_dof_subset": {
+        "axiom_scales": 1
+      },
+      "chi2_sqt": 0.0,
+      "chi2_baseline": 0.0,
+      "k_baseline": 0,
+      "aicc": {
+        "aicc_sqt_naive": 0.0,
+        "aicc_baseline_naive": 0.0,
+        "delta_aicc_naive": 0.0,
+        "k_sqt_honest_conservative": 1,
+        "aicc_sqt_honest_conservative": 2.0,
+        "delta_aicc_honest_conservative": 2.0,
+        "k_sqt_honest_expanded": 5,
+        "aicc_sqt_honest_expanded": 10.0,
+        "delta_aicc_honest_expanded": 10.0,
+        "k_sqt_full_kh9": 9,
+        "aicc_sqt_full_kh9": 18.0,
+        "delta_aicc_full_kh9": 18.0
+      },
+      "verdict_after_penalty": "RETAINED (k_h ok)",
+      "notes": "beta_eff = Lambda_UV/M_Pl chosen ~Planck order; not derived."
+    },
+    {
+      "claim_id": "ep_eta",
+      "label": "EP |eta| < 1e-15 (MICROSCOPE)",
+      "advertised_status": "PASS_STRONG (substantive)",
+      "n_data": 1,
+      "k_naive": 0,
+      "k_hidden_applicable": 1,
+      "hidden_dof_subset": {
+        "axiom_scales": 1
+      },
+      "chi2_sqt": 0.0,
+      "chi2_baseline": 0.0,
+      "k_baseline": 0,
+      "aicc": {
+        "aicc_sqt_naive": 0.0,
+        "aicc_baseline_naive": 0.0,
+        "delta_aicc_naive": 0.0,
+        "k_sqt_honest_conservative": 1,
+        "aicc_sqt_honest_conservative": 2.0,
+        "delta_aicc_honest_conservative": 2.0,
+        "k_sqt_honest_expanded": 5,
+        "aicc_sqt_honest_expanded": 10.0,
+        "delta_aicc_honest_expanded": 10.0,
+        "k_sqt_full_kh9": 9,
+        "aicc_sqt_full_kh9": 18.0,
+        "delta_aicc_full_kh9": 18.0
+      },
+      "verdict_after_penalty": "RETAINED (k_h ok)",
+      "notes": "C10k embedding choice (vs universal IDE which fails Cassini)."
+    },
+    {
+      "claim_id": "bullet_cluster",
+      "label": "Bullet cluster lensing-vs-gas offset (qualitative)",
+      "advertised_status": "PASS_STRONG (qualitative)",
+      "n_data": 1,
+      "k_naive": 0,
+      "k_hidden_applicable": 2,
+      "hidden_dof_subset": {
+        "axiom_scales": 1,
+        "B1_bilinear": 1
+      },
+      "chi2_sqt": 0.0,
+      "chi2_baseline": 0.0,
+      "k_baseline": 0,
+      "aicc": {
+        "aicc_sqt_naive": 0.0,
+        "aicc_baseline_naive": 0.0,
+        "delta_aicc_naive": 0.0,
+        "k_sqt_honest_conservative": 2,
+        "aicc_sqt_honest_conservative": 4.0,
+        "delta_aicc_honest_conservative": 4.0,
+        "k_sqt_honest_expanded": 6,
+        "aicc_sqt_honest_expanded": 12.0,
+        "delta_aicc_honest_expanded": 12.0,
+        "k_sqt_full_kh9": 9,
+        "aicc_sqt_full_kh9": 18.0,
+        "delta_aicc_full_kh9": 18.0
+      },
+      "verdict_after_penalty": "DEMOTED -> MODERATE",
+      "notes": "L417 caveat: 150 kpc offset is gas-input echo, not independent prediction."
+    },
+    {
+      "claim_id": "three_regime_sigma0",
+      "label": "Three-regime sigma_0(env) parameterisation",
+      "advertised_status": "POSTDICTION (PASS_MODERATE-tier)",
+      "n_data": 11,
+      "k_naive": 0,
+      "k_hidden_applicable": 6,
+      "hidden_dof_subset": {
+        "anchor_picks": 3,
+        "three_regime": 2,
+        "B1_bilinear": 1
+      },
+      "chi2_sqt": 0.0,
+      "chi2_baseline": 288.0,
+      "k_baseline": 0,
+      "aicc": {
+        "aicc_sqt_naive": 0.0,
+        "aicc_baseline_naive": 288.0,
+        "delta_aicc_naive": -288.0,
+        "k_sqt_honest_conservative": 6,
+        "aicc_sqt_honest_conservative": 33.0,
+        "delta_aicc_honest_conservative": -255.0,
+        "k_sqt_honest_expanded": 6,
+        "aicc_sqt_honest_expanded": 33.0,
+        "delta_aicc_honest_expanded": -255.0,
+        "k_sqt_full_kh9": 9,
+        "aicc_sqt_full_kh9": 198.0,
+        "delta_aicc_full_kh9": -90.0
+      },
+      "verdict_after_penalty": "RETAINED (k_h ok)",
+      "notes": "3-regime structure dominates the apparent fit improvement. Delta chi^2 = 288 (17 sigma) is *postdictive*; mock-injection FDR 100%."
+    },
+    {
+      "claim_id": "cmb_theta_star",
+      "label": "CMB theta_* shift (partial, ~0.7%)",
+      "advertised_status": "PARTIAL",
+      "n_data": 1,
+      "k_naive": 0,
+      "k_hidden_applicable": 2,
+      "hidden_dof_subset": {
+        "B1_bilinear": 1,
+        "anchor_picks": 1
+      },
+      "chi2_sqt": 529.0,
+      "chi2_baseline": 0.0,
+      "k_baseline": 0,
+      "aicc": {
+        "aicc_sqt_naive": 529.0,
+        "aicc_baseline_naive": 0.0,
+        "delta_aicc_naive": 529.0,
+        "k_sqt_honest_conservative": 2,
+        "aicc_sqt_honest_conservative": 533.0,
+        "delta_aicc_honest_conservative": 533.0,
+        "k_sqt_honest_expanded": 2,
+        "aicc_sqt_honest_expanded": 533.0,
+        "delta_aicc_honest_expanded": 533.0,
+        "k_sqt_full_kh9": 9,
+        "aicc_sqt_full_kh9": 547.0,
+        "delta_aicc_full_kh9": 547.0
+      },
+      "verdict_after_penalty": "FAILS (LCDM wins)",
+      "notes": "Same channel as Phase-2 BAO; not an independent PASS."
+    }
+  ]
+}

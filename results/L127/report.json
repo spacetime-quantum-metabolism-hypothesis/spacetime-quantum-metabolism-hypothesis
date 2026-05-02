@@ -1,0 +1,5 @@
+{
+  "attack": "MSR not real Lagrangian",
+  "defense": "SK is unitary QFT, MSR is classical limit",
+  "verdict": "DEFENSE STRONG: SK formalism IS unitary QFT (L118 explicit). MSR is classical limit of SK with auxiliary fields. Standard tools: Schwinger 1961, Keldysh 1965, MSR 1973. FDT preserves physical consistency. Reviewer's complaint applies to all dissipative QFT \u2014 not specific to SQT."
+}

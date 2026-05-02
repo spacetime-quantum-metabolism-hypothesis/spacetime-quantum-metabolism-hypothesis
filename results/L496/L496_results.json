@@ -1,0 +1,409 @@
+{
+  "loop": "L496",
+  "n_anchors": 8,
+  "anchors": {
+    "A1_BBN": {
+      "channel": "BBN DeltaN_eff",
+      "bound": 0.17,
+      "sqt_prediction": 1e-46,
+      "status": "PASS_STRONG",
+      "shared_params": [
+        "eta_Z2",
+        "beta_eff"
+      ],
+      "claims_id": "bbn-deltaNeff",
+      "note": "eta_Z2 ~ 10 MeV >> T_BBN; beta_eff^2 double protection.",
+      "margin_log10": 45.230448921378276,
+      "status_score_strict": 1,
+      "status_score_fractional": 1.0
+    },
+    "A2_Cassini": {
+      "channel": "Cassini PPN |gamma-1|",
+      "bound": 2.3e-05,
+      "sqt_prediction": 1.1e-40,
+      "status": "PASS_STRONG",
+      "shared_params": [
+        "beta_eff",
+        "Lambda_UV"
+      ],
+      "claims_id": "cassini-ppn",
+      "note": "beta_eff = Lambda_UV / M_Pl ~ 7.4e-21.",
+      "margin_log10": 35.32033515085937,
+      "status_score_strict": 1,
+      "status_score_fractional": 1.0
+    },
+    "A3_EP": {
+      "channel": "EP Eotvos eta",
+      "bound": 1e-15,
+      "sqt_prediction": 1e-30,
+      "status": "PASS",
+      "shared_params": [
+        "beta_eff",
+        "conformal_lagrangian"
+      ],
+      "claims_id": "ep-eta",
+      "note": "Conformal-only Lagrangian -> universal coupling; eta < bound by inheritance.",
+      "margin_log10": 15.0,
+      "status_score_strict": 1,
+      "status_score_fractional": 1.0
+    },
+    "A4_GW170817": {
+      "channel": "GW170817 |Dc/c|",
+      "bound": 1e-15,
+      "sqt_prediction": 1e-25,
+      "status": "PASS",
+      "shared_params": [
+        "conformal_lagrangian",
+        "B_disformal"
+      ],
+      "claims_id": "gw170817-cT",
+      "note": "Conformal-only Lagrangian inheritance; B_disformal=0 limit -> Dc=0.",
+      "margin_log10": 10.0,
+      "status_score_strict": 1,
+      "status_score_fractional": 1.0
+    },
+    "A5_Bullet": {
+      "channel": "Bullet cluster lens-galaxy offset",
+      "bound": null,
+      "sqt_prediction": null,
+      "status": "PARTIAL",
+      "shared_params": [
+        "sigma0_cluster",
+        "NFW_cancel"
+      ],
+      "claims_id": "bullet-cluster",
+      "note": "Qualitative PASS (lens follows galaxies, not gas); MOND-like fail avoided.",
+      "margin_log10": null,
+      "status_score_strict": 0,
+      "status_score_fractional": 0.5
+    },
+    "A6_cosmic": {
+      "channel": "sigma_0 cosmic regime (DESI BAO + CMB theta_*)",
+      "bound": null,
+      "sqt_prediction": null,
+      "status": "PARTIAL",
+      "shared_params": [
+        "sigma0",
+        "H0",
+        "Om"
+      ],
+      "claims_id": "sigma0-three-regime",
+      "note": "Cosmic anchor of three-regime; aggregate PASS but POSTDICTION caveat.",
+      "margin_log10": null,
+      "status_score_strict": 0,
+      "status_score_fractional": 0.5
+    },
+    "A7_cluster": {
+      "channel": "sigma_0 cluster regime (Mpc scale)",
+      "bound": null,
+      "sqt_prediction": null,
+      "status": "PARTIAL",
+      "shared_params": [
+        "sigma0",
+        "NFW_cancel"
+      ],
+      "claims_id": "sigma0-three-regime",
+      "note": "Cluster anchor of three-regime; placeholder eps ~5%.",
+      "margin_log10": null,
+      "status_score_strict": 0,
+      "status_score_fractional": 0.5
+    },
+    "A8_galactic": {
+      "channel": "sigma_0 galactic regime / SPARC RAR a0 = c H0/(2pi)",
+      "bound": 1.2e-10,
+      "sqt_prediction": 1.0422e-10,
+      "status": "PASS_STRONG",
+      "shared_params": [
+        "sigma0",
+        "H0"
+      ],
+      "claims_id": "L482-RAR",
+      "note": "L482 RAR: 5/5 K-criteria, n=3389 (175 galaxies); a0 ratio 1.025.",
+      "margin_log10": 0.06123017721688253,
+      "status_score_strict": 1,
+      "status_score_fractional": 1.0
+    }
+  },
+  "full": {
+    "n": 8,
+    "n_pass_strict": 5,
+    "pass_rate_strict": 0.625,
+    "fractional_score": 0.8125,
+    "mean_margin": 21.122402849890907,
+    "n_with_margin": 5,
+    "margins": [
+      45.230448921378276,
+      35.32033515085937,
+      15.0,
+      10.0,
+      0.06123017721688253
+    ]
+  },
+  "loo": {
+    "A1_BBN": {
+      "n": 7,
+      "n_pass_strict": 4,
+      "pass_rate_strict": 0.5714285714285714,
+      "fractional_score": 0.7857142857142857,
+      "mean_margin": 15.095391332019064,
+      "n_with_margin": 4,
+      "margins": [
+        35.32033515085937,
+        15.0,
+        10.0,
+        0.06123017721688253
+      ],
+      "delta_pass_rate_strict": 0.0535714285714286,
+      "delta_fractional": 0.0267857142857143,
+      "delta_mean_margin": 6.027011517871843
+    },
+    "A2_Cassini": {
+      "n": 7,
+      "n_pass_strict": 4,
+      "pass_rate_strict": 0.5714285714285714,
+      "fractional_score": 0.7857142857142857,
+      "mean_margin": 17.57291977464879,
+      "n_with_margin": 4,
+      "margins": [
+        45.230448921378276,
+        15.0,
+        10.0,
+        0.06123017721688253
+      ],
+      "delta_pass_rate_strict": 0.0535714285714286,
+      "delta_fractional": 0.0267857142857143,
+      "delta_mean_margin": 3.5494830752421187
+    },
+    "A3_EP": {
+      "n": 7,
+      "n_pass_strict": 4,
+      "pass_rate_strict": 0.5714285714285714,
+      "fractional_score": 0.7857142857142857,
+      "mean_margin": 22.653003562363633,
+      "n_with_margin": 4,
+      "margins": [
+        45.230448921378276,
+        35.32033515085937,
+        10.0,
+        0.06123017721688253
+      ],
+      "delta_pass_rate_strict": 0.0535714285714286,
+      "delta_fractional": 0.0267857142857143,
+      "delta_mean_margin": -1.5306007124727259
+    },
+    "A4_GW170817": {
+      "n": 7,
+      "n_pass_strict": 4,
+      "pass_rate_strict": 0.5714285714285714,
+      "fractional_score": 0.7857142857142857,
+      "mean_margin": 23.903003562363633,
+      "n_with_margin": 4,
+      "margins": [
+        45.230448921378276,
+        35.32033515085937,
+        15.0,
+        0.06123017721688253
+      ],
+      "delta_pass_rate_strict": 0.0535714285714286,
+      "delta_fractional": 0.0267857142857143,
+      "delta_mean_margin": -2.780600712472726
+    },
+    "A5_Bullet": {
+      "n": 7,
+      "n_pass_strict": 5,
+      "pass_rate_strict": 0.7142857142857143,
+      "fractional_score": 0.8571428571428571,
+      "mean_margin": 21.122402849890907,
+      "n_with_margin": 5,
+      "margins": [
+        45.230448921378276,
+        35.32033515085937,
+        15.0,
+        10.0,
+        0.06123017721688253
+      ],
+      "delta_pass_rate_strict": -0.0892857142857143,
+      "delta_fractional": -0.044642857142857095,
+      "delta_mean_margin": 0.0
+    },
+    "A6_cosmic": {
+      "n": 7,
+      "n_pass_strict": 5,
+      "pass_rate_strict": 0.7142857142857143,
+      "fractional_score": 0.8571428571428571,
+      "mean_margin": 21.122402849890907,
+      "n_with_margin": 5,
+      "margins": [
+        45.230448921378276,
+        35.32033515085937,
+        15.0,
+        10.0,
+        0.06123017721688253
+      ],
+      "delta_pass_rate_strict": -0.0892857142857143,
+      "delta_fractional": -0.044642857142857095,
+      "delta_mean_margin": 0.0
+    },
+    "A7_cluster": {
+      "n": 7,
+      "n_pass_strict": 5,
+      "pass_rate_strict": 0.7142857142857143,
+      "fractional_score": 0.8571428571428571,
+      "mean_margin": 21.122402849890907,
+      "n_with_margin": 5,
+      "margins": [
+        45.230448921378276,
+        35.32033515085937,
+        15.0,
+        10.0,
+        0.06123017721688253
+      ],
+      "delta_pass_rate_strict": -0.0892857142857143,
+      "delta_fractional": -0.044642857142857095,
+      "delta_mean_margin": 0.0
+    },
+    "A8_galactic": {
+      "n": 7,
+      "n_pass_strict": 4,
+      "pass_rate_strict": 0.5714285714285714,
+      "fractional_score": 0.7857142857142857,
+      "mean_margin": 26.387696018059412,
+      "n_with_margin": 4,
+      "margins": [
+        45.230448921378276,
+        35.32033515085937,
+        15.0,
+        10.0
+      ],
+      "delta_pass_rate_strict": 0.0535714285714286,
+      "delta_fractional": 0.0267857142857143,
+      "delta_mean_margin": -5.265293168168505
+    }
+  },
+  "param_audit": {
+    "param_index": {
+      "eta_Z2": [
+        "A1_BBN"
+      ],
+      "beta_eff": [
+        "A1_BBN",
+        "A2_Cassini",
+        "A3_EP"
+      ],
+      "Lambda_UV": [
+        "A2_Cassini"
+      ],
+      "conformal_lagrangian": [
+        "A3_EP",
+        "A4_GW170817"
+      ],
+      "B_disformal": [
+        "A4_GW170817"
+      ],
+      "sigma0_cluster": [
+        "A5_Bullet"
+      ],
+      "NFW_cancel": [
+        "A5_Bullet",
+        "A7_cluster"
+      ],
+      "sigma0": [
+        "A6_cosmic",
+        "A7_cluster",
+        "A8_galactic"
+      ],
+      "H0": [
+        "A6_cosmic",
+        "A8_galactic"
+      ],
+      "Om": [
+        "A6_cosmic"
+      ]
+    },
+    "loo_param_loss": {
+      "A1_BBN": [
+        {
+          "param": "eta_Z2",
+          "becomes": "UNCONSTRAINED"
+        }
+      ],
+      "A2_Cassini": [
+        {
+          "param": "Lambda_UV",
+          "becomes": "UNCONSTRAINED"
+        }
+      ],
+      "A3_EP": [
+        {
+          "param": "conformal_lagrangian",
+          "becomes": "SINGLE_ANCHOR",
+          "remaining": "A4_GW170817"
+        }
+      ],
+      "A4_GW170817": [
+        {
+          "param": "conformal_lagrangian",
+          "becomes": "SINGLE_ANCHOR",
+          "remaining": "A3_EP"
+        },
+        {
+          "param": "B_disformal",
+          "becomes": "UNCONSTRAINED"
+        }
+      ],
+      "A5_Bullet": [
+        {
+          "param": "sigma0_cluster",
+          "becomes": "UNCONSTRAINED"
+        },
+        {
+          "param": "NFW_cancel",
+          "becomes": "SINGLE_ANCHOR",
+          "remaining": "A7_cluster"
+        }
+      ],
+      "A6_cosmic": [
+        {
+          "param": "H0",
+          "becomes": "SINGLE_ANCHOR",
+          "remaining": "A8_galactic"
+        },
+        {
+          "param": "Om",
+          "becomes": "UNCONSTRAINED"
+        }
+      ],
+      "A7_cluster": [
+        {
+          "param": "NFW_cancel",
+          "becomes": "SINGLE_ANCHOR",
+          "remaining": "A5_Bullet"
+        }
+      ],
+      "A8_galactic": [
+        {
+          "param": "H0",
+          "becomes": "SINGLE_ANCHOR",
+          "remaining": "A6_cosmic"
+        }
+      ]
+    },
+    "single_source_params": {
+      "eta_Z2": [
+        "A1_BBN"
+      ],
+      "Lambda_UV": [
+        "A2_Cassini"
+      ],
+      "B_disformal": [
+        "A4_GW170817"
+      ],
+      "sigma0_cluster": [
+        "A5_Bullet"
+      ],
+      "Om": [
+        "A6_cosmic"
+      ]
+    }
+  }
+}

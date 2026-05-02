@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "S8_LCDM": 0.8310277071193236,
+    "S8_SQT": 0.8405014229804839,
+    "delta_S8_pct": 1.14,
+    "sigma8_LCDM": 0.811,
+    "sigma8_SQT": 0.8202454000000001,
+    "pk_amp_ratio_SQT_over_LCDM": 1.0229299600000001,
+    "Om": 0.315,
+    "h": 0.674,
+    "ns": 0.965,
+    "Ob": 0.0493,
+    "theta_arcmin": 10.0,
+    "mu_eff": 1.0,
+    "L286_assumption": "dark-only structural mu_eff=1, S_8 +1.14% effective shift"
+  },
+  "surveys": {
+    "Euclid": {
+      "f_sky": 0.3636102718447355,
+      "n_eff_arcmin2": 30.0,
+      "sigma_e": 0.26,
+      "xi_plus_LCDM": 2.8565151550419226e-05,
+      "xi_plus_SQT": 2.922014933286428e-05,
+      "delta_xi_plus": 6.549977824450534e-07,
+      "rel_diff_pct": 2.292996000000009,
+      "sigma_xi_plus": 4.222692673034252e-07,
+      "SNR_sigma": 1.5511377056346352,
+      "detectable_1sigma": true,
+      "detectable_3sigma": false
+    },
+    "LSST_Y10": {
+      "f_sky": 0.4363323262136826,
+      "n_eff_arcmin2": 27.0,
+      "sigma_e": 0.26,
+      "xi_plus_LCDM": 2.7614967706741996e-05,
+      "xi_plus_SQT": 2.8248177811658885e-05,
+      "delta_xi_plus": 6.33210104916889e-07,
+      "rel_diff_pct": 2.2929960000000116,
+      "sigma_xi_plus": 3.7132368657849433e-07,
+      "SNR_sigma": 1.7052779766125539,
+      "detectable_1sigma": true,
+      "detectable_3sigma": false
+    }
+  },
+  "honest_one_line": "xi_+(10') SQT-LCDM 차이 = +2.29% (S_8 +1.14% 직접 결과); Euclid SNR=1.6σ, LSST_Y10 SNR=1.7σ — 양 미션 모두 1σ 검출 가능; 단, SQT 는 LCDM 대비 'worsen' 방향 (S_8 tension 악화)이므로 검출 = SQT 기각."
+}

@@ -1,0 +1,9 @@
+{
+  "eps_galactic_eV": 1.5211989403897307e-34,
+  "m_n_eV": 1.5211989403897307e-34,
+  "Lambda_UV_MeV": 18,
+  "sigma_np_cm2": 1.2030900709324152e-24,
+  "dm_limit_cm2": 1e-30,
+  "verdict_dm": "FAIL \u2014 SQT cross-section ABOVE limits, conflict with detection nulls",
+  "verdict": "SQT n field at eV mass (1.52e-34 eV), naive sigma_np ~ 1.20e-24 cm^2. vs SENSEI eV-scale limit ~1e-30 cm^2. FAIL \u2014 SQT cross-section ABOVE limits, conflict with detection nulls. However, derivation of n-nucleon coupling not yet explicit \u2014 caveat applies."
+}

@@ -1,0 +1,8 @@
+{
+  "rho_q_0": 6.855507984537294e-27,
+  "rho_Lambda_planck": 6.855507984537294e-27,
+  "match_ratio": 1.0,
+  "absorption_per_hubble": 0.10413852693425567,
+  "verdict_stability": "rho_q evolves strongly (10.4%) \u2014 phantom/quintessence-like",
+  "verdict": "T^{mu nu}_n = (rho_q+p_q) u^mu u^nu + p_q g^{mu nu}, rho_q_0 / rho_Lambda(Planck) = 1.0000. Bianchi: drho_q/dt vs 3H rho_q = 1.04e-01. rho_q evolves strongly (10.4%) \u2014 phantom/quintessence-like."
+}

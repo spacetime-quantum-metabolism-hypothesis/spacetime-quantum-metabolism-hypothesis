@@ -1,0 +1,7 @@
+{
+  "extension": "SQT+V(n,t)",
+  "extra_params": 2,
+  "total_params": 7,
+  "resolves_DESI": true,
+  "verdict": "DESI conflict EXPLICITLY RESOLVED via SQT+V(n,t) extension. Adds 2 parameters (\u03b2, \u03b3_v controlling potential evolution). Total Branch B+: 5+2 = 7 free params (similar to RVM, EDE). For paper: present as 'minimal extension required for DESI consistency'."
+}

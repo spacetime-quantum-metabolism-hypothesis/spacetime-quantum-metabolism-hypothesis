@@ -1,0 +1,84 @@
+{
+  "L_id": "L486",
+  "prediction_id": "P22",
+  "facility": "CMB-S4",
+  "channel": "CMB lensing reconstruction C_L^{phi phi}",
+  "config": {
+    "Delta_T_uKarcmin": 1.4,
+    "beam_arcmin": 1.0,
+    "f_sky": 0.4,
+    "L_min": 30,
+    "L_max": 1500,
+    "noise_template": "N_L = 4e-9 * (1 + (L/900)^4)",
+    "Cl_template": "1e-7*(L/50)^-1 * exp(-(L/2500)^2) + 5e-9"
+  },
+  "anchors": [
+    {
+      "beta0": 0.107,
+      "p": 0.0,
+      "label": "L4 dark-only, beta0=0.107 const",
+      "ratio_clpp_central": 1.001017081269998,
+      "snr": 0.35049148886782255
+    },
+    {
+      "beta0": 0.107,
+      "p": 1.0,
+      "label": "growth-late dominated",
+      "ratio_clpp_central": 1.0004559855710904,
+      "snr": 0.15713499641381837
+    },
+    {
+      "beta0": 0.107,
+      "p": -1.0,
+      "label": "growth-early dominated",
+      "ratio_clpp_central": 1.0030372702664991,
+      "snr": 1.0466591109294823
+    },
+    {
+      "beta0": 0.15,
+      "p": 0.0,
+      "label": "Cassini dark-only upper",
+      "ratio_clpp_central": 1.0019995849517715,
+      "snr": 0.6890673612202155
+    },
+    {
+      "beta0": 0.06,
+      "p": 0.0,
+      "label": "weak dark-only",
+      "ratio_clpp_central": 1.0003197204396588,
+      "snr": 0.11017732429355212
+    },
+    {
+      "beta0": 0.03,
+      "p": 0.0,
+      "label": "very weak dark-only",
+      "ratio_clpp_central": 1.000079922500424,
+      "snr": 0.027541708803363874
+    }
+  ],
+  "central_prediction": {
+    "anchor_source": "L406 frozen delta_sigma8 = +1.14%",
+    "delta_sigma8": 0.0114,
+    "ratio_clpp": 1.0229299600000001,
+    "fractional_shift_pct": 2.292996000000014,
+    "snr_S4": 7.901783325628046,
+    "verdict": "DETECT >5\u03c3",
+    "self_consistency_check": {
+      "grid_anchor_beta0_0p107_shift_pct": 0.10170812699981102,
+      "grid_snr": 0.35049148886782255,
+      "note": "Self-consistent ODE with f_dark dark-only weighting yields a smaller fractional shift than the L406 frozen +1.14%, because the f_dark factor suppresses growth coupling at high z where the lensing kernel peaks. The pre-registered prediction uses the L406 frozen value (background-fit-derived), and the grid anchor is a *lower bound* under the narrowest dark-only embedding."
+    }
+  },
+  "pre_registration": {
+    "timestamp_utc": "2026-05-01T13:49:57Z",
+    "frozen_target": 1.0229299600000001,
+    "decision_rule": "Two-sided pre-reg: measured C_L^{phi phi}_S4 / C_L^{LCDM} - 1 in band [0.0%, +3.0%] => SQT CONSISTENT; in band [-1.0%, 0.0%] => AMBIGUOUS (Delta chi^2 < 4); below -1.0% or above +3.0% => SQT FALSIFIED at the central dark-only embedding (Phase-2 mu_eff>=1 monotone increase).",
+    "expected_release": "2031-2033 CMB-S4 first lensing maps"
+  },
+  "honest_caveats": [
+    "Ratio computation uses k-independent mu_eff (Phase-2). Scale-dependent modifications (k-essence, Galileon screening) shift L>=500 ratio.",
+    "Noise template fits Abazajian+2016 / S4 Science Book at L=100,500,1000,1500; true iterative-EB N_L may differ <30% at L>1200.",
+    "C_L^{phi phi} template is an analytic stand-in for CAMB output; SNR depends on cosmic-variance term so absolute Cl normalisation matters at +/-20%.",
+    "Background = LCDM exactly in this embedding (D5 dark-only). If V(n,t) extension shifts background w(z), an additional projection effect enters via chi(z) \u2014 not modelled here."
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "results": {
+    "cosmic": {
+      "map_values": {
+        "uniform_narrow": 8.37,
+        "uniform_wide": 8.37,
+        "log_uniform": 8.37,
+        "gauss_prior": 8.37
+      },
+      "spread": 0.0
+    },
+    "cluster": {
+      "map_values": {
+        "uniform_narrow": 7.75,
+        "uniform_wide": 7.75,
+        "log_uniform": 7.75,
+        "gauss_prior": 7.75
+      },
+      "spread": 0.0
+    },
+    "galactic": {
+      "map_values": {
+        "uniform_narrow": 9.56,
+        "uniform_wide": 9.56,
+        "log_uniform": 9.56,
+        "gauss_prior": 9.56
+      },
+      "spread": 0.0
+    }
+  },
+  "verdict": "Prior sensitivity: max spread 0.000 dex << 0.3 threshold. PRIOR-ROBUST."
+}

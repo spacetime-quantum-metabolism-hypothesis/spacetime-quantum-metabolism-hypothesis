@@ -1,0 +1,6 @@
+{
+  "predictions_identical": 9,
+  "predictions_differ": 5,
+  "decisive_test": "dSph \u03c3_0 at intermediate \u03c1",
+  "verdict": "9/14 predictions identical between Branch B and smooth \u03c3(\u03c1). 5 predictions differ in specific values but qualitatively similar. Most decisive distinguishing test: dSph \u03c3_0 at intermediate \u03c1. SQT framework value mostly INDEPENDENT of regime structure choice."
+}

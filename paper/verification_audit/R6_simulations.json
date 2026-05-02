@@ -1,0 +1,48 @@
+{
+  "framework": "paper/base.md (4 미시 축 + minimal SQT/V(n,t)-extended + BBN/CMB consistency)",
+  "source_claims": "root /base.md §14.6 (시뮬 검증 3개)",
+  "claim_25_DESI_DR2_xi_q_fit": {
+    "root_chi2_improvement": -4.83,
+    "root_xi_q": 0.04,
+    "root_r_d_Mpc": 149.8,
+    "r_d_shift_vs_Planck_pct": 1.8424094092052539,
+    "paper_minimal_w_a": 0.0,
+    "paper_extended_w_a": -0.3,
+    "root_xi_q_pos_w_a_sign": "+",
+    "consistency_w_a_minimal_extended": [
+      false,
+      false
+    ],
+    "r_d_shift_required_by_paper": false,
+    "xi_q_in_paper_framework": false,
+    "verdict": "NOT_INHERITED",
+    "reason": "ξ_q>0 가 만드는 w_a>0 (root §10.2) 는 paper/base.md minimal(w_a=0) 및 V(n,t)-확장(w_a~-0.3) 양쪽 모두와 부호 불일치. r_d=149.8 Mpc 이동(1.84%) 는 paper/base.md 의 BBN/CMB consistency 와 양립하지 않으며 framework 가 도출하지 않음. ξ_q 자체가 paper/base.md V(n,t) gate OPEN 상태로 직접 정의되지 않음."
+  },
+  "claim_26_three_way_consistency": {
+    "depends_on_25": true,
+    "paper_requires_r_d_shift": false,
+    "verdict": "NOT_INHERITED",
+    "reason": "#25 가 NOT_INHERITED 이므로 의존 claim 도 자동 NOT_INHERITED. 또한 r_d 이동이 paper/base.md 의 '재결합 시기 GR 과 동일' 과 텐션."
+  },
+  "claim_27_GFT_BEC_Hamiltonian": {
+    "math_derivation_in_root": true,
+    "paper_pillars": [
+      "Schwinger-Keldysh",
+      "Wetterich RG",
+      "Holographic foundation",
+      "Z_2 SSB"
+    ],
+    "paper_pillar5_candidates": [
+      "Causet meso"
+    ],
+    "gft_in_paper": false,
+    "verdict": "NOT_INHERITED",
+    "reason": "root §VI 의 GFT BEC → ψ†ψ(a+a†) 도출은 GFT framework 내부에서 정합. 그러나 paper/base.md 의 4 미시 축 (Schwinger-Keldysh / Wetterich / Holographic / Z_2 SSB) 에 GFT 가 부재하며, 5번째 축 후보도 Causet meso 만 명시. 따라서 수학적 정확성과 별개로 paper/base.md framework 로 상속되지 않음."
+  },
+  "summary": {
+    "PASS": 0,
+    "PARTIAL": 0,
+    "NOT_INHERITED": 3,
+    "rate_inherited": 0.0
+  }
+}

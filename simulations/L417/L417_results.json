@@ -1,0 +1,85 @@
+{
+  "sep_subcluster_kpc": 720.0,
+  "v_rel_km_s": 4700.0,
+  "tau_cross_Gyr": 0.10409293417162842,
+  "gas_ram_offset_input_kpc": 150.0,
+  "observed_offset_kpc": 150.0,
+  "observed_err_kpc": 30.0,
+  "sweep": [
+    {
+      "tau_q_over_tau_cross": 0.0,
+      "tau_q_Gyr": 0.0,
+      "eps_kpc": 0.0,
+      "x_lens_kpc": -359.5,
+      "x_gas_kpc": -209.5,
+      "offset_kpc": 150.0
+    },
+    {
+      "tau_q_over_tau_cross": 0.1,
+      "tau_q_Gyr": 0.010409293417162842,
+      "eps_kpc": 50.0,
+      "x_lens_kpc": -317.5,
+      "x_gas_kpc": -209.5,
+      "offset_kpc": 108.0
+    },
+    {
+      "tau_q_over_tau_cross": 0.3,
+      "tau_q_Gyr": 0.031227880251488524,
+      "eps_kpc": 150.0,
+      "x_lens_kpc": -223.0,
+      "x_gas_kpc": -209.5,
+      "offset_kpc": 13.5
+    },
+    {
+      "tau_q_over_tau_cross": 0.5,
+      "tau_q_Gyr": 0.05204646708581421,
+      "eps_kpc": 250.0,
+      "x_lens_kpc": -113.5,
+      "x_gas_kpc": -209.5,
+      "offset_kpc": 96.0
+    },
+    {
+      "tau_q_over_tau_cross": 1.0,
+      "tau_q_Gyr": 0.10409293417162842,
+      "eps_kpc": 360.0,
+      "x_lens_kpc": -3.5,
+      "x_gas_kpc": -209.5,
+      "offset_kpc": 206.0
+    },
+    {
+      "tau_q_over_tau_cross": 1.5,
+      "tau_q_Gyr": 0.15613940125744263,
+      "eps_kpc": 360.0,
+      "x_lens_kpc": -3.5,
+      "x_gas_kpc": -209.5,
+      "offset_kpc": 206.0
+    },
+    {
+      "tau_q_over_tau_cross": 2.0,
+      "tau_q_Gyr": 0.20818586834325684,
+      "eps_kpc": 360.0,
+      "x_lens_kpc": -3.5,
+      "x_gas_kpc": -209.5,
+      "offset_kpc": 206.0
+    },
+    {
+      "tau_q_over_tau_cross": 3.0,
+      "tau_q_Gyr": 0.31227880251488527,
+      "eps_kpc": 360.0,
+      "x_lens_kpc": -3.5,
+      "x_gas_kpc": -209.5,
+      "offset_kpc": 206.0
+    }
+  ],
+  "sqt_natural_band_tau_q_lt_0p3_tau_cross": {
+    "offset_min_kpc": 13.5,
+    "offset_max_kpc": 150.0
+  },
+  "fiducial_tau_q_zero": {
+    "predicted_offset_vs_gas_kpc": 150.0,
+    "sqt_specific_lens_vs_galaxy_offset_kpc": 0.0,
+    "classification": "PASS_STRONG_QUANTITATIVE"
+  },
+  "honest_caveat": "The recovered ~150 kpc lens-vs-gas offset at tau_q->0 is dominated by the *input* gas ram-pressure offset, not an independent SQT prediction. SQT genuinely predicts |peak_lens - peak_galaxy|~0; the gas-vs-galaxy separation is set by collisional gas dynamics (input). Quantitative PASS therefore requires SQT to additionally predict the magnitude of gas ram-pressure stripping, which is outside the depletion-zone formalism. Conclusion: PASS remains qualitative.",
+  "final_verdict": "PASS_QUALITATIVE_ONLY (no genuine quantitative upgrade). tau_q << tau_cross is satisfied at axiom level (P14), so depletion zone tracks galaxies \u2014 consistent with Clowe 2006 \u2014 but the 150 kpc magnitude is inherited from gas dynamics, not derived from SQT."
+}

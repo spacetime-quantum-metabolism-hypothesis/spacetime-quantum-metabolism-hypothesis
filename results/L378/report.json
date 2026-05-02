@@ -1,0 +1,199 @@
+{
+  "anchors": [
+    "cosmic",
+    "cluster",
+    "galactic"
+  ],
+  "data": [
+    {
+      "name": "cosmic",
+      "x": -27.0,
+      "y": 8.37,
+      "sy": 0.06
+    },
+    {
+      "name": "cluster",
+      "x": -24.0,
+      "y": 7.75,
+      "sy": 0.06
+    },
+    {
+      "name": "galactic",
+      "x": -21.0,
+      "y": 9.56,
+      "sy": 0.05
+    }
+  ],
+  "baseline_L342_reproduction": {
+    "M1": {
+      "A": 13.885024390244002,
+      "B": 0.22006504065041066,
+      "chi2": 288.04390243902395,
+      "yhat": [
+        7.943268292682914,
+        8.603463414634145,
+        9.263658536585378
+      ]
+    },
+    "M2": {
+      "C": 7.6771553496912315,
+      "D": 0.13500000002301177,
+      "x_min": -24.73456790114234,
+      "chi2": 1.0957595017804537e-17,
+      "yhat": [
+        8.370000000071505,
+        7.749999999891118,
+        9.560000000124942
+      ]
+    },
+    "delta_chi2_M1_minus_M2": 288.04390243902395
+  },
+  "test_A_N2_fits": [
+    {
+      "left_out": "cosmic",
+      "M1_fit_chi2_on_kept": 2.462963988038705e-24,
+      "M2_xmin_fixed_chi2_on_kept": 2.1386895652658544e-27,
+      "M1_params": {
+        "A": 22.22999999999909,
+        "B": 0.6033333333332924
+      },
+      "M2_params": {
+        "C": 7.677155349809522,
+        "D": 0.13500000000557205,
+        "x_min_fixed": -24.73456790114234
+      }
+    },
+    {
+      "left_out": "cluster",
+      "M1_fit_chi2_on_kept": 5.43086907638821e-26,
+      "M2_xmin_fixed_chi2_on_kept": 0.0,
+      "M1_params": {
+        "A": 13.724999999999937,
+        "B": 0.1983333333333306
+      },
+      "M2_params": {
+        "C": 7.677155349650837,
+        "D": 0.13500000001694965,
+        "x_min_fixed": -24.73456790114234
+      }
+    },
+    {
+      "left_out": "galactic",
+      "M1_fit_chi2_on_kept": 2.743482925935297e-25,
+      "M2_xmin_fixed_chi2_on_kept": 2.848664379964765e-27,
+      "M1_params": {
+        "A": 2.7900000000003824,
+        "B": -0.20666666666665165
+      },
+      "M2_params": {
+        "C": 7.6771553498213105,
+        "D": 0.13499999998373297,
+        "x_min_fixed": -24.73456790114234
+      }
+    }
+  ],
+  "test_B_LOO_predictive": [
+    {
+      "left_out": "cosmic",
+      "y_obs": 8.37,
+      "y_pred_M1": 5.940000000000197,
+      "y_pred_M2_xmin_fixed": 8.370000000100292,
+      "chi2_pred_M1": 1640.2499999997335,
+      "chi2_pred_M2_xmin_fixed": 2.794085372864027e-18,
+      "delta_chi2_M1_minus_M2": 1640.2499999997335
+    },
+    {
+      "left_out": "cluster",
+      "y_obs": 7.75,
+      "y_pred_M1": 8.965000000000003,
+      "y_pred_M2_xmin_fixed": 7.749999999847453,
+      "chi2_pred_M1": 410.0625000000023,
+      "chi2_pred_M2_xmin_fixed": 6.464078115077378e-18,
+      "delta_chi2_M1_minus_M2": 410.0625000000023
+    },
+    {
+      "left_out": "galactic",
+      "y_obs": 9.56,
+      "y_pred_M1": 7.1300000000000665,
+      "y_pred_M2_xmin_fixed": 9.5599999997072,
+      "chi2_pred_M1": 2361.959999999872,
+      "chi2_pred_M2_xmin_fixed": 3.429284153738685e-17,
+      "delta_chi2_M1_minus_M2": 2361.959999999872
+    }
+  ],
+  "test_C_sigma_inflated": [
+    {
+      "muted_anchor": "cosmic",
+      "chi2_M1_inflated": 1.6402499999923002e-09,
+      "chi2_M2_inflated": 3.050983609589842e-11,
+      "delta_chi2_M1_minus_M2": 1.6097401638964018e-09,
+      "M1_params": {
+        "A": 22.229999999951975,
+        "B": 0.6033333333311282
+      },
+      "M2_params": {
+        "C": 7.61212730732149,
+        "D": 0.11658809688378448,
+        "x_min": -25.087456822153072
+      }
+    },
+    {
+      "muted_anchor": "cluster",
+      "chi2_M1_inflated": 4.100624999998263e-10,
+      "chi2_M2_inflated": 1.427220199076687e-11,
+      "delta_chi2_M1_minus_M2": 3.957902980090594e-10,
+      "M1_params": {
+        "A": 13.72500000000033,
+        "B": 0.19833333333336856
+      },
+      "M2_params": {
+        "C": 7.887098705837678,
+        "D": 0.10981688594826333,
+        "x_min": -24.903018379958354
+      }
+    },
+    {
+      "muted_anchor": "galactic",
+      "chi2_M1_inflated": 2.361959999982994e-09,
+      "chi2_M2_inflated": 4.831030436081363e-11,
+      "delta_chi2_M1_minus_M2": 2.31364969562218e-09,
+      "M1_params": {
+        "A": 2.7900000000916103,
+        "B": -0.20666666666314273
+      },
+      "M2_params": {
+        "C": 7.707394222846737,
+        "D": 0.11569468909282343,
+        "x_min": -24.606844619659114
+      }
+    }
+  ],
+  "driver_diagnostic": {
+    "anchors": [
+      "cosmic",
+      "cluster",
+      "galactic"
+    ],
+    "deltas": [
+      1640.2499999997335,
+      410.0625000000023,
+      2361.959999999872
+    ],
+    "shares": [
+      0.3717472118958834,
+      0.09293680297398646,
+      0.53531598513013
+    ],
+    "max_share": 0.53531598513013,
+    "max_anchor": "galactic",
+    "fragile": false,
+    "total_positive_delta": 4412.272499999608
+  },
+  "decision": "ROBUST-IN-3 - distributed driver",
+  "criterion": "max share of positive Delta-chi^2 > 0.85",
+  "honest_notes": [
+    "N=3 LOO is a single-point predictive test, not Bayesian CV.",
+    "M2 with x_min fixed to full-data MAP introduces leakage: the held-out point informed x_min. This biases Test B toward M2. The diagnostic remains valid as a fragility floor: if even with this M2-friendly choice the share is still >0.85 for one anchor, the L342 LRT is single-point dominated.",
+    "Test C is the cleanest leave-out (full chi^2 machinery)."
+  ]
+}

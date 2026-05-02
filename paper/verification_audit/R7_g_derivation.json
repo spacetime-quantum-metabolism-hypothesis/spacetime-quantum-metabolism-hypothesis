@@ -1,0 +1,47 @@
+{
+  "C1": {
+    "n0_mu_required": 4.101317718542088e+95,
+    "n0_mu_planck": 4.1013177185420884e+95,
+    "ratio": 0.9999999999999999,
+    "claim_4p1e95": 4.1e+95,
+    "claim_ok": true,
+    "individual_consistent": false,
+    "mu_implied": 4.983347459159509e+53,
+    "pass_potential": true
+  },
+  "C2": {
+    "minimal_w0": -1.0,
+    "minimal_wa": 0.0,
+    "DESI_w0": -0.757,
+    "DESI_wa": -0.83,
+    "sigma_minimal_total": 5.582213870705918,
+    "ext_wa_toy": -0.3,
+    "ext_wa_sigma": -2.3555555555555556,
+    "framework_self_consistent": true,
+    "derivation_gate_OPEN": true
+  },
+  "C3": {
+    "v_earth": 5.289434786459033e-43,
+    "claim": 5.3e-43,
+    "ratio": 0.9980065634828365,
+    "framework_match": true,
+    "pass_": true
+  },
+  "C4": {
+    "xi": 3.222068552100058e-22,
+    "xi_from_def": 3.2220685521000573e-22,
+    "algebraic_consistent": true,
+    "base_md_explicit": false,
+    "derivable_from_section_3p1": true,
+    "pass_": true
+  },
+  "verdict": {
+    "C1_potential_match": true,
+    "C1_individual_n0_mu": false,
+    "C2_self_consistent": true,
+    "C2_derivation_gate_OPEN": true,
+    "C3_v_eq_g_tP": true,
+    "C4_xi_algebra": true,
+    "C4_explicit_in_base_md": false
+  }
+}

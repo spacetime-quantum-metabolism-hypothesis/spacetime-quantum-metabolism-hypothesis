@@ -1,0 +1,113 @@
+{
+  "H0_planck": 67.4,
+  "a0_sqt_planck": 1.0421903092736491e-10,
+  "functional_form": "M16",
+  "upsilon_disk": 0.5,
+  "upsilon_bul": 0.7,
+  "sigma_log_floor_dex": 0.13,
+  "subsets": {
+    "D1_full": {
+      "name": "D1_full",
+      "valid": true,
+      "n_galaxies": 175,
+      "n_points": 3389,
+      "a0_RAR": 1.0686771873602096e-10,
+      "log10_a0_RAR": -9.97115346122743,
+      "sigma_log10_a0": 0.006000000000000227,
+      "chi2_free": 4384.4642839662665,
+      "chi2_per_dof_free": 1.2941157862946477,
+      "chi2_sqt_locked": 4387.168577979597,
+      "chi2_per_dof_sqt": 1.2945318908172314,
+      "delta_log_vs_SQT": 0.010899508176855477,
+      "ratio_SQT_over_RAR": 0.9752152676225952
+    },
+    "D2_Q1": {
+      "name": "D2_Q1",
+      "valid": true,
+      "n_galaxies": 99,
+      "n_points": 2132,
+      "a0_RAR": 1.2454571396177257e-10,
+      "log10_a0_RAR": -9.904671213408724,
+      "sigma_log10_a0": 0.008000000000000895,
+      "chi2_free": 2066.269374467775,
+      "chi2_per_dof_free": 0.9696242958553613,
+      "chi2_sqt_locked": 2156.0084392132376,
+      "chi2_per_dof_sqt": 1.0112609940024566,
+      "delta_log_vs_SQT": 0.07738175599556207,
+      "ratio_SQT_over_RAR": 0.8367933958719236
+    },
+    "D3_Q12": {
+      "name": "D3_Q12",
+      "valid": true,
+      "n_galaxies": 163,
+      "n_points": 3269,
+      "a0_RAR": 1.1227568436507759e-10,
+      "log10_a0_RAR": -9.949714289059093,
+      "sigma_log10_a0": 0.006000000000000227,
+      "chi2_free": 3658.1129522866477,
+      "chi2_per_dof_free": 1.119373608410847,
+      "chi2_sqt_locked": 3681.257273421673,
+      "chi2_per_dof_sqt": 1.1261111267732251,
+      "delta_log_vs_SQT": 0.03233868034519283,
+      "ratio_SQT_over_RAR": 0.9282422237435176
+    },
+    "D4_dwarf_LT_proxy": {
+      "name": "D4_dwarf_LT_proxy",
+      "valid": true,
+      "n_galaxies": 17,
+      "n_points": 242,
+      "a0_RAR": 4.626852625546523e-11,
+      "log10_a0_RAR": -10.33471433342235,
+      "sigma_log10_a0": 0.02400000000000002,
+      "chi2_free": 381.90199349282284,
+      "chi2_per_dof_free": 1.5846555746590159,
+      "chi2_sqt_locked": 607.4291837301568,
+      "chi2_per_dof_sqt": 2.5100379492981686,
+      "delta_log_vs_SQT": -0.35266136401806314,
+      "ratio_SQT_over_RAR": 2.2524821809092006
+    },
+    "D5_bright": {
+      "name": "D5_bright",
+      "valid": true,
+      "n_galaxies": 54,
+      "n_points": 1605,
+      "a0_RAR": 1.2561710067323874e-10,
+      "log10_a0_RAR": -9.900951234623593,
+      "sigma_log10_a0": 0.009999999999999787,
+      "chi2_free": 1315.5744228844069,
+      "chi2_per_dof_free": 0.8201835554142187,
+      "chi2_sqt_locked": 1374.1034189758507,
+      "chi2_per_dof_sqt": 0.8561392018541125,
+      "delta_log_vs_SQT": 0.08110173478069349,
+      "ratio_SQT_over_RAR": 0.8296563952583532
+    }
+  },
+  "cross_metrics": {
+    "spread_dex": 0.16342796398216636,
+    "max_dev_log10_vs_SQT": 0.35266136401806314,
+    "drifts_log10": [
+      0.010899508176855477,
+      0.07738175599556207,
+      0.03233868034519283,
+      -0.35266136401806314,
+      0.08110173478069349
+    ],
+    "drifts_all_same_sign": false
+  },
+  "K_criteria": {
+    "K_X1_spread_le_0p05": false,
+    "K_X2_maxdev_le_0p10": false,
+    "K_X3_all_chi2dof_sqt_le_1p6": false,
+    "K_X4_drifts_not_all_same_sign": true,
+    "n_pass": 1
+  },
+  "clusters": {
+    "reanalysed_here": false,
+    "note": "Cluster RAR (Tian & Ko 2016 ApJ 818 32; Pradel-Loubeyre style; Eckert+22 A&A 662 A123) reports a0_cluster ~ (5-10) x a0_SPARC. Background-only RAR universality fails on cluster scales \u2014 known \"MOND missing-baryon\" problem. Not a SPARC-internal cross-dataset inconsistency, but a structural cross-system inconsistency for any single-a0 model including SQT.",
+    "literature_a0_cluster_over_a0_SPARC": [
+      5.0,
+      10.0
+    ]
+  },
+  "verdict": "unstable \u2014 a0 RAR differs substantially across SPARC subsets"
+}

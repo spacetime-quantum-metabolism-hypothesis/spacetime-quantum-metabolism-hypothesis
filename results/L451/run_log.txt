@@ -1,0 +1,49 @@
+================================================================================
+L451 — Bayes factor anti-cherry-pick mock injection-recovery
+  N_MOCK=200  R_PRIMARY=5.0  workers=8
+================================================================================
+
+SQT pre-fit MAP θ (three_regime, R=5.0, base8): [0.98, 0.385, 1.091, 3.0, 0.5]
+  truth(SQT) at base log_rho = [0.98, 0.98, 0.385, 0.385, 0.385, 1.091, 1.091, 1.091]
+
+Launching 200 mock tasks across 8 workers...
+  done in 14.1s
+
+--- Per-cell ΔlnZ (three_regime − lcdm) statistics ---
+  cell                                         n_ok       mean       std                   [p05,p50,p95]
+  lcdm__local_group__base8                      125    -14.278     7.224  [ -35.46,  -12.91,   -5.90]
+  lcdm__local_group__base13                     138    -13.749     8.478  [ -21.36,  -12.95,   -5.06]
+  lcdm__galactic_internal__base8                122    -14.285     6.912  [ -35.18,  -13.15,   -6.22]
+  lcdm__galactic_internal__base13               138    -16.842    23.962  [ -38.09,  -13.35,   -9.81]
+  sqt__local_group__base8                       193     73.044    22.442  [ +24.71,  +76.12, +105.15]
+  sqt__local_group__base13                      191     93.853    28.915  [ +41.05, +100.05, +130.03]
+  sqt__galactic_internal__base8                 196     76.336    22.694  [ +32.79,  +78.42, +107.20]
+  sqt__galactic_internal__base13                196     82.718    24.651  [ +30.71,  +87.09, +114.86]
+
+--- ΔΔlnZ distribution (13-pool − 8-pool, per truth × mapping) ---
+  cell                               n_ok       mean       std                   [p05,p50,p95]
+  lcdm__local_group                    86      1.638    10.686  [ -11.08,   +0.05,  +24.27]
+  lcdm__galactic_internal              81     -1.868     9.900  [ -23.93,   -0.22,   +8.41]
+  sqt__local_group                    184     21.458    39.975  [ -46.43,  +22.84,  +88.27]
+  sqt__galactic_internal              192      5.914    33.838  [ -52.77,   +8.23,  +58.98]
+
+--- B7 anti-cherry-pick flags ---
+  lcdm__local_group                 (a) mean<0 = False  (b) std<5 = False
+  lcdm__galactic_internal           (a) mean<0 = True  (b) std<5 = False
+  sqt__local_group                  (a) mean<0 = False  (b) std<5 = False
+  sqt__galactic_internal            (a) mean<0 = False  (b) std<5 = False
+
+--- B7 (c) mapping difference within 1σ_pooled ---
+  lcdm        mean_diff=3.506  pooled_std=10.300  (c) within_1σ = True
+  sqt         mean_diff=15.543  pooled_std=37.034  (c) within_1σ = True
+
+--- Verdict tally ---
+  (a) mean<0           : 1/4 cells
+  (b) std<5            : 0/4 cells
+  (c) mapping within 1σ: 2/2 truths
+
+  ==> PASS-C: 매핑 자유도가 mock 변동 안에 흡수
+
+[saved] /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/results/L451/report.json
+
+=== END L451 (elapsed 14.1s) ===

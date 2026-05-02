@@ -1,0 +1,9 @@
+{
+  "top_tests": [
+    "P7 a_0(z) = c\u00b7H_0(z)/(2\u03c0) [SKA]",
+    "G2 a_0(disc)/a_0(spheroid) = 2 (revised L115)",
+    "P13 Void galaxy a_0 ~ 7%"
+  ],
+  "decisive_test": "P7 a_0(z=2)/a_0(0) = 3.03 via SKA",
+  "verdict": "MOST DECISIVE SINGLE TEST: P7 a_0(z=2)/a_0(0) = 3.03 (SKA, ~2028-2030). Factor 3 effect, completely distinct from MOND universal. PASS or FAIL determines SQT fate. Backup: G2 revised (factor 2), void galaxy (factor 14)."
+}

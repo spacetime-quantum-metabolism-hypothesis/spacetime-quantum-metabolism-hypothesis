@@ -1,0 +1,9 @@
+{
+  "attack": "Falsifiability scope",
+  "already_tested": 11,
+  "near_term": 4,
+  "mid_term": 4,
+  "long_term": 3,
+  "total": 22,
+  "verdict": "DEFENSE STRONG: 11+ tests already passed with existing data. Multiple near-term tests (1-3 years) feasible. Theory is OPERATIONALLY falsifiable now. Long-term tests provide further sharpening."
+}

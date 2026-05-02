@@ -1,0 +1,8 @@
+{
+  "N": 163,
+  "spearman_corr": -0.08265311282714394,
+  "spearman_p": 0.2942153274708308,
+  "chi2_BB": 603.0790909374848,
+  "chi2_smooth": 70.3879551464145,
+  "verdict": "SPARC alone cannot test 3-regime vs smooth structure. Spearman corr = -0.08. Limited dynamic range. Branch B not uniquely supported BUT not falsified by SPARC. dSph + cluster data needed for discrimination."
+}

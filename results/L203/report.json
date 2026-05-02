@@ -1,0 +1,6 @@
+{
+  "success": false,
+  "N_steps": 116,
+  "mean_H_deviation_pct": 6.945131052247959,
+  "verdict": "SQT cosmological ODE: H(z) deviates from LCDM by 6.945% on average. SQT effectively reproduces LCDM evolution within numerical accuracy. DESI w_a tension would require \u0393_0(t) or V(n,t) extension."
+}

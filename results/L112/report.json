@@ -1,0 +1,6 @@
+{
+  "natural_predictions": "\u0393_0(past) > \u0393_0(now)",
+  "DESI_requires": "\u0393_0(past) < \u0393_0(now)",
+  "conflict": true,
+  "verdict": "All natural \u0393_0(t) hypotheses (\u221dH, \u221dH\u00b2, slow decay) give \u0393_0(past) > \u0393_0(now), which predicts \u03c1_\u039b(past) > \u03c1_\u039b(now) \u2192 w_a > 0 (phantom-like). This is OPPOSITE to DESI w_a<0 finding! SQT may either: (a) REJECT DESI evolution (await DR3 confirmation), (b) require non-trivial \u03c4_q(t) or \u03b5(t) variation."
+}

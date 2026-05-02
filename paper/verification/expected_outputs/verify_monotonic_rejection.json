@@ -1,0 +1,19 @@
+{
+  "script": "verify_monotonic_rejection.py",
+  "classification": "PASS (regime-gap only; not SPARC-internal)",
+  "tolerance": "Delta chi^2 within +/- 5%; sigma_1dof_approx >= 10 sigma",
+  "note": "Paper text quotes ~17 sigma at regime-gap; this 3-anchor toy returns ~12 sigma due to inflated err on the dip anchor. Both reject monotonic at >> 5 sigma.",
+  "expected": {
+    "chi2_monotonic": 147.62,
+    "chi2_V_shape":   0.00,
+    "delta_chi2":     147.62,
+    "sigma_1dof_approx": 12.1
+  },
+  "stdout_lines": [
+    "chi^2 (monotonic) = 147.62",
+    "chi^2 (V-shape)   = 0.00",
+    "Delta chi^2       = 147.62 (~12.1 sigma, 1-DOF approx)",
+    "NOTE: only at REGIME-GAP scale. SPARC galactic-internal shows opposite."
+  ],
+  "runtime_seconds_typical": 0.20
+}

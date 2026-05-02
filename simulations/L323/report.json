@@ -1,0 +1,133 @@
+{
+  "anchors": {
+    "DLNZ_FIXED": 13.0,
+    "DLNZ_MARGINAL": 0.8,
+    "log_volume_gap": 12.2,
+    "ndim": 3,
+    "prior_halfwidth": [
+      2.0,
+      2.0,
+      2.0
+    ],
+    "theta_LCDM": [
+      -3.0,
+      -3.0,
+      -3.0
+    ]
+  },
+  "cases": [
+    {
+      "shape": "isotropic",
+      "calibration_scale": 1000.0,
+      "achieved_occam": 10.723979631378942,
+      "label": "isotropic",
+      "h_step": null,
+      "eigenvalues_F": [
+        500.0,
+        500.0,
+        500.0
+      ],
+      "condition_number": 1.0,
+      "log10_kappa": 0.0,
+      "participation_ratio": 3.0,
+      "d_eff_integer": 3,
+      "geodesic_to_LCDM": 116.1895003862225,
+      "geodesic_cluster_only": 67.08203932499369,
+      "lnV_Laplace": -6.56509654801927,
+      "lnV_prior": 4.1588830833596715,
+      "occam_penalty": 10.723979631378942,
+      "reparam_kappa_drift": 0.0,
+      "reparam_PR_drift": 0.0
+    },
+    {
+      "shape": "anisotropic_100_1_1",
+      "calibration_scale": 578.7619883491209,
+      "achieved_occam": 12.206268784993856,
+      "label": "anisotropic_100_1_1",
+      "h_step": null,
+      "eigenvalues_F": [
+        28938.099417456033,
+        289.3809941745607,
+        289.38099417455936
+      ],
+      "condition_number": 100.00000000000033,
+      "log10_kappa": 2.0000000000000013,
+      "participation_ratio": 1.0401919616076785,
+      "d_eff_integer": 2,
+      "geodesic_to_LCDM": 530.3577730488167,
+      "geodesic_cluster_only": 458.8261390116796,
+      "lnV_Laplace": -8.047385701634186,
+      "lnV_prior": 4.1588830833596715,
+      "occam_penalty": 12.206268784993856,
+      "reparam_kappa_drift": 0.0,
+      "reparam_PR_drift": 0.0
+    },
+    {
+      "shape": "log_uniform_1e4_to_1",
+      "calibration_scale": 26.607250597988113,
+      "achieved_occam": 12.191877628162654,
+      "label": "log_uniform_1e4_to_1",
+      "h_step": null,
+      "eigenvalues_F": [
+        133036.25298994067,
+        1330.3625298994066,
+        13.30362529899436
+      ],
+      "condition_number": 9999.99999999978,
+      "log10_kappa": 3.9999999999999902,
+      "participation_ratio": 1.02019997980002,
+      "d_eff_integer": 1,
+      "geodesic_to_LCDM": 1141.9824263727135,
+      "geodesic_cluster_only": 1081.5779059215001,
+      "lnV_Laplace": -8.032994544802982,
+      "lnV_prior": 4.1588830833596715,
+      "occam_penalty": 12.191877628162654,
+      "reparam_kappa_drift": 0.0,
+      "reparam_PR_drift": 0.0
+    },
+    {
+      "shape": "anisotropic_1e6_1_1",
+      "calibration_scale": 26.607250597988113,
+      "achieved_occam": 12.191877628162011,
+      "label": "anisotropic_1e6_1_1",
+      "h_step": null,
+      "eigenvalues_F": [
+        13303625.298994059,
+        13.30362529950964,
+        13.303625299026853
+      ],
+      "condition_number": 999999.9999975349,
+      "log10_kappa": 5.99999999999893,
+      "participation_ratio": 1.0000040000019998,
+      "d_eff_integer": 1,
+      "geodesic_to_LCDM": 11268.978047891324,
+      "geodesic_cluster_only": 9826.015653991108,
+      "lnV_Laplace": -8.032994544802339,
+      "lnV_prior": 4.1588830833596715,
+      "occam_penalty": 12.191877628162011,
+      "reparam_kappa_drift": 0.0,
+      "reparam_PR_drift": 0.0
+    }
+  ],
+  "mc_check": {
+    "b": {
+      "lnZ_MC": -10.048554806448537,
+      "lnZ_Laplace": -8.047385701634186,
+      "diff": -2.001169104814352
+    },
+    "c": {
+      "lnZ_MC": -8.244105841952072,
+      "lnZ_Laplace": -8.032994544802982,
+      "diff": -0.21111129714909005
+    }
+  },
+  "verdict": {
+    "any_sloppy": true,
+    "sloppy_shapes": [
+      "anisotropic_100_1_1",
+      "log_uniform_1e4_to_1",
+      "anisotropic_1e6_1_1"
+    ],
+    "interpretation": "If any sloppy shape achieves Occam \u224812.2, then the L281 marginalized \u0394lnZ=0.8 collapse is consistent with a 1-stiff + 2-soft (or log-uniform) Fisher structure rather than honest 3-parameter Bayesian volume. BB's '3 regimes' should be reported as ~1-2 effective dof in Sec 3/Sec 6."
+  }
+}

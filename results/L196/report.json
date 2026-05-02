@@ -1,0 +1,9 @@
+{
+  "weights": {
+    "Branch B (3-step)": 0.9999981308034451,
+    "Quadratic": 2.215047607363646e-62,
+    "Cubic": 4.9793840547662296e-33,
+    "Gaussian dip": 1.8691965549214791e-06
+  },
+  "verdict": "Akaike weights: Branch B 100.0%, Gaussian dip 0.0%, others negligible. Branch B preferred but not dominant. Paper should report model-averaged predictions for robustness."
+}

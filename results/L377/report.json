@@ -1,0 +1,41 @@
+{
+  "run": "L377",
+  "tool": "dynesty",
+  "dynesty_version": "3.0.0",
+  "ndim": 3,
+  "nlive": 100,
+  "sampler": "rwalk",
+  "bound": "multi",
+  "elapsed_sec": 0.166,
+  "n_iter": 784,
+  "n_calls": 13561,
+  "lnZ": -5.479010027625273,
+  "lnZ_err": 0.23970467517435878,
+  "lnZ_analytic": -5.537234040488009,
+  "lnZ_residual": 0.05822401286273582,
+  "n_eff_samples": 884,
+  "mode_count": 2,
+  "cluster_weights": [
+    0.6085972850678733,
+    0.3914027149321267
+  ],
+  "cluster_centroids": [
+    [
+      -1.9957721953707355,
+      -2.0317158343736716,
+      -2.007982739838805
+    ],
+    [
+      2.000524003815174,
+      2.0131434654081946,
+      1.9962064282412986
+    ]
+  ],
+  "centroid_dist_to_MU_A": 0.03297715295982125,
+  "centroid_dist_to_MU_B": 0.013690012769283335,
+  "C1_lnZ_finite": true,
+  "C2_lnZ_within_0p5": true,
+  "C3_both_modes_found": true,
+  "PASS": true,
+  "honest_one_line": "synthetic toy only; two well-separated 3D Gaussians under uniform prior; not a cosmology fit."
+}

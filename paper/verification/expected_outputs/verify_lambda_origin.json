@@ -1,0 +1,19 @@
+{
+  "script": "verify_lambda_origin.py",
+  "classification": "CONSISTENCY_CHECK",
+  "tolerance": "exact (analytic identity; ratio = 1.000000)",
+  "expected": {
+    "rho_q_kg_m3":          6.855508e-27,
+    "rho_Lambda_obs_kg_m3": 6.855508e-27,
+    "ratio":                1.000000
+  },
+  "stdout_lines": [
+    "rho_q                = 6.855508e-27  kg/m^3",
+    "rho_Lambda (Planck)  = 6.855508e-27  kg/m^3",
+    "ratio                = 1.000000",
+    "NOTE: This is DIMENSIONAL CONSISTENCY, not an a priori prediction.",
+    "      n_inf is derived FROM rho_Lambda_obs (axiom 3 balance).",
+    "STATUS: CONSISTENCY_CHECK (paper §5.2, L412 down-grade)"
+  ],
+  "runtime_seconds_typical": 0.05
+}

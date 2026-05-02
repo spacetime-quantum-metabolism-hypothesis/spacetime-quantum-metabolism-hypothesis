@@ -1,0 +1,97 @@
+{
+  "models": {
+    "\u039bCDM": {
+      "params": 6,
+      "chi2_BAO": 21.4,
+      "Lambda_origin": "ad hoc"
+    },
+    "V_RP exp": {
+      "params": 7,
+      "chi2_BAO": 21.7,
+      "Lambda_origin": "quintessence potential"
+    },
+    "V_exp": {
+      "params": 7,
+      "chi2_BAO": 21.6,
+      "Lambda_origin": "quintessence potential"
+    },
+    "V_mass": {
+      "params": 7,
+      "chi2_BAO": 22.0,
+      "Lambda_origin": "thawing potential"
+    },
+    "k-essence": {
+      "params": 8,
+      "chi2_BAO": 21.5,
+      "Lambda_origin": "non-canonical kinetic"
+    },
+    "EDE": {
+      "params": 8,
+      "chi2_BAO": 21.0,
+      "Lambda_origin": "early DE component"
+    },
+    "RVM": {
+      "params": 7,
+      "chi2_BAO": 20.0,
+      "Lambda_origin": "running vacuum"
+    },
+    "C28 RR-nonlocal": {
+      "params": 7,
+      "chi2_BAO": 20.5,
+      "Lambda_origin": "non-local action"
+    },
+    "SQT Branch B": {
+      "params": 5,
+      "chi2_BAO": 21.4,
+      "Lambda_origin": "quantum n field (D4)"
+    },
+    "SQT + \u0393_0(t)": {
+      "params": 7,
+      "chi2_BAO": 20.5,
+      "Lambda_origin": "quantum + dynamical"
+    }
+  },
+  "ranking": [
+    [
+      "SQT Branch B",
+      39.97142857142857
+    ],
+    [
+      "\u039bCDM",
+      47.4
+    ],
+    [
+      "RVM",
+      56.4
+    ],
+    [
+      "C28 RR-nonlocal",
+      56.9
+    ],
+    [
+      "SQT + \u0393_0(t)",
+      56.9
+    ],
+    [
+      "V_exp",
+      58.0
+    ],
+    [
+      "V_RP exp",
+      58.1
+    ],
+    [
+      "V_mass",
+      58.4
+    ],
+    [
+      "EDE",
+      73.0
+    ],
+    [
+      "k-essence",
+      73.5
+    ]
+  ],
+  "verdict": "SQT Branch B (k=5) AICc competitive with \u039bCDM (k=6). Provides \u039b ORIGIN via D4 \u2014 unique compared to ad hoc \u039b. SQT + \u0393_0(t) (k=7) potentially competitive with RVM/EDE."
+}

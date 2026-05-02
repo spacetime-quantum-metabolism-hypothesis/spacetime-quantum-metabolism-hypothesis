@@ -1,0 +1,53 @@
+/Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/simulations/L424/run.py:139: RuntimeWarning: overflow encountered in exp
+  return a + b / (1.0 + np.exp(-(x - x0) / w))
+/Users/blu/Library/Python/3.9/lib/python/site-packages/scipy/optimize/_optimize.py:836: RuntimeWarning: invalid value encountered in subtract
+  np.max(np.abs(fsim[0] - fsim[1:])) <= fatol):
+================================================================================
+L424 — dSph P9 anchor pool forecast (5 classical Local Group dSph)
+================================================================================
+
+--- 5 dSph archive (McConnachie 2012 + Walker 2009 + Gaia DR3) ---
+  name        σ_los  r_half(pc)  D_LG(kpc)  M_dyn(1e7 Msun)
+  Draco         9.1        221       82.0            2.20
+  UrsaMinor     9.5        181       78.0            1.80
+  Sculptor      9.2        283       86.0            3.40
+  Sextans       7.9        695       89.0            4.10
+  Carina        6.6        250      106.0            0.80
+
+--- ρ_env mapping (two modes) ---
+  name        log10(ρ/ρ_c)_LG  log10(ρ/ρ_c)_internal  σ₀_proxy  σ_err
+  Draco                 -0.52                  +6.54     0.864  0.086
+  UrsaMinor             -0.48                  +6.71     0.902  0.090
+  Sculptor              -0.56                  +6.41     0.874  0.087
+  Sextans               -0.59                  +5.32     0.750  0.075
+  Carina                -0.76                  +5.94     0.627  0.063
+
+--- ln Z grid [baseline (no dSph)] ---
+  R    |   three_R |     two_R |      mono |      lcdm || ΔlnZ(3R−L) | ΔlnZ(2R−L)
+  ----------------------------------------------------------------------------------------
+  R=2  |   -19.732 |   -84.311 |   -79.911 |  -100.849 ||    +81.117 |    +16.537
+  R=3  |   -21.350 |   -85.272 |       nan |  -101.254 ||    +79.904 |    +15.981
+  R=5  |   -23.391 |   -86.674 |       nan |  -101.765 ||    +78.374 |    +15.091
+  R=10 |   -86.261 |   -88.698 |   -83.795 |  -102.458 ||    +16.196 |    +13.760
+
+=== Scenario A: dSph mapped to Local-Group regime (kpc-outer) ===
+  [null_archive      ] ΔlnZ(3R−L)=+62.741 (Δ vs baseline -15.633) ΔlnZ(2R−L)=+6.841 (Δ vs baseline -8.249)
+  [compat_cosmic     ] ΔlnZ(3R−L)=+104.555 (Δ vs baseline +26.181) ΔlnZ(2R−L)=+41.255 (Δ vs baseline +26.164)
+  [compat_galactic   ] ΔlnZ(3R−L)=+84.461 (Δ vs baseline +6.087) ΔlnZ(2R−L)=+21.210 (Δ vs baseline +6.119)
+  [tension_cluster   ] ΔlnZ(3R−L)=+112.521 (Δ vs baseline +34.148) ΔlnZ(2R−L)=+33.513 (Δ vs baseline +18.422)
+
+=== Scenario B: dSph mapped to galactic-internal regime ===
+  [null_archive      ] ΔlnZ(3R−L)=+69.719 (Δ vs baseline -8.655) ΔlnZ(2R−L)=+13.817 (Δ vs baseline -1.274)
+  [compat_cosmic     ] ΔlnZ(3R−L)=+101.843 (Δ vs baseline +23.469) ΔlnZ(2R−L)=+32.142 (Δ vs baseline +17.052)
+  [compat_galactic   ] ΔlnZ(3R−L)=+86.784 (Δ vs baseline +8.410) ΔlnZ(2R−L)=+17.229 (Δ vs baseline +2.139)
+  [tension_cluster   ] ΔlnZ(3R−L)=+56.641 (Δ vs baseline -21.733) ΔlnZ(2R−L)=+33.704 (Δ vs baseline +18.613)
+
+=== Mock injection false-detection rate (LCDM null, n_mock=200) ===
+  N=8  (baseline)        : false rate = 0.0%
+  N=13 (+5 dSph LG)      : false rate = 0.0%
+  Δ false rate (+dSph)   : +0.0%-points
+  판정: FALSE-RATE ~동일 — dSph 추가 강제력 효과 없음
+
+[saved] /Users/blu/Desktop/spacetime-quantum-metabolism-hypothesis/results/L424/report.json
+
+=== END L424 run.py ===

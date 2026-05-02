@@ -1,0 +1,36 @@
+{
+  "cassini": {
+    "observation_limit": 2.3e-05,
+    "sqmh_prediction": 5.46300635313796e-41,
+    "margin": 4.210136052063853e+35,
+    "verdict": "PASS_NONTRIVIAL",
+    "mechanism": "beta_eff = Lambda_UV / M_Pl ~ 7.5e-21 suppresses 5th-force; NOT just photon-trace=0 (paper \u00a74.7 claim is necessary but insufficient \u2014 matter trace inside Sun sources phi)."
+  },
+  "gw170817": {
+    "observation_limit": 7e-16,
+    "sqmh_prediction": 0.0,
+    "verdict": "PASS_TRIVIAL",
+    "mechanism": "pure conformal Lagrangian, no disformal G_4,X term. Structural constraint, not derived prediction."
+  },
+  "bbn": {
+    "observation_limit": 0.17,
+    "sqmh_prediction": 1.2890575705099165e-46,
+    "margin": 1.3187929219697503e+45,
+    "verdict": "PASS_NONTRIVIAL",
+    "mechanism": "eta_Z2 = 10 MeV >> T_BBN = 0.1 MeV (Z_2 broken pre-BBN); beta_eff = Lambda_UV/M_Pl ~ 7.5e-21 suppresses any phi rad d.o.f."
+  },
+  "cmb": {
+    "observation_limit": 0.00029776198251849,
+    "sqmh_prediction_radiation_era": 0.0,
+    "sqmh_prediction_matter_era": 0.007,
+    "verdict": "PARTIAL",
+    "mechanism": "Radiation era T=0 trivially OK; matter-era phi evolution shifts theta_* at percent level. paper \u00a74.7 \"automatic\" claim holds only for primary acoustic peak amplitude, NOT theta_*."
+  },
+  "llr": {
+    "observation_limit": 1e-13,
+    "sqmh_prediction": 3.765666620258486e-51,
+    "margin": 2.6555723085527877e+37,
+    "verdict": "PASS_TRIVIAL",
+    "mechanism": "G constant by axiom (derived 1); non-trivial deviations only via beta_eff^2 ~ 5.6e-41 (negligible)."
+  }
+}

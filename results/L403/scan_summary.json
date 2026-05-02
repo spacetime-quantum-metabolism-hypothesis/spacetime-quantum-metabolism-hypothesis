@@ -1,0 +1,49 @@
+{
+  "n_systems": 15,
+  "n_quantum": 7,
+  "n_classical": 8,
+  "definitions": {
+    "A_action_over_hbar": {
+      "accuracy": 1.0,
+      "tau_star": 20301.798939153938,
+      "log10_min": -1.3607678712046511,
+      "log10_max": 47.499032598777546,
+      "span_decades": 48.8598004699822
+    },
+    "B_penrose_diosi": {
+      "accuracy": 0.9333333333333333,
+      "tau_star": 6.975988086736455e-18,
+      "log10_min": -42.003184705035544,
+      "log10_max": 69.67694812121657,
+      "span_decades": 111.6801328262521
+    },
+    "C_joos_zeh_decoherence": {
+      "accuracy": 1.0,
+      "tau_star": 9.421986773231893e+16,
+      "log10_min": -47.61404009472231,
+      "log10_max": 144.2279513127149,
+      "span_decades": 191.8419914074372
+    },
+    "D_phase_space_cells": {
+      "accuracy": 1.0,
+      "tau_star": 2958411443019.9517,
+      "log10_min": -4.533848607109926,
+      "log10_max": 142.04555280283665,
+      "span_decades": 146.57940140994657
+    },
+    "E_info_levels": {
+      "accuracy": 1.0,
+      "tau_star": 19.14378237703181,
+      "log10_min": -300.0,
+      "log10_max": 2.3385520709169434,
+      "span_decades": 302.33855207091693
+    }
+  },
+  "ranking_accuracy_then_parsimony": [
+    "A_action_over_hbar",
+    "D_phase_space_cells",
+    "C_joos_zeh_decoherence",
+    "E_info_levels",
+    "B_penrose_diosi"
+  ]
+}

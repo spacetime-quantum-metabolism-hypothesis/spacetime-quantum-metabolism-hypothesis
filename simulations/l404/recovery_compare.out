@@ -1,0 +1,11 @@
+=== L404 NEXT_STEP analytical recovery comparison ===
+Causet: NOT_INHERITED recovery = 1.70/8.00, framework #10/#11 = 1.50/1.50, axiom-4 cost = 0.00, NET = 3.20
+GFT   : NOT_INHERITED recovery = 3.70/8.00, framework #10/#11 = 1.50/1.50, axiom-4 cost = 0.60, NET = 4.60
+Dual  : NOT_INHERITED recovery = 4.70/8.00, framework = 1.50/1.50, overhead = 0.40, GFT cost = 0.60, NET = 5.20
+  GFT cost=0.6 -> GFT_NET=4.60, Dual_NET=5.20, Causet_NET=3.20
+  GFT cost=0.4 -> GFT_NET=4.80, Dual_NET=5.40, Causet_NET=3.20
+  GFT cost=0.2 -> GFT_NET=5.00, Dual_NET=5.60, Causet_NET=3.20
+  GFT cost=0.0 -> GFT_NET=5.20, Dual_NET=5.80, Causet_NET=3.20
+
+Gap |GFT_NET - Causet_NET| = 1.40
+Threshold 0.5: Single winner preferred

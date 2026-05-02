@@ -1,0 +1,13 @@
+{
+  "predictions": {
+    "A_const": "w_a > 0",
+    "B_V": "w_a=-0.83"
+  },
+  "scenarios": {
+    "retract": 30,
+    "confirm": 50,
+    "extreme": 15,
+    "revise": 5
+  },
+  "verdict": "SQT DR3 predictions PRE-REGISTERED:\nA (const): w_a > 0 ~ 0.1 (strong disfavor by DR2)\nB (V(n,t)): w_a = -0.83 (matches DR2)\nDR3 will decide at >5\u03c3 between A and B.\nIf B wins: SQT+V(n,t) modest evidence over LCDM (log K~2.5)."
+}

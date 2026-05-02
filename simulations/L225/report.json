@@ -1,0 +1,20 @@
+{
+  "sensitivity": [
+    {
+      "param_idx": 0,
+      "dchi2_plus10pct": 8.551443879734016,
+      "dchi2_minus10pct": 8.376121589439268
+    },
+    {
+      "param_idx": 1,
+      "dchi2_plus10pct": 9.135360154123934,
+      "dchi2_minus10pct": 8.597179515782265
+    },
+    {
+      "param_idx": 2,
+      "dchi2_plus10pct": 9.15664877199982,
+      "dchi2_minus10pct": 7.763714064611331
+    }
+  ],
+  "no_flat_direction": true
+}

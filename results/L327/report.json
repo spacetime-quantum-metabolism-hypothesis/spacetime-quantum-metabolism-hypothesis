@@ -1,0 +1,165 @@
+{
+  "L327": "Systematic uncertainty inflation attack on BB vs LCDM",
+  "baseline_L208": {
+    "delta_aicc": 99.49,
+    "chi2_anchor_LCDM": 103.61,
+    "n_total": 166,
+    "k_BB": 3,
+    "k_LCDM": 0
+  },
+  "anchor_inflation_scan": [
+    {
+      "factor": 1,
+      "chi2_anchor_LCDM": 103.61,
+      "delta_chi2": 103.60999999999967,
+      "aicc_BB": 7509.194719756246,
+      "aicc_LCDM": 7606.656571608098,
+      "delta_aicc": 97.46185185185186
+    },
+    {
+      "factor": 2,
+      "chi2_anchor_LCDM": 25.9025,
+      "delta_chi2": 25.902500000000146,
+      "aicc_BB": 7509.194719756246,
+      "aicc_LCDM": 7528.949071608098,
+      "delta_aicc": 19.754351851852334
+    },
+    {
+      "factor": 5,
+      "chi2_anchor_LCDM": 4.1444,
+      "delta_chi2": 4.144400000000132,
+      "aicc_BB": 7509.194719756246,
+      "aicc_LCDM": 7507.190971608098,
+      "delta_aicc": -2.003748148147679
+    },
+    {
+      "factor": 10,
+      "chi2_anchor_LCDM": 1.0361,
+      "delta_chi2": 1.0361000000002605,
+      "aicc_BB": 7509.194719756246,
+      "aicc_LCDM": 7504.082671608098,
+      "delta_aicc": -5.112048148147551
+    }
+  ],
+  "sparc_inflation_scan": [
+    {
+      "factor": 1,
+      "chi2_sparc": 7503.046571608098,
+      "delta_aicc": 97.46185185185186
+    },
+    {
+      "factor": 2,
+      "chi2_sparc": 1875.7616429020245,
+      "delta_aicc": 97.46185185185186
+    },
+    {
+      "factor": 5,
+      "chi2_sparc": 300.12186286432393,
+      "delta_aicc": 97.46185185185186
+    },
+    {
+      "factor": 10,
+      "chi2_sparc": 75.03046571608098,
+      "delta_aicc": 97.46185185185186
+    }
+  ],
+  "combined_scan": [
+    {
+      "anchor_factor": 1,
+      "sparc_factor": 1,
+      "delta_aicc": 97.46185185185186
+    },
+    {
+      "anchor_factor": 1,
+      "sparc_factor": 2,
+      "delta_aicc": 97.46185185185186
+    },
+    {
+      "anchor_factor": 1,
+      "sparc_factor": 5,
+      "delta_aicc": 97.46185185185186
+    },
+    {
+      "anchor_factor": 1,
+      "sparc_factor": 10,
+      "delta_aicc": 97.46185185185186
+    },
+    {
+      "anchor_factor": 2,
+      "sparc_factor": 1,
+      "delta_aicc": 19.754351851852334
+    },
+    {
+      "anchor_factor": 2,
+      "sparc_factor": 2,
+      "delta_aicc": 19.75435185185188
+    },
+    {
+      "anchor_factor": 2,
+      "sparc_factor": 5,
+      "delta_aicc": 19.754351851851823
+    },
+    {
+      "anchor_factor": 2,
+      "sparc_factor": 10,
+      "delta_aicc": 19.75435185185185
+    },
+    {
+      "anchor_factor": 5,
+      "sparc_factor": 1,
+      "delta_aicc": -2.003748148147679
+    },
+    {
+      "anchor_factor": 5,
+      "sparc_factor": 2,
+      "delta_aicc": -2.0037481481481336
+    },
+    {
+      "anchor_factor": 5,
+      "sparc_factor": 5,
+      "delta_aicc": -2.0037481481481336
+    },
+    {
+      "anchor_factor": 5,
+      "sparc_factor": 10,
+      "delta_aicc": -2.003748148148148
+    },
+    {
+      "anchor_factor": 10,
+      "sparc_factor": 1,
+      "delta_aicc": -5.112048148147551
+    },
+    {
+      "anchor_factor": 10,
+      "sparc_factor": 2,
+      "delta_aicc": -5.112048148148006
+    },
+    {
+      "anchor_factor": 10,
+      "sparc_factor": 5,
+      "delta_aicc": -5.112048148148176
+    },
+    {
+      "anchor_factor": 10,
+      "sparc_factor": 10,
+      "delta_aicc": -5.112048148148148
+    }
+  ],
+  "robust_statistics": {
+    "z_residuals_assumed": [
+      1.0,
+      10.04987562112089,
+      1.0
+    ],
+    "gaussian_sum_check": 103.0,
+    "huber_chi2_LCDM": 27.225140420815194,
+    "tukey_chi2_LCDM": 11.0,
+    "delta_aicc_huber": 21.076992272667667,
+    "delta_aicc_tukey": 4.851851851852189
+  },
+  "aicc_penalty_BB": 6.148148148148148,
+  "f_crit_AICc_10": 2.5330249892826315,
+  "f_crit_AICc_2": 3.5659182165709757,
+  "f_crit_AICc_0": 4.105146637534724,
+  "interpretation": "\u0394AICc(f) \u2248 103.61/f\u00b2 \u2212 6.148. f=2 \u2192 \u0394AICc\u224819.8, f=5 \u2192 -2.00, f=10 \u2192 -5.11. Critical inflation: f\u22482.53 drops \u0394AICc below 10; f\u22483.57 below 2; f\u22484.11 ties."
+}

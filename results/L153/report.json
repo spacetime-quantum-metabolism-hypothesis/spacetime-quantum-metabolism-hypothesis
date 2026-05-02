@@ -1,0 +1,10 @@
+{
+  "LG_params": [
+    3.1824974586686228,
+    0.6324060870121584,
+    0.6407757311868563,
+    0.0018031867607567753
+  ],
+  "chi2_fit": 1.5325762430385113,
+  "verdict": "LG mechanism numerically VERIFIED. 4 LG params reproduce 3 Branch B regime values. Smooth interpolation provides additional testable prediction (dSph at intermediate \u03c3)."
+}

@@ -1,0 +1,9 @@
+{
+  "spearman_r": -0.08265311282714394,
+  "spearman_p": 0.2942153274708308,
+  "pearson_r": -0.09532584245703765,
+  "upsilon_scatter": NaN,
+  "sigma_scatter": 0.6602316088580654,
+  "hidden_DOF": "False",
+  "verdict": "\u03c3_0 vs Upsilon correlation: r = -0.083 (Spearman, p=2.94e-01). Upsilon scatter nan dex, \u03c3 scatter 0.660 dex. Low concern. Paper should explicitly test fixed-M/L Branch B fit."
+}

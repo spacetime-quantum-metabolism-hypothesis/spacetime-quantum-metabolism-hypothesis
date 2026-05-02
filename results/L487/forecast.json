@@ -1,0 +1,38 @@
+{
+  "L_index": "L487",
+  "preregistration_timestamp_UTC": "2026-05-01T13:47:30Z",
+  "facility": "Einstein Telescope (ET-D, ~2030+)",
+  "paper_anchor": "\u00a74.1 row C11D + \u00a74.5 ET GW scalar mode",
+  "fiducial_BNS_SNR_tensor_at_470Mpc": 68.74341817824956,
+  "SQT_prediction_band": {
+    "minimal_disformal_C11D": 0.0,
+    "Cassini_ceiling_conformal": 0.0034,
+    "derivation": "h_S/h_T ~ |beta_eff| with beta_eff^2 = (|gamma-1|)/2 from Will 2014 LRR Eq 36; |gamma-1| < 2.3e-5 (Cassini) -> |beta_eff| < 3.4e-3 (single-side amplitude)."
+  },
+  "forecasts": {
+    "single_BNS_at_470Mpc": {
+      "n_events": 1,
+      "sigma_hS_over_hT": 0.014546847196440406,
+      "n_sigma_at_ceiling_3p4e-3": 0.23372762180604847,
+      "decision": "SQT pure-disformal SURVIVES if measured |h_S/h_T| < 0.015 (1-sigma); FALSIFIED if > 0.044 at >= 3 sigma."
+    },
+    "1yr_loud_BNS_SNR30plus": {
+      "n_events": 1000,
+      "sigma_hS_over_hT": 0.0004600116991518652,
+      "n_sigma_at_ceiling_3p4e-3": 7.391116370015507,
+      "decision": "SQT pure-disformal SURVIVES if measured |h_S/h_T| < 0.00046 (1-sigma); FALSIFIED if > 0.0014 at >= 3 sigma."
+    },
+    "1yr_full_BNS_catalog": {
+      "n_events": 70000,
+      "sigma_hS_over_hT": 5.4981914345483524e-05,
+      "n_sigma_at_ceiling_3p4e-3": 61.83851618253616,
+      "decision": "SQT pure-disformal SURVIVES if measured |h_S/h_T| < 5.5e-05 (1-sigma); FALSIFIED if > 0.00016 at >= 3 sigma."
+    }
+  },
+  "honesty_disclaimer": "SQT minimal model predicts h_S/h_T = 0 exactly (pure disformal decouples scalar at static order). The 3.4e-3 ceiling is a Cassini-saturation upper envelope, NOT a positive SQT amplitude prediction. ET non-detection is consistent with BOTH SQT-minimal AND GR. ET POSITIVE detection of any |h_S/h_T| > 3.4e-3 falsifies the entire C11D sector.",
+  "decision_rule_preregistered": {
+    "h_S_over_hT_measured__lt__sigma": "consistent with SQT-minimal & GR (null)",
+    "sigma__le__h_S_over_hT__le__3p4e-3": "ambiguous - within Cassini envelope",
+    "h_S_over_hT__gt__3p4e-3_at_3sigma": "C11D SECTOR FALSIFIED"
+  }
+}

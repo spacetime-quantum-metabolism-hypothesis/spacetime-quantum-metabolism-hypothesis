@@ -1,0 +1,40 @@
+{
+  "n_data": 24,
+  "truth": {
+    "sigma_inf": 1.0,
+    "A": 0.15,
+    "log10_Rdip": 0.0,
+    "w": 0.45
+  },
+  "BG": {
+    "sigma_inf": 0.9741096698956481,
+    "sigma_inf_err": 0.004082482895786539,
+    "chi2": 164.52530181845765,
+    "k": 1,
+    "AICc": 166.70712000027584
+  },
+  "Tsallis": {
+    "sigma_inf": 1.0064936252170098,
+    "A": 0.15289759556587615,
+    "log10_Rdip": 0.011442580370577549,
+    "R_dip_Mpc": 1.026697679315545,
+    "w": 0.4336054938807605,
+    "errs": [
+      0.005486881639458687,
+      0.013227920413109889,
+      0.029819876391698735,
+      0.04750225795813717
+    ],
+    "chi2": 16.01304594575067,
+    "k": 4,
+    "AICc": 26.118309103645405,
+    "q_eff_minus_1_proxy": 0.15289759556587615
+  },
+  "delta_AICc_BG_minus_Tsallis": 140.58881089663043,
+  "verdict": "Tsallis preferred (dip detected)",
+  "notes": [
+    "Synthetic data only. Real cluster sigma_0 extraction = L473 task.",
+    "A is a proxy for q_eff - 1, not a derivation.",
+    "No physical mapping q(R) imposed; team derives in L473+."
+  ]
+}

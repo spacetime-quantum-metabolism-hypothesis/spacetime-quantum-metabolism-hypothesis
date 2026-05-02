@@ -1,0 +1,8 @@
+{
+  "L73_H5_factor": 0.3183098861837907,
+  "L115_factor": 0.15915494309189535,
+  "different_contexts": true,
+  "G2_correct": 1.0471975511965976,
+  "G2_rejected": 2,
+  "verdict": "G2 reconciliation: 1/\u03c0 factor (L73 H5) for a_0 derivation, 1/(2\u03c0) for disc dynamics are DIFFERENT geometric factors. G2 prediction returned to \u03c0/3 \u2248 1.05 (factor 1.05). L115 'factor 2' was incorrect interpretation."
+}

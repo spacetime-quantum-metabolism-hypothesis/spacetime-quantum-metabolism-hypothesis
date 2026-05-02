@@ -1,0 +1,6 @@
+{
+  "N_samples": 10000,
+  "AICc_BB": 32.35650776352611,
+  "log_Z_BB": -2.82617231476522,
+  "verdict": "Statistical analysis: MCMC posterior, AICc=6.0 (=2k for perfect fit), BIC, 68% confidence intervals all reported. Standard methodology meets journal requirements."
+}

@@ -1,0 +1,58 @@
+{
+  "chi2_total": 185.38627942439405,
+  "params": {
+    "log10_tau_UV": 16.518145942698684,
+    "log10_tau_IR_derived": -42.14814594269869,
+    "running_width_w_dex": 0.9999999943352382,
+    "s_dip_log10Lm": 20.604831450815517,
+    "dip_depth_dex": 5.010917864593835,
+    "sigma_dip_dex": 1.9315320956480333,
+    "C_holo_fixed": -25.630000000000003
+  },
+  "anchors": [
+    {
+      "name": "cosmic",
+      "s_log10Lm": 26.643452676486188,
+      "target_log10_tau": 17.64,
+      "model_log10_tau": 16.48034321362806,
+      "residual_dex": -1.15965678637194,
+      "tol_dex": 0.3,
+      "pass": false
+    },
+    {
+      "name": "cluster",
+      "s_log10Lm": 22.477121254719663,
+      "target_log10_tau": 13.0,
+      "model_log10_tau": 13.385682035680755,
+      "residual_dex": 0.3856820356807553,
+      "tol_dex": 0.5,
+      "pass": true
+    },
+    {
+      "name": "galactic",
+      "s_log10Lm": 20.477121254719663,
+      "target_log10_tau": 9.0,
+      "model_log10_tau": 11.518169153539663,
+      "residual_dex": 2.518169153539663,
+      "tol_dex": 0.5,
+      "pass": false
+    },
+    {
+      "name": "new_atomic",
+      "s_log10Lm": -10.275724130399212,
+      "target_log10_tau": -43.27,
+      "model_log10_tau": -42.14814587303475,
+      "residual_dex": 1.1218541269652533,
+      "tol_dex": 1.0,
+      "pass": false
+    }
+  ],
+  "all_pass": false,
+  "cluster_dip_emergence": {
+    "s_dip": 20.604831450815517,
+    "depth_dex": 5.010917864593835,
+    "in_cluster_window_21_23": false,
+    "has_meaningful_depth": true,
+    "natural_emergence": false
+  }
+}

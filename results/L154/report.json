@@ -1,0 +1,36 @@
+{
+  "CMB_S4_predictions": [
+    [
+      "\u0394 N_eff",
+      "SQT: 0-0.01",
+      "CMB-S4 \u03c3: 0.03",
+      "SQT consistent"
+    ],
+    [
+      "H_0 (CMB)",
+      "SQT+V: 72",
+      "CMB-S4 \u03c3: 0.3",
+      "distinguishes from LCDM"
+    ],
+    [
+      "r tensor",
+      "SQT: 0",
+      "CMB-S4 \u03c3: 5e-4",
+      "SQT consistent"
+    ],
+    [
+      "birefringence",
+      "SQT: 0",
+      "CMB-S4 \u03c3: 0.05\u00b0",
+      "SQT consistent"
+    ],
+    [
+      "Y_p (BBN)",
+      "SQT: standard",
+      "CMB-S4 \u03c3: 1e-3",
+      "SQT consistent"
+    ]
+  ],
+  "decisive_test": "H_0 from CMB-S4",
+  "verdict": "CMB-S4 forecast: SQT consistent on most channels. DECISIVE distinction via H_0 inferred (SQT+V gives 72 vs LCDM 67.4). 5\u03c3 test feasible. SQT preferred IF H_0 tension persists."
+}

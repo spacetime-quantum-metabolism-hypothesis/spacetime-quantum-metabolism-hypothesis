@@ -1,0 +1,75 @@
+===== verify_milgrom_a0 =====
+a_0 (SQT)   = 1.129e-10 m/s^2
+a_0 (obs)   = 1.200e-10 +/- 1e-11
+deviation   = 0.71 sigma
+PASS
+===== EXIT 0 =====
+===== verify_lambda_origin =====
+rho_q                = 6.855508e-27  kg/m^3
+rho_Lambda (Planck)  = 6.855508e-27  kg/m^3
+ratio                = 1.000000
+NOTE: This is DIMENSIONAL CONSISTENCY, not an a priori prediction.
+      n_inf is derived FROM rho_Lambda_obs (axiom 3 balance).
+STATUS: CONSISTENCY_CHECK (paper §5.2, L412 down-grade)
+===== EXIT 0 =====
+===== verify_Q_parameter =====
+SQT Q-parameter, Definition C (Joos-Zeh thermal-photon decoherence)
+====================================================================
+Benchmark systems: 15 (7 quantum + 8 classical)
+
+system                      log10 Q_C  label  predicted
+------------------------------------------------------------
+electron_in_atom               -7.979      0          0  OK
+hydrogen_atom                  -6.979      0          0  OK
+cold_atom_BEC_Rb              -47.614      0          0  OK
+C60_fullerene                  16.974      0          0  OK
+oligopeptide_2000amu           14.677      0          0  OK
+phthalocyanine                 14.677      0          0  OK
+nanoparticle_1e7amu           -23.614      0          0  OK
+virus_capsid_TMV               30.543      1          1  OK
+bacterium_E_coli               33.680      1          1  OK
+dust_grain_1um                 33.680      1          1  OK
+pollen_grain                   41.486      1          1  OK
+apple                          61.874      1          1  OK
+human                          71.191      1          1  OK
+car                            73.292      1          1  OK
+Earth_orbit                   144.228      1          1  OK
+
+best log10(tau_star)  = 16.974
+tau_star (linear)     = 9.422e+16
+classification accuracy = 100.0%  (15/15)
+log10 Q span (decades)  = 191.8
+
+STATUS: PARTIAL (paper §5.2). Definition C: lab-falsifiable winner.
+        canonical selection awaits 8-team K3 (axiom derivation).
+Source: L403 (4-person review PASS).
+===== EXIT 0 =====
+===== verify_S8_forecast =====
+S_8 LCDM        = 0.8320
+shift S_8 SQT   = +0.0114 (+1.14% structural)
+
+Facility     sigma(S_8)    n-sigma  verdict
+--------------------------------------------------------
+DES_Y3           0.0180       0.63  INVISIBLE
+LSST_Y10         0.0040       2.85  MARGINAL 1-3 sigma
+Euclid           0.0026       4.38  DETECT 3-5 sigma
+
+Detection consistent with LCDM at Euclid (>3 sigma) = SQT FALSIFIED.
+Source: L406 (4-person review PASS), paper §5 / §8 / §6.1 row 1.
+===== EXIT 0 =====
+===== verify_cosmic_shear =====
+S_8 LCDM    = 0.8320
+S_8 SQT     = 0.8415 (+1.14%)
+xi_+ shift  = +2.29%
+Detection by Euclid/LSST = SQT FALSIFIED (structural).
+===== EXIT 0 =====
+===== verify_monotonic_rejection =====
+chi^2 (monotonic) = 147.62
+chi^2 (V-shape)   = 0.00
+Delta chi^2       = 147.62 (~12.1 sigma, 1-DOF approx)
+NOTE: only at REGIME-GAP scale. SPARC galactic-internal shows opposite.
+===== EXIT 0 =====
+===== verify_mock_false_detection =====
+three-regime false-detection rate on LCDM mock: 100.0%
+CAVEAT: high rate => anchor-driven advantage on null data.
+===== EXIT 0 =====

@@ -1,0 +1,7 @@
+{
+  "attack": "cubic \u03b2 coefficients fitted",
+  "real_1_loop_FP": 2,
+  "L165_FP": 3,
+  "honest": "L165 plausibility not derivation",
+  "verdict": "L165 cubic \u03b2 with (a, b) = (4, 1) is BACKWARD-FIT to give 3 fixed points. Real 1-loop \u03b2 gives only 2 fixed points. Cubic \u03c3\u00b3 term is 2-loop or higher; not yet calculated. Paper must acknowledge: 'plausibility argument, not first-principles'."
+}

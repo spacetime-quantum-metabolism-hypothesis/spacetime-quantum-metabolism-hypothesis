@@ -1,0 +1,68 @@
+{
+  "paper_base_md_framework": "dark-only Z_2 + holographic + Schwinger-Keldysh + Wetterich RG",
+  "tests": {
+    "cassini": {
+      "sqt": 0.0,
+      "limit": 2.3e-05,
+      "pass": true
+    },
+    "gw170817": {
+      "sqt": 0.0,
+      "limit": 1e-15,
+      "pass": true
+    },
+    "llr": {
+      "sqt": 1.47456e-25,
+      "limit": 1e-10,
+      "pass": true
+    },
+    "equivalence": {
+      "sqt": 0.0,
+      "limit": 1e-15,
+      "pass": true
+    },
+    "earth_tunneling": {
+      "sqt": 1.7643211429149544e-51,
+      "limit": 1e-19,
+      "pass": "True"
+    },
+    "Q_parameter": {
+      "Q_macro": 4.140714758533228e-31,
+      "Q_micro": 4.545241227808154e-18,
+      "transition_correct": "False",
+      "pass": "False"
+    },
+    "lorentz": {
+      "kms_residual": 1.35e-16,
+      "pass": true
+    },
+    "uncertainty": {
+      "pass": true,
+      "reason": "standard QFT inheritance"
+    },
+    "cpt": {
+      "pass": true
+    },
+    "bh_entropy": {
+      "S_BH_kB": 1.049014628439994e+77,
+      "pass": true
+    },
+    "bekenstein": {
+      "ratio": 7.621269416435507e-18,
+      "pass": true
+    },
+    "wavefunction": {
+      "pass": true,
+      "reason": "standard QFT inheritance"
+    },
+    "bec": {
+      "pass": false,
+      "reason": "BEC mechanism not in paper/base.md"
+    }
+  },
+  "summary": {
+    "pass": 11,
+    "total": 13,
+    "rate": 0.8461538461538461
+  }
+}

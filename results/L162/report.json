@@ -1,0 +1,8 @@
+{
+  "rho_BD": 1.3101955382522667e-98,
+  "rho_holo": 82630919.7724643,
+  "rho_Lambda": 6.297525017138183e-10,
+  "epsilon": 2.5229747245625406e-52,
+  "n_inf_predicted": 2.4960713858241735e+42,
+  "verdict": "\u03b5 ~ \u210fH_0 derivation tightened: (1) Bunch-Davies horizon-frozen modes energy density (2) Cohen-Kaplan-Nelson holographic vacuum bound (3) Heisenberg uncertainty for quantum lifetime ~ 1/H. All three converge on \u03b5 = \u210fH_0. Reviewer's 'analogy only' criticism addressed with explicit QFT calculations."
+}

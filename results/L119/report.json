@@ -1,0 +1,7 @@
+{
+  "SQT_BTFR_slope": 4,
+  "observed_slope": 3.85,
+  "match": true,
+  "new_prediction": "slope varies with mass (regime)",
+  "verdict": "SQT predicts BTFR slope = 4 (same as MOND, both based on a_0=const). Observed: ~3.85 (close to 4). MATCH. NEW prediction: slope variation with mass (regime-dependent). Testable with MaNGA / future SPARC extensions."
+}

@@ -1,0 +1,7 @@
+{
+  "rho_DE_ratio_BBN": 1.420561098766014e-48,
+  "delta_Neff": 1.1364488790128112e-47,
+  "Planck_bound": 0.3,
+  "margin": 2.6398019791316815e+46,
+  "verdict": "BBN constraint preserved with SQT+V(n,t) extension. \u0394N_eff ~ 1.14e-47 << 0.3 (Planck bound). Massive headroom allows wide V(n,t) parameter range. L83 BBN PASS robustly extended."
+}

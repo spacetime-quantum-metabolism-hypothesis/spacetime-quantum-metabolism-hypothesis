@@ -1,0 +1,206 @@
+{
+  "background": {
+    "Om": 0.315,
+    "OL": 0.685,
+    "rho_crit_0_Msun_Mpc3": 126046497433.77591
+  },
+  "closure_BA_Om_over_OL": 0.45985401459854014,
+  "scan_BA_to_r_star": [
+    {
+      "B_over_A": 0.1,
+      "r_star_over_rvir": null,
+      "rho_m_at_r_star_over_rho_crit": null
+    },
+    {
+      "B_over_A": 0.2,
+      "r_star_over_rvir": null,
+      "rho_m_at_r_star_over_rho_crit": null
+    },
+    {
+      "B_over_A": 0.3,
+      "r_star_over_rvir": null,
+      "rho_m_at_r_star_over_rho_crit": null
+    },
+    {
+      "B_over_A": 0.45985401459854014,
+      "r_star_over_rvir": null,
+      "rho_m_at_r_star_over_rho_crit": null
+    },
+    {
+      "B_over_A": 0.5,
+      "r_star_over_rvir": 13.492317787261362,
+      "rho_m_at_r_star_over_rho_crit": 0.3425
+    },
+    {
+      "B_over_A": 0.7,
+      "r_star_over_rvir": 7.373176646490782,
+      "rho_m_at_r_star_over_rho_crit": 0.4795
+    },
+    {
+      "B_over_A": 1.0,
+      "r_star_over_rvir": 5.596173135590718,
+      "rho_m_at_r_star_over_rho_crit": 0.685
+    },
+    {
+      "B_over_A": 1.5,
+      "r_star_over_rvir": 4.472206810097673,
+      "rho_m_at_r_star_over_rho_crit": 1.0275000000000003
+    },
+    {
+      "B_over_A": 2.0,
+      "r_star_over_rvir": 3.9076611087649424,
+      "rho_m_at_r_star_over_rho_crit": 1.3699999999999999
+    },
+    {
+      "B_over_A": 3.0,
+      "r_star_over_rvir": 3.2873001413429477,
+      "rho_m_at_r_star_over_rho_crit": 2.055
+    },
+    {
+      "B_over_A": 5.0,
+      "r_star_over_rvir": 2.685790670818701,
+      "rho_m_at_r_star_over_rho_crit": 3.425
+    },
+    {
+      "B_over_A": 10.0,
+      "r_star_over_rvir": 2.068486865888034,
+      "rho_m_at_r_star_over_rho_crit": 6.850000000000002
+    }
+  ],
+  "cluster_mass_scan_at_BA_closure": [
+    {
+      "M_vir_Msun": 10000000000000.0,
+      "r_vir_Mpc": 0.4558096733194775,
+      "r_star_over_rvir": null,
+      "r_star_Mpc": null
+    },
+    {
+      "M_vir_Msun": 17782794100389.227,
+      "r_vir_Mpc": 0.5522260262970083,
+      "r_star_over_rvir": null,
+      "r_star_Mpc": null
+    },
+    {
+      "M_vir_Msun": 31622776601683.793,
+      "r_vir_Mpc": 0.669037104673384,
+      "r_star_over_rvir": null,
+      "r_star_Mpc": null
+    },
+    {
+      "M_vir_Msun": 56234132519034.91,
+      "r_vir_Mpc": 0.8105569569605946,
+      "r_star_over_rvir": null,
+      "r_star_Mpc": null
+    },
+    {
+      "M_vir_Msun": 100000000000000.0,
+      "r_vir_Mpc": 0.9820121722515828,
+      "r_star_over_rvir": null,
+      "r_star_Mpc": null
+    },
+    {
+      "M_vir_Msun": 177827941003892.28,
+      "r_vir_Mpc": 1.1897349077927342,
+      "r_star_over_rvir": null,
+      "r_star_Mpc": null
+    },
+    {
+      "M_vir_Msun": 316227766016837.94,
+      "r_vir_Mpc": 1.4413967472268308,
+      "r_star_over_rvir": null,
+      "r_star_Mpc": null
+    },
+    {
+      "M_vir_Msun": 562341325190349.06,
+      "r_vir_Mpc": 1.7462920263225856,
+      "r_star_over_rvir": null,
+      "r_star_Mpc": null
+    },
+    {
+      "M_vir_Msun": 1000000000000000.0,
+      "r_vir_Mpc": 2.1156810899323757,
+      "r_star_over_rvir": null,
+      "r_star_Mpc": null
+    }
+  ],
+  "cluster_mass_scan_at_BA_1": [
+    {
+      "M_vir_Msun": 10000000000000.0,
+      "r_vir_Mpc": 0.4558096733194775,
+      "r_star_over_rvir": 5.596173135590718,
+      "r_star_Mpc": 2.5507898487728413
+    },
+    {
+      "M_vir_Msun": 17782794100389.227,
+      "r_vir_Mpc": 0.5522260262970083,
+      "r_star_over_rvir": 5.596173135590718,
+      "r_star_Mpc": 3.0903524531373314
+    },
+    {
+      "M_vir_Msun": 31622776601683.793,
+      "r_vir_Mpc": 0.669037104673384,
+      "r_star_over_rvir": 5.596173135590718,
+      "r_star_Mpc": 3.7440474718865864
+    },
+    {
+      "M_vir_Msun": 56234132519034.91,
+      "r_vir_Mpc": 0.8105569569605946,
+      "r_star_over_rvir": 5.596173135590718,
+      "r_star_Mpc": 4.536017067409041
+    },
+    {
+      "M_vir_Msun": 100000000000000.0,
+      "r_vir_Mpc": 0.9820121722515828,
+      "r_star_over_rvir": 5.596173135590718,
+      "r_star_Mpc": 5.495510137177392
+    },
+    {
+      "M_vir_Msun": 177827941003892.28,
+      "r_vir_Mpc": 1.1897349077927342,
+      "r_star_over_rvir": 5.596173135590718,
+      "r_star_Mpc": 6.657962529464198
+    },
+    {
+      "M_vir_Msun": 316227766016837.94,
+      "r_vir_Mpc": 1.4413967472268308,
+      "r_star_over_rvir": 5.596173135590718,
+      "r_star_Mpc": 8.066305754558634
+    },
+    {
+      "M_vir_Msun": 562341325190349.06,
+      "r_vir_Mpc": 1.7462920263225856,
+      "r_star_over_rvir": 5.596173135590718,
+      "r_star_Mpc": 9.772552524602732
+    },
+    {
+      "M_vir_Msun": 1000000000000000.0,
+      "r_vir_Mpc": 2.1156810899323757,
+      "r_star_over_rvir": 5.596173135590718,
+      "r_star_Mpc": 11.83971767895685
+    }
+  ],
+  "concentration_sensitivity_at_BA_closure": [
+    {
+      "c": 3.0,
+      "r_star_over_rvir_at_BA_closure": null
+    },
+    {
+      "c": 4.0,
+      "r_star_over_rvir_at_BA_closure": null
+    },
+    {
+      "c": 5.0,
+      "r_star_over_rvir_at_BA_closure": null
+    },
+    {
+      "c": 7.0,
+      "r_star_over_rvir_at_BA_closure": null
+    },
+    {
+      "c": 10.0,
+      "r_star_over_rvir_at_BA_closure": null
+    }
+  ],
+  "fraction_of_log_BA_grid_giving_r_star_in_outskirt_band_1_to_10_rvir": 0.5016666666666667,
+  "interpretation_one_liner": "B/A = Om/OL = 0.46 IS the background-null closure; r* lands at rho_m=Om*rho_crit_0 i.e. cosmic mean -> in NFW+2halo this is at the 2-halo floor (asymptotic), not a discrete radius. Without the 2-halo floor the crossing sits in the outskirt band; with the floor included the closure case becomes degenerate. Honest answer: Om/OL is not derived, it is *imposed* by demanding <sigma_eff>=0 on the cosmic mean, which trivialises the cluster crossover."
+}

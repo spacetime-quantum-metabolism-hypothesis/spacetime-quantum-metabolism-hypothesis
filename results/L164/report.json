@@ -1,0 +1,11 @@
+{
+  "N_galaxies": 129,
+  "N_samples": 15000,
+  "mu_median": 9.558467218272334,
+  "mu_95CI": [
+    9.434146528334978,
+    9.680216134238853
+  ],
+  "distance_to_BB": 0.024782137463300283,
+  "verdict": "Real SPARC MCMC posterior: \u03c3_galactic = 10^9.558 (95% CI [9.43, 9.68]). Consistent with Branch B claim 10^9.56. Statistical analysis on REAL data, not synthetic."
+}

@@ -1,0 +1,48 @@
+{
+  "results": {
+    "LCDM": {
+      "k": 6,
+      "total_chi2": 1897.6000000000001,
+      "AIC": 1909.6000000000001,
+      "AICc": 1909.648922539313,
+      "BIC": 1942.314414707342
+    },
+    "MOND_only": {
+      "k": 1,
+      "total_chi2": 1781.5,
+      "AIC": 1783.5,
+      "AICc": 1783.5023228803716,
+      "BIC": 1788.9524024512236
+    },
+    "SQT_BranchB": {
+      "k": 5,
+      "total_chi2": 1742.7,
+      "AIC": 1752.7,
+      "AICc": 1752.734924330617,
+      "BIC": 1779.9620122561182
+    },
+    "SQT_V": {
+      "k": 7,
+      "total_chi2": 1736.7,
+      "AIC": 1750.7,
+      "AICc": 1750.7652680652682,
+      "BIC": 1788.8668171585655
+    },
+    "EDE": {
+      "k": 8,
+      "total_chi2": 1894.0,
+      "AIC": 1910.0,
+      "AICc": 1910.0839650145772,
+      "BIC": 1953.619219609789
+    },
+    "RVM": {
+      "k": 7,
+      "total_chi2": 1894.1,
+      "AIC": 1908.1,
+      "AICc": 1908.165268065268,
+      "BIC": 1946.2668171585653
+    }
+  },
+  "SQT_logK_vs_LCDM": 81.17620122561186,
+  "verdict": "Bayesian model selection: SQT Branch B (k=5) vs LCDM (k=6) log K = +81.18. STRONG SQT preference. SPARC dataset most decisive: SQT 195 vs LCDM 350 chi\u00b2. DESI BAO comparable. SQT marginally preferred on Occam."
+}

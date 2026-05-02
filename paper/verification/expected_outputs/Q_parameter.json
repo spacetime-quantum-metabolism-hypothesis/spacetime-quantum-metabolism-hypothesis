@@ -1,0 +1,29 @@
+{
+  "script": "verify_Q_parameter.py",
+  "classification": "PARTIAL — Q-parameter, Definition C (Joos-Zeh thermal-photon decoherence)",
+  "tolerance": "exact (deterministic: 15-system benchmark, no random)",
+  "source": "L403 (4-person review PASS), paper section 5.2",
+  "expected": {
+    "definition": "Q_C = Lambda * T_obs, with Lambda = (k_B T)^9 (L/2)^6 / (hbar^9 c^6), prefactor=1",
+    "n_systems": 15,
+    "n_quantum": 7,
+    "n_classical": 8,
+    "accuracy": 1.0,
+    "n_correct": 15,
+    "log10_tau_star": 16.974,
+    "tau_star_linear": 9.422e16,
+    "log10_min": -47.614,
+    "log10_max": 144.228,
+    "span_decades": 191.842
+  },
+  "stdout_keylines": [
+    "best log10(tau_star)  = 16.974",
+    "tau_star (linear)     = 9.422e+16",
+    "classification accuracy = 100.0%  (15/15)",
+    "log10 Q span (decades)  = 191.8",
+    "STATUS: PARTIAL (paper §5.2). Definition C: lab-falsifiable winner.",
+    "        canonical selection awaits 8-team K3 (axiom derivation)."
+  ],
+  "honesty_note": "Definition C is one of 5 dimensionally-consistent candidates. Of the 5, A/C/D/E tie at 100% accuracy on this benchmark (B Penrose-Diosi misclassifies BEC). Canonical selection (K3 8-team consensus on axiom derivation) is pending; PARTIAL until resolved. Prefactor = 1 fixed (no tuning).",
+  "runtime_seconds_typical": 0.05
+}

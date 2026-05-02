@@ -1,0 +1,18 @@
+{
+  "script": "verify_cosmic_shear.py",
+  "classification": "Structural falsifier (Euclid / LSST)",
+  "tolerance": "exact (analytic toy)",
+  "expected": {
+    "S8_LCDM": 0.8320,
+    "S8_SQT":  0.8415,
+    "shift_S8_pct": 1.14,
+    "shift_xi_plus_pct": 2.29
+  },
+  "stdout_lines": [
+    "S_8 LCDM    = 0.8320",
+    "S_8 SQT     = 0.8415 (+1.14%)",
+    "xi_+ shift  = +2.29%",
+    "Detection by Euclid/LSST = SQT FALSIFIED (structural)."
+  ],
+  "runtime_seconds_typical": 0.05
+}

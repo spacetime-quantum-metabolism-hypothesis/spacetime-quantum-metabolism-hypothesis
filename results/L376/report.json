@@ -1,0 +1,153 @@
+{
+  "loop": "L376",
+  "purpose": "proper Laplace ln Z BMA across 5 models (BB-3regime, BB-2regime, smooth, LCDM, MOND)",
+  "N_data": 1756,
+  "ln_N_data": 7.470793774195062,
+  "models": {
+    "BB-3regime": {
+      "chi2": 1745.0,
+      "k": 3,
+      "AIC": 1751.0,
+      "AICc": 1751.013698630137,
+      "BIC": 1767.4123813225851,
+      "source": "L196/L281 family best-fit (joint BAO+SN+CMB+RSD)"
+    },
+    "BB-2regime": {
+      "chi2": 1746.23,
+      "k": 2,
+      "AIC": 1750.23,
+      "AICc": 1750.2368454078721,
+      "BIC": 1761.17158754839,
+      "source": "derived from L322 dAICc(M3-M2)=+0.77, chi2_2 = chi2_3 + 1.23"
+    },
+    "smooth": {
+      "chi2": 1742.0,
+      "k": 5,
+      "AIC": 1752.0,
+      "AICc": 1752.0342857142857,
+      "BIC": 1779.3539688709752,
+      "source": "L340 input (5-poly background)"
+    },
+    "LCDM": {
+      "chi2": 1758.0,
+      "k": 2,
+      "AIC": 1762.0,
+      "AICc": 1762.006845407872,
+      "BIC": 1772.94158754839,
+      "source": "L340 input (Planck-LCDM)"
+    },
+    "MOND": {
+      "chi2": 1762.0,
+      "k": 2,
+      "AIC": 1766.0,
+      "AICc": 1766.006845407872,
+      "BIC": 1776.94158754839,
+      "source": "L340 input (MOND-cosmo Bekenstein-Sanders)"
+    }
+  },
+  "R_values_tested": [
+    3,
+    5,
+    10
+  ],
+  "Laplace_lnZ_by_R": {
+    "3": {
+      "BB-3regime": -873.0390212663904,
+      "BB-2regime": -873.4743475109269,
+      "smooth": -871.8983687773172,
+      "LCDM": -879.3593475109269,
+      "MOND": -881.3593475109269
+    },
+    "5": {
+      "BB-3regime": -874.5714981376883,
+      "BB-2regime": -874.4959987584589,
+      "smooth": -874.4524968961472,
+      "LCDM": -880.3809987584589,
+      "MOND": -882.3809987584589
+    },
+    "10": {
+      "BB-3regime": -876.6509396793681,
+      "BB-2regime": -875.8822931195788,
+      "smooth": -877.9182327989469,
+      "LCDM": -881.7672931195788,
+      "MOND": -883.7672931195788
+    }
+  },
+  "Laplace_weights_by_R": {
+    "3": {
+      "BB-3regime": 0.209296725249805,
+      "BB-2regime": 0.13542618592821187,
+      "smooth": 0.6548495222378463,
+      "LCDM": 0.000376599397948716,
+      "MOND": 5.096718618812729e-05
+    },
+    "5": {
+      "BB-3regime": 0.3117013954104362,
+      "BB-2regime": 0.33614581625324746,
+      "smooth": 0.35109151117309856,
+      "LCDM": 0.0009347698242868486,
+      "MOND": 0.00012650733893089934
+    },
+    "10": {
+      "BB-3regime": 0.2902549072925243,
+      "BB-2regime": 0.62603487934263,
+      "smooth": 0.08173370052815591,
+      "LCDM": 0.0017409067311421435,
+      "MOND": 0.00023560610554764755
+    }
+  },
+  "delta_lnZ_best_minus_X_by_R": {
+    "3": {
+      "BB-3regime": 1.1406524890732044,
+      "BB-2regime": 1.5759787336097588,
+      "smooth": 0.0,
+      "LCDM": 7.46097873360975,
+      "MOND": 9.46097873360975
+    },
+    "5": {
+      "BB-3regime": 0.11900124154112746,
+      "BB-2regime": 0.04350186231170028,
+      "smooth": 0.0,
+      "LCDM": 5.928501862311691,
+      "MOND": 7.928501862311691
+    },
+    "10": {
+      "BB-3regime": 0.7686465597893175,
+      "BB-2regime": 0.0,
+      "smooth": 2.0359396793680844,
+      "LCDM": 5.884999999999991,
+      "MOND": 7.884999999999991
+    }
+  },
+  "BB_family_weight_by_R": {
+    "3": 0.3447229111780169,
+    "5": 0.6478472116636836,
+    "10": 0.9162897866351543
+  },
+  "AIC_weights_for_comparison": {
+    "BB-3regime": 0.32459261289600155,
+    "BB-2regime": 0.477025952545961,
+    "smooth": 0.19687537163765925,
+    "LCDM": 0.0013265358195198023,
+    "MOND": 0.0001795271008582246
+  },
+  "AICc_weights_for_comparison": {
+    "BB-3regime": 0.32471392430701407,
+    "BB-2regime": 0.4788422316605921,
+    "smooth": 0.19493204676860515,
+    "LCDM": 0.001331586612439862,
+    "MOND": 0.00018021065134863034
+  },
+  "BIC_weights_for_comparison": {
+    "BB-3regime": 0.04214172849688165,
+    "BB-2regime": 0.9547364297457043,
+    "smooth": 0.00010755474032439178,
+    "LCDM": 0.0026549751968392176,
+    "MOND": 0.00035931182025041703
+  },
+  "BB_family_weight_AIC": 0.8016185654419625,
+  "BB_family_weight_AICc": 0.8035561559676061,
+  "BB_family_weight_BIC": 0.996878158242586,
+  "verdict": "BB family dominant at R=5 and R=10 but minority at R=3 (smooth competitive under tight prior)",
+  "honesty_note_one_line": "BB-2regime chi2=1746.23 is derived from L322 synthetic dAICc=+0.77 (not from an independent joint MCMC fit). Other chi2 values are L340/L196 inputs."
+}

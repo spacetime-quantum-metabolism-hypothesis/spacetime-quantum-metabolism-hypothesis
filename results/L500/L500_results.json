@@ -1,0 +1,264 @@
+{
+  "a0_sqt_planck": 1.0421903092736491e-10,
+  "sigma_log_floor_default": 0.13,
+  "sigma_log_floor_noise_aware": 0.2,
+  "D4_summary": {
+    "n_galaxies": 17,
+    "n_points": 242,
+    "chi2_sqt_locked": 607.4291837301568,
+    "chi2_per_n_sqt": 2.5100379492981686,
+    "a0_free": 4.626852625546523e-11,
+    "log10_a0_free": -10.33471433342235,
+    "chi2_free": 381.90199349282284,
+    "chi2_per_n_free": 1.5781074111273672,
+    "n_LITTLE_THINGS_match": 4,
+    "Q_distribution": {
+      "1": 5,
+      "2": 8,
+      "3": 4,
+      "-1": 0
+    },
+    "cohort_median_fracV": 0.09174311926605505
+  },
+  "D4_noise_aware": {
+    "sigma_log_floor": 0.2,
+    "chi2_sqt_locked": 325.3380290926211,
+    "chi2_per_n_sqt": 1.344372021043889,
+    "a0_free": 4.4416587551452726e-11,
+    "chi2_free": 201.11652126822736,
+    "chi2_per_n_free": 0.831060005240609
+  },
+  "per_galaxy": [
+    {
+      "name": "D631-7",
+      "Q": 1,
+      "T": 10,
+      "Vflat": 57.7,
+      "n_pts": 16,
+      "chi2": 50.68823609321815,
+      "chi2_per_pt": 3.1680147558261345,
+      "median_fracV": 0.05422135920413722,
+      "in_LITTLE_THINGS": true
+    },
+    {
+      "name": "DDO064",
+      "Q": 1,
+      "T": 10,
+      "Vflat": 46.1,
+      "n_pts": 14,
+      "chi2": 2.526102442134496,
+      "chi2_per_pt": 0.18043588872389257,
+      "median_fracV": 0.15969136304489265,
+      "in_LITTLE_THINGS": false
+    },
+    {
+      "name": "DDO154",
+      "Q": 2,
+      "T": 10,
+      "Vflat": 47.0,
+      "n_pts": 12,
+      "chi2": 9.012367123257734,
+      "chi2_per_pt": 0.7510305936048112,
+      "median_fracV": 0.013512696127650822,
+      "in_LITTLE_THINGS": true
+    },
+    {
+      "name": "DDO168",
+      "Q": 2,
+      "T": 10,
+      "Vflat": 53.4,
+      "n_pts": 10,
+      "chi2": 15.869823181389657,
+      "chi2_per_pt": 1.5869823181389657,
+      "median_fracV": 0.04280026542800265,
+      "in_LITTLE_THINGS": true
+    },
+    {
+      "name": "DDO170",
+      "Q": 2,
+      "T": 10,
+      "Vflat": 60.0,
+      "n_pts": 8,
+      "chi2": 13.901513776994538,
+      "chi2_per_pt": 1.7376892221243172,
+      "median_fracV": 0.019693301049233253,
+      "in_LITTLE_THINGS": false
+    },
+    {
+      "name": "F561-1",
+      "Q": 3,
+      "T": 9,
+      "Vflat": 50.0,
+      "n_pts": 6,
+      "chi2": 38.546012801528825,
+      "chi2_per_pt": 6.4243354669214705,
+      "median_fracV": 0.10575806307513624,
+      "in_LITTLE_THINGS": false
+    },
+    {
+      "name": "KK98-251",
+      "Q": 2,
+      "T": 10,
+      "Vflat": 33.7,
+      "n_pts": 15,
+      "chi2": 62.82393752186154,
+      "chi2_per_pt": 4.1882625014574355,
+      "median_fracV": 0.09174311926605505,
+      "in_LITTLE_THINGS": false
+    },
+    {
+      "name": "NGC2366",
+      "Q": 3,
+      "T": 10,
+      "Vflat": 50.2,
+      "n_pts": 26,
+      "chi2": 52.14452702011465,
+      "chi2_per_pt": 2.0055587315428713,
+      "median_fracV": 0.05177866892118332,
+      "in_LITTLE_THINGS": true
+    },
+    {
+      "name": "NGC3741",
+      "Q": 1,
+      "T": 10,
+      "Vflat": 50.1,
+      "n_pts": 21,
+      "chi2": 7.007344661368883,
+      "chi2_per_pt": 0.3336830791128039,
+      "median_fracV": 0.06279069767441861,
+      "in_LITTLE_THINGS": false
+    },
+    {
+      "name": "PGC51017",
+      "Q": 3,
+      "T": 11,
+      "Vflat": 18.6,
+      "n_pts": 6,
+      "chi2": 91.8472907645663,
+      "chi2_per_pt": 15.307881794094383,
+      "median_fracV": 0.09833411269581482,
+      "in_LITTLE_THINGS": false
+    },
+    {
+      "name": "UGC01281",
+      "Q": 1,
+      "T": 8,
+      "Vflat": 55.2,
+      "n_pts": 23,
+      "chi2": 3.0250445794455185,
+      "chi2_per_pt": 0.13152367736719645,
+      "median_fracV": 0.14948805460750852,
+      "in_LITTLE_THINGS": false
+    },
+    {
+      "name": "UGC04305",
+      "Q": 3,
+      "T": 10,
+      "Vflat": 34.5,
+      "n_pts": 22,
+      "chi2": 195.54513944780115,
+      "chi2_per_pt": 8.888415429445507,
+      "median_fracV": 0.0989329268292683,
+      "in_LITTLE_THINGS": false
+    },
+    {
+      "name": "UGC06628",
+      "Q": 2,
+      "T": 9,
+      "Vflat": 41.8,
+      "n_pts": 7,
+      "chi2": 32.74735972423612,
+      "chi2_per_pt": 4.678194246319445,
+      "median_fracV": 0.19975845410628018,
+      "in_LITTLE_THINGS": false
+    },
+    {
+      "name": "UGC07690",
+      "Q": 2,
+      "T": 10,
+      "Vflat": 57.4,
+      "n_pts": 7,
+      "chi2": 1.830119183055627,
+      "chi2_per_pt": 0.2614455975793753,
+      "median_fracV": 0.07443868739205527,
+      "in_LITTLE_THINGS": false
+    },
+    {
+      "name": "UGC09992",
+      "Q": 2,
+      "T": 10,
+      "Vflat": 33.6,
+      "n_pts": 5,
+      "chi2": 11.159418660965105,
+      "chi2_per_pt": 2.231883732193021,
+      "median_fracV": 0.1715151515151515,
+      "in_LITTLE_THINGS": false
+    },
+    {
+      "name": "UGCA442",
+      "Q": 1,
+      "T": 9,
+      "Vflat": 56.4,
+      "n_pts": 8,
+      "chi2": 1.814733738967328,
+      "chi2_per_pt": 0.226841717370916,
+      "median_fracV": 0.045700481053253444,
+      "in_LITTLE_THINGS": false
+    },
+    {
+      "name": "UGCA444",
+      "Q": 2,
+      "T": 10,
+      "Vflat": 37.0,
+      "n_pts": 36,
+      "chi2": 16.94021300925116,
+      "chi2_per_pt": 0.4705614724791989,
+      "median_fracV": 0.13926088177971307,
+      "in_LITTLE_THINGS": false
+    }
+  ],
+  "leave_worst_k_out": [
+    {
+      "k_dropped": 0,
+      "n_gal_kept": 17,
+      "n_pts": 242,
+      "chi2": 607.4291837301568,
+      "chi2_per_pt": 2.5100379492981686
+    },
+    {
+      "k_dropped": 1,
+      "n_gal_kept": 16,
+      "n_pts": 220,
+      "chi2": 411.8840442823556,
+      "chi2_per_pt": 1.8722002012834345
+    },
+    {
+      "k_dropped": 2,
+      "n_gal_kept": 15,
+      "n_pts": 214,
+      "chi2": 320.0367535177893,
+      "chi2_per_pt": 1.4954988482139686
+    },
+    {
+      "k_dropped": 3,
+      "n_gal_kept": 14,
+      "n_pts": 199,
+      "chi2": 257.21281599592777,
+      "chi2_per_pt": 1.2925267135473757
+    },
+    {
+      "k_dropped": 4,
+      "n_gal_kept": 13,
+      "n_pts": 173,
+      "chi2": 205.06828897581315,
+      "chi2_per_pt": 1.1853658322301337
+    },
+    {
+      "k_dropped": 5,
+      "n_gal_kept": 12,
+      "n_pts": 157,
+      "chi2": 154.380052882595,
+      "chi2_per_pt": 0.9833124387426434
+    }
+  ]
+}

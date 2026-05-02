@@ -1,0 +1,27 @@
+# SQMH Verification Conda Environment
+# Create:    conda env create -f paper/verification/conda_env.yml
+# Activate:  conda activate sqmh-verify
+# Run:       cd paper/verification && python verify_lambda_origin.py
+#
+# Mirrors the Docker image (python:3.11 + numpy>=2.0 + scipy>=1.10) so that
+# verify_*.py outputs match expected_outputs/ byte-for-byte (deterministic
+# scripts; no RNG, no MCMC).
+
+name: sqmh-verify
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.11
+  - pip>=24.0
+  - numpy>=2.0
+  - scipy>=1.10
+  # BLAS pinned to OpenBLAS so single-thread enforcement (OMP/MKL/OPENBLAS_NUM_THREADS=1)
+  # behaves the same on Linux/macOS/Windows.
+  - libblas=*=*openblas
+  - pip:
+      - -r requirements.txt
+variables:
+  OMP_NUM_THREADS: "1"
+  MKL_NUM_THREADS: "1"
+  OPENBLAS_NUM_THREADS: "1"

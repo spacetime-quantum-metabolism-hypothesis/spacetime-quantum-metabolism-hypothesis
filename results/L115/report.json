@@ -1,0 +1,7 @@
+{
+  "disc_factor": 0.15915494309189535,
+  "sphere_factor": 0.07957747154594767,
+  "target_factor": 0.3183098861837907,
+  "factor_2_off": 2,
+  "verdict": "1/(2\u03c0) factor naturally arises from azimuthal integral in axially-symmetric disc galaxy system. Geometric origin clearer than L73 H5. However: spherical systems give 1/(4\u03c0), so disc/spheroid ratio = 2 (not \u03c0/3). G2 prediction may need refinement based on this analysis."
+}

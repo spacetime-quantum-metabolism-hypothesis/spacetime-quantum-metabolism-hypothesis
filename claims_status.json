@@ -1,0 +1,658 @@
+{
+  "version": "1.2",
+  "framework": "SQT",
+  "schema_doc": "paper/base.md §claims_status.json (line 480ff) + L516 13-value enum extension",
+  "single_source_of_truth": "paper/base.md §6.5(e) + L495/L502 hidden-DOF audit + L491–L494/L498/L503/L506–L509 cross-channel",
+  "last_synced_loop": "L516",
+  "last_synced_date": "2026-05-01",
+  "status_enum_active": [
+    "PASS_STRONG",
+    "PASS_MODERATE",
+    "PASS_QUALITATIVE",
+    "PASS_IDENTITY",
+    "PASS_BY_INHERITANCE",
+    "CONSISTENCY_CHECK",
+    "PARTIAL",
+    "POSTDICTION",
+    "PENDING",
+    "NOT_INHERITED",
+    "OBS-FAIL",
+    "FRAMEWORK-FAIL",
+    "OPEN_PROVISIONAL"
+  ],
+  "status_enum_legacy_deprecated": ["PASS", "PASS_TRIVIAL"],
+  "enum_extension_note_L516": "L495 hidden-DOF audit (k_hidden = 9 conservative ~ 13 expanded) + L502 AICc penalty quantification together force a re-grading: every previously-substantive PASS_STRONG row carries 1–2 applicable hidden DOF (B1 ansatz, η_Z₂ scale, Λ_UV stipulation, dark-only embedding, M16 functional, Υ⋆ convention). Per L502 Table §2 with k_h_applicable, ΔAICc(SQT − free) lands in [+2, +5] for all four substantive rows + L482 RAR + Bullet — i.e. *no* claim survives an honest AICc test at PASS_STRONG. Three new grades introduced: PASS_MODERATE (ΔAICc ∈ [+2, +6] with applicable hidden DOF, still passes the bare bound), PASS_QUALITATIVE (Bullet-class qualitative-only PASS, magnitude not derivable), OPEN_PROVISIONAL (channel-specific PASS that fails one or more cross-channel audits — e.g. L503 universality FAIL, L506 channel 3 universal_phase3 FAIL).",
+  "self_audit_distribution": {
+    "PASS_STRONG": 0,
+    "PASS_MODERATE": 5,
+    "PASS_QUALITATIVE": 1,
+    "PASS_IDENTITY": 3,
+    "PASS_BY_INHERITANCE": 8,
+    "CONSISTENCY_CHECK": 1,
+    "PARTIAL": 7,
+    "NOT_INHERITED": 8,
+    "FRAMEWORK-FAIL": 0,
+    "total": 33,
+    "raw_PASS_STRONG_advertised_post_L412": "9/32 = 28% (pre-L516, deprecated)",
+    "raw_PASS_STRONG_advertised_pre_L412": "10/32 = 31% (pre-L412, deprecated)",
+    "substantive_only_post_L516": "0/33 = 0% (every substantive row demoted by L502 AICc penalty)",
+    "PASS_combined_post_L516": "5+1 = 6/33 = 18% (PASS_MODERATE + PASS_QUALITATIVE)",
+    "claim_added_L516": "+1 (L482 RAR a₀ now an explicit claim row at PASS_MODERATE; previously implicit)",
+    "obs_fail_separate_category": "S_8 worsening (§6.1.1 #1) — counted outside the 33-claim distribution"
+  },
+  "L516_demotion_log": {
+    "rule": "L502 ΔAICc_honest with k_h_applicable ∈ {1,2}",
+    "thresholds": {"equivalence": 2.0, "demotion": 6.0, "elimination": 10.0},
+    "rows": [
+      {"id": "newton-recovery", "from": "PASS_STRONG", "to": "PASS_MODERATE", "delta_aicc_honest": 4.0, "k_h_applicable": 2, "hidden_dof": ["B1 bilinear ansatz R = σ·n·ρ_m", "σ₀ amplitude scale stipulation"]},
+      {"id": "bbn-deltaNeff", "from": "PASS_STRONG", "to": "PASS_MODERATE", "delta_aicc_honest": 2.0, "k_h_applicable": 1, "hidden_dof": ["η_Z₂ ≈ 10 MeV scale stipulation"]},
+      {"id": "cassini-ppn", "from": "PASS_STRONG", "to": "PASS_MODERATE", "delta_aicc_honest": 2.0, "k_h_applicable": 1, "hidden_dof": ["Λ_UV stipulation (β_eff = Λ_UV/M_Pl)"], "cross_channel_caveat_L506": "channel 3 universal_phase3 (β=0.107) FAILS Cassini; PASS contingent on dark-only embedding or screening"},
+      {"id": "ep-eta", "from": "PASS_STRONG", "to": "PASS_MODERATE", "delta_aicc_honest": 2.0, "k_h_applicable": 1, "hidden_dof": ["dark-only embedding (sector-selective, not universal)"], "cross_channel_caveat_L508": "MICROSCOPE structurally 0; LLR conditional (G_N(t) variation possible at β_dark ~ 0.1)"},
+      {"id": "rar-a0-milgrom", "from": "(implicit; PASS_STRONG candidate L482)", "to": "PASS_MODERATE", "delta_aicc_honest": 4.707, "k_h_applicable": 2, "hidden_dof": ["M16 interpolating functional", "Υ⋆ = (0.5, 0.7) SPARC convention"], "cross_channel_caveat_L491_L492_L503": "K_X1·K_X2·K_X3 FAIL in L492 subsets; L503 a₀ NOT universal per-galaxy/environment; L491 functional-form spread 0.37 dex; L493 OOS PASS; L494 false-positive 0/200 (real signal)"},
+      {"id": "bullet-cluster", "from": "PARTIAL (qualitative)", "to": "PASS_QUALITATIVE", "delta_aicc_honest": 4.0, "k_h_applicable": 2, "hidden_dof": ["B1 ansatz", "scale stipulation"], "cross_channel_caveat_L509": "Bullet/MACS J0025/MACS J1149 PASS_QUALITATIVE; Abell 520 dark-core direct conflict at qualitative level (4/4 PASS_STRONG_QUANTITATIVE impossible)"}
+    ]
+  },
+  "claims": [
+    {
+      "id": "newton-recovery",
+      "status": "PASS_MODERATE",
+      "caveat": "L516 demotion: ΔAICc_honest = +4.0 with k_h_applicable = 2 (B1 bilinear ansatz + σ₀ amplitude stipulation). Bare Newton 1/r² recovery still passes; AICc-honest free fit (LCDM-equivalent) wins by 4 nats.",
+      "section_ref": "§3 / derived; L495 hidden DOF; L502 AICc penalty",
+      "i18n": {
+        "en": {"label": "Newtonian limit recovery (G recovered from σ₀=4πG·t_P)", "status_label": "PASS (moderate, with hidden DOF)"},
+        "ko": {"label": "뉴턴 극한 회복 (σ₀=4πG·t_P 로부터 G 회복)", "status_label": "통과 (보통, hidden DOF 동반)"}
+      }
+    },
+    {
+      "id": "bbn-deltaNeff",
+      "status": "PASS_MODERATE",
+      "caveat": "L516 demotion: ΔAICc_honest = +2.0 with k_h_applicable = 1 (η_Z₂ ≈ 10 MeV scale stipulation). 45-orders-of-magnitude headroom against Planck/Aver/Cooke/Pitrou cross-experiment bounds (L507) — robustness PASS, but hidden-DOF margin only borderline.",
+      "section_ref": "§4.1 row BBN; L495; L502; L507",
+      "i18n": {
+        "en": {"label": "BBN ΔN_eff ≈ 10⁻⁴⁶ < 0.17 (η_Z₂≈10MeV ≫ T_BBN + β_eff² double protection)", "status_label": "PASS (moderate, with hidden DOF)"},
+        "ko": {"label": "BBN ΔN_eff ≈ 10⁻⁴⁶ < 0.17 (η_Z₂≈10MeV ≫ T_BBN + β_eff² 이중 보호)", "status_label": "통과 (보통, hidden DOF 동반)"}
+      }
+    },
+    {
+      "id": "cassini-ppn",
+      "status": "PASS_MODERATE",
+      "caveat": "L516 demotion: ΔAICc_honest = +2.0 with k_h_applicable = 1 (Λ_UV stipulation). L506 cross-channel: 6/8 channels PASS, channel 3 (universal_phase3, β=0.107) FAIL. PASS contingent on dark-only embedding or screening (Vainshtein/chameleon).",
+      "section_ref": "§4.1 row Cassini; L495; L502; L506",
+      "i18n": {
+        "en": {"label": "Cassini PPN |γ−1| ≈ 1.1×10⁻⁴⁰ < 2.3×10⁻⁵ (β_eff = Λ_UV/M_Pl ≈ 7.4×10⁻²¹)", "status_label": "PASS (moderate, channel-conditional)"},
+        "ko": {"label": "Cassini PPN |γ−1| ≈ 1.1×10⁻⁴⁰ < 2.3×10⁻⁵ (β_eff = Λ_UV/M_Pl ≈ 7.4×10⁻²¹)", "status_label": "통과 (보통, 채널 조건부)"}
+      }
+    },
+    {
+      "id": "ep-eta",
+      "status": "PASS_MODERATE",
+      "caveat": "L516 demotion: ΔAICc_honest = +2.0 with k_h_applicable = 1 (dark-only embedding choice). L508 cross-channel: MICROSCOPE structurally 0 (PASS_STRONG-equivalent); LLR conditional (G_N(t) variation possible at β_dark ~ 0.1); Eot-Wash composition-dependent. Embedding choice is the hidden DOF.",
+      "section_ref": "§4.1 row EP; L495; L502; L508",
+      "i18n": {
+        "en": {"label": "Equivalence-Principle |η| = 0 < 10⁻¹⁵ (β_b=0, dark-only embedding structural)", "status_label": "PASS (moderate, embedding-conditional)"},
+        "ko": {"label": "등가 원리 |η| = 0 < 10⁻¹⁵ (β_b=0, dark-only embedding 구조적)", "status_label": "통과 (보통, embedding 조건부)"}
+      }
+    },
+    {
+      "id": "rar-a0-milgrom",
+      "status": "PASS_MODERATE",
+      "caveat": "L516 newly explicit (was implicit PASS_STRONG candidate from L482). ΔAICc_honest = +4.707 with k_h_applicable = 2 (M16 functional + Υ⋆ convention). L491 cross-form spread 0.37 dex; L492 subset stability K_X1·K_X2·K_X3 FAIL; L493 OOS PASS (chi²/dof_test = 1.283); L494 false-positive 0/200 → real signal; L503 a₀ NOT universal per-galaxy/environment.",
+      "section_ref": "L482 RAR; L491–L494; L502; L503",
+      "i18n": {
+        "en": {"label": "RAR a₀ ≈ c·H₀/(2π) (SPARC 175 / 3389 pts, M16 carrier)", "status_label": "PASS (moderate, dataset-specific)"},
+        "ko": {"label": "RAR a₀ ≈ c·H₀/(2π) (SPARC 175 / 3389 pts, M16 carrier)", "status_label": "통과 (보통, 데이터셋 한정)"}
+      }
+    },
+    {
+      "id": "bullet-cluster",
+      "status": "PASS_QUALITATIVE",
+      "caveat": "L516 reclassified (was PARTIAL). L509 cross-sample 4/4: Bullet/MACS J0025/MACS J1149 PASS_QUALITATIVE for `peak_lens ≡ peak_galaxy`; Abell 520 (train wreck dark-core) direct conflict at qualitative level. PASS_STRONG_QUANTITATIVE impossible 4/4 — magnitude (~150 kpc lens-vs-gas) is gas ram-pressure echo, not derivable from depletion-zone formalism alone.",
+      "section_ref": "§4.1 row Bullet (results/L417/, results/L509/)",
+      "i18n": {
+        "en": {"label": "Bullet cluster lens-galaxy coincidence (qualitative, MOND fail; Abell 520 conflict)", "status_label": "PASS (qualitative-only)"},
+        "ko": {"label": "Bullet cluster lens-galaxy 일치 (정성, MOND 실패; Abell 520 충돌)", "status_label": "통과 (정성 한정)"}
+      }
+    },
+    {
+      "id": "sigma0-product-identity",
+      "status": "PASS_IDENTITY",
+      "caveat": "σ₀=4πG·t_P arithmetic consequence; zero degree of freedom",
+      "section_ref": "§3 / L409 reclassified",
+      "i18n": {
+        "en": {"label": "n₀·μ = ρ_Planck/(4π) (holographic identity)", "status_label": "PASS (identity, dim-analysis follow-on)"},
+        "ko": {"label": "n₀·μ = ρ_Planck/(4π) (홀로그래픽 항등식)", "status_label": "통과 (항등식, 차원 분석 따름)"}
+      }
+    },
+    {
+      "id": "xi-scaling-identity",
+      "status": "PASS_IDENTITY",
+      "caveat": "σ₀=4πG·t_P arithmetic consequence; zero degree of freedom",
+      "section_ref": "§3 / L409 reclassified",
+      "i18n": {
+        "en": {"label": "ξ scaling (cross-regime σ₀ scaling)", "status_label": "PASS (identity)"},
+        "ko": {"label": "ξ 스케일링 (regime-간 σ₀ 스케일링)", "status_label": "통과 (항등식)"}
+      }
+    },
+    {
+      "id": "lambda-theorem-dimension",
+      "status": "PASS_IDENTITY",
+      "caveat": "σ₀=4πG·t_P arithmetic consequence; zero degree of freedom",
+      "section_ref": "§5 / L409 reclassified",
+      "i18n": {
+        "en": {"label": "Λ-theorem dimensional structure (mass·length⁻²·time⁻¹ closure)", "status_label": "PASS (identity)"},
+        "ko": {"label": "Λ-정리 차원 구조 (mass·length⁻²·time⁻¹ 닫힘)", "status_label": "통과 (항등식)"}
+      }
+    },
+    {
+      "id": "lambda-origin",
+      "status": "CONSISTENCY_CHECK",
+      "caveat": "circularity-structural (L412 down-grade from PASS_STRONG; L402 Path-α independent derivation failed by 10⁶⁰)",
+      "permanent": false,
+      "framework_internal": false,
+      "section_ref": "§5.2",
+      "i18n": {
+        "en": {
+          "label": "Λ origin (ρ_q/ρ_Λ order-unity match — dimensional consistency, not a prediction)",
+          "caveat": "circularity is structural (n_∞ uses ρ_Λ_obs as input via axiom 3)",
+          "status_label": "CONSISTENCY_CHECK"
+        },
+        "ko": {
+          "label": "Λ 기원 (ρ_q/ρ_Λ order-unity 일치 — 차원 정합성, 예측 아님)",
+          "caveat": "구조적 순환성 (n_∞ 가 axiom 3 을 통해 ρ_Λ_obs 를 입력으로 사용)",
+          "status_label": "정합성 점검"
+        }
+      }
+    },
+    {
+      "id": "gw170817-cT",
+      "status": "PASS_BY_INHERITANCE",
+      "caveat": "legacy PASS_TRIVIAL alias absorbed: conformal-only Lagrangian-form choice; disformal revival ⇒ KILL",
+      "section_ref": "§4.1 row GW170817",
+      "i18n": {
+        "en": {"label": "GW170817 |Δc/c| < 10⁻¹⁵ (conformal-only Lagrangian inheritance)", "status_label": "PASS (by inheritance)"},
+        "ko": {"label": "GW170817 |Δc/c| < 10⁻¹⁵ (conformal-only Lagrangian 형태 상속)", "status_label": "통과 (상속)"}
+      }
+    },
+    {
+      "id": "llr-Gdot",
+      "status": "PASS_BY_INHERITANCE",
+      "caveat": "legacy PASS_TRIVIAL alias absorbed: G axiom-defined constant tautology",
+      "section_ref": "§4.1 row LLR",
+      "i18n": {
+        "en": {"label": "LLR Ġ/G = 0 (G axiom-constant inheritance / tautology)", "status_label": "PASS (by inheritance)"},
+        "ko": {"label": "LLR Ġ/G = 0 (G 공리상수 상속 / 동어반복)", "status_label": "통과 (상속)"}
+      }
+    },
+    {
+      "id": "bh-entropy",
+      "status": "PASS_BY_INHERITANCE",
+      "section_ref": "verification_audit/audit_result.json (bh_entropy)",
+      "i18n": {
+        "en": {"label": "Black-hole entropy S_BH = A/(4ℓ_P²) (Bekenstein–Hawking 1973 prior)", "status_label": "PASS (by inheritance)"},
+        "ko": {"label": "블랙홀 엔트로피 S_BH = A/(4ℓ_P²) (Bekenstein–Hawking 1973 사전지식)", "status_label": "통과 (상속)"}
+      }
+    },
+    {
+      "id": "bekenstein-bound",
+      "status": "PASS_BY_INHERITANCE",
+      "section_ref": "verification_audit/audit_result.json (bekenstein)",
+      "i18n": {
+        "en": {"label": "Bekenstein bound (entropy ≤ 2π·E·R/(ℏc), prior knowledge)", "status_label": "PASS (by inheritance)"},
+        "ko": {"label": "Bekenstein 한계 (엔트로피 ≤ 2π·E·R/(ℏc), 사전지식)", "status_label": "통과 (상속)"}
+      }
+    },
+    {
+      "id": "lorentz-kms",
+      "status": "PASS_BY_INHERITANCE",
+      "section_ref": "verification_audit/audit_result.json (lorentz)",
+      "i18n": {
+        "en": {"label": "Lorentz/KMS residual ≈ 1.35×10⁻¹⁶ (standard QFT-thermal inheritance)", "status_label": "PASS (by inheritance)"},
+        "ko": {"label": "Lorentz/KMS 잔차 ≈ 1.35×10⁻¹⁶ (표준 QFT-열적 상속)", "status_label": "통과 (상속)"}
+      }
+    },
+    {
+      "id": "uncertainty-principle",
+      "status": "PASS_BY_INHERITANCE",
+      "section_ref": "verification_audit/audit_result.json (uncertainty)",
+      "i18n": {
+        "en": {"label": "Heisenberg uncertainty (standard QFT inheritance)", "status_label": "PASS (by inheritance)"},
+        "ko": {"label": "하이젠베르크 불확정성 (표준 QFT 상속)", "status_label": "통과 (상속)"}
+      }
+    },
+    {
+      "id": "cpt-symmetry",
+      "status": "PASS_BY_INHERITANCE",
+      "section_ref": "verification_audit/audit_result.json (cpt)",
+      "i18n": {
+        "en": {"label": "CPT symmetry (standard QFT inheritance)", "status_label": "PASS (by inheritance)"},
+        "ko": {"label": "CPT 대칭 (표준 QFT 상속)", "status_label": "통과 (상속)"}
+      }
+    },
+    {
+      "id": "wavefunction-collapse",
+      "status": "PASS_BY_INHERITANCE",
+      "section_ref": "verification_audit/audit_result.json (wavefunction)",
+      "i18n": {
+        "en": {"label": "Wavefunction / quantum measurement (standard QM inheritance)", "status_label": "PASS (by inheritance)"},
+        "ko": {"label": "파동함수 / 양자 측정 (표준 양자역학 상속)", "status_label": "통과 (상속)"}
+      }
+    },
+    {
+      "id": "sigma0-three-regime",
+      "status": "PARTIAL",
+      "caveat": "POSTDICTION (anchors named after data fit; §3.4 caveat). L502 ΔAICc_honest with k_h_applicable=6 still PASS-leaning (−255), but anchor selection is the dominant DOF.",
+      "section_ref": "§4.1 row σ₀ regime",
+      "i18n": {
+        "en": {"label": "σ₀ three-regime structure (SPARC + cluster + cosmic aggregate PASS)", "status_label": "PARTIAL (postdiction caveat)"},
+        "ko": {"label": "σ₀ 3-regime 구조 (SPARC + cluster + cosmic 종합 통과)", "status_label": "부분 통과 (postdiction caveat)"}
+      }
+    },
+    {
+      "id": "cmb-theta-star",
+      "status": "PARTIAL",
+      "caveat": "δr_d/r_d ≈ 0.7% (Planck σ × 23) — matter-era φ evolution shift; same channel as Phase-2 BAO",
+      "section_ref": "§4.1 row CMB θ_*",
+      "i18n": {
+        "en": {"label": "CMB θ_* (δr_d/r_d ≈ 0.7%, Planck σ × 23 tension)", "status_label": "PARTIAL"},
+        "ko": {"label": "CMB θ_* (δr_d/r_d ≈ 0.7%, Planck σ × 23 텐션)", "status_label": "부분 통과"}
+      }
+    },
+    {
+      "id": "Q-parameter-transition",
+      "status": "PARTIAL",
+      "caveat": "Q definition canonical: 5 candidates, 4 (A,C,D,E) tied, B eliminated; K3 unanswered (L403)",
+      "section_ref": "verification_audit/audit_result.json (Q_parameter); results/L403",
+      "i18n": {
+        "en": {"label": "Q parameter macro→micro transition (Q_macro≈4.1×10⁻³¹, Q_micro≈4.5×10⁻¹⁸)", "status_label": "PARTIAL"},
+        "ko": {"label": "Q 파라미터 거시→미시 전이 (Q_macro≈4.1×10⁻³¹, Q_micro≈4.5×10⁻¹⁸)", "status_label": "부분 통과"}
+      }
+    },
+    {
+      "id": "infall-velocity-vgtP",
+      "status": "PARTIAL",
+      "caveat": "v=g·t_P requires axiom 4 causet meso coupling to be rigorous",
+      "section_ref": "§3 derived; L409 reclassified to PARTIAL",
+      "i18n": {
+        "en": {"label": "Infall velocity v(r) = g(r)·t_P (Planck-time identification)", "status_label": "PARTIAL"},
+        "ko": {"label": "유입 속도 v(r) = g(r)·t_P (플랑크시간 동일시)", "status_label": "부분 통과"}
+      }
+    },
+    {
+      "id": "three-regime-anchors",
+      "status": "PARTIAL",
+      "caveat": "Three-regime forcing weak (4–5 anchors needed); see §6.1 row 5",
+      "section_ref": "§6.1.1 row 5",
+      "i18n": {
+        "en": {"label": "Three-regime forcing strength (anchor count)", "status_label": "PARTIAL"},
+        "ko": {"label": "3-regime 강제성 (anchor 개수)", "status_label": "부분 통과"}
+      }
+    },
+    {
+      "id": "sloppy-deff",
+      "status": "PARTIAL",
+      "caveat": "Sloppy parameter d_eff ≈ 1; cluster-pool variance share 16% (L410)",
+      "section_ref": "§6.1.1 row 6",
+      "i18n": {
+        "en": {"label": "Sloppy effective dimension d_eff ≈ 1 (cluster-pool RECOVERY-PROGRESS)", "status_label": "PARTIAL"},
+        "ko": {"label": "Sloppy 유효 차원 d_eff ≈ 1 (cluster-pool RECOVERY-PROGRESS)", "status_label": "부분 통과"}
+      }
+    },
+    {
+      "id": "theory-prior-anchor",
+      "status": "PARTIAL",
+      "caveat": "Theory-prior anchor partial (postdiction); axis 4 ★★⅓; b/c first-principle pending",
+      "section_ref": "§6.1.1 row 7",
+      "i18n": {
+        "en": {"label": "Theory-prior anchor (axis 4 ★★⅓ partial)", "status_label": "PARTIAL"},
+        "ko": {"label": "이론-prior anchor (축 4 ★★⅓ 부분)", "status_label": "부분 통과"}
+      }
+    },
+    {
+      "id": "singularity-resolution",
+      "status": "NOT_INHERITED",
+      "section_ref": "§6.1.2 row 15",
+      "i18n": {
+        "en": {"label": "Singularity resolution (Planck-density saturation) — NOT inherited", "status_label": "NOT INHERITED"},
+        "ko": {"label": "특이점 해소 (플랑크 밀도 포화) — 미상속", "status_label": "미상속"}
+      }
+    },
+    {
+      "id": "volovik-2fluid",
+      "status": "NOT_INHERITED",
+      "section_ref": "§6.1.2 row 16",
+      "i18n": {
+        "en": {"label": "Volovik 2-fluid analogue — NOT inherited (no superfluid structure in paper)", "status_label": "NOT INHERITED"},
+        "ko": {"label": "Volovik 2-fluid 유추 — 미상속 (paper 에 superfluid 구조 부재)", "status_label": "미상속"}
+      }
+    },
+    {
+      "id": "jacobson-deltaQ-TdS",
+      "status": "NOT_INHERITED",
+      "section_ref": "§6.1.2 row 17",
+      "i18n": {
+        "en": {"label": "Jacobson δQ = T·dS entropic gravity — NOT inherited (KMS ≠ Clausius)", "status_label": "NOT INHERITED"},
+        "ko": {"label": "Jacobson δQ = T·dS 엔트로픽 중력 — 미상속 (KMS ≠ Clausius)", "status_label": "미상속"}
+      }
+    },
+    {
+      "id": "gft-bec-hamiltonian",
+      "status": "NOT_INHERITED",
+      "section_ref": "§6.1.2 row 18",
+      "i18n": {
+        "en": {"label": "GFT BEC Hamiltonian — NOT inherited (Z₂ ≠ U(1), no GFT in 4 axes)", "status_label": "NOT INHERITED"},
+        "ko": {"label": "GFT BEC 해밀토니안 — 미상속 (Z₂ ≠ U(1), 4 축에 GFT 부재)", "status_label": "미상속"}
+      }
+    },
+    {
+      "id": "bec-nonlocality",
+      "status": "NOT_INHERITED",
+      "section_ref": "§6.1.2 row 19",
+      "i18n": {
+        "en": {"label": "BEC nonlocality mechanism — NOT inherited (no continuous Z₂ phase)", "status_label": "NOT INHERITED"},
+        "ko": {"label": "BEC 비국소성 메커니즘 — 미상속 (연속 Z₂ phase 부재)", "status_label": "미상속"}
+      }
+    },
+    {
+      "id": "desi-xi-q-joint-fit",
+      "status": "NOT_INHERITED",
+      "section_ref": "§6.1.2 row 20",
+      "i18n": {
+        "en": {"label": "DESI ξ_q joint-fit (Δχ²=−4.83) — NOT inherited (sign mismatch with minimal w_a=0)", "status_label": "NOT INHERITED"},
+        "ko": {"label": "DESI ξ_q joint-fit (Δχ²=−4.83) — 미상속 (minimal w_a=0 와 부호 불일치)", "status_label": "미상속"}
+      }
+    },
+    {
+      "id": "bbn-cmb-late-de-triple-consistency",
+      "status": "NOT_INHERITED",
+      "section_ref": "§6.1.2 row 21",
+      "i18n": {
+        "en": {"label": "Triple consistency (BBN/CMB/late-DE) — NOT inherited (depends on #20 + r_d shift tension)", "status_label": "NOT INHERITED"},
+        "ko": {"label": "3자 정합성 (BBN/CMB/late-DE) — 미상속 (#20 의존 + r_d 이동 텐션)", "status_label": "미상속"}
+      }
+    },
+    {
+      "id": "five-program-isomorphism",
+      "status": "NOT_INHERITED",
+      "section_ref": "§6.1.2 row 22",
+      "i18n": {
+        "en": {"label": "Five-program structural isomorphism (Padmanabhan/Volovik/Causet/Jacobson/GFT) — NOT inherited (PASS 0/5)", "status_label": "NOT INHERITED"},
+        "ko": {"label": "5-program 구조적 동형 (Padmanabhan/Volovik/Causet/Jacobson/GFT) — 미상속 (PASS 0/5)", "status_label": "미상속"}
+      }
+    }
+  ],
+  "limitations": [
+    {
+      "id": "L1-S8-worsening",
+      "status": "OBS-FAIL",
+      "kind": "observational-tension",
+      "permanent": true,
+      "framework_internal": false,
+      "section_ref": "§6.1.1 row 1",
+      "future_plan": "disclose; pre-registered Euclid DR1 4.4σ falsifier",
+      "i18n": {
+        "en": {"label": "σ_8 +1.14% structural worsening (μ_eff≈1, structural)", "status_label": "OBS-FAIL (permanent)"},
+        "ko": {"label": "σ_8 +1.14% 구조적 악화 (μ_eff≈1, 구조적)", "status_label": "관측-실패 (영구)"}
+      }
+    },
+    {
+      "id": "L2-H0-only-10pct",
+      "status": "UNRESOLVED",
+      "section_ref": "§6.1.1 row 2",
+      "future_plan": "disclose",
+      "i18n": {
+        "en": {"label": "H₀ tension only ~10% relieved", "status_label": "UNRESOLVED"},
+        "ko": {"label": "H₀ 텐션 ~10% 만 완화", "status_label": "미해결"}
+      }
+    },
+    {
+      "id": "L3-ns-external",
+      "status": "OPEN",
+      "section_ref": "§6.1.1 row 3",
+      "future_plan": "Inflation external",
+      "i18n": {
+        "en": {"label": "n_s outside SQT (no prediction)", "status_label": "OPEN"},
+        "ko": {"label": "n_s SQT 외부 (예측 없음)", "status_label": "공개 미해결"}
+      }
+    },
+    {
+      "id": "L4-beta-bc-firstprinciple",
+      "status": "OPEN",
+      "section_ref": "§6.1.1 row 4",
+      "future_plan": "axis 2 future",
+      "i18n": {
+        "en": {"label": "β-function coefficients b, c not first-principle derived", "status_label": "OPEN"},
+        "ko": {"label": "β-function 계수 b, c first-principle 미달", "status_label": "공개 미해결"}
+      }
+    },
+    {
+      "id": "L5-three-regime-weak-forcing",
+      "status": "ACK",
+      "section_ref": "§6.1.1 row 5",
+      "future_plan": "dSph + NS additional anchors",
+      "i18n": {
+        "en": {"label": "Three-regime forcing weak (4–5 anchors needed)", "status_label": "ACK"},
+        "ko": {"label": "Three-regime 강제성 약함 (anchor 4–5개 필요)", "status_label": "인지"}
+      }
+    },
+    {
+      "id": "L6-sloppy-deff",
+      "status": "ACK",
+      "section_ref": "§6.1.1 row 6",
+      "future_plan": "Cluster pool",
+      "i18n": {
+        "en": {"label": "Sloppy parameter d_eff ≈ 1", "status_label": "ACK"},
+        "ko": {"label": "Sloppy 파라미터 d_eff ≈ 1", "status_label": "인지"}
+      }
+    },
+    {
+      "id": "L7-theory-prior-anchor-postdiction",
+      "status": "ACK",
+      "section_ref": "§6.1.1 row 7",
+      "future_plan": "RG b/c future (axis 4 ★★⅓)",
+      "i18n": {
+        "en": {"label": "Theory-prior anchor partial (postdiction)", "status_label": "ACK"},
+        "ko": {"label": "이론-prior anchor 부분 (postdiction)", "status_label": "인지"}
+      }
+    },
+    {
+      "id": "L8-cluster-single-source",
+      "status": "RECOVERY",
+      "section_ref": "§6.1.1 row 8",
+      "future_plan": "Pool expansion (L410: variance-share 16%)",
+      "i18n": {
+        "en": {"label": "Cluster single-source (variance reduction 59.7%)", "status_label": "RECOVERY-PROGRESS"},
+        "ko": {"label": "Cluster 단일 소스 (분산 감소 59.7%)", "status_label": "복구-진행중"}
+      }
+    },
+    {
+      "id": "L9-subset-bayes-factor",
+      "status": "ACK",
+      "section_ref": "§6.1.1 row 9",
+      "future_plan": "5-dataset MCMC",
+      "i18n": {
+        "en": {"label": "Subset-specific Bayes factor", "status_label": "ACK"},
+        "ko": {"label": "Subset-specific Bayes factor", "status_label": "인지"}
+      }
+    },
+    {
+      "id": "L10-micro-completeness-80pct",
+      "status": "OPEN",
+      "section_ref": "§6.1.1 row 10",
+      "future_plan": "axiom 4 5th axis",
+      "i18n": {
+        "en": {"label": "Micro completeness 80% upper bound", "status_label": "OPEN"},
+        "ko": {"label": "Micro completeness 80% 상한", "status_label": "공개 미해결"}
+      }
+    },
+    {
+      "id": "L11-axiom4-meso-metric",
+      "status": "OPEN",
+      "section_ref": "§6.1.1 row 11",
+      "future_plan": "Causet meso",
+      "i18n": {
+        "en": {"label": "Axiom 4 emergent metric micro OPEN", "status_label": "OPEN"},
+        "ko": {"label": "axiom 4 발현 metric 미시 OPEN", "status_label": "공개 미해결"}
+      }
+    },
+    {
+      "id": "L12-desi-Vnt-extension-gate",
+      "status": "OPEN",
+      "section_ref": "§6.1.1 row 12",
+      "future_plan": "Toy unmet",
+      "i18n": {
+        "en": {"label": "DESI V(n,t)-extension derivation gate", "status_label": "OPEN"},
+        "ko": {"label": "DESI V(n,t)-확장 derivation gate", "status_label": "공개 미해결"}
+      }
+    },
+    {
+      "id": "L13-LambdaUV-definitional",
+      "status": "ACK",
+      "section_ref": "§6.1.1 row 13",
+      "future_plan": "UV completion",
+      "i18n": {
+        "en": {"label": "Λ_UV definitional, not RG-derived", "status_label": "ACK"},
+        "ko": {"label": "Λ_UV definitional, RG-유도 아님", "status_label": "인지"}
+      }
+    },
+    {
+      "id": "L14-cosmic-shear-Euclid-falsifier",
+      "status": "OPEN",
+      "section_ref": "§6.1.1 row 14",
+      "future_plan": "Euclid DR1 cosmic-shear 2pt 2026–2027 (4.38σ central, 3σ floor); two-sided decision rule §4.6; LSST-Y10 2.85σ auxiliary; triple-timestamp arXiv + GitHub tag v-preDR1-2026.NN + OSF DOI",
+      "i18n": {
+        "en": {"label": "Cosmic-shear external channel (Euclid DR1 4.4σ pre-registered falsifier)", "status_label": "OPEN (pre-registered)"},
+        "ko": {"label": "Cosmic-shear 외부 채널 (Euclid DR1 4.4σ 사전등록 falsifier)", "status_label": "공개 (사전등록)"}
+      }
+    },
+    {
+      "id": "L15-singularity-resolution-not-inherited",
+      "status": "NOT_INHERITED",
+      "section_ref": "§6.1.2 row 15",
+      "future_plan": "discreteness postulate absent; axiom 4 5th axis (Causet/GFT) decision required",
+      "i18n": {
+        "en": {"label": "Singularity resolution (Planck-density saturation) NOT inherited", "status_label": "NOT INHERITED"},
+        "ko": {"label": "특이점 해소 (Planck 밀도 포화) 미상속", "status_label": "미상속"}
+      }
+    },
+    {
+      "id": "L16-volovik-2fluid-not-inherited",
+      "status": "NOT_INHERITED",
+      "section_ref": "§6.1.2 row 16",
+      "future_plan": "no superfluid structure; mark trivial isomorphism or remove citation",
+      "i18n": {
+        "en": {"label": "Volovik 2-fluid analogue NOT inherited", "status_label": "NOT INHERITED"},
+        "ko": {"label": "Volovik 2-fluid 유추 미상속", "status_label": "미상속"}
+      }
+    },
+    {
+      "id": "L17-jacobson-deltaQ-TdS-not-inherited",
+      "status": "NOT_INHERITED",
+      "section_ref": "§6.1.2 row 17",
+      "future_plan": "KMS ≠ Clausius; separate entropic derivation needed",
+      "i18n": {
+        "en": {"label": "Jacobson δQ = T·dS NOT inherited", "status_label": "NOT INHERITED"},
+        "ko": {"label": "Jacobson δQ = T·dS 미상속", "status_label": "미상속"}
+      }
+    },
+    {
+      "id": "L18-gft-bec-hamiltonian-not-inherited",
+      "status": "NOT_INHERITED",
+      "section_ref": "§6.1.2 row 18",
+      "future_plan": "GFT absent in 4 axes (Z₂ ≠ U(1)); 5th axis adoption required",
+      "i18n": {
+        "en": {"label": "GFT BEC Hamiltonian NOT inherited", "status_label": "NOT INHERITED"},
+        "ko": {"label": "GFT BEC 해밀토니안 미상속", "status_label": "미상속"}
+      }
+    },
+    {
+      "id": "L19-bec-nonlocality-not-inherited",
+      "status": "NOT_INHERITED",
+      "section_ref": "§6.1.2 row 19",
+      "future_plan": "no continuous Z₂ phase; either add GFT foundation or retract advertising",
+      "i18n": {
+        "en": {"label": "BEC nonlocality mechanism NOT inherited", "status_label": "NOT INHERITED"},
+        "ko": {"label": "BEC 비국소성 메커니즘 미상속", "status_label": "미상속"}
+      }
+    },
+    {
+      "id": "L20-desi-xi-q-jointfit-not-inherited",
+      "status": "NOT_INHERITED",
+      "section_ref": "§6.1.2 row 20",
+      "future_plan": "minimal w_a=0 sign mismatch; r_d=149.8 not required by paper",
+      "i18n": {
+        "en": {"label": "DESI ξ_q joint-fit (Δχ²=−4.83) result not citable", "status_label": "NOT INHERITED"},
+        "ko": {"label": "DESI ξ_q joint-fit (Δχ²=−4.83) 결과 인용 불가", "status_label": "미상속"}
+      }
+    },
+    {
+      "id": "L21-bbn-cmb-late-de-triple-consistency-not-inherited",
+      "status": "NOT_INHERITED",
+      "section_ref": "§6.1.2 row 21",
+      "future_plan": "depends on #20 + r_d shift vs BBN/CMB consistency tension",
+      "i18n": {
+        "en": {"label": "Triple consistency (BBN/CMB/late-DE) NOT inherited", "status_label": "NOT INHERITED"},
+        "ko": {"label": "3자 정합성 (BBN/CMB/late-DE) 미상속", "status_label": "미상속"}
+      }
+    },
+    {
+      "id": "L22-five-program-isomorphism-not-inherited",
+      "status": "NOT_INHERITED",
+      "section_ref": "§6.1.2 row 22",
+      "future_plan": "PASS 0/5 (Padmanabhan/Causet PARTIAL, 3 NOT_INHERITED); no program step-by-step derived inside paper framework",
+      "i18n": {
+        "en": {"label": "Five-program structural isomorphism NOT inherited", "status_label": "NOT INHERITED"},
+        "ko": {"label": "5-program 구조적 동형 미상속", "status_label": "미상속"}
+      }
+    },
+    {
+      "id": "L23-hidden-DOF-zero-param-overclaim",
+      "status": "ACK",
+      "section_ref": "results/L495/HIDDEN_DOF_AUDIT.md; results/L502/HIDDEN_DOF_AICC.md",
+      "future_plan": "abstract / 01_introduction / 10_appendix_alt20 / 08_discussion §8.4 / l5_A12_interpretation 의 'zero free parameter' 광고를 paper/TABLES.md row 1 의 '5 free parameters in Branch B' (또는 L495 보수 9 / 확장 13) 정직 카운트와 일치시키도록 sweep. abstract 부터 우선 수정.",
+      "i18n": {
+        "en": {"label": "Hidden DOF audit (L495): 'zero free parameter' overclaim — 9 (conservative) ~ 13 (expanded) hidden DOF (functional, anchor×3, Υ⋆, B1, three-regime structure×2, axiom-scale stipulation×1–4)", "status_label": "ACK (drift across §abstract/intro/appendix)"},
+        "ko": {"label": "Hidden DOF 감사 (L495): 'zero free parameter' 광고 부정확 — 9(보수)~13(확장) hidden DOF (함수형/anchor 3/Υ⋆/B1/three-regime 구조 2/axiom-scale 1~4)", "status_label": "인지 (abstract/intro/appendix drift)"}
+      }
+    },
+    {
+      "id": "L24-AICc-honest-no-PASS_STRONG-survives",
+      "status": "ACK",
+      "section_ref": "results/L502/HIDDEN_DOF_AICC.md",
+      "future_plan": "L502 ΔAICc_honest with k_h_applicable: Newton +4.0, BBN +2.0, Cassini +2.0, EP +2.0, Bullet +4.0, L482 RAR +4.707 — 모두 강등 (PASS_MODERATE / PASS_QUALITATIVE). PASS_STRONG 0/33. 본 L516 sync 가 즉시 반영.",
+      "i18n": {
+        "en": {"label": "AICc honest test (L502): no PASS_STRONG row survives once k_h_applicable ∈ {1,2} is charged — every substantive row demoted to PASS_MODERATE/PASS_QUALITATIVE", "status_label": "ACK (post-L516 distribution: PASS_STRONG 0)"},
+        "ko": {"label": "AICc 정직 검증 (L502): k_h_applicable ∈ {1,2} 부과 시 PASS_STRONG 한 건도 생존 못 함 — 모든 substantive 행이 PASS_MODERATE/PASS_QUALITATIVE 로 강등", "status_label": "인지 (L516 post: PASS_STRONG 0)"}
+      }
+    },
+    {
+      "id": "L25-N_eff-falsifier-channel-correlation",
+      "status": "ACK",
+      "section_ref": "results/L498/FALSIFIER_INDEPENDENCE.md",
+      "future_plan": "6 사전등록 falsifier 중 Euclid↔LSST cosmic-shear ρ=0.802, DESI↔Euclid BAO/RSD ρ=0.535 — N_eff ≈ 4 (active 5 detection 중) per Cheverud–Galwey. Bonferroni α = 0.05/5 = 0.01 으로 가족별 통제. SKA 는 structural null 로 active 분리.",
+      "i18n": {
+        "en": {"label": "Falsifier independence (L498): 6 pre-registered channels collapse to N_eff ≈ 4 active detection (Euclid×LSST WL ρ=0.80; DESI×Euclid BAO ρ=0.54). Bonferroni α=0.01.", "status_label": "ACK (N_eff downgrade)"},
+        "ko": {"label": "Falsifier 독립성 (L498): 6 사전등록 채널이 N_eff ≈ 4 (active 5 중) 로 축소 (Euclid×LSST WL ρ=0.80; DESI×Euclid BAO ρ=0.54). Bonferroni α=0.01.", "status_label": "인지 (N_eff 하향)"}
+      }
+    },
+    {
+      "id": "L26-RAR-a0-NOT-universal",
+      "status": "ACK",
+      "section_ref": "results/L491/RAR_FUNCFORM_AUDIT.md; results/L492/RAR_DATASET_AUDIT.md; results/L503/UNIVERSALITY.md",
+      "future_plan": "L491 functional-form 0.37 dex 분포; L492 K_X1·K_X2·K_X3 1/4 PASS; L503 per-galaxy intrinsic spread 0.427 dex, environment dependence FAIL. RAR a₀ 는 SPARC 175 *전체* aggregate 한정 일치 — 보편성 주장 철회 필요. abstract / §4.1 row a₀ 에 'subset-stability ACK' 캐비엣 추가.",
+      "i18n": {
+        "en": {"label": "RAR a₀ NOT universal (L491/L492/L503): per-galaxy intrinsic spread 0.427 dex, K_X 1/4 PASS, environment FAIL — aggregate-only match", "status_label": "ACK (universality retracted)"},
+        "ko": {"label": "RAR a₀ 보편성 부재 (L491/L492/L503): per-galaxy intrinsic spread 0.427 dex, K_X 1/4 PASS, environment FAIL — aggregate 한정 일치", "status_label": "인지 (보편성 철회)"}
+      }
+    },
+    {
+      "id": "L27-Cassini-channel-conditional",
+      "status": "ACK",
+      "section_ref": "results/L506/CASSINI_ROBUSTNESS.md",
+      "future_plan": "8 derivation channel 중 7 PASS, channel 3 (universal_phase3 β=0.107) FAIL. PASS_MODERATE 정합성은 dark-only embedding (channel 4) 또는 Vainshtein/chameleon screening (channel 7/8) 가정에 *조건부*. 'Cassini 자동 통과' 광고 금지 — 'channel-conditional PASS' 표기.",
+      "i18n": {
+        "en": {"label": "Cassini PPN channel-conditional (L506): 7/8 channels PASS but universal β=0.107 (Phase-3 fluid IDE) FAILS — PASS contingent on dark-only embedding or screening", "status_label": "ACK (channel-conditional)"},
+        "ko": {"label": "Cassini PPN 채널 조건부 (L506): 7/8 채널 PASS 이나 universal β=0.107 (Phase-3 fluid IDE) FAIL — PASS 는 dark-only embedding 또는 screening 가정 조건부", "status_label": "인지 (채널 조건부)"}
+      }
+    }
+  ]
+}

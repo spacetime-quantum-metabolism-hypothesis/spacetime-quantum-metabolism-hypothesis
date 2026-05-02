@@ -1,0 +1,35 @@
+{
+  "results": [
+    [
+      "M1 const",
+      576.6447028423779,
+      1,
+      582.6447028423779
+    ],
+    [
+      "M3 quadratic",
+      2.1912802922805887e-28,
+      3,
+      1000006.0
+    ],
+    [
+      "M_BB Branch B",
+      0.0,
+      3,
+      1000006.0
+    ],
+    [
+      "M2 linear",
+      340.2557121411326,
+      2,
+      1000344.2557121412
+    ],
+    [
+      "M4 exp transition",
+      576.6447028423778,
+      3,
+      1000582.6447028423
+    ]
+  ],
+  "verdict": "With 3 data points, AICc cannot distinguish between Branch B and smooth quadratic models. Branch B preferred ONLY due to physical interpretation (regime structure suggests phase transition). Currently a CHOICE, not a UNIQUE inference. Future data will resolve."
+}

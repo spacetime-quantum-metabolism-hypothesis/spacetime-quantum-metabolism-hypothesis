@@ -1,0 +1,55 @@
+{
+  "title": "SQMH — Spacetime Quantum Metabolism Hypothesis: BAO/SN/CMB/RSD joint analysis and SQT reconstruction",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "MIT",
+  "language": "eng",
+  "version": "L459-pre",
+  "publication_date": "2026-05-01",
+  "doi": "10.5281/zenodo.PLACEHOLDER",
+  "description": "<p>Spacetime Quantum Metabolism Hypothesis (SQMH) project. Repository contains the original Korean-language hypothesis document (<code>base.md</code>), the Phase 1–6 verification record, the final negative-result paper draft (<code>paper/negative_result.md</code>), and the SQT (Spacetime Quantum Theory) reconstruction line starting at L30. The pipeline runs a joint likelihood over DESI DR2 BAO (13 points, full covariance), DESY5 supernovae, compressed Planck CMB, and RSD (f sigma_8) data.</p><p>The principal scientific result is a <strong>no-go verdict</strong> for the simple background-coupled SQMH quintessence family (V_mass, V_RP, V_exp) against the joint dataset, and a parallel SQT reconstruction line (L30+) that explores BAO-only fits with explicit honest accounting of budget-limited MCMC and Bayesian Occam penalties. All re-occurrence-prevention rules (CLAUDE.md) are versioned with the source.</p><p>DOI placeholder pending Zenodo deposit; replace <code>10.5281/zenodo.PLACEHOLDER</code> with the assigned concept DOI on first release.</p>",
+  "creators": [
+    {
+      "name": "Blu",
+      "affiliation": "Independent researcher",
+      "orcid": ""
+    }
+  ],
+  "keywords": [
+    "cosmology",
+    "dark energy",
+    "DESI DR2",
+    "BAO",
+    "DESY5 supernovae",
+    "compressed CMB likelihood",
+    "RSD",
+    "coupled quintessence",
+    "modified gravity",
+    "SQMH",
+    "SQT",
+    "negative result",
+    "Bayesian evidence",
+    "MCMC"
+  ],
+  "communities": [
+    {"identifier": "cosmology"}
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/genesos/spacetime-quantum-metabolism-hypothesis",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://github.com/CobayaSampler/bao_data",
+      "relation": "references",
+      "resource_type": "dataset"
+    },
+    {
+      "identifier": "https://github.com/CobayaSampler/sn_data",
+      "relation": "references",
+      "resource_type": "dataset"
+    }
+  ],
+  "notes": "Placeholder DOI '10.5281/zenodo.PLACEHOLDER' will be replaced with the concept DOI assigned by Zenodo upon first deposit. Contact: genesos@gmail.com."
+}

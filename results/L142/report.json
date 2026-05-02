@@ -1,0 +1,6 @@
+{
+  "mechanism": "Landau-Ginzburg phase transition",
+  "order_parameter": "|\u03c6|\u00b2 quantum coherence",
+  "regimes_explained": 3,
+  "verdict": "Branch B regime structure emerges from Landau-Ginzburg phase transitions in n field. Order parameter: quantum coherence |\u03c6|\u00b2. 3 regimes correspond to symmetric/frustrated/broken phases. Provides microscopic origin without adding free parameters."
+}

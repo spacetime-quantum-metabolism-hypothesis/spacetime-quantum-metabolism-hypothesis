@@ -1,0 +1,53 @@
+cff-version: 1.2.0
+message: "If you use this software or its results, please cite as below."
+title: "SQMH — Spacetime Quantum Metabolism Hypothesis: BAO/SN/CMB/RSD joint analysis and SQT reconstruction"
+abstract: >-
+  Spacetime Quantum Metabolism Hypothesis (SQMH) project. Includes the original
+  hypothesis (base.md), Phase 1–6 verification record, negative-result paper
+  draft, and the SQT (Spacetime Quantum Theory) reconstruction line
+  (L30–L524). All Python simulation code, joint likelihood pipelines
+  (DESI DR2 BAO + DESY5 SN + compressed Planck CMB + RSD), figures, and review
+  artefacts are included. The L491–L521 audit substrate (hidden-DOF count
+  9–13, falsifier N_eff = 4.44, JCAP majority-acceptance estimate 13–14%
+  central, DESI DR3 full-Y5 cosmology release window 2027 per LBL Apr-2026)
+  is reflected in the README and claims_status.json. Results are reported
+  honestly, including no-go branches, budget-limited MCMC, and the L516
+  hidden-DOF re-grading that demotes every previously-substantive
+  PASS_STRONG row to PASS_MODERATE / PASS_QUALITATIVE under an honest AICc
+  penalty.
+type: software
+authors:
+  - given-names: "Blu"
+    email: "genesos@gmail.com"
+    affiliation: "Independent researcher"
+repository-code: "https://github.com/genesos/spacetime-quantum-metabolism-hypothesis"
+url: "https://github.com/genesos/spacetime-quantum-metabolism-hypothesis"
+license: "MIT"
+version: "L524-pre"
+date-released: "2026-05-01"
+keywords:
+  - cosmology
+  - dark energy
+  - DESI DR2
+  - BAO
+  - DESY5 supernovae
+  - CMB compressed likelihood
+  - RSD
+  - coupled quintessence
+  - modified gravity
+  - SQMH
+  - SQT
+  - negative result
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.PLACEHOLDER"
+    description: "Zenodo concept DOI (placeholder — to be replaced upon Zenodo deposit)"
+preferred-citation:
+  type: article
+  title: "Spacetime Quantum Metabolism Hypothesis: a No-Go for simple background-coupled quintessence against DESI DR2 + DESY5 + Planck + RSD"
+  authors:
+    - given-names: "Blu"
+      email: "genesos@gmail.com"
+  year: 2026
+  doi: "10.5281/zenodo.PLACEHOLDER"
+  url: "https://github.com/genesos/spacetime-quantum-metabolism-hypothesis"

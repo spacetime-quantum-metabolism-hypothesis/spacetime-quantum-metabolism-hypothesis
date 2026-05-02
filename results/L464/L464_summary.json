@@ -1,0 +1,29 @@
+{
+  "ratios": {
+    "tau_q [s]": 5.391247e-44,
+    "t_cluster_cross [s]": 3.1557e+16,
+    "t_cluster_dyn [s]": 7.88925e+16,
+    "ratio_cross/tau_q": 5.8533767790642865e+59,
+    "ratio_dyn/tau_q": 1.4633441947660717e+60,
+    "log10(ratio_cross/tau_q)": 59.76740648034208,
+    "log10(ratio_dyn/tau_q)": 60.16534648901412,
+    "t_H/tau_q": 8.439605901936972e+60,
+    "log10(t_H/tau_q)": 60.926322167169474,
+    "log10(t_cluster/t_H)": -0.7609756781553522
+  },
+  "oscillator": {
+    "omega_H_inv_Gyr": 0.07142857142857142,
+    "omega_cluster_inv_Gyr": 0.4,
+    "omega_dip_inv_Gyr": 0.2898114427316356,
+    "amp_destructive_at_dip": 24.957824109596583,
+    "amp_constructive_at_dip": 4.692555513421075,
+    "suppression_ratio": 5.318599649639787
+  },
+  "stochastic_averaging": {
+    "max_A2_no_hole": 19999599.808003843,
+    "max_A2_with_hole": 19999599.808003843,
+    "min_A2_with_hole_in_cluster_band": 28.015338082017294,
+    "relative_suppression_in_cluster_band": 0.8954001851581634
+  },
+  "interpretation": "Toy \uacb0\uacfc: \ub450 mode destructive interference \uc2dc cluster \ub300\uc5ed\uc5d0\uc11c \uc751\ub2f5\uc774 5.319 \ubc30\ub85c \uc5b5\uc81c\ub428. \ub9c8\uc774\ud06c\ub85c \uc2a4\ud399\ud2b8\ub7fc\uc5d0 cluster band hole \uc744 \uac15\uc81c\ud558\uba74 stochastic averaging \uc73c\ub85c\ub3c4 dip \uc7ac\ud604 \uac00\ub2a5. \ub2e8 \uc774\ub294 phenomenological \ud1a0\uc774\uc774\uba70 SQMH \ub3d9\uc5ed\ud559 \ub3c4\ucd9c\uc774 \uc544\ub2d8."
+}

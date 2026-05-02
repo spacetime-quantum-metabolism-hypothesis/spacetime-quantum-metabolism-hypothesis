@@ -1,0 +1,14 @@
+{
+  "alpha": -0.02,
+  "ratio_sigma": 15.48816618912486,
+  "f_env_today": 3.15e-05,
+  "D_ratio_today": 0.9999624478189905,
+  "sigma8_BB": 0.8109695451812013,
+  "sigma8_LCDM": 0.811,
+  "sigma8_DES": 0.776,
+  "S8_BB": 0.8309965002164419,
+  "S8_LCDM": 0.8310277071193236,
+  "shift": 3.0454818798708594e-05,
+  "tension_fraction_resolved": 0.0008701376799631019,
+  "verdict": "Branch B alpha=-0.02, f_env~1e-4: sigma_8 shift = 0.0000 (0.1% of S_8 tension). For full tension resolution alpha would need to be ~-22.98, requiring f_env*ratio*alpha ~ 0.04. Current toy under-predicts; explicit volume-weighted integral over depletion zones needed."
+}

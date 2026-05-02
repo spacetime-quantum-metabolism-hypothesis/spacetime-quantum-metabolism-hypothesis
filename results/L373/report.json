@@ -1,0 +1,72 @@
+{
+  "loop": "L373",
+  "data_source": "results/L69/l69_step1_report.json",
+  "N": 163,
+  "x_axis": "log_Vmax (env proxy)",
+  "y_axis": "log_a0 per galaxy",
+  "sigma_y_const": 0.5671939868828696,
+  "models": {
+    "M1_monotonic_linear": {
+      "k": 2,
+      "params": {
+        "A": -11.242767173764483,
+        "B": 0.5321388272866989
+      },
+      "chi2": 209.77577732748716,
+      "AIC": 213.77577732748716,
+      "BIC": 219.9632777291007,
+      "AICc": 213.85077732748715,
+      "lnZ_laplace": -112.60272154547326,
+      "logdet_halfH": 9.895079524301867,
+      "lnZ_err": null,
+      "prior_volume": 100.0
+    },
+    "M2_Vshape_symmetric": {
+      "k": 3,
+      "params": {
+        "A": -9.919311798001184,
+        "B": -0.8470810898958496,
+        "x0": 2.2408210194725804
+      },
+      "chi2": 206.81695966108904,
+      "AIC": 212.81695966108904,
+      "BIC": 222.09821026350932,
+      "AICc": 212.96790305731545,
+      "lnZ_laplace": -112.79834832305006,
+      "logdet_halfH": 14.66448624174011,
+      "lnZ_err": null,
+      "prior_volume": 123.2778771659729
+    },
+    "M2_Vshape_asymmetric": {
+      "k": 4,
+      "params": {
+        "A": -10.165127538958107,
+        "BL": -2.0274584803656097,
+        "BR": 0.1994697766008944,
+        "x0": 1.7693773189831266
+      },
+      "chi2": 202.81767080236546,
+      "AIC": 210.81767080236546,
+      "BIC": 223.1926716055925,
+      "AICc": 211.07083535932748,
+      "lnZ_laplace": -114.44423618666909,
+      "logdet_halfH": 19.188257708123025,
+      "lnZ_err": null,
+      "prior_volume": 1232.778771659729
+    }
+  },
+  "comparisons": {
+    "dchi2_M1_minus_M2sym": 2.9588176663981187,
+    "dchi2_M1_minus_M2asym": 6.958106525121707,
+    "dlnZ_M2sym_minus_M1": -0.19562677757680547,
+    "dlnZ_M2asym_minus_M1": -1.841514641195829,
+    "dBIC_M1_minus_M2sym": -2.1349325344086196,
+    "dBIC_M1_minus_M2asym": -3.229393876491798
+  },
+  "L342_comparison": {
+    "L342_dchi2_3anchor": 288.04,
+    "L342_data": "3 anchors (cosmic/cluster/galactic)",
+    "L373_data": "SPARC 163-galaxy per-galaxy log_a0 distribution"
+  },
+  "honest_note": "SPARC sample probes ONLY the galactic regime in env-density. x = log_Vmax is an INTRA-galactic proxy (halo mass), NOT cosmic-vs-cluster. L342's 17sigma \u0394\u03c7\u00b2=288 came from cluster-vs-galactic gap which SPARC cannot test."
+}

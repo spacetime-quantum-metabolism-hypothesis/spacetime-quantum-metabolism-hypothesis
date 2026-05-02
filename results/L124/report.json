@@ -1,0 +1,11 @@
+{
+  "attack": "DESI w_a<0 conflict",
+  "defense_layers": 6,
+  "resolution_scenarios": {
+    "fail": 25,
+    "ext_survive": 35,
+    "retract": 20,
+    "DR3_ext": 20
+  },
+  "verdict": "DEFENSE PARTIAL: SQT with const \u0393_0 conflicts with DESI DR2 w_a<0. But: (a) DESI not definitive, (b) \u03c4_q(t)/\u03b5(t) extension possible, (c) acknowledged open question in paper. Reviewer concern VALID but NOT FATAL."
+}

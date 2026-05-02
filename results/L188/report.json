@@ -1,0 +1,27 @@
+{
+  "scenarios": {
+    "Branch B (3-regime, original)": {
+      "cosmic": 8.37,
+      "cluster": 7.75,
+      "galactic": 9.56,
+      "monotonic": false,
+      "k": 3
+    },
+    "2-regime (cosmic, structure)": {
+      "cosmic": 8.37,
+      "cluster": 9.0,
+      "galactic": 9.56,
+      "monotonic": true,
+      "k": 2
+    },
+    "Smooth log: \u03c3 \u221d log(\u03c1)": {
+      "cosmic": 8.5,
+      "cluster": 9.0,
+      "galactic": 9.5,
+      "monotonic": true,
+      "k": 2
+    }
+  },
+  "honest": "non-monotonicity model-dependent",
+  "verdict": "Branch B 'non-monotonicity' depends on T17/T20/T22 \u03c3_0 extractions, each using different model assumptions. Whether \u03c3 truly varies non-monotonically is MODEL-DEPENDENT. Honest paper text: 'Monotonic alternatives cannot be definitively ruled out without consistent extraction methodology.'"
+}

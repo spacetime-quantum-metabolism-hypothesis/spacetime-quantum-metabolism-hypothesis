@@ -1,0 +1,233 @@
+{
+  "anchors": {
+    "DLNZ_FIXED": 13.0,
+    "DLNZ_MARGINAL": 0.8,
+    "ndim": 3,
+    "coords": [
+      "cosmic",
+      "cluster",
+      "galactic"
+    ],
+    "cutoff_log10sigma": -3.0
+  },
+  "cases": [
+    {
+      "shape": "anisotropic_100_1_1",
+      "achieved_occam": 12.206268784993856,
+      "label": "anisotropic_100_1_1",
+      "eigenvalues_F": [
+        28938.099417456036,
+        289.3809941745596,
+        289.38099417455663
+      ],
+      "v_max_components": [
+        -0.23813772081825826,
+        0.8979892602955536,
+        0.37000772196986614
+      ],
+      "v_max_component_sq": {
+        "cosmic": 0.05670957407651472,
+        "cluster": 0.8063847116061555,
+        "galactic": 0.13690571431732976
+      },
+      "v_max_dominant_coord": "cluster",
+      "v_max_dominant_fraction": 0.8063847116061555,
+      "v_min_components": [
+        0.9599530307305048,
+        0.15973297848713308,
+        0.23016419003604296
+      ],
+      "rotation_under_rescale_deg": 0.0,
+      "MBAM_first_boundary": {
+        "direction_sign": 1,
+        "coordinate": "cosmic",
+        "type": "prior_upper",
+        "geodesic_distance": 2.08
+      },
+      "lnV_Laplace_3d": -8.047385701634186,
+      "lnV_Laplace_1d_stiff_only": -3.8709450389274536,
+      "sloppy_log_volume_contribution": -3.1367198918668073,
+      "marginal_eq_reduction_diff": -1.0397207708399243,
+      "AICc_table": {
+        "13": {
+          "AICc_3param": 8.666666666666666,
+          "AICc_1param": 2.3636363636363638,
+          "delta_AICc_1_minus_3": -6.303030303030303,
+          "favors_reduction": true
+        },
+        "30": {
+          "AICc_3param": 6.923076923076923,
+          "AICc_1param": 2.142857142857143,
+          "delta_AICc_1_minus_3": -4.780219780219781,
+          "favors_reduction": true
+        },
+        "100": {
+          "AICc_3param": 6.25,
+          "AICc_1param": 2.0408163265306123,
+          "delta_AICc_1_minus_3": -4.209183673469388,
+          "favors_reduction": true
+        }
+      }
+    },
+    {
+      "shape": "log_uniform_1e4_to_1",
+      "achieved_occam": 12.191877628162654,
+      "label": "log_uniform_1e4_to_1",
+      "eigenvalues_F": [
+        133036.25298994064,
+        1330.3625298994048,
+        13.303625298993111
+      ],
+      "v_max_components": [
+        -0.07653039693522025,
+        0.9883265040023362,
+        0.13173389780712155
+      ],
+      "v_max_component_sq": {
+        "cosmic": 0.005856901655062369,
+        "cluster": 0.97678927851348,
+        "galactic": 0.017353819831457146
+      },
+      "v_max_dominant_coord": "cluster",
+      "v_max_dominant_fraction": 0.97678927851348,
+      "v_min_components": [
+        0.8121914517898214,
+        -0.014843429617472084,
+        0.583202124684687
+      ],
+      "rotation_under_rescale_deg": 0.0,
+      "MBAM_first_boundary": {
+        "direction_sign": 1,
+        "coordinate": "cosmic",
+        "type": "prior_upper",
+        "geodesic_distance": 2.46
+      },
+      "lnV_Laplace_3d": -8.032994544802982,
+      "lnV_Laplace_1d_stiff_only": -4.633676350981732,
+      "sloppy_log_volume_contribution": -2.3595974229812895,
+      "marginal_eq_reduction_diff": -1.0397207708399598,
+      "AICc_table": {
+        "13": {
+          "AICc_3param": 8.666666666666666,
+          "AICc_1param": 2.3636363636363638,
+          "delta_AICc_1_minus_3": -6.303030303030303,
+          "favors_reduction": true
+        },
+        "30": {
+          "AICc_3param": 6.923076923076923,
+          "AICc_1param": 2.142857142857143,
+          "delta_AICc_1_minus_3": -4.780219780219781,
+          "favors_reduction": true
+        },
+        "100": {
+          "AICc_3param": 6.25,
+          "AICc_1param": 2.0408163265306123,
+          "delta_AICc_1_minus_3": -4.209183673469388,
+          "favors_reduction": true
+        }
+      }
+    },
+    {
+      "shape": "anisotropic_1e6_1_1",
+      "achieved_occam": 12.191877628162011,
+      "label": "anisotropic_1e6_1_1",
+      "eigenvalues_F": [
+        13303625.298994062,
+        13.303625299193504,
+        13.303625296780767
+      ],
+      "v_max_components": [
+        -0.23813772081825813,
+        0.8979892602955539,
+        0.37000772196986614
+      ],
+      "v_max_component_sq": {
+        "cosmic": 0.05670957407651465,
+        "cluster": 0.8063847116061561,
+        "galactic": 0.13690571431732976
+      },
+      "v_max_dominant_coord": "cluster",
+      "v_max_dominant_fraction": 0.8063847116061561,
+      "v_min_components": [
+        0.9670840257636042,
+        0.18406983004512684,
+        0.17568945551745221
+      ],
+      "rotation_under_rescale_deg": 0.0,
+      "MBAM_first_boundary": {
+        "direction_sign": 1,
+        "coordinate": "cosmic",
+        "type": "prior_upper",
+        "geodesic_distance": 2.065
+      },
+      "lnV_Laplace_3d": -8.032994544802339,
+      "lnV_Laplace_1d_stiff_only": -6.936261443975777,
+      "sloppy_log_volume_contribution": -0.057012329911591886,
+      "marginal_eq_reduction_diff": -1.03972077091497,
+      "AICc_table": {
+        "13": {
+          "AICc_3param": 8.666666666666666,
+          "AICc_1param": 2.3636363636363638,
+          "delta_AICc_1_minus_3": -6.303030303030303,
+          "favors_reduction": true
+        },
+        "30": {
+          "AICc_3param": 6.923076923076923,
+          "AICc_1param": 2.142857142857143,
+          "delta_AICc_1_minus_3": -4.780219780219781,
+          "favors_reduction": true
+        },
+        "100": {
+          "AICc_3param": 6.25,
+          "AICc_1param": 2.0408163265306123,
+          "delta_AICc_1_minus_3": -4.209183673469388,
+          "favors_reduction": true
+        }
+      }
+    }
+  ],
+  "verdicts": [
+    {
+      "shape": "anisotropic_100_1_1",
+      "P1_stiff_dominant_geq_0.7": true,
+      "P2_MBAM_boundary_found": true,
+      "P3_AICc_favors_1param": true,
+      "P4_marginal_eq_reduction": false,
+      "P5_coord_robust_lt_15deg": true,
+      "delta_AICc_1_minus_3_n30": -4.780219780219781,
+      "v_max_dom_fraction": 0.8063847116061555,
+      "rotation_deg": 0.0,
+      "marginal_diff": -1.0397207708399243
+    },
+    {
+      "shape": "log_uniform_1e4_to_1",
+      "P1_stiff_dominant_geq_0.7": true,
+      "P2_MBAM_boundary_found": true,
+      "P3_AICc_favors_1param": true,
+      "P4_marginal_eq_reduction": false,
+      "P5_coord_robust_lt_15deg": true,
+      "delta_AICc_1_minus_3_n30": -4.780219780219781,
+      "v_max_dom_fraction": 0.97678927851348,
+      "rotation_deg": 0.0,
+      "marginal_diff": -1.0397207708399598
+    },
+    {
+      "shape": "anisotropic_1e6_1_1",
+      "P1_stiff_dominant_geq_0.7": true,
+      "P2_MBAM_boundary_found": true,
+      "P3_AICc_favors_1param": true,
+      "P4_marginal_eq_reduction": false,
+      "P5_coord_robust_lt_15deg": true,
+      "delta_AICc_1_minus_3_n30": -4.780219780219781,
+      "v_max_dom_fraction": 0.8063847116061561,
+      "rotation_deg": 0.0,
+      "marginal_diff": -1.03972077091497
+    }
+  ],
+  "decision": {
+    "p3_any_AICc_favors_1param": true,
+    "p1_majority_stiff_dominant": true,
+    "recommend_reduction_to_1param": true,
+    "interpretation": "Reduction recommended only when AICc penalty difference favors 1-param AND the stiff direction has a coordinate-dominant interpretation (so the reduced model has a physical meaning, not just a statistical one)."
+  }
+}

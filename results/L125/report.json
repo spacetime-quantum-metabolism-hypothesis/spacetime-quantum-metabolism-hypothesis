@@ -1,0 +1,10 @@
+{
+  "attack": "Stress-energy non-conservation",
+  "defense": "Modified Bianchi with source J^\u03bc, like RVM",
+  "precedents": [
+    "RVM (Sola)",
+    "Creation cosmology",
+    "Brans-Dicke"
+  ],
+  "verdict": "DEFENSE STRONG: Stress-energy non-conservation NOT FATAL. SQT modifies Einstein eq with quantum sector source J^\u03bc. Precedent: RVM (Sola), creation cosmology, Brans-Dicke. Local Bianchi preserved for total T. ACCEPTED in literature."
+}

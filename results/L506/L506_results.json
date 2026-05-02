@@ -1,0 +1,98 @@
+{
+  "channels": [
+    {
+      "tag": "beta_eff_paper",
+      "desc": "2 beta^2/(1+beta^2), beta=Lambda_UV/M_Pl, Lambda_UV=18MeV",
+      "beta": 1.4742014742014743e-21,
+      "gamma_minus_1": 4.3465399730756e-42,
+      "passes": true,
+      "cassini_margin": 5.2915652777777777e+36,
+      "notes": "Paper headline. Lambda_UV stipulated, not derived from axioms."
+    },
+    {
+      "tag": "universal_at_beta_eff",
+      "desc": "Universal coupling (no dark-only) at the same beta_eff",
+      "beta": 1.4742014742014743e-21,
+      "gamma_minus_1": 4.3465399730756e-42,
+      "passes": true,
+      "cassini_margin": 5.2915652777777777e+36,
+      "notes": "Same arithmetic as (1). Channel name distinguishes the *embedding*: if baryons couple, beta=7.4e-21 still passes -- but only because Lambda_UV was tuned to MeV scale."
+    },
+    {
+      "tag": "universal_phase3",
+      "desc": "Universal coupling at Phase-3 cosmology posterior beta=0.107",
+      "beta": 0.107,
+      "gamma_minus_1": 0.022638808283956972,
+      "passes": false,
+      "cassini_margin": 0.0010159545375141936,
+      "notes": "HARD FAIL: |gamma-1|~2.3e-2 vs limit 2.3e-5 (1000x violation). Forces the dark-only embedding choice."
+    },
+    {
+      "tag": "dark_only_structural",
+      "desc": "Sector-selective coupling: matter sector decoupled, beta_b=0",
+      "beta": 0.0,
+      "gamma_minus_1": 0.0,
+      "passes": true,
+      "cassini_margin": Infinity,
+      "notes": "STRUCTURAL gamma=1 exact. Identical to PASS_TRIVIAL: any theory with beta_b=0 trivially passes. Dark-only embedding is an axiom-level *choice* (Foundation 5), not a derivation."
+    },
+    {
+      "tag": "brans_dicke",
+      "desc": "|g-1| = 1/(1+omega_BD), omega_BD = 1/(2 beta^2)",
+      "beta": 1.4742014742014743e-21,
+      "omega_BD": 2.3006805555555556e+41,
+      "gamma_minus_1": 4.3465399730756e-42,
+      "passes": true,
+      "cassini_margin": 5.2915652777777777e+36,
+      "notes": "Reduces to (1) algebraically -- not an independent prediction."
+    },
+    {
+      "tag": "pure_disformal",
+      "desc": "Pure disformal coupling: g~ = g + B d_phi d_phi, A'=0",
+      "beta": null,
+      "gamma_minus_1": 0.0,
+      "passes": true,
+      "cassini_margin": Infinity,
+      "notes": "STRUCTURAL gamma=1 exact (Zumalacarregui-Koivisto-Bellini 2013). Schwarzschild solves the modified equations with auxiliary field frozen. Independent of beta. PASS_TRIVIAL."
+    },
+    {
+      "tag": "vainshtein_screened",
+      "desc": "Cubic Galileon Vainshtein: |g-1| ~ 2 beta^2 (r/r_V)^{3/2}",
+      "beta": 0.107,
+      "r_saturn_m": 1421200000000.0,
+      "r_V_m": 3.8174331217081047e+18,
+      "suppression": 2.271567477943337e-10,
+      "gamma_minus_1": 5.201435210994652e-12,
+      "passes": true,
+      "cassini_margin": 4421856.481338694,
+      "notes": "Phase-3 posterior beta survives Cassini *if* Vainshtein screening active. Adds a screening axiom (cubic Galileon), not currently in SQMH foundations."
+    },
+    {
+      "tag": "chameleon_screened",
+      "desc": "Chameleon thin-shell screening, KW 2004 ceiling",
+      "beta": null,
+      "gamma_minus_1": 1e-07,
+      "passes": true,
+      "cassini_margin": 230.0,
+      "notes": "Literature ceiling from thin-shell argument. Adds a chameleon potential axiom not in SQMH foundations."
+    }
+  ],
+  "summary": {
+    "cassini_limit": 2.3e-05,
+    "n_channels": 8,
+    "n_pass": 7,
+    "n_fail": 1,
+    "n_structural_zero": 2,
+    "log10_min": -41.36185632201917,
+    "log10_max": -1.645146438319606,
+    "log10_median": -11.28387680670856,
+    "log10_paper_headline": -41.36185632201917,
+    "spread_dex": 39.716709883699565,
+    "n_within_1dex_of_paper": 3,
+    "K_C1_all_pass": false,
+    "K_C2_headline_within_1dex": false,
+    "K_C3_spread_le_5dex": false,
+    "K_C4_no_hard_fails": false,
+    "verdict": "CHANNEL_DEPENDENT"
+  }
+}

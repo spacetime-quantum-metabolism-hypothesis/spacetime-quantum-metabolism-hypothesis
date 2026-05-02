@@ -1,0 +1,29 @@
+{
+  "grid_size": 117,
+  "max_mitigation_attempt_grid": {
+    "beta0_max": 0.3,
+    "p_range": [
+      -2.0,
+      2.0
+    ]
+  },
+  "best_cancellation": {
+    "beta0": 0.0,
+    "p": -2.0,
+    "delta_s8": 0.0,
+    "delta_xi_plus": 0.0,
+    "residual_after_mitigation_pct": 1.1400000000000001
+  },
+  "max_downward_S8_shift_pct": 0.0,
+  "structural_finding": "mu_eff = 1 + 2 beta_eff^2 >= 1 always (Phase-2 dark-only embedding). Growth ENHANCED, sigma_8 INCREASES with any non-zero coupling. Within fluid-level G_eff/G = 1+2 beta^2 toy, S_8 mitigation is STRUCTURALLY UNREACHABLE (cannot produce delta_s8 < 0).",
+  "facility_forecast_sigma": {
+    "DES_Y3": 0.6333333333333334,
+    "Euclid": 4.384615384615385,
+    "LSST_Y10": 2.85
+  },
+  "facility_verdict": {
+    "DES_Y3": "INVISIBLE",
+    "Euclid": "DETECT 3-5\u03c3",
+    "LSST_Y10": "MARGINAL 1-3\u03c3"
+  }
+}

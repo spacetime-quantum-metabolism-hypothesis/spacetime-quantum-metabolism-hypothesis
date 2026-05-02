@@ -1,0 +1,24 @@
+{
+  "results": {
+    "1": {
+      "aic": 331.230307893961,
+      "bic": 337.41780829557456,
+      "nll": 163.6151539469805,
+      "n_params": 2
+    },
+    "2": {
+      "aic": 212.06034032009512,
+      "bic": 227.52909132412893,
+      "nll": 101.03017016004756,
+      "n_params": 5
+    },
+    "3": {
+      "aic": 217.00020609670247,
+      "bic": 241.75020770315658,
+      "nll": 100.50010304835124,
+      "n_params": 8
+    }
+  },
+  "best": 2,
+  "verdict": "SPARC sigma_0 hierarchical: best k=2 components by AIC. Single Gaussian NOT preferred."
+}

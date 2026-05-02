@@ -1,0 +1,51 @@
+{
+  "n_start": 100,
+  "n_success": 100,
+  "n_modes": 2,
+  "modes": [
+    {
+      "center": [
+        8.370802958742585,
+        7.750002850833158,
+        9.559220667173957
+      ],
+      "chi2_min": -0.0013414594231285811,
+      "count": 97
+    },
+    {
+      "center": [
+        9.47118190072634,
+        7.7499970098988005,
+        8.458830816527602
+      ],
+      "chi2_min": 3.904045008883335,
+      "count": 3
+    }
+  ],
+  "global_best": {
+    "sigma": [
+      8.370802958742585,
+      7.750002850833158,
+      9.559220667173957
+    ],
+    "chi2": -0.0013414594231285811
+  },
+  "merge_2regime": {
+    "sigma": [
+      7.9566623760212085,
+      9.560001905205537
+    ],
+    "chi2": 1.281333333618549
+  },
+  "aicc": {
+    "M3": 6.109769651687982,
+    "M2": 5.336632872789056,
+    "delta_M3_minus_M2": 0.7731367788989258
+  },
+  "true_anchor": [
+    8.37,
+    7.75,
+    9.56
+  ],
+  "notes": "Synthetic chi^2 surface: primary bowl at reported MAP + anchor-flex secondary (L272 100% false-detection encoded as cos<->gal swap). Real-pipeline dynesty multimodal deferred to L323."
+}

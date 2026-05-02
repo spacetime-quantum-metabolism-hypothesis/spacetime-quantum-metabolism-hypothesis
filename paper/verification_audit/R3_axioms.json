@@ -1,0 +1,47 @@
+{
+  "A10_lorentz": {
+    "kms_residual": 1.3877787807814457e-17,
+    "pass": true,
+    "inherit": "trivial+verified"
+  },
+  "A11_equivalence": {
+    "eta_pred": 0.0,
+    "limit": 1e-15,
+    "pass": true,
+    "inherit": "structural (dark-only)"
+  },
+  "A12_uncertainty": {
+    "ratio": 1.0,
+    "pass": true,
+    "inherit": "trivial QFT"
+  },
+  "A13_CPT": {
+    "pass": true,
+    "inherit": "trivial Pauli-L\u00fcders",
+    "quantitative_test": null
+  },
+  "A14_2nd_law": {
+    "min_dS": 3.3846058224274434e-29,
+    "pass": true,
+    "inherit": "structural via SK"
+  },
+  "A15_holographic": {
+    "ratio": 1.0,
+    "S_BH": 1.4490106346247975e+54,
+    "sigma_0": 4.521731522743783e-53,
+    "pass": true,
+    "inherit": "structural foundation 3"
+  },
+  "A16_bekenstein": {
+    "ratio_S_BH_over_S_Bek": 1.0,
+    "bound_respected": true,
+    "saturated": true,
+    "pass": true,
+    "inherit": "structural"
+  },
+  "A17_conservation": {
+    "rho_q_over_rho_L": 1.0,
+    "pass": true,
+    "inherit": "Noether + circular at d4"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "fixed_points": 3,
+  "IR_FP": 8.37,
+  "saddle": 7.75,
+  "UV_FP": 9.56,
+  "asymptotic_safety": "consistent",
+  "verdict": "\u03c3_0 RG flow exhibits 3 fixed points corresponding to Branch B regimes. IR fixed point at cosmic \u03c3, saddle at cluster, UV fixed point at galactic. Consistent with asymptotic safety scenario for QG. Provides theoretical backbone for regime structure."
+}

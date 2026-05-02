@@ -1,0 +1,6 @@
+{
+  "scalar_suppression": 3.308229444042754e+39,
+  "LIGO_safe": true,
+  "ET_uncertain": true,
+  "verdict": "SQT scalar GW polarization mode SUPPRESSED in all regimes. h_S/h_T << 1e-15 (LIGO sensitivity). Consistent with GW170817 polarization tests. Future ET may probe at intermediate scales but unlikely to detect."
+}

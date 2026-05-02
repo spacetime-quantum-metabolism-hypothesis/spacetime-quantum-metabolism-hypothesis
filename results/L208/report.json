@@ -1,0 +1,14 @@
+{
+  "N_sparc": 163,
+  "N_anchors": 3,
+  "chi2_sparc_BB": 7503.046571608098,
+  "chi2_sparc_LCDM": 7503.046571608098,
+  "chi2_anchor_BB": 0.0,
+  "chi2_anchor_LCDM": 103.61000000000013,
+  "chi2_total_BB": 7503.046571608098,
+  "chi2_total_LCDM": 7606.656571608099,
+  "aicc_BB": 7509.194719756246,
+  "aicc_LCDM": 7608.680961852001,
+  "delta_aicc": 99.48624209575519,
+  "verdict": "Branch B vs LCDM: dchi2_total = 103.61, dAICc = 99.49. Branch B preferred by 103.6 chi^2 units. CAVEAT: anchors are by-construction match \u2014 independent regime data needed."
+}

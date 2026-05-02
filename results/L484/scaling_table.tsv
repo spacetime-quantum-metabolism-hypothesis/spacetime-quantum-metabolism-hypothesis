@@ -1,0 +1,12 @@
+# relation	obs_value	LCDM_pred	SQT_pred	dev_LCDM_sigma	dev_SQT_sigma
+M-T_X	4.500	3.970	3.809	-1.06	-1.38
+M-Y_X	7.500	7.839	7.781	0.48	0.40
+M-sigma_v	0.780	0.789	0.783	0.09	0.03
+
+# log-log slope diagnostics
+# M-T_X    slope LCDM = 1.5000  (self-similar 1.50)
+# M-T_X    slope SQT  = 1.5050
+# M-Y_X    slope LCDM = 0.6000  (self-similar 0.60)
+# M-Y_X    slope SQT  = 0.6145
+# M-sigv   slope LCDM = 2.9753  (Evrard+ 2.975)
+# M-sigv   slope SQT  = 3.0045

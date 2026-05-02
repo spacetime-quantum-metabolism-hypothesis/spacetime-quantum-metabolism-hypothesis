@@ -1,0 +1,60 @@
+{
+  "step1_Z2_SSB_inevitable": {
+    "ok": true,
+    "justification": "A4 + A5: Z_2 non-trivial rep on phi_c forces simultaneous SSB"
+  },
+  "step2_topology": {
+    "pi0_nontrivial": true,
+    "codimension": 1,
+    "source": "Kibble 1976 topology theorem"
+  },
+  "step3_annihilation": {
+    "Gamma_non_decreasing": true,
+    "sign_d_area_dt": -1
+  },
+  "step4_anisotropy_sign": 1,
+  "dim_check_DT_over_T": {
+    "dimensionless": true,
+    "total_L_power": 0
+  },
+  "dim_check_bispectrum": {
+    "ok": true,
+    "justification": "equilateral > squeezed (codim-1 wall geometry)"
+  },
+  "oom_ladder": {
+    "form": "DT/T ~ (xi/L_H)^p * (E_SSB/M_P)^q",
+    "p_status": "B1-determined (Kibble-Zurek attractor)",
+    "q_status": "axiom-determined (A5 single scale)",
+    "prefactor": "O(1) -- not priori-determined (Q17 limit)",
+    "sign": "+1 (anisotropy^2 >= 0)",
+    "dim": "dimensionless"
+  },
+  "priori_grade": {
+    "sign_grade": "L0",
+    "dim_grade": "L0",
+    "oom_grade": "L1",
+    "overall": "L1",
+    "L0_blocker": "B1 Kibble-Zurek auxiliary assumption",
+    "claim": "TRUE priori derivation: structural (L1)",
+    "honest_caveat": "L0 not reached. Numerical prefactor not priori."
+  },
+  "obs_time": {
+    "today": 2026,
+    "litebird": 2032,
+    "cmb_s4": 2030,
+    "future_only": true,
+    "postdiction_possible": false
+  },
+  "axiom_register": {
+    "A1": "Planck-cell discrete spacetime",
+    "A2": "each cell carries quantum state (creation/annihilation)",
+    "A3p": "vacuum creation rate Gamma_0(t) is time-dependent (Path-alpha)",
+    "A4": "matter / anti-matter as Z_2 sectors",
+    "A5": "spacetime as GFT BEC condensate phi_c (L530 E)",
+    "A6": "holographic information bound on causal regions"
+  },
+  "aux_register": {
+    "B1": "Kibble-Zurek scaling: defect density ~ xi_correlation^{-D}"
+  },
+  "headline": "P3a priori derivation: STRUCTURAL SUCCESS at L1 grade. Sign and dimension are L0 (axioms only). OOM is L1 (axioms + Kibble-Zurek single auxiliary). Numerical prefactor and absolute sigma-detection level remain outside priori reach (Q17 amplitude-locking limit). Observation-time consistent: LiteBIRD/CMB-S4 future-only. No data fit performed. No new free parameter introduced."
+}

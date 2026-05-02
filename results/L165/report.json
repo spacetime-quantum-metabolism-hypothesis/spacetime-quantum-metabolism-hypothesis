@@ -1,0 +1,14 @@
+{
+  "beta_function": "-3\u03c3 + 4\u03c3\u00b2 - \u03c3\u00b3",
+  "fixed_points": [
+    1.0,
+    3.0000000000000004
+  ],
+  "stable": [
+    3.0000000000000004
+  ],
+  "unstable": [
+    1.0
+  ],
+  "verdict": "Wilsonian RG flow for \u03c3_0 with cubic \u03b2-function: -3\u03c3 + a\u03c3\u00b2 - b\u03c3\u00b3 has 3 fixed points (a=4, b=1). This NATURALLY explains Branch B 3-regime structure. Cosmic = stable IR, Galactic = stable UV, Cluster = unstable saddle."
+}

@@ -1,0 +1,66 @@
+{
+  "H0_planck": 67.4,
+  "H0_riess": 73.04,
+  "a0_sqt_planck": 1.0421903092736491e-10,
+  "a0_sqt_riess": 1.1294002995452128e-10,
+  "a0_mcgaugh": 1.2e-10,
+  "n_galaxies": 175,
+  "n_radial_points": 3389,
+  "upsilon_disk": 0.5,
+  "upsilon_bul": 0.7,
+  "sigma_log_floor_dex": 0.13,
+  "free_fit": {
+    "a0": 1.0686771873602096e-10,
+    "log10_a0": -9.97115346122743,
+    "sigma_log10_a0": 0.006000000000000227,
+    "chi2": 4384.4642839662665,
+    "chi2_per_dof": 1.2941157862946477,
+    "aicc": 4386.46546495239,
+    "n_params": 1
+  },
+  "sqt_locked_planck": {
+    "a0": 1.0421903092736491e-10,
+    "chi2": 4387.168577979597,
+    "chi2_per_dof": 1.2945318908172314,
+    "aicc": 4387.168577979597,
+    "n_params": 0
+  },
+  "sqt_locked_riess": {
+    "a0": 1.1294002995452128e-10,
+    "chi2": 4397.706945693816,
+    "chi2_per_dof": 1.297641471140105,
+    "aicc": 4397.706945693816
+  },
+  "newton_only": {
+    "chi2": 45558.713321553536,
+    "chi2_per_dof": 13.443113992786525,
+    "aicc": 45558.713321553536,
+    "n_params": 0
+  },
+  "mcgaugh_locked": {
+    "a0": 1.2e-10,
+    "chi2": 4443.131788004695,
+    "chi2_per_dof": 1.3110450835068443,
+    "aicc": 4443.131788004695
+  },
+  "deltas": {
+    "dAICc_SQT_minus_free": 0.7031130272071096,
+    "dAICc_SQT_minus_newton": -41171.54474357394,
+    "dAICc_SQT_minus_mcgaugh": -55.963210025098306,
+    "dAICc_free_minus_mcgaugh": -56.666323052305415
+  },
+  "K_criteria": {
+    "K_R1_within_30pct": true,
+    "K_R2_within_2sigma": true,
+    "K_R3_chi2_per_dof_le_1p5": true,
+    "K_R4_AICc_SQT_minus_free_le_2": true,
+    "K_R5_AICc_SQT_minus_newton_le_minus10": true,
+    "n_pass": 5
+  },
+  "channel_independence": {
+    "n_galaxies": 175,
+    "n_radial_points": 3389,
+    "avg_points_per_galaxy": 19.365714285714287,
+    "note": "RAR uses point-by-point (R,V) including inner radii where V<<V_flat. BTFR (L422/L448) uses only V_flat. Information overlap is partial: outer radii dominate g_bar small / g_obs ~ V_flat^2/R, inner radii test the high-acceleration Newtonian regime which BTFR cannot probe."
+  }
+}

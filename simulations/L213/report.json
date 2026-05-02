@@ -1,0 +1,8 @@
+{
+  "n_quanta_per_m3": 1.8841911764705883e+103,
+  "N_per_Mpc3": 5.537487142904413e+170,
+  "sigma_over_N_Mpc": 4.249556762075809e-86,
+  "sigma_over_N_Hubble": 2.5887862413818714e-91,
+  "f_NL_crude": 2.5887862413818713e-81,
+  "CMB_compatible": true
+}

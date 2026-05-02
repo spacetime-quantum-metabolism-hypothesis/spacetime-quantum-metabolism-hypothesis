@@ -1,0 +1,70 @@
+{
+  "scan": {
+    "scan_grid": {
+      "n_grid": 25,
+      "sigma_max": 5.0,
+      "a_range": [
+        -1.0,
+        1.0
+      ],
+      "b_range": [
+        -2.0,
+        2.0
+      ],
+      "c_range": [
+        -1.0,
+        1.0
+      ]
+    },
+    "total_evaluated": 8587,
+    "physical_cases": 8587,
+    "topology_classes": {
+      "smm": 16,
+      "sus": 4160,
+      "usu": 4160,
+      "mms": 119,
+      "mmu": 118,
+      "umm": 14
+    },
+    "saddle_count": 4935,
+    "stable_count": 4942,
+    "saddle_in_cluster_band": 1710,
+    "saddle_naturalness_ratio": 0.3465045592705167,
+    "saddle_pos_quartiles": [
+      0.3776762165095088,
+      0.8216054138373347,
+      1.9555976671740847
+    ],
+    "stable_pos_quartiles": [
+      0.37807457355917584,
+      0.8228756555322956,
+      1.9608761139899877
+    ]
+  },
+  "dip": {
+    "n_topology_qualified": 157,
+    "non_monotonic_dip_count": 97,
+    "monotone_count": 60,
+    "dip_fraction": 0.6178343949044586,
+    "examples": [
+      {
+        "a": 0.5299977148320512,
+        "b": 0.5388732800023632,
+        "c": 0.10715880131599165,
+        "sign_changes": 1
+      },
+      {
+        "a": -0.27637477889321915,
+        "b": -1.649400322735596,
+        "c": -0.7639881957589694,
+        "sign_changes": 1
+      },
+      {
+        "a": -0.34027757533442937,
+        "b": -1.4219032445358124,
+        "c": -0.7931940645548967,
+        "sign_changes": 1
+      }
+    ]
+  }
+}

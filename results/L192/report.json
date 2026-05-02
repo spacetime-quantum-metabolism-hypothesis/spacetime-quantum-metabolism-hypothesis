@@ -1,0 +1,35 @@
+{
+  "N_total": 166,
+  "results": [
+    [
+      "Branch B (3-step)",
+      570.0425506004317,
+      3,
+      576.1906987485798,
+      585.3785139655013
+    ],
+    [
+      "Gaussian dip",
+      594.3185695560171,
+      4,
+      602.567016760986,
+      614.7665207094433
+    ],
+    [
+      "Cubic",
+      716.7009543773179,
+      4,
+      724.9494015822868,
+      737.1489055307441
+    ],
+    [
+      "Quadratic",
+      853.9688532341027,
+      3,
+      860.1170013822508,
+      869.3048165991722
+    ]
+  ],
+  "best": "Branch B (3-step)",
+  "verdict": "Best fit: Branch B (3-step). Branch B preferred by smooth alternatives. Paper should consider reframing: SQT framework with smooth \u03c3(\u03c1) ansatz."
+}

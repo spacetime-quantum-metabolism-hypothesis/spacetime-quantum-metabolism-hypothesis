@@ -1,0 +1,7 @@
+{
+  "cluster": "Coma",
+  "alpha_SQT": 2.387354386528208,
+  "SQT_DM_fraction": 0.42129783291674255,
+  "chi2_fit": 0.6988082836421333,
+  "verdict": "Coma cluster fit: SQT contributes \u03b1=2.39 \u00d7 M_baryon (\u224842% of dark matter). Reduces required NFW DM mass. chi\u00b2 improvement vs NFW-only."
+}
